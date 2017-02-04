@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+body {
+  font-family: '맑은 고딕', sans-serif;
+}
+
+h2.modal-title {
+	text-align: center;
+	font-weight: bold;
+}
+
+div.transaction {
+	margin-top: 5px;
+	margin-left: 113px;
+	/* border: 1px solid red; */
+}
+
+div.modal-footer {
+  text-align: center;
+}
+
+button.btn {
+  background-color: #f32e6d;
+  color: #ffffff;
+}
