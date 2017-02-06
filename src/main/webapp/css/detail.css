@@ -1,7 +1,17 @@
 @CHARSET "UTF-8";
 
+html {
+  overflow-y: auto;
+}
+
 body {
   font-family: '맑은 고딕', sans-serif;
+  font-size: small;
+}
+
+body > .modal {
+  width: 960px;
+  margin: 0 auto;
 }
 
 div.modal-head h1 {
@@ -35,10 +45,6 @@ div.item img {
   /* border: 1px solid red; */
 }
 
-#bid-content {
-  width: 410px;
-}
-
 div.title {
   width: 405px;
   border-bottom: 2px solid black;
@@ -46,7 +52,7 @@ div.title {
 }
 
 div.title span {
-  font-size: 25px;
+  font-size: 2em;
   width: 300px;
   float: left;
   margin-top: -9px;
@@ -67,6 +73,7 @@ dl.dl-horizontal {
   display: table;
   margin: 0;
   padding-bottom: 10px;
+  font-size: 1.1em;
   /* border: 1px solid red; */
 }
 
@@ -86,7 +93,7 @@ dd.pinkprice {
 
 .present_num {
   float: left;
-  font-size: 24px;
+  font-size: 2em;
   font-weight: bold;
   color: #f32e6d;
   /* border: 1px solid red; */
@@ -144,5 +151,12 @@ div.detail-info {
 }
 
 div.detail-info span {
-  font-size: 25px;
+  font-size: 2em;
+}
+
+div.sellrcontents {
+  margin-top: 5px;
+  margin-left: 15px;
+  font-size: 1.1em;
+  /* border: 1px solid red; */
 }
