@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+
+  body > .container {
+    width:960px;
+    margin: 0  auto;
+  }
+
+  a {
+    font-family:맑은고딕;
+    color:black;
+    font-size:25px;
+    font-weight:bold;
+    padding-left: 5px;
+  }
+  
+  a:hover {
+    color: red;
+    text-decoration:none;
+  }
+  
+  div.header {
+    border-radius: 15px;
+    border:2px solid black; 
+    width:500px; 
+    padding-bottom: 5px; 
+    padding-left:3px;
+    margin-left:10px;
+  }
+  
+  div.inside {
+    display:inline-block; 
+    width:900px;0
+  }
+  
+  div.category {
+    display:inline-block;
+    width:43px;
+    margin-top:5px;
+  }
+  
+  div.category1 {
+    display:inline-block;
+    width:53px;
+  }
+  
+  div.category:hover {
+    background-color: red;
+    color: blue;
+  }
+  
+  div.category1:hover {
+    background-color: red;
+    color: blue;
+  }
+  
+  div.next-pro-first {
+    padding-left: 5px;
+  }
+  
+  div.next-prd-sty {
+    padding-left: 5px; 
+    padding-bottom: 5px; 
+    display:inline-block;
+  }
+  
+  div.next-product {
+    border:1px solid black;  
+    display:inline-block; 
+    width:230px; 
+    height:250px;  
+    padding-left:7px;
+    padding-top:5px;
+  }
+  
+  hr {
+    margin:0px;
+  }
+  
+  hr.commit {
+    margin: 10px;
+    border: think solid black;
+  }
+  
+  img.img-state {
+	  width:40px; 
+	  padding-top: 1px; 
+	  padding-left: 2px;
+  }
+  
+  img.img-state1 {
+    width:47px; 
+    padding-top: 1px; 
+    padding-left: 6px;
+  }
+  
+  img.next-product {
+    padding-left:9px; 
+    height:130px; 
+    width:200px;
+  }
+  
+  span.cate {
+    font-size:18px; 
+    font-family: 맑은고딕; 
+    padding-left: 4px;
+  }
+  
+  span.cate1 {
+    font-size:17px; 
+    font-family: 맑은고딕; 
+  }
+  
+  span.title {
+    background-color: gray; 
+    font-family:맑은고딕; 
+    font-size: 35px; 
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  span.title1 {
+    background-color: gray; 
+    font-family:맑은고딕; 
+    font-size: 35px; 
+  }
+  
+    span.next-product {
+    padding-left: 5px; 
+    font-family: 맑은고딕; 
+    font-size:20px;
+  }
+  
+  span.next-product1 {
+    padding-left: 5px; 
+    font-family: 맑은고딕; 
+    font-size:20px;
+    color:red;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
