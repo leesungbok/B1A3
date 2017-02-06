@@ -1,132 +1,148 @@
 @CHARSET "UTF-8";
 
-  body {
+body {
   font-family: '맑은 고딕', sans-serif;
-  }
-  
-  div.modal-head h1{
-    font-weight: bolder;
-    text-align: center;
-    color: #f32e6d;
-  }
-  
-  div.modal-head button{
-    margin-right: 20px;
-  }
-  
-  div.modal-body {
-    height: 520px;
-    border-bottom: 1px solid #d9d9d9;
-  }
+}
 
-  div.item img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 450px;
-    height: auto;
-  }
-  
-  #carousel-example-generic {
-    margin-top: 30px;
-    width: 450px;
-    height: auto;
-    float: right;
-    /* border: 1px solid red; */
-  }
-  
-  div.title {
-    width: 405px;
-    border-bottom: 2px solid black;
-    margin-bottom: 15px;
-  }
-  
-  div.title span {
-    font-size: 25px;
-    width: 300px;
-    float: left;
-    margin-top: -9px;
-    /* border: 1px solid red; */
-  }
-  
-  div.title img {
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-    /* border: 1px solid red; */
-  }
-  
-  dl.dl-horizontal {
-    width: 405px;
-    height: auto;
-    border-bottom:1px solid #D0D0D0;
-    display: table;
-    margin: 0;
-    padding-bottom: 10px;
-    /* border: 1px solid red; */
-  }
-  
-  dt.pinkprice {
-    margin-top: 15px;
-    float: left;
-    text-align: left;
-    width: 80px;
-    /* border: 1px solid red; */
-  }
-  
-  dd.pinkprice {
-    margin-left: 0px;
-    overflow: hidden;
-    /* border: 1px solid red; */
-  }
-  
-  .present_num {
-    float:left;
-    font-size: 24px;
-    font-weight: bold;
-    color: #f32e6d;
-    /* border: 1px solid red; */
-  }
-  
-  div.startprice {
-    margin-left: 10px;
-    margin-top: 15px;
-    padding-left: 10px;
-    float:left;
-    background: url("../image/ulline.gif")
-                no-repeat 0 40%;
-    /* border: 1px solid blue; */
-  }
-  
-  div.ddvalue {
-    margin-top: 15px;
-    /* border: 1px solid blue; */
-  }
-  
-  #record {
-    margin-left: 10px;
-  }
-  
-  #bid-btn {
-    display: table;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .btn {
-    background-color: #f32e6d;
-    color: #ffffff;
-  }
-  
-  div.modal-footer {
-    text-align: left;
-  }
-  
-  div.detail-info {
-    margin-bottom: 10px;
-  }
-  
-  div.detail-info span {
-    font-size: 25px;
-  }
+div.modal-head h1 {
+  font-weight: bolder;
+  text-align: center;
+  color: #f32e6d;
+}
+
+div.modal-head button {
+  margin-right: 20px;
+}
+
+div.modal-body {
+  height: 500px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+div.item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+  height: auto;
+}
+
+#carousel-example-generic {
+  margin-top: 0px;
+  width: 450px;
+  height: auto;
+  float: right;
+  /* border: 1px solid red; */
+}
+
+#bid-content {
+  width: 410px;
+}
+
+div.title {
+  width: 405px;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+
+div.title span {
+  font-size: 25px;
+  width: 300px;
+  float: left;
+  margin-top: -9px;
+  /* border: 1px solid red; */
+}
+
+div.title img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  /* border: 1px solid red; */
+}
+
+dl.dl-horizontal {
+  width: 405px;
+  height: auto;
+  border-bottom: 1px solid #D0D0D0;
+  display: table;
+  margin: 0;
+  padding-bottom: 10px;
+  /* border: 1px solid red; */
+}
+
+dt.pinkprice {
+  margin-top: 15px;
+  float: left;
+  text-align: left;
+  width: 80px;
+  /* border: 1px solid red; */
+}
+
+dd.pinkprice {
+  margin-left: 0px;
+  overflow: hidden;
+  /* border: 1px solid red; */
+}
+
+.present_num {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f32e6d;
+  /* border: 1px solid red; */
+}
+
+div.startprice {
+  margin-left: 10px;
+  margin-top: 15px;
+  padding-left: 10px;
+  float: left;
+  background: url("../image/ulline.gif") no-repeat 0 40%;
+  /* border: 1px solid blue; */
+}
+
+div.ddvalue {
+  margin-top: 15px;
+  /* border: 1px solid blue; */
+}
+
+#record {
+  margin-left: 10px;
+}
+
+#bid-btn {
+  display: table;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #f32e6d;
+  border-color: #f32e6d;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #c10b45;
+  border-color: #c10b45;
+}
+
+.btn-primary:active, .btn-primary:focus {
+  color: #fff !important;
+  background-color: #a90a3c !important;
+  border-color: #a90a3c !important;
+}
+
+div.modal-footer {
+  text-align: left;
+}
+
+div.detail-info {
+  margin-bottom: 10px;
+}
+
+div.detail-info span {
+  font-size: 25px;
+}

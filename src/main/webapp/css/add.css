@@ -5,21 +5,42 @@ body {
 }
 
 h2.modal-title {
-	text-align: center;
-	font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 }
 
-div.transaction {
-	margin-top: 5px;
-	margin-left: 113px;
-	/* border: 1px solid red; */
+div.account {
+  margin-top: 6px;
+  margin-left: 113px;
+  /* border: 1px solid red; */
 }
 
 div.modal-footer {
   text-align: center;
 }
 
-button.btn {
+.btn-primary {
+  color: #fff;
   background-color: #f32e6d;
-  color: #ffffff;
+  border-color: #f32e6d;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #c10b45;
+  border-color: #c10b45;
+}
+
+.btn-primary:active, .btn-primary:focus {
+  color: #fff !important;
+  background-color: #a90a3c !important;
+  border-color: #a90a3c !important;
+}
+
+.fileinput-remove, .file-upload-indicator, .kv-file-upload, .kv-file-zoom {
+  display: none
+}
+
+#file-selector {
+  text-align: center
 }
