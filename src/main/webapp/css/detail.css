@@ -5,9 +5,14 @@ body {
   font-size: small;
 }
 
-body > .modal {
-  width: 960px;
-  margin: 0 auto;
+.modal-dialog {
+  width: 900px !important;
+  margin: 30px auto;
+}
+
+.modal-scrollbar-measure {
+  float: right !important;
+  border: 3px solid red !important;
 }
 
 div.modal-head h1 {
