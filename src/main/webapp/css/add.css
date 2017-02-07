@@ -1,49 +1,40 @@
 @CHARSET "UTF-8";
 
-body {
-  font-family: '맑은 고딕', sans-serif;
-  font-size: small;
-}
-
-div.modal-header button {
+#add-header button {
   margin-top: -6px !important;
 }
 
-div.modal-header > h2 {
+#add-header > h2 {
   text-align: center;
   font-weight: bold;
   margin: 15px 0;
 }
 
-label.control-label {
+#add-body label {
   font-size: 1.2em;
   position: relative;
   bottom: 3px;
   left: 5px;
 }
 
-div.account {
-  margin-top: 6px;
-  margin-left: 113px;
-}
-
-div.modal-footer {
+#add-footer {
   text-align: center;
 }
 
-.btn-primary {
+#add-footer > .btn-primary, .file-input > .btn-primary{
   color: #fff;
   background-color: #f32e6d;
   border-color: #f32e6d;
 }
 
-.btn-primary:hover {
+#add-footer > .btn-primary:hover, .file-input > .btn-primary:hover {
   color: #fff;
   background-color: #c10b45;
   border-color: #c10b45;
 }
 
-.btn-primary:active, .btn-primary:focus {
+#add-footer > .btn-primary:active, #add-footer > .btn-primary:focus,
+.file-input > .btn-primary:active, .file-input > .btn-primary:focus {
   color: #fff !important;
   background-color: #a90a3c !important;
   border-color: #a90a3c !important;
@@ -57,11 +48,11 @@ div.modal-footer {
   text-align: center
 }
 
-div.radio {
+#deal {
   padding-top: 6px !important;
   margin-left: 115px;
 }
 
-label.radio-inline {
+#deal > label.radio-inline {
   padding-top: 0 !important;
 }

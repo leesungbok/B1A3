@@ -1,61 +1,56 @@
 @CHARSET "UTF-8";
 
-body {
-  font-family: '맑은 고딕', sans-serif;
-  font-size: small;
-}
-
-div.modal-dialog {
+#detail > div.modal-dialog {
   width: 900px !important;
   margin: 30px auto;
 }
 
-div.modal-head h1 {
+#detail-head h1 {
   font-weight: bolder;
   text-align: center;
   color: #f32e6d;
 }
 
-div.modal-head button {
+#detail-head button {
   margin: -6px 20px 0px -35px;
 }
 
-div.modal-body {
+#detail-body {
   height: 450px;
   border-bottom: 1px solid #d9d9d9;
 }
 
-#carousel-example-generic {
+#detail-photo {
   width: 400px;
   height: auto;
   float: right;
   margin-right: 15px;
 }
 
-div.bid-content {
+#detail-body > div.bid-content {
   margin-left: 15px;
 }
 
-div.title {
+#detail-body > div.bid-content > div.title {
   width: 405px;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
 }
 
-div.title span {
+#detail-body > div.bid-content > div.title span {
   font-size: 2em;
   width: 305px;
   float: left;
   margin-top: -9px;
 }
 
-div.title img {
+#detail-body > div.bid-content > div.title img {
   width: 25px;
   height: 25px;
   margin-left: 5px;
 }
 
-dl.dl-horizontal {
+#detail-body > div.bid-content > dl.dl-horizontal {
   font-size: 1.1em;
   display: table;
   width: 405px;
@@ -104,37 +99,37 @@ div.ddvalue {
   margin: 40px auto;
 }
 
-.btn-primary {
+#bid-btn > .btn-primary {
   color: #fff;
   background-color: #f32e6d;
   border-color: #f32e6d;
 }
 
-.btn-primary:hover {
+#bid-btn > .btn-primary:hover {
   color: #fff;
   background-color: #c10b45;
   border-color: #c10b45;
 }
 
-.btn-primary:active, .btn-primary:focus {
+#bid-btn > .btn-primary:active, #bid-btn > .btn-primary:focus {
   color: #fff !important;
   background-color: #a90a3c !important;
   border-color: #a90a3c !important;
 }
 
-div.modal-footer {
+#detail-footer {
   text-align: left;
 }
 
-div.detail-info {
+#detail-footer > .detail-info {
   margin: 0px 0px 20px 15px;
 }
 
-div.detail-info span {
+#detail-footer > .detail-info span {
   font-size: 2em;
 }
 
-div.sellrcontents {
+#detail-footer > .sellrcontents {
   margin-top: 5px;
   margin-left: 15px;
   font-size: 1.1em;
