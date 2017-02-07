@@ -2,17 +2,29 @@
 
 body {
   font-family: '맑은 고딕', sans-serif;
+  font-size: small;
 }
 
-h2.modal-title {
+div.modal-header button {
+  margin-top: -6px !important;
+}
+
+div.modal-header > h2 {
   text-align: center;
   font-weight: bold;
+  margin: 15px 0;
+}
+
+label.control-label {
+  font-size: 1.2em;
+  position: relative;
+  bottom: 3px;
+  left: 5px;
 }
 
 div.account {
   margin-top: 6px;
   margin-left: 113px;
-  /* border: 1px solid red; */
 }
 
 div.modal-footer {
@@ -43,4 +55,13 @@ div.modal-footer {
 
 #file-selector {
   text-align: center
+}
+
+div.radio {
+  padding-top: 6px !important;
+  margin-left: 115px;
+}
+
+label.radio-inline {
+  padding-top: 0 !important;
 }

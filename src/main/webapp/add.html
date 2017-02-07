@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>경매등록</title>
   <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link href="node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
   <link href="css/add.css" rel="stylesheet">
 </head>
 
@@ -20,53 +20,53 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h2 class="modal-title">경매등록</h2>
+          <h2>경매등록</h2>
         </div>
 
         <div class="modal-body">
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">상품명</label>
+              <label class="col-sm-2 control-label">상품명</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword3" class="col-sm-2 control-label">사진</label>
+              <label class="col-sm-2 control-label">사진</label>
               <div class="col-sm-10" id="file-selector">
                 <input id="input-4" name="input4[]" type="file" multiple class="file-loading">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">시작가</label>
+              <label class="col-sm-2 control-label">시작가</label>
               <div class="col-sm-10">
                 <input type="number" class="form-control" placeholder="80000">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">구입시기</label>
+              <label class="col-sm-2 control-label">구입시기</label>
               <div class="col-sm-10">
                 <input type="date" class="form-control">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">사용일수</label>
+              <label class="col-sm-2 control-label">사용일수</label>
               <div class="col-sm-10">
                 <input type="number" class="form-control" placeholder="365">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">상세설명</label>
+              <label class="col-sm-2 control-label">상세설명</label>
               <div class="col-sm-10">
                 <textarea class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."></textarea>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">거래방식</label>
-              <div class="account">
-                <input type="radio" name="account-method" checked>택배
-                <input type="radio" name="account-method">직거래
-                <input type="radio" name="account-method">택배 또는 직거래
+              <label class="col-sm-2 control-label">거래방식</label>
+              <div class="radio">
+                <label class="radio-inline"><input type="radio" name="optradio" checked>택배</label>
+                <label class="radio-inline"><input type="radio" name="optradio">직거래</label>
+                <label class="radio-inline"><input type="radio" name="optradio">택배 또는 직거래</label>
               </div>
             </div>
           </form>
@@ -84,18 +84,6 @@
   <script src="node_modules/bootstrap-fileinput/js/fileinput.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="js/kr.js"></script>
-  <script>
-    $(document).on('ready', function() {
-      $("#input-4").fileinput({
-        showCaption: false,
-        showUpload: false,
-        language: "kr",
-        uploadUrl: "/file-upload-batch/2",
-        allowedFileExtensions: ["jpg", "png", "gif", "jpeg"],
-        maxFileCount: 4
-      });
-    });
-  </script>
 </body>
 
 </html>
