@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이거어때?</title>
+<style>
+  body > .container {
+  width: 960px;
+  margin: auto; 
+  }
+  div {
+      border: 1px solid red;
+  }
+  ul { overflow: hidden; }
+  li {
+      list-style: none;
+      float:left;
+      padding: 20px;
+      border: 1px solid rgb(243, 46, 109);
+  }
+
+  li:first-child { border-radius: 20px 0 0 20px;}
+  li:last-child { border-radius: 0 20px 20px 0; }
+  .h1 {
+    color: rgb(243, 46, 109);
+    font-size: 2em;
+    padding: 50px;
+  }
+</style>
+
+</head>
+<body>
+<div class="container">
+  <div id="header">
+    <div></div>
+    <div style='display: inline; padding: 15px 0px 15px 15px; margin-left: 50px; margin-right: 50px; border: 3px solid #c0392b; border-radius: 30px;'>
+      <input type='text' placeholder="상품검색이 가능합니다." 
+             style='width: 250px; font-size: 1.15em; color: #c0392b;border: 0px'>
+      <button type='button' class="btn btn-link"><span class="glyphicon glyphicon-search" aria-hidden="true" 
+              style='color: #c0392b'></span></button>
+    </div>
+    
+    <ul>
+      <li>상품검색이 가능합니다.</li>
+      <li></li>
+      <li><img src="image/serchicon.png"></li>
+      <li></li>
+    </ul>
+    
+    <p>경매등록</p>
+    <img src="image/loginicon.png">
+    <p>로그인</p>
+    <img src="image/rkdlicon.png">
+    <p>회원가입</p>
+  </div>
+  
+  <!-- <div id="header-content">
+    <h2>온라인 실시간 경매중! <span class="span">ON AIR!</span></h2>
+    <h1><strong><span class="text1">00:05:22</span></strong></h1>
+
+  </div>
+  <div id="right-sidebar">
+  </div>  -->
+  
+</div>
+</body>
+</html>
