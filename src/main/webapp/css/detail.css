@@ -71,7 +71,7 @@ dd.desc {
   margin-left: 0px;
 }
 
-span.present_num {
+.desc > span.present_num {
   float: left;
   font-size: 2em;
   font-weight: bold;
