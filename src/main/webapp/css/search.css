@@ -21,26 +21,27 @@
   div.header {
     border-radius: 15px;
     border:2px solid black; 
-    width:500px; 
+    width:700px; 
     padding-bottom: 5px; 
     padding-left:3px;
     margin-left:10px;
   }
   
   div.inside {
-    display:inline-block; 
-    width:900px;0
+    display:table; 
+    width:900px;
   }
   
   div.category {
     display:inline-block;
     width:43px;
-    margin-top:5px;
+    margin-left: 15px;
   }
   
   div.category1 {
     display:inline-block;
     width:53px;
+    margin-left: 15px;
   }
   
   div.category:hover {
@@ -73,7 +74,8 @@
   }
   
   hr {
-    margin:0px;
+    margin: 2px;
+    padding: 2px 0 2px 0;
   }
   
   hr.commit {
@@ -111,23 +113,29 @@
   }
   
   span.title {
-    background-color: gray; 
+    background-color: gray;
     font-family:맑은고딕; 
     font-size: 35px; 
-    display: inline-block;
-    margin-bottom: 5px;
+    display:table-cell; 
+    vertical-align:middle;
+    width:150px;
   }
   
   span.title1 {
     background-color: gray; 
     font-family:맑은고딕; 
     font-size: 35px; 
+    display:table-cell; 
+    text-align: center;
+    vertical-align:middle;
+    width:150px;
   }
   
     span.next-product {
     padding-left: 5px; 
     font-family: 맑은고딕; 
     font-size:20px;
+     vertical-align:middle;
   }
   
   span.next-product1 {
