@@ -6,7 +6,7 @@ font-family: consolas;
 }
 
 #header {
-border: 1px solid red;
+/*border: 1px solid red;*/
 background-color: #ffdead;
 margin: 50px 10px 30px 10px;
 /* height: 40px; */
@@ -17,7 +17,7 @@ color: black;
 }
 
 #left-time {
-border: 1px solid red;
+/*border: 1px solid red;*/
 background-color: #e0ffff;
 margin: 10px;
 border-radius: 10px;
@@ -27,7 +27,7 @@ color: #dc143c;
 }
 
 .images {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px;
 margin-right: 0px;
@@ -37,7 +37,7 @@ clear: left;
 }
 
 .detail1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: right;
 margin: 10px 10px 0px 10px;
 width: 550px;
@@ -47,7 +47,7 @@ color: black;
 }
 
 .detail2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: right;
 margin: 10px 35px 0px 30px;
 width: 500px;
@@ -58,7 +58,7 @@ clear: right;
 }
 
 h1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin-top: 0px;
 margin-left: 50px;
@@ -68,7 +68,7 @@ clear:left;
 }
 
 h2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin-top: -10px;
 margin-left: 140px;
@@ -80,7 +80,7 @@ clear:left;
 
 /*다음 경매 리스트*/
 .next1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 100px 0px 30px 50px;
 text-align: center;
@@ -90,7 +90,7 @@ clear:left;
 
 /*00:35:00 남음*/
 .n1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 0px 20px 0px 60px;
 text-align: center;
@@ -99,7 +99,7 @@ color: #dc143c;
 clear:left;
 }
 .n2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 0px 20px 0px 70px;
 text-align: center;
@@ -107,7 +107,7 @@ font-size: 200%;
 color: #dc143c;
 }
 .n3 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 0px 20px 0px 80px;
 text-align: center;
@@ -115,7 +115,7 @@ font-size: 200%;
 color: #dc143c;
 }
 .n4 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 0px 20px 0px 90px;
 text-align: center;
@@ -125,7 +125,7 @@ color: #dc143c;
 
 /*사진*/
 .n1-1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 width: 300px;
@@ -133,21 +133,21 @@ height: 200px;
 clear: left;
 }
 .n2-1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 width: 300px;
 height: 200px;
 }
 .n3-1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 width: 300px;
 height: 200px;
 }
 .n4-1 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 0px 0px 15px;
 width: 300px;
@@ -156,7 +156,7 @@ height: 200px;
 
 /*맥프레 2017년형*/
 .n1-2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 text-align: center;
@@ -164,21 +164,21 @@ font-size: 120%;
 clear: left;
 }
 .n2-2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 text-align: center;
 font-size: 120%;
 }
 .n3-2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 text-align: center;
 font-size: 120%;
 }
 .n4-2 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 12px 0px 12px;
 text-align: center;
@@ -187,7 +187,7 @@ font-size: 120%;
 
 /*시작가 시작시간*/
 .n1-3 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 10px 0px 20px;
 text-align: center;
@@ -196,7 +196,7 @@ color: #dc143c;
 clear: left;
 }
 .n2-3 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 10px 0px 10px;
 text-align: center;
@@ -204,7 +204,7 @@ font-size: 150%;
 color: #dc143c;
 }
 .n3-3 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 10px 0px 10px;
 text-align: center;
@@ -212,7 +212,7 @@ font-size: 150%;
 color: #dc143c;
 }
 .n4-3 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 10px 0px 10px;
 text-align: center;
@@ -222,28 +222,28 @@ color: #dc143c;
 
 /*가격 14:00~14:30*/
 .n1-4 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 30px 0px 5px;
 text-align: center;
 font-size: 150%;
 }
 .n2-4 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 30px 0px 5px;
 text-align: center;
 font-size: 150%;
 }
 .n3-4 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 30px 0px 5px;
 text-align: center;
 font-size: 150%;
 }
 .n4-4 {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 10px 30px 0px 5px;
 text-align: center;
@@ -251,7 +251,7 @@ font-size: 150%;
 }
 
 .blank {
-border: 1px solid red;
+/*border: 1px solid red;*/
 float: left;
 margin: 200px 0px 200px 0px;
 text-align: center;
