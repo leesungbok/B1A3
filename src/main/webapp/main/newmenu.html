@@ -21,28 +21,33 @@ body > .container {
   height: 650px;
   width: 500px;
   margin: 2px;
+  float:left;
   border: 1px solid gray;
 }
-
+#bidding {
+  float:left;
+  height: 340px;
+  width: 360px;
+  border: 1px solid gray;
+}
+#header {
+  color: #f32e6d;
+}
 #header_sub {
   padding: 20px;
   text-align:center;
   font-weight: bold; 
 }
-.header-menu-a { 
-  display: inline-block;
-}
 #decs-content > .title > span {
   font-size: 3em;
   
 }
-#header {
-  color: #f32e6d;
-}
+
 .header-menu-a {
   text-decoration: none !important;
   font-size: 1.3em;
   color: #f32e6d;
+  display: inline-block;
 }
 .pinkprice {
   font-size: 2em;
@@ -81,23 +86,21 @@ body > .container {
   <!-- 전페이지 헤더 시작-->
   <div id='header'>
     <img src="../image/menubar.png" style='height:40px; margin: 3px 0px 0px 0px;'>
-    <span>
-    <img src="../image/logo.png" style='height:47px; margin: 5px 0px 0px 0px;'></span>
+    <img src="../image/logo.png" style='height:47px; margin: 5px 0px 0px 0px;'>
     <h1 style="display: none;">여기어때</h1>
-    <div class="search-bar" style='display: inline; padding: 15px; margin-top: -20px; margin-left: 40px; margin-right: 40px; border: 3px solid #f32e6d; border-radius: 30px;'>
+      <div class="search-bar" style='display: inline; padding: 15px; margin-top: -20px; margin-left: 40px; margin-right: 40px; border: 3px solid #f32e6d; border-radius: 30px;'>
       <input type='text' placeholder="상품별 검색이 가능합니다." 
              style='width: 290px; font-size: 1.15em; color:#f32e6d; border: 0px;'>
-     <span class="glyphicon glyphicon-search" aria-hidden="true" style='padding:30px 0px 0px 0px; font-size:1.6em; color:#f32e6d;'></span>
-    </div>
-    
-    <img src="../image/iconvkd.png" style='height: 20px; ' aria-hidden="true" >
-    <a href='#' class='header-menu-a' style=''>경매등록</a>
-    
-    <img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
-    <a href='#' class='header-menu-a' style=''>로그인</a>
-    
-    <img src="../image/rkdlqicon.png" style='height: 20px; margin-left: 5px' aria-hidden="true">
-    <a href='#' class='header-menu-a' style=''>회원가입</a>
+      <span class="glyphicon glyphicon-search" aria-hidden="true" style='padding:30px 0px 0px 0px; font-size:1.6em; color:#f32e6d;'></span>
+      </div>
+		    <img src="../image/iconvkd.png" style='height: 20px;' aria-hidden="true" >
+		    <a href='#' class='header-menu-a'>경매등록</a>
+		    
+		    <img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
+		    <a href='#' class='header-menu-a' >로그인</a>
+		    
+		    <img src="../image/rkdlqicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
+		    <a href='#' class='header-menu-a'>회원가입</a>
   </div>
   <!-- 전페이지 헤더 끝-->
   <!-- 시간헤더 시작-->
@@ -157,8 +160,22 @@ body > .container {
       </dl>
     </div>
   </div>
-  <!-- 사진본문 설명 시작-->
-    
+  </div>
+  <div id='bidding' style='margin: 130px 0px 0px 30px; padding: 10px;'>
+    <span style='font-weight: bold; font-size:2.5em; margin:48px;'>입찰기록</span>
+    <img src="../image/king.png" style='height: 20px; float: left; margin: 20px 0px 0px 40px;'>
+  
+    <div class='desc-record'>
+      <img src="../image/logople.png" style='height: 58px; float: left; margin: 5px 0px 0px 20px;'>
+      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>Bbora</span>
+      <span style='font-size: 2.6em; font-weight: bold; margin: 10px 0px 0px 40px; float: left; color:#f32e6d;'>90,000원</span>
+      <img src="../image/logople.png" style='height: 24px; float: left; margin: 19px 0px 0px -11px;'>
+      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>yong</span>
+      
+      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>13:50:30</span>
+      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>89,000원</span>
+      
+    </div>
   </div>
  
   
