@@ -21,7 +21,7 @@
   div.header {
     border-radius: 15px;
     border:2px solid black; 
-    width:700px; 
+    width:600px; 
     padding-bottom: 5px; 
     padding-left:3px;
     margin-left:10px;
@@ -29,7 +29,7 @@
   
   div.inside {
     display:table; 
-    width:900px;
+    width:700px;
   }
   
   div.category {
@@ -131,11 +131,11 @@
     width:150px;
   }
   
-    span.next-product {
+  span.next-product {
     padding-left: 5px; 
     font-family: 맑은고딕; 
     font-size:20px;
-     vertical-align:middle;
+    vertical-align:middle;
   }
   
   span.next-product1 {
@@ -145,7 +145,34 @@
     color:red;
   }
   
+  span.next-product2 {
+    padding-left: 5px; 
+    font-family: 맑은고딕; 
+    font-size:20px;
+    vertical-align:middle;
+    display:inline-block; 
+    margin-top: 15px;
+  }
   
+  span.next-product3 {
+    display:inline-block; 
+    vertical-align:middle; 
+    margin: 6px 0 0 10px;
+  }
+  
+  span.next-product4 {
+    display:inline-block; 
+    vertical-align:middle; 
+    margin: 8px 0 0 2px;
+  }
+  
+  input.content {
+    display:inline-block; 
+    margin: 15px 0 0 15px; 
+    vertical-align:middle; 
+    width: 15px; 
+    height: 15px;
+  }
   
   
   
