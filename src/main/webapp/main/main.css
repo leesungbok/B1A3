@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+div {
+    border: 1px solid red;
+  }
+  body  {font-size: small;}
+  #header {
+    width: 768px;
+    height: 60px;
+  }
+  div. p{
+    float:left;
+    color: rgb(243, 46, 109);
+  }
+  #container {
+  width: 768px;
+  padding: 20px;
+  margin:0 auto;
+  }
+  #header-content {
+    width: 490px;
+    float: left;
+    margin-bottom: 20px;
+    border: 1px solid red;
+  }
+  #h1 {
+	  color: rgb(243, 46, 109);
+	  font-size: 3em;
+  }
+  #span {
+	  color: rea;
+  }
+  .text1{
+    color: rgb(243, 46, 109);
+  }
+  #right-sidebar {
+    width: 150px;
+    heigth: 50px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid red;
+  }

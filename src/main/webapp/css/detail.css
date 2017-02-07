@@ -5,14 +5,9 @@ body {
   font-size: small;
 }
 
-.modal-dialog {
+div.modal-dialog {
   width: 900px !important;
   margin: 30px auto;
-}
-
-.modal-scrollbar-measure {
-  float: right !important;
-  border: 3px solid red !important;
 }
 
 div.modal-head h1 {
@@ -22,82 +17,70 @@ div.modal-head h1 {
 }
 
 div.modal-head button {
-  margin-right: 20px;
+  margin: -6px 20px 0px -35px;
 }
 
 div.modal-body {
-  height: 500px;
+  height: 450px;
   border-bottom: 1px solid #d9d9d9;
 }
 
-div.item img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 450px;
-  height: auto;
-}
-
 #carousel-example-generic {
-  margin-top: 0px;
-  width: 450px;
+  width: 400px;
   height: auto;
   float: right;
-  /* border: 1px solid red; */
+  margin-right: 15px;
+}
+
+div.bid-content {
+  margin-left: 15px;
 }
 
 div.title {
   width: 405px;
   border-bottom: 2px solid black;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 div.title span {
   font-size: 2em;
-  width: 300px;
+  width: 305px;
   float: left;
   margin-top: -9px;
-  /* border: 1px solid red; */
 }
 
 div.title img {
   width: 25px;
   height: 25px;
-  margin-right: 5px;
-  /* border: 1px solid red; */
+  margin-left: 5px;
 }
 
 dl.dl-horizontal {
+  font-size: 1.1em;
+  display: table;
   width: 405px;
   height: auto;
-  border-bottom: 1px solid #D0D0D0;
-  display: table;
   margin: 0;
   padding-bottom: 10px;
-  font-size: 1.1em;
-  /* border: 1px solid red; */
+  border-bottom: 1px solid #D0D0D0;
 }
 
-dt.pinkprice {
+dt.term {
   margin-top: 15px;
   float: left;
   text-align: left;
   width: 80px;
-  /* border: 1px solid red; */
 }
 
-dd.pinkprice {
+dd.desc {
   margin-left: 0px;
-  overflow: hidden;
-  /* border: 1px solid red; */
 }
 
-.present_num {
+span.present_num {
   float: left;
   font-size: 2em;
   font-weight: bold;
   color: #f32e6d;
-  /* border: 1px solid red; */
 }
 
 div.startprice {
@@ -106,12 +89,10 @@ div.startprice {
   padding-left: 10px;
   float: left;
   background: url("../image/ulline.gif") no-repeat 0 40%;
-  /* border: 1px solid blue; */
 }
 
 div.ddvalue {
   margin-top: 15px;
-  /* border: 1px solid blue; */
 }
 
 #record {
@@ -120,9 +101,7 @@ div.ddvalue {
 
 #bid-btn {
   display: table;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 40px auto;
 }
 
 .btn-primary {
@@ -148,7 +127,7 @@ div.modal-footer {
 }
 
 div.detail-info {
-  margin-bottom: 10px;
+  margin: 0px 0px 20px 15px;
 }
 
 div.detail-info span {
@@ -159,5 +138,4 @@ div.sellrcontents {
   margin-top: 5px;
   margin-left: 15px;
   font-size: 1.1em;
-  /* border: 1px solid red; */
 }
