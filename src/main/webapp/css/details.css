@@ -1,11 +1,18 @@
 @CHARSET "UTF-8";
+* {font-size: small;}
 body {
-background-color: #fffafa;
-margin: 0px;
-font-family: consolas;
+  font-family: '본고딕', '맑은 고딕', sans-serif;
+}
+body > .container {
+  width: 960px;
+  margin: 0 auto;
+}
+body > .next-class {
+  width: 960px;
+  margin: 0 auto;
 }
 
-#header {
+.header {
 /*border: 1px solid red;*/
 background-color: #ffdead;
 margin: 50px 10px 30px 10px;
@@ -16,239 +23,197 @@ font-size: 230%;
 color: black;
 }
 
-#left-time {
+.left-time {
 /*border: 1px solid red;*/
 background-color: #e0ffff;
-margin: 10px;
+margin: 10px 0 50px 0;
 border-radius: 10px;
 text-align: center;
 font-size: 340%;
 color: #dc143c;
 }
 
-.images {
+.container {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px;
-margin-right: 0px;
-width: 750px;
-height: 500px;
-clear: left;
 }
 
-.detail1 {
+.next-photo {
 /*border: 1px solid red;*/
-float: right;
-margin: 10px 10px 0px 10px;
-width: 550px;
-text-align: center;
-font-size: 28px;
-color: black;
-}
-
-.detail2 {
-/*border: 1px solid red;*/
-float: right;
-margin: 10px 35px 0px 30px;
-width: 500px;
+width: 600px;
 height: 450px;
-font-size: 120%;
-color: black;
-clear: right;
 }
 
-h1 {
-/*border: 1px solid red;*/
-float: left;
-margin-top: 0px;
-margin-left: 50px;
+div.c1 {
+/* border: 1px solid red; */
+display:inline-block;
 text-align: center;
-font-size: 270%;
-clear:left;
+font-family: 맑은고딕;
+}
+div.c2 {
+/* border: 1px solid red; */
+margin: 25px 5px 0 0;
+float:right;
+/* display:inline-block; */
+width:345px;
+height:400px;
+/* text-align: center; */
+font-family: 맑은고딕;
 }
 
-h2 {
-/*border: 1px solid red;*/
-float: left;
-margin-top: -10px;
-margin-left: 140px;
-text-align: center;
-font-size: 250%;
-color: #dc143c;
-clear:left;
+.t1 {
+font-size:28px;
+font-weight: bold;
+}
+.t2 {
+margin:10px;
+font-size:25px;
+font-weight: bold;
+color:red;
+}
+.t3 {
+font-size:25px;
+font-weight: bold;
 }
 
-/*다음 경매 리스트*/
-.next1 {
-/*border: 1px solid red;*/
-float: left;
-margin: 100px 0px 30px 50px;
+.d1 {
+font-size:25px;
+font-weight: bold;
 text-align: center;
-font-size: 200%;
-clear:left;
+}
+.d2 {
+font-size:20px;
 }
 
-/*00:35:00 남음*/
-.n1 {
-/*border: 1px solid red;*/
-float: left;
-margin: 0px 20px 0px 60px;
-text-align: center;
-font-size: 200%;
-color: #dc143c;
-clear:left;
-}
-.n2 {
-/*border: 1px solid red;*/
-float: left;
-margin: 0px 20px 0px 70px;
-text-align: center;
-font-size: 200%;
-color: #dc143c;
-}
-.n3 {
-/*border: 1px solid red;*/
-float: left;
-margin: 0px 20px 0px 80px;
-text-align: center;
-font-size: 200%;
-color: #dc143c;
-}
-.n4 {
-/*border: 1px solid red;*/
-float: left;
-margin: 0px 20px 0px 90px;
-text-align: center;
-font-size: 200%;
-color: #dc143c;
+.next-list {
+margin: 100px 0 30px 150px;
+font-family: 맑은고딕; 
+font-size:25px;
+font-weight: bold;
 }
 
-/*사진*/
+div.next-class {
+/*border: 1px solid red;*/
+}
+
+div.next-class1 {
+margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕;
+height:270px;
+}
+div.next-class2 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class3 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class4 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class5 {
+margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕;
+height:270px;
+}
+div.next-class6 {
+	margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class7 {
+	margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class8 {
+	margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class9 {
+margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class10 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class11 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+div.next-class12 {
+  margin:0 11px;
+/*border: 1px solid red;*/
+display:inline-block;
+text-align: center;
+font-family: 맑은고딕; 
+}
+
+
 .n1-1 {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-width: 300px;
-height: 200px;
-clear: left;
+font-size:25px;
+font-weight: bold;
+color:red;
 }
-.n2-1 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-width: 300px;
-height: 200px;
-}
-.n3-1 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-width: 300px;
-height: 200px;
-}
-.n4-1 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 0px 0px 15px;
-width: 300px;
-height: 200px;
-}
-
-/*맥프레 2017년형*/
 .n1-2 {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-text-align: center;
-font-size: 120%;
-clear: left;
+width:210px;
 }
-.n2-2 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-text-align: center;
-font-size: 120%;
-}
-.n3-2 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-text-align: center;
-font-size: 120%;
-}
-.n4-2 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 12px 0px 12px;
-text-align: center;
-font-size: 120%;
-}
-
-/*시작가 시작시간*/
 .n1-3 {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px 10px 0px 20px;
-text-align: center;
-font-size: 150%;
-color: #dc143c;
-clear: left;
+font-weight: bold;
 }
-.n2-3 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 10px 0px 10px;
-text-align: center;
-font-size: 150%;
-color: #dc143c;
-}
-.n3-3 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 10px 0px 10px;
-text-align: center;
-font-size: 150%;
-color: #dc143c;
-}
-.n4-3 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 10px 0px 10px;
-text-align: center;
-font-size: 150%;
-color: #dc143c;
-}
-
-/*가격 14:00~14:30*/
 .n1-4 {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px 30px 0px 5px;
-text-align: center;
-font-size: 150%;
+margin:10px;
+font-size:15px;
+font-weight: bold;
+color:red;
 }
-.n2-4 {
+.n1-5 {
 /*border: 1px solid red;*/
-float: left;
-margin: 10px 30px 0px 5px;
-text-align: center;
-font-size: 150%;
+font-size:15px;
+font-weight: bold;
 }
-.n3-4 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 30px 0px 5px;
-text-align: center;
-font-size: 150%;
-}
-.n4-4 {
-/*border: 1px solid red;*/
-float: left;
-margin: 10px 30px 0px 5px;
-text-align: center;
-font-size: 150%;
-}
+
+
+
+
+
 
 .blank {
 /*border: 1px solid red;*/
