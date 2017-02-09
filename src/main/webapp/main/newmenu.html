@@ -7,196 +7,24 @@
 <link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
 <link href="../css/add.css" rel="stylesheet">
 <link href="../css/detail.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 <style>
-@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
-
-body {
-  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
-  font-size: small;
-}
-body > .container {
-  width: 960px;
-  margin: auto;
-}
-#model-body {
-  height: 400px;
-  width: 450px;
-}
-#body-solid {
-  height: 650px;
-  width: 500px;
-  margin: 2px;
-  float:left;
-  border: 1px solid gray;
-}
-#next-bodysolid {
-  height: 282px;
-  width: 222px;
-  margin-top: 226px;
-  margin-left: 62px;
-  border-radius: 2px;
-  display:inline-block;
-  border: 1px solid gray;
-}
-#next-bodysolid2 {
-  height: 282px;
-  width: 222px;
-  margin-top: 226px;
-  margin-left: 62px;
-  border-radius: 2px;
-  display:inline-block;
-  border: 1px solid gray;
-}
-#bidding {
-  float:left;
-  height: 340px;
-  width: 360px;
-  border: 1px solid gray;
-}
-#header {
-  color: #f32e6d;
-}
-#header_sub {
-  padding: 20px;
-  text-align:center;
-  font-weight: bold; 
-}
-#decs-content > .title > span {
-  font-size: 3em;
-  
-}
-.share-btn {
-  margin-top:10px;
-  margin-left:-56px;
-  display:inline-block;
-  position:absolute;
-}
-.next-share {
-  margin-top:5px;
-  display:inline-block;
-  position:absolute;
-}
-#next-bidding > .next-title> span  {
-  display:inline-block;
-  position:absolute;
-  margin-top:120px;
-  margin-left:-33px;
-  font-size:2.5em;
-  font-weight: bold;
-}
-#next-biddingtime > span {
-  display:inline-block;
-  margin-top:182px;
-  margin-left:89px;
-  color:red;
-  font-size:2em;
-  font-weight: bold;
-}
-
-.header-menu-a {
-  text-decoration: none !important;
-  font-size: 1.3em;
-  color: #f32e6d;
-  display: inline-block;
-}
-.header-menu-a.black {
-  color: black;
-}
-.pinkprice {
-  font-size: 2em;
-  text-align: center;
-}
-.pinktext {
-  font-size: 1.4em;
-  color: #f32e6d;
-  font-weight: bold;
-  margin-left:13px;
-  margin-top: 12px;
-  display:inline-block;
-}
-
-.topprice {
-  margin-top:4px;
-  font-size: 2.5em;
-  text-align: center;
-  color: #f32e6d;
-  font-weight: bold;
-}
-.desc-line {
-  margin-top:17px;
-}
-.bidding-btn {
-  margin: 20px 0px 0px 120px;
-  height: 55px;
-  width: 178px;
-  padding: 10px 16px;
-  font-size: 1.8em;
-  border-radius: 6px;
-  color: #fff;
-  background-color: #f32e6d;
-  font-weight: bold;
-  border: 0;
-  outline: 0;
-}
-.nextbidding-btn {
-  height: 34px;
-  width: 205px;
-  padding: 5px 16px;
-  font-size: 1.3em;
-  border-radius: 20px;
-  color: #fff;
-  background-color: #f32e6d;
-  margin: 20px 0px 0px 364px;
-  border: 0;
-  outline: 0;
-}
-.black {
-  margin-left: 1px;
-  font-size:1.2em;
-  display:inline;
-}
-.photodesine {
-  height: 24px; 
-  margin-left: 30px; 
-  display:inline;
-}
-#next-share > .next-photo {
-  margin-left: 8px;
-  margin-top: 8px;
-  display:inline;
-}
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #f32e6d;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #f32e6d;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #f32e6d;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #f32e6d;
-}
 </style>
+
 </head>
 <body>
-
 <div class="container">
-  
   <!-- 전페이지 헤더 시작-->
   <div id='header'>
-    <img src="../image/menubar.png" style='height:40px; margin: 3px 0px 0px 0px;'>
-    <img src="../image/logo.png" style='height:47px; margin: 5px 0px 0px 0px;'>
+    <i class="fa menu-bars" aria-hidden="true"></i>
+    <img src="../image/logo.png" style='height:47px; margin-top: -13px;'>
     <h1 style="display: none;">여기어때</h1>
-      <div class="search-bar" style='display: inline; padding: 15px; margin-top: -20px; margin-left: 40px; margin-right: 40px; border: 3px solid #f32e6d; border-radius: 30px;'>
+      <div class="search-bar">
       <input type='text' placeholder="상품별 검색이 가능합니다." 
              style='width: 290px; font-size: 1.15em; color:#f32e6d; border: 0px;'>
       <span class="glyphicon glyphicon-search" aria-hidden="true" style='padding:30px 0px 0px 0px; font-size:1.6em; color:#f32e6d;'></span>
       </div>
-		    <img src="../image/iconvkd.png" style='height: 20px;' aria-hidden="true" >
+    		  <img src="../image/iconvkd.png" style='height: 20px; position:relative;' aria-hidden="true" >
 		    <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
 		    
 		    <img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
@@ -207,7 +35,7 @@ body > .container {
   </div>
   <!-- 전페이지 헤더 끝-->
   <!-- 시간헤더 시작-->
-  <div id='header_sub'>
+    <div id='header_sub'>
     <span style='font-size: 2.0em; margin-top: 20px;'>온라인 실시간 경매중!</span>
     <span style='font-size: 2.0em; margin-top: 20px; color:#e74c3c;'>ON AIR!</span>
     <p><span style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>00:05:20 남음</span></p>
@@ -308,7 +136,6 @@ body > .container {
   <!-- 입찰버튼 시작 -->
   <button type="button" class="bidding-btn">입찰하기</button>
   <!-- 입찰버튼 끝 -->
- 
 </div>
   
 <!-- 공유버튼 시작 -->
@@ -643,7 +470,7 @@ body > .container {
         </div>
         <div class="sellrcontents">
           - 용량: 1.7L<br>
-          - 고급스러운 디자인과 부드러운 곡선 디테일<br>
+          - 고급스러운 디자인과 부드러운 곡선 디테일<br>HHHHH
           - 360도 회전식 받침대 : 분리 가능하며 무선이라 더욱 간편하게 사용<br>
           - 수위 표시창<br>
           - 스테인리스 스틸 재질의 평면 가열 열판<br>
@@ -667,5 +494,6 @@ body > .container {
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../js/kr.js"></script>
+
 </body>
 </html>
