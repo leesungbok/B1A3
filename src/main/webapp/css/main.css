@@ -69,6 +69,20 @@ body > .container {
   text-align:center;
   font-weight: bold; 
 }
+
+.f-nav {
+	z-index:9999; 
+	position:fixed; 
+	left:0; 
+	top:0; 
+	width:100%; 
+	background-color:white;
+	border-bottom:1px solid red;
+	}
+	
+#blink-text {transition: color 200ms ease;}
+.blink {color:white !important;}
+
 #decs-content > .title > span {
   font-size: 3em;
   
