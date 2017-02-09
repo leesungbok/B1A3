@@ -1,0 +1,219 @@
+@CHARSET "UTF-8"; * {
+    font-size: small;
+}
+
+body {
+    font-family: 'Ã«Â³Â¸ÃªÂ³Â Ã«â€â€¢', 'Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢', sans-serif;
+}
+
+body > .header {
+    width: 960px;
+    margin: 0 auto;
+}
+
+body > .container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+
+h1 {
+    /*border: 1px solid red;*/
+    margin: 70px 0 10px 50px;
+    font-size: 270%;
+}
+
+h2 {margin: 70px 1px 15px 50px;display:inline-block;font-size: 200%;}
+
+.container {
+    /*border: 1px solid red;*/
+}
+
+.next-photo {
+    /*border: 1px solid red;*/
+    width: 590px;
+    height: 420px;
+}
+
+.img-share1 {
+/* border: 1px solid red; */
+width: 35px;
+margin: 0px 10px 8px 10px;
+}
+.img-share2 {/* border: 1px solid red; */width: 25px;margin: -3px 3px 5px 3px;}
+
+hr {margin-top: 0px;margin-bottom:15px;}
+
+div.c1 {
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+}
+
+div.c2 {
+    /* border: 1px solid red; */
+    margin: 38px 5px 0 0;
+    float: right;
+    /* display:inline-block; */
+    width: 345px;
+    height: 400px;
+    /* text-align: center; */
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+}
+
+.t1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.t2 {
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+}
+
+.t3 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.d1 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.d2 {
+    font-size: 20px;
+}
+
+.next-list {
+    margin: 100px 0 30px 150px;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+div.next-class {
+    /*border: 1px solid red;*/
+}
+
+div.next-class1 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+    height: 310px;
+}
+
+div.next-class2 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+}
+
+div.next-class3 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+    height: 290px;
+}
+
+div.next-class4 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+    height: 310px;
+}
+
+div.next-class5 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+}
+
+div.next-class6 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+}
+
+
+div.next-class7 {
+    margin: 0 11px;
+    /*border: 1px solid red;*/
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+    height: 290px;
+}
+
+div.next-class8 {
+    margin: 0 11px;
+    /*border: 1px solid red;*/
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    width: 290px;
+}
+
+div.next-class9 {
+    margin: 0 11px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    text-align: center;
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+}
+
+
+.n1-2 {
+    /*border: 1px solid red;*/
+    width: 280px;
+}
+
+.n1-3 {
+    /*border: 1px solid red;*/
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.n1-4 {
+    /*border: 1px solid red;*/
+    margin: 10px;
+    font-size: 130%;
+    font-weight: bold;
+    color: red;
+}
+
+.n1-5 {
+    /*border: 1px solid red;*/
+    font-size: 118%;
+    font-weight: bold;
+}
+
+.blank {
+    /*border: 1px solid red;*/
+    float: left;
+    margin: 200px 0px 200px 0px;
+    text-align: center;
+    font-size: 150%;
+}
