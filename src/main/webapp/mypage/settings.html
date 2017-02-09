@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나의 설정</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../font/fontello.css">
+<link rel="stylesheet" href="../css/toggle.css">
+<link rel="stylesheet" href="settings.css">
+<style>
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>나의 설정</h1>
+    <div class="settings">
+      <div class="title">
+        <a href="#" class="account-delete btn">
+          <span>회원탈퇴</span>
+        </a>
+        <a href="#" class="image-btn">
+          <img src="../image/user.png" class="img-circle">
+          <span id="icon-camera-alt"></span>
+        <input type="file" class="image-upload">
+        </a>
+      </div>
+      
+      <div class="user-detail">
+        <dl class="dl-horizontal">
+          <dt class="term">*이메일</dt>
+          <dd class="desc">
+            <div class="col-sm-6">
+              <input type="email" class="form-control">
+            </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">*닉네임</dt>
+          <dd class="desc">
+            <div class="col-sm-6">
+              <input type="text" class="form-control">
+            </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">*비밀번호</dt>
+          <dd class="desc">
+            <div class="col-sm-6">
+              <input type="password" class="form-control" placeholder="기존 비밀번호">
+              <input type="password" class="form-control" placeholder="새 비밀번호">
+              <input type="password" class="form-control" placeholder="새 비밀번호 확인">
+            </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">계정연동</dt>
+          <dd class="desc">
+            <div class="col-sm-6">
+              <label class="tgl">
+                <input type="checkbox" checked>
+                <span class="tgl_body">
+                  <span class="tgl_switch fb-btn"></span>
+                  <span class="tgl_track">
+                    <span class="tgl_bgd fb-btn2"></span>
+                    <span class="tgl_bgd tgl_bgd-negative"></span>
+                  </span>
+                </span>
+                <span class="text">페이스북 계정 연동 해제하기</span>
+              </label>
+              <label class="tgl">
+                <input type="checkbox" checked>
+                <span class="tgl_body">
+                  <span class="tgl_switch kakao-btn"></span>
+                  <span class="tgl_track">
+                    <span class="tgl_bgd kakao-btn2"></span>
+                    <span class="tgl_bgd tgl_bgd-negative"></span>
+                  </span>
+                </span>
+                <span class="text">카카오톡 계정 연동 해제하기</span>
+              </label>
+              <label class="tgl">
+                <input type="checkbox" checked>
+                <span class="tgl_body">
+                  <span class="tgl_switch naver-btn"></span>
+                  <span class="tgl_track">
+                    <span class="tgl_bgd naver-btn2"></span>
+                    <span class="tgl_bgd tgl_bgd-negative"></span>
+                  </span>
+                </span>
+                <span class="text">네이버 계정 연동 해제하기</span>
+              </label>
+            </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">주소</dt>
+          <dd class="desc">
+              <a href="#" class="btn addr-find">
+                <span>주소찾기</span>
+              </a>
+            <div class="col-sm-3">
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-6 addr-detail">
+              <input type="text" class="form-control">
+              <input type="text" class="form-control">
+            </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">전화번호</dt>
+          <dd class="desc">
+          <div class="col-sm-6">
+              <input type="number" class="form-control tel">
+            <span class="dash">-</span>
+              <input type="number" class="form-control tel">
+            <span class="dash">-</span>
+              <input type="number" class="form-control tel">
+          </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt class="term">*휴대전화</dt>
+          <dd class="desc">
+          <div class="col-sm-6">
+              <input type="number" class="form-control tel">
+            <span class="dash">-</span>
+              <input type="number" class="form-control tel">
+            <span class="dash">-</span>
+              <input type="number" class="form-control tel">
+          </div>
+          </dd>
+        </dl>
+        <div class="term-bgc"></div>
+      </div>
+      <div class="edit-btn">
+        <a href="#">로그인</a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
