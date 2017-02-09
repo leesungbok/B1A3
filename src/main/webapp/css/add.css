@@ -56,3 +56,7 @@
 #deal > label.radio-inline {
   padding-top: 0 !important;
 }
+
+textarea.form-control + div.popover {
+  top: 0 !important;
+}

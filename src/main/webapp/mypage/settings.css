@@ -1,0 +1,165 @@
+@CHARSET "UTF-8";
+
+@import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: small;
+}
+
+body>.container {
+  width: 744px;
+  margin: auto;
+}
+
+.container>h1 {
+  padding: 60px 0 20px 15px;
+}
+
+.title {
+  text-align: center;
+}
+
+.btn {
+  background-color: rgba(0, 0, 0, 0.44);
+  color: #fff;
+  float: left;
+}
+
+.btn:hover, .btn:focus {
+  color: #fff;
+}
+
+.account-delete {
+  float: right;
+}
+
+.img-circle {
+  box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.29);
+}
+
+#icon-camera-alt:before {
+  content: '\e805';
+  font-family: fontello;
+  font-size: 1.4em;
+  display: block;
+  color: #000;
+}
+
+.image-btn {
+  display: inline-block;
+  margin-left: 77.53px;
+  margin-top: 60px;
+}
+
+.image-btn:hover {
+text-decoration: none;
+}
+
+.image-upload {
+  position: absolute;
+  top: 19.5%;
+  width: 150px;
+  height: 199px;
+  opacity: 0;
+}
+
+.user-detail {
+  margin: 46px auto;
+  border-top: 2px solid #9e9e9e;
+  position: relative;
+}
+
+.dl-horizontal {
+  border-bottom: 2px solid gainsboro;
+  margin-bottom: 0px;
+}
+
+.term {
+  text-align: left !important;
+  width: 122px !important;
+  font-size: 1.3em;
+  padding: 2%;
+}
+
+.desc {
+  margin-left: 122px !important;
+  padding-top: 10px;
+}
+
+.term-bgc {
+  BACKGROUND-COLOR: #ffe4ed;
+  width: 16%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: -1;
+}
+
+input[type=password], input[type=text] {
+  margin-bottom: 8px;
+}
+
+.text {
+  font-size: 1.2em;
+  font-weight: normal;
+  float: right;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+.addr-find {
+  margin-left: 16px;
+}
+
+.addr-detail {
+  float: none;
+  margin-top: 7%;
+}
+
+.dash {
+  line-height: 28px;
+  font-size: 2em;
+}
+
+.tel {
+  width: 20%;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #f32e6d;
+  border-color: #f32e6d;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #c10b45;
+  border-color: #c10b45;
+}
+
+.btn-primary:active, .btn-primary:focus {
+  color: #fff !important;
+  background-color: #a90a3c !important;
+  border-color: #a90a3c !important;
+}
+
+.edit-btn {
+  padding-bottom: 50px;
+}
+
+.edit-btn>a {
+  display: block;
+  padding: 12px 0;
+  border-radius: 4px;
+  background: #e62a4a;
+  color: #fff;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: auto 42%;
+}
+
+.edit-btn>a:hover {
+  text-decoration: none;
+}

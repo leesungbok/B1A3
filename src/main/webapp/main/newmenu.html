@@ -28,10 +28,10 @@
 		    <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
 		    
 		    <img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
-		    <a href='#' class='header-menu-a black' >로그인</a>
+		    <a href='#' class='header-menu-a' id='login-btn'>로그인</a>
 		    
 		    <img src="../image/rkdlqicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
-		    <a href='#' class='header-menu-a black'>회원가입</a>
+		    <a href='#' class='header-menu-a' id='join-btn'>회원가입</a>
   </div>
   <!-- 전페이지 헤더 끝-->
   <!-- 시간헤더 시작-->
@@ -311,37 +311,49 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">상품명</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3">
+              <input type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3"
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">사진</label>
             <div class="col-sm-10" id="file-selector">
-              <input id="input-4" name="input4[]" type="file" multiple class="file-loading">
+              <input id="input-4" name="input4[]" type="file" multiple class="file-loading"
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">시작가</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" placeholder="80000">
+              <input type="number" class="form-control" placeholder="80000"
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">구입시기</label>
             <div class="col-sm-10">
-              <input type="date" class="form-control">
+              <input type="date" class="form-control"
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">사용일수</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" placeholder="365">
+              <input type="number" class="form-control" placeholder="365"
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">상세설명</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."></textarea>
+              <textarea class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."
+              data-toggle="popover" data-placement="left" data-trigger="focus"
+              data-content="테스트중"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -495,5 +507,18 @@
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../js/kr.js"></script>
 
+<script>
+$('.form-control').popover();
+
+$('#login-btn').click(function(event) {
+  location.href = "../auth/main.html";
+  event.preventDefault();
+});
+
+$('#join-btn').click(function(event) {
+  location.href = "../auth/joinEmail.html";
+  event.preventDefault();
+});
+</script>
 </body>
 </html>
