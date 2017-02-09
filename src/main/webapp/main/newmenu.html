@@ -7,98 +7,24 @@
 <link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
 <link href="../css/add.css" rel="stylesheet">
 <link href="../css/detail.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 <style>
-@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
-
-body {
-  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
-  font-size: small;
-}
-body > .container {
-  width: 960px;
-  margin: auto;
-}
-#model-body {
-  height: 400px;
-  width: 450px;
-}
-#body-solid {
-  height: 650px;
-  width: 500px;
-  margin: 2px;
-  float:left;
-  border: 1px solid gray;
-}
-#bidding {
-  float:left;
-  height: 340px;
-  width: 360px;
-  border: 1px solid gray;
-}
-#header {
-  color: #f32e6d;
-}
-#header_sub {
-  padding: 20px;
-  text-align:center;
-  font-weight: bold; 
-}
-#decs-content > .title > span {
-  font-size: 3em;
-  
-}
-
-.header-menu-a {
-  text-decoration: none !important;
-  font-size: 1.3em;
-  color: #f32e6d;
-  display: inline-block;
-}
-.pinkprice {
-  font-size: 2em;
-  text-align: center;
-   
-}
-.topprice {
-  margin-top:4px;
-  font-size: 2.5em;
-  text-align: center;
-  color: #f32e6d;
-  font-weight: bold;
-   
-}
-
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #f32e6d;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #f32e6d;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #f32e6d;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #f32e6d;
-}
 </style>
+
 </head>
 <body>
-
 <div class="container">
   <!-- 전페이지 헤더 시작-->
   <div id='header'>
-    <img src="../image/menubar.png" style='height:40px; margin: 3px 0px 0px 0px;'>
-    <img src="../image/logo.png" style='height:47px; margin: 5px 0px 0px 0px;'>
+    <i class="fa menu-bars" aria-hidden="true"></i>
+    <img src="../image/logo.png" style='height:47px; margin-top: -13px;'>
     <h1 style="display: none;">여기어때</h1>
-      <div class="search-bar" style='display: inline; padding: 15px; margin-top: -20px; margin-left: 40px; margin-right: 40px; border: 3px solid #f32e6d; border-radius: 30px;'>
+      <div class="search-bar">
       <input type='text' placeholder="상품별 검색이 가능합니다." 
              style='width: 290px; font-size: 1.15em; color:#f32e6d; border: 0px;'>
       <span class="glyphicon glyphicon-search" aria-hidden="true" style='padding:30px 0px 0px 0px; font-size:1.6em; color:#f32e6d;'></span>
       </div>
-		    <img src="../image/iconvkd.png" style='height: 20px;' aria-hidden="true" >
+    		  <img src="../image/iconvkd.png" style='height: 20px; position:relative;' aria-hidden="true" >
 		    <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
 		    
 		    <img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
@@ -109,7 +35,7 @@ body > .container {
   </div>
   <!-- 전페이지 헤더 끝-->
   <!-- 시간헤더 시작-->
-  <div id='header_sub'>
+    <div id='header_sub'>
     <span style='font-size: 2.0em; margin-top: 20px;'>온라인 실시간 경매중!</span>
     <span style='font-size: 2.0em; margin-top: 20px; color:#e74c3c;'>ON AIR!</span>
     <p><span style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>00:05:20 남음</span></p>
@@ -152,7 +78,7 @@ body > .container {
       </a>
     </div>
     <div id='decs-content'>
-      <div class="title" style='text-align:center; margin-top:20px;'>
+      <div class="title" style='text-align:center; margin-top:9px;'>
       <span>[드롱기]주전자</span>
       </div>
       <dl class="dl-horizontal">
@@ -167,24 +93,206 @@ body > .container {
     </div>
   </div>
   </div>
-  <div id='bidding' style='margin: 130px 0px 0px 30px; padding: 10px;'>
-    <span style='font-weight: bold; font-size:2.5em; margin:48px;'>입찰기록</span>
-    <img src="../image/king.png" style='height: 20px; float: left; margin: 20px 0px 0px 40px;'>
+  <!-- 입찰기록 시작 -->
+  <div id='bidding' style='margin: 130px 0px 0px 30px;'>
+    <span style='font-weight: bold; font-size:2.5em; margin:20px 0px 0px 60px; display:inline-block;'>입찰기록</span>
+    <img src="../image/king.png" style='height: 20px; float: left; margin: 46px 0px 0px 40px;'>
   
     <div class='desc-record'>
-      <img src="../image/logople.png" style='height: 58px; float: left; margin: 5px 0px 0px 20px;'>
-      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>Bbora</span>
-      <span style='font-size: 2.6em; font-weight: bold; margin: 10px 0px 0px 40px; float: left; color:#f32e6d;'>90,000원</span>
-      
-      <img src="../image/logople.png" style='height: 24px; float: left; margin: 19px 0px 0px -11px;'>
-      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>yong</span>
-      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>13:50:30</span>
-      <span style='font-size: 1.4em; margin: 20px 0px 0px 10px; float: left;'>89,000원</span>
+      <div class='desc-line1'>
+      <img src="../image/logople.png" style='height: 58px; margin-left:20px; margin-top:-9px;'>
+      <span style='font-size: 1.4em;'>Bbora</span>
+      <span style='font-size: 2.6em; font-weight: bold; margin: 6px 0px 0px 52px; color:#f32e6d; display:inline-block;'>90,000원</span>
+      </div>
+      <div class='desc-line'>
+        <img class='photodesine' src="../image/logople.png">
+        <span style='font-size: 1.4em; margin-top: 20px;'>yong</span>
+        <img src="../image/silver.png" style='height: 20px; margin-left: 10px; display:inline;'>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 10px;'>13:50:30</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 40px;'>89,000원</span>
+      </div>
+       <div class='desc-line'>
+        <img class='photodesine' src="../image/logople.png">
+        <span style='font-size: 1.4em; margin-top: 20px;'>dong</span>
+        <img src="../image/bronze.png" style='height: 20px; margin-left:10px; display:inline;'>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 7px;'>13:40:04</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 40px;'>88,000원</span>
+      </div>
+      <div class='desc-line'>
+        <img class='photodesine' src="../image/logople.png">
+        <span style='font-size: 1.4em; margin-top: 20px;'>sumi</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 43px;'>13:39:04</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 42px;'>87,000원</span>
+      </div>
+      <div class='desc-line'>
+        <img class='photodesine' src="../image/logople.png">
+        <span style='font-size: 1.4em; margin-top: 20px;'>Bbora</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 35px;'>13:38:08</span>
+        <span style='font-size: 1.4em; margin: 20px 0px 0px 40px;'>86,000원</span>
+      </div>
     </div>
   </div>
- 
-  
+  <!-- 입찰기록 끝 -->
+  <!-- 입찰버튼 시작 -->
+  <button type="button" class="bidding-btn">입찰하기</button>
+  <!-- 입찰버튼 끝 -->
 </div>
+  
+<!-- 공유버튼 시작 -->
+<div class='share-btn'>
+<img class='photodesine' src="../image/facebook.png"  style='height: 49px; margin-left:491px;'>
+<img class='photodesine' src="../image/kakao.png" style='height: 50px; width:50px;'>
+</div>
+<!-- 공유버튼 끝 --> 
+<!-- 다음경매 타이틀 시작-->
+<div class="container"> 
+<div id="next-bidding">
+  <div class="next-title">
+  <span>다음경매</span>  
+  </div>
+</div>
+<!-- 다음경매 타이틀 끝-->
+<!-- 다음경매 시간 시작-->
+<div id="next-biddingtime">
+  <span>00:35:22 남음</span> 
+  <span style='margin-left:126px;'>01:05:22 남음</span>
+  <span style='margin-left:114px;'>01:35:22 남음</span>
+</div>
+</div>
+<!-- 다음경매 타이틀 끝-->
+<!-- 다음경매 리스트 시작 -->
+<div class="container" style='margin-top:-217px;'>
+ <!-- 다음경매 컨텐츠 본문 시작-->
+  <div id="next-bodysolid">
+  <div id="next-body">
+    <!-- 사진본문 시작-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      </ol>
+        <div class="carousel-inner" role="listbox" style='margin:10px 0px 0px 23px;'>
+          <div class="item active">
+            <img src="../image/retina.png" style='height:110px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="../image/retina2.png" style='height:110px; width:176px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="next-share">
+      <img class='next-photo' src="../image/like.png"  style='height: 25px; margin-left:51px;'>
+      <img class='next-photo' src="../image/facebook.png"  style='height: 25px;'>
+      <img class='next-photo' src="../image/kakao.png" style='height: 26px; width:26px; margin-left:10px;'>
+    </div>
+    <div id='next-content'>
+      <div class="title" style='text-align:center; margin-top: 11px; font-size:1.4em;'>
+      <span>[MAC] Pro Retina 13.3</span>
+      </div>
+      <dl class="next-horizontal">
+        <dt class="pinktext" style="margin-left: 21px;">시작가</dt>
+        <dd class="black">
+          <span style='font-size:1.6em; margin-left:10px;'>800,000원</span>
+        <dt class="pinktext">시작시간</dt>
+        <dd class='black'>
+          <span style='font-size:1.2em; margin-left:7px;'>16:00~16:30</span>
+        </dd>
+      </dl>
+    </div>
+    </div>
+  </div>
+  <div id="next-bodysolid2">
+  <div id="next-body">
+    <!-- 사진본문 시작-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      </ol>
+        <div class="carousel-inner" role="listbox" style='margin:10px 0px 0px 23px;'>
+          <div class="item active">
+            <img src="../image/retina.png" style='height:110px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="../image/retina2.png" style='height:110px; width:176px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="next-share">
+      <img class='next-photo' src="../image/like.png"  style='height: 25px; margin-left:51px;'>
+      <img class='next-photo' src="../image/facebook.png"  style='height: 25px;'>
+      <img class='next-photo' src="../image/kakao.png" style='height: 26px; width:26px; margin-left:10px;'>
+    </div>
+    <div id='next-content'>
+      <div class="title" style='text-align:center; margin-top: 11px; font-size:1.4em;'>
+      <span>[MAC] Pro Retina 13.3</span>
+      </div>
+      <dl class="next-horizontal">
+        <dt class="pinktext" style="margin-left: 21px;">시작가</dt>
+        <dd class="black">
+          <span style='font-size:1.6em; margin-left:10px;'>800,000원</span>
+        <dt class="pinktext">시작시간</dt>
+        <dd class='black'>
+          <span style='font-size:1.2em; margin-left:7px;'>16:00~16:30</span>
+        </dd>
+      </dl>
+    </div>
+    </div>
+  </div>
+  <div id="next-bodysolid2">
+  <div id="next-body">
+    <!-- 사진본문 시작-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      </ol>
+        <div class="carousel-inner" role="listbox" style='margin:10px 0px 0px 23px;'>
+          <div class="item active">
+            <img src="../image/retina.png" style='height:110px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="../image/retina2.png" style='height:110px; width:176px;'>
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="next-share">
+      <img class='next-photo' src="../image/like.png"  style='height: 25px; margin-left:51px;'>
+      <img class='next-photo' src="../image/facebook.png"  style='height: 25px;'>
+      <img class='next-photo' src="../image/kakao.png" style='height: 26px; width:26px; margin-left:10px;'>
+    </div>
+    <div id='next-content'>
+      <div class="title" style='text-align:center; margin-top: 11px; font-size:1.4em;'>
+      <span>[MAC] Pro Retina 13.3</span>
+      </div>
+      <dl class="next-horizontal">
+        <dt class="pinktext" style="margin-left: 21px;">시작가</dt>
+        <dd class="black">
+          <span style='font-size:1.6em; margin-left:10px;'>800,000원</span>
+        <dt class="pinktext">시작시간</dt>
+        <dd class='black'>
+          <span style='font-size:1.2em; margin-left:7px;'>16:00~16:30</span>
+        </dd>
+      </dl>
+    </div>
+    </div>
+  </div>
+  <button type="button" class="nextbidding-btn">다음경매 더보기</button>
+</div>
+<!-- 다음경매 리스트 끝-->
+
 
 <!-- 경매등록 -->
 <div class="modal fade" tabindex="-1" role="dialog" id="add">
@@ -374,7 +482,7 @@ body > .container {
         </div>
         <div class="sellrcontents">
           - 용량: 1.7L<br>
-          - 고급스러운 디자인과 부드러운 곡선 디테일<br>
+          - 고급스러운 디자인과 부드러운 곡선 디테일<br>HHHHH
           - 360도 회전식 받침대 : 분리 가능하며 무선이라 더욱 간편하게 사용<br>
           - 수위 표시창<br>
           - 스테인리스 스틸 재질의 평면 가열 열판<br>
@@ -398,6 +506,7 @@ body > .container {
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../js/kr.js"></script>
+
 <script>
 $('.form-control').popover();
 

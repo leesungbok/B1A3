@@ -1,0 +1,189 @@
+@CHARSET "UTF-8";
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+body {
+  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+  font-size: small;
+}
+body > .container {
+  width: 960px;
+  margin: auto;
+}
+#model-body {
+  height: 400px;
+  width: 450px;
+}
+.menu-bars:before {
+  content: "\f0c9";
+  font-size: 33px;
+  display:inline-block;
+  margin-top: 13px;
+}
+#body-solid {
+  height: 650px;
+  width: 500px;
+  margin: 2px;
+  float:left;
+  border: 1px solid gray;
+}
+#next-bodysolid {
+  height: 282px;
+  width: 222px;
+  margin-top: 226px;
+  margin-left: 62px;
+  border-radius: 2px;
+  display:inline-block;
+  border: 1px solid gray;
+}
+#next-bodysolid2 {
+  height: 282px;
+  width: 222px;
+  margin-top: 226px;
+  margin-left: 62px;
+  border-radius: 2px;
+  display:inline-block;
+  border: 1px solid gray;
+}
+#header > .search-bar {
+	 display: inline;
+	 padding: 15px;
+	 margin-top: -20px;
+	 margin-left: 40px;
+	 margin-right: 40px;
+	 border: 1px solid #f32e6d;
+	 border-radius: 30px;
+	
+}
+#bidding {
+  float:left;
+  height: 340px;
+  width: 360px;
+  border: 1px solid gray;
+}
+#header {
+  color: #f32e6d;
+}
+#header_sub {
+  padding: 20px;
+  text-align:center;
+  font-weight: bold; 
+}
+#decs-content > .title > span {
+  font-size: 3em;
+  
+}
+.share-btn {
+  margin-top:10px;
+  margin-left:-56px;
+  display:inline-block;
+  position:absolute;
+}
+.next-share {
+  margin-top:5px;
+  display:inline-block;
+  position:absolute;
+}
+#next-bidding > .next-title> span  {
+  display:inline-block;
+  position:absolute;
+  margin-top:120px;
+  margin-left:-33px;
+  font-size:2.5em;
+  font-weight: bold;
+}
+#next-biddingtime > span {
+  display:inline-block;
+  margin-top:182px;
+  margin-left:89px;
+  color:red;
+  font-size:2em;
+  font-weight: bold;
+}
+
+.header-menu-a {
+  text-decoration: none !important;
+  font-size: 1.3em;
+  color: #f32e6d;
+  display: inline-block;
+}
+.header-menu-a.black {
+  color: black;
+}
+.pinkprice {
+  font-size: 2em;
+  text-align: center;
+}
+.pinktext {
+  font-size: 1.4em;
+  color: #f32e6d;
+  font-weight: bold;
+  margin-left:13px;
+  margin-top: 12px;
+  display:inline-block;
+}
+.topprice {
+  margin-top:4px;
+  font-size: 2.5em;
+  text-align: center;
+  color: #f32e6d;
+  font-weight: bold;
+}
+.desc-line {
+  margin-top:17px;
+}
+.bidding-btn {
+  margin: 20px 0px 0px 120px;
+  height: 55px;
+  width: 178px;
+  padding: 10px 16px;
+  font-size: 1.8em;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #f32e6d;
+  font-weight: bold;
+  border: 0;
+  outline: 0;
+}
+.nextbidding-btn {
+  height: 34px;
+  width: 205px;
+  padding: 5px 16px;
+  font-size: 1.3em;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #f32e6d;
+  margin: 20px 0px 0px 364px;
+  border: 0;
+  outline: 0;
+}
+.black {
+  margin-left: 1px;
+  font-size:1.2em;
+  display:inline;
+}
+.photodesine {
+  height: 24px; 
+  margin-left: 30px; 
+  display:inline;
+}
+#next-share > .next-photo {
+  margin-left: 8px;
+  margin-top: 8px;
+  display:inline;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #f32e6d;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #f32e6d;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #f32e6d;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #f32e6d;
+}
