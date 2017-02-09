@@ -16,7 +16,26 @@
 <div class="container">
   <!-- 전페이지 헤더 시작-->
   <div id='header'>
-    <i class="fa menu-bars" aria-hidden="true"></i>
+  <!--   <i class="fa menu-bars" aria-hidden="true"></i> -->
+    <nav class="navbar navbar-fixed-left navbar-minimal animate" role="navigation">
+		<div class="navbar-toggler animate">
+			<span class="menu-icon"></span>
+		</div>
+		<ul class="navbar-menu animate">
+			<li>
+				<a href="#about-us" class="animate">
+					<span class="desc animate"> 마이페이지 </span>
+					<span class="glyphicon glyphicon-user"></span>
+				</a>
+			</li>
+			<li>
+				<a href="#contact-us" class="animate">
+					<span class="desc animate"> 판매자와 대화하기 </span>
+					<span class="glyphicon glyphicon-comment"></span>
+				</a>
+			</li>
+		</ul>
+	</nav>
     <img src="../image/logo.png" style='height:47px; margin-top: -13px;'>
     <h1 style="display: none;">여기어때</h1>
       <div class="search-bar">
@@ -513,6 +532,25 @@ $(function(){
  window.setInterval(function(){
    $('#blink-text').toggleClass('blink');
  }, 500);
+});
+</script>
+<script>
+$(function () {
+    if (window.location == window.parent.location) {
+        $('#fullscreen').html('<span class="glyphicon glyphicon-resize-small"></span>');
+        $('#fullscreen').attr('href', 'http://bootsnipp.com/mouse0270/snippets/PbDb5');
+        $('#fullscreen').attr('title', 'Back To Bootsnipp');
+    }    
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location =  $('#fullscreen').attr('href');
+    });
+    $('#fullscreen').tooltip();
+    
+    $('.navbar-toggler').on('click', function(event) {
+		event.preventDefault();
+		$(this).closest('.navbar-minimal').toggleClass('open');
+	})
 });
 </script>
 <script>
