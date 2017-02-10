@@ -8,7 +8,7 @@ $(function () {
         
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
-            location.href = "../auth/main.html";
+            location.href = "../auth/login.html";
             event.preventDefault();
         });
         
