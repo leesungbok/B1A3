@@ -16,14 +16,14 @@
 <body>
 <div class="container">
   <!-- 전페이지 헤더 시작-->
-  <div id='header'></div>
+  <div id='header' style="margin-top:-35px;"></div>
   <!-- 전페이지 헤더 끝-->
   <!-- 시간헤더 시작-->
     <div id='header_sub'>
-    <div class="nav">
 	    <span style='font-size: 2.0em; margin-top: 20px;'>온라인 실시간 경매중!</span>
 	    <span style='font-size: 2.0em; margin-top: 20px; color:#e74c3c;'>ON AIR!</span>
-	    <p><span id="blink-text"style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>00:05:20 남음</span></p>
+    <div class="nav">
+	    <p><span id="blink-text" style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>00:05:20 남음</span></p>
     </div>
   </div>
   <!-- 시간헤더 끝-->
@@ -495,18 +495,18 @@
 <!-- 경매등록시 사진첨부 관련 js 한국어 설정 -->
 <script src="../js/kr.js"></script>
 
-<script>
+<!-- <script>
 $(function(){ 
  window.setInterval(function(){
    $('#blink-text').toggleClass('blink');
  }, 500);
 });
-</script>
+</script> -->
 <script>
-var nav = $('#header_sub');
+var nav = $('.nav');
 
 $(window).scroll(function () {
-    if ($(this).scrollTop() > 93) {
+    if ($(this).scrollTop() > 130) {
         nav.addClass("f-nav");
     } else {
         nav.removeClass("f-nav");
