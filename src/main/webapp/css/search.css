@@ -1,16 +1,12 @@
 @CHARSET "UTF-8";
-
-  body > .container {
-    width:960px;
-    margin: 0  auto;
-  }
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
   a {
     font-family:맑은고딕;
     color:black;
     font-size:25px;
-    font-weight:bold;
     padding-left: 5px;
+    text-decoration:none;
   }
   
   a:hover {
@@ -18,18 +14,16 @@
     text-decoration:none;
   }
   
-  div.header {
+  div.header1 {
     border-radius: 15px;
-    border:2px solid black; 
-    width:600px; 
-    padding-bottom: 5px; 
-    padding-left:3px;
+    border:1px solid black; 
+    width:750px; 
     margin-left:10px;
   }
   
   div.inside {
     display:table; 
-    width:700px;
+    width:750px;
   }
   
   div.category {
@@ -55,12 +49,12 @@
   }
   
   div.next-pro-first {
-    padding-left: 5px;
+    padding-left: 15px;
   }
   
   div.next-prd-sty {
-    padding-left: 5px; 
-    padding-bottom: 5px; 
+    padding-left: 15px; 
+    padding-bottom: 20px; 
     display:inline-block;
   }
   
@@ -71,16 +65,15 @@
     height:250px;  
     padding-left:7px;
     padding-top:5px;
+    box-shadow: 5px 5px 5px 5px gray;
   }
   
   hr {
     margin: 2px;
-    padding: 2px 0 2px 0;
   }
   
   hr.commit {
     margin: 10px;
-    border: think solid black;
   }
   
   img.img-state {
@@ -113,7 +106,8 @@
   }
   
   span.title {
-    background-color: gray;
+    border-radius: 15px 0 0 0;
+    background-color: #D3D3D3;
     font-family:맑은고딕; 
     font-size: 35px; 
     display:table-cell; 
@@ -122,7 +116,18 @@
   }
   
   span.title1 {
-    background-color: gray; 
+    background-color: #D3D3D3; 
+    font-family:맑은고딕; 
+    font-size: 35px; 
+    display:table-cell; 
+    text-align: center;
+    vertical-align:middle;
+    width:150px;
+  }
+  
+  span.title2 {
+    border-radius: 0 0 0 15px;
+    background-color: #D3D3D3; 
     font-family:맑은고딕; 
     font-size: 35px; 
     display:table-cell; 
@@ -173,8 +178,6 @@
     width: 15px; 
     height: 15px;
   }
-  
-  
   
   
   

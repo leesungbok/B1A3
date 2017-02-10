@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>검색관리-목록</title>
+<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<link href="css/search.css" rel="stylesheet">
+<style>
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
+
+body {
+  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+  font-size: small;
+}
+body > .container {
+  width: 960px;
+  margin: auto;
+}
+#model-body {
+  height: 400px;
+  width: 450px;
+}
+#body-solid {
+  height: 650px;
+  width: 500px;
+  margin: 2px;
+  float:left;
+  border: 1px solid gray;
+}
+#bidding {
+  float:left;
+  height: 340px;
+  width: 360px;
+  border: 1px solid gray;
+}
+div.header {
+  color: #f32e6d;
+}
+#header_sub {
+  padding: 20px;
+  text-align:center;
+  font-weight: bold; 
+}
+#decs-content > .title > span {
+  font-size: 3em;
+  
+}
+
+.header-menu-a {
+  text-decoration: none !important;
+  font-size: 1.3em;
+  color: #f32e6d;
+  display: inline-block;
+}
+.pinkprice {
+  font-size: 2em;
+  text-align: center;
+   
+}
+.topprice {
+  margin-top:4px;
+  font-size: 2.5em;
+  text-align: center;
+  color: #f32e6d;
+  font-weight: bold;
+   
+}
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #f32e6d;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #f32e6d;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #f32e6d;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #f32e6d;
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+ <div class='header'>
+    <img src="image/menubar.png" style='height:40px; margin: 3px 0px 0px 0px;'>
+    <img src="image/logo.png" style='height:47px; margin: 5px 0px 0px 0px;'>
+    <h1 style="display: none;">여기어때</h1>
+      <div class="search-bar" style='display: inline; padding: 15px; margin-top: -20px; margin-left: 40px; margin-right: 40px; border: 3px solid #f32e6d; border-radius: 30px;'>
+      <input type='text' placeholder="상품별 검색이 가능합니다." 
+             style='width: 290px; font-size: 1.15em; color:#f32e6d; border: 0px;'>
+      <span class="glyphicon glyphicon-search" aria-hidden="true" style='padding:30px 0px 0px 0px; font-size:1.6em; color:#f32e6d;'></span>
+      </div>
+        <img src="image/iconvkd.png" style='height: 20px;' aria-hidden="true" >
+        <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
+        
+        <img src="image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
+        <a href='#' class='header-menu-a' >로그인</a>
+        
+        <img src="image/rkdlqicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
+        <a href='#' class='header-menu-a'>회원가입</a>
+  </div>
+  <h1>상세 정보</h1>
+  <div class='header1'>
+    <div class='inside'>
+     <span  class='title'>카테고리</span>
+     <div id='click' class='category' > 
+        <img src="upload/p.jpg" class='img-state' >
+        <span class='cate'>패션</span>
+     </div>
+     <div id='click' class='category' > 
+        <img src="upload/b.jpg" class='img-state' >
+        <span class='cate'>뷰티</span>
+     </div>
+     <div id='click' class='category' > 
+        <img src="upload/f.jpg" class='img-state' >
+        <span class='cate'>가구</span>
+     </div>
+     <div id='click' class='category' >
+        <img src="upload/h.jpg" class='img-state'>
+        <span class='cate'>취미</span>
+     </div>
+     <div id='click' class='category1' >
+        <img src="upload/d.jpg" class='img-state1'>
+        <span class='cate1'>디지털</span>
+     </div>
+      <div id='click' class='category1' >
+        <img src="upload/c.jpg" class='img-state1'>
+        <span class='cate1'>컴퓨터</span>
+     </div>
+      <div id='click' class='category' >
+        <img src="upload/r.jpg" class='img-state'>
+        <span class='cate'>레져</span>
+     </div>
+      <div id='click' class='category1' >
+        <img src="upload/5.jpg" class='img-state1'>
+        <span class='cate1'>생활품</span>
+     </div>
+     <div id='click' class='category' >
+        <img src="upload/bo.jpg" class='img-state'>
+        <span class='cate'>도서</span>
+     </div>
+   </div>
+    <hr>
+    <div class='inside'>
+    <span class='title1'>경매</span>
+    <input class='content' type='radio' name='title' value='c1' checked>
+    <span class='next-product2'>현재 경매</span>
+    <input class='content' type='radio' name='title' value='c2' >
+    <span class='next-product2'>과거 경매</span>
+    </div>
+    <hr>
+    
+    <div class='inside'>
+    <span class='title2'>가격</span>
+     <input style='display:inline-block; vertical-align:middle; margin-left: 10px; text-align:right; padding-top:20px; width:130px;' class='form-control' type= "text" placeholder="1000"  >
+     <span class='next-product3'>~</span>
+     <input style='display:inline-block; vertical-align:middle; margin-left: 10px; text-align:right; padding-top:20px; width:150px;' class='form-control' type= "text" placeholder="10000" >
+     <span class='next-product4'>원</span>
+     <button style='margin: 13px 0 0 10px;' type="button">검색</button>
+     </div>
+  </div>
+  <br>
+  
+	<a id='search' href='#'>경매시작순 </a>
+	<a id='search1' href='#'>신규등록순 </a>
+	<a id='search2' href='#'>높은가격순 </a>
+	<a id='search3' href='#'>낮은가격순</a>
+	<hr class='commit'>
+	
+	<div class='next-pro-first'>
+		<div class='next-prd-sty'>
+			<div class='next-product'>
+			<img src="upload/coffee.jpg" class='next-product'><br>
+			
+			<span class='next-product'>상품명 커피포트</span><br>
+			<span class='next-product'>시작가 20,000원</span><br>
+			<span class='next-product'>시작일 2/3 15:30</span><br>
+			<span class='next-product1'>남은시간 03:05:34</span><br>
+			</div>
+		</div>
+			
+	</div>
+</div>
+
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="search.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

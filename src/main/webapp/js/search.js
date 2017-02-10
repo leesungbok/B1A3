@@ -13,4 +13,3 @@ $('#search2').click(function() {
 $('#search3').click(function() {
 	location.href = 'search3.html';
 });
-
