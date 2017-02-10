@@ -6,9 +6,12 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: small;
 }
-
+.body-contents {
+	width: 70%;
+	margin: 0px auto;
+}
 body>.container {
-  width: 744px;
+  width: 960px;
   margin: auto;
 }
 

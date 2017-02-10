@@ -170,6 +170,7 @@
   display: inline;
 }
 
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color: #f32e6d;
 }
