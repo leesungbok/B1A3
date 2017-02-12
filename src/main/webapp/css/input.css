@@ -2,11 +2,9 @@
 @import url("http://maxcdn.bootstrapcdn.com/\
 font-awesome/4.2.0/css/font-awesome.min.css");
 
-.modal-dialog1 {
+.modal-dialog {
 	width:400px;
-	position: relative;
-	left: 750px;
-	top: 400px;
+	margin-top: 400px;
 }
 
 #tender-header {
