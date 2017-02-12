@@ -33,5 +33,10 @@ $(function () {
             event.preventDefault();
             $(this).closest('.navbar-minimal').toggleClass('open');
         })
+        
+        $('#search-btn').on('click', function(event) {
+        	event.preventDefault();
+        	location.href='../search/search.html';
+        });
     })
 })
