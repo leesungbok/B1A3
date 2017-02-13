@@ -217,7 +217,7 @@ body>.container {
   background-color: #fff;
   bottom: 0;
   width: 340px;
-  height: 51%;
+  height: 515px;
   position: fixed;
   right: 6%;
   z-index: 300;
@@ -263,5 +263,4 @@ body>.container {
 .find-friends>span {
   font-size: 1.2em;
 }
->>>>>>> branch 'master' of https://github.com/leesungbok/B1A3.git
 /* 헤더 끝 */

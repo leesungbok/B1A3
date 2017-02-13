@@ -85,8 +85,8 @@
 
 #next-biddingtime>span {
   display: inline-block;
-  margin-top: 182px;
-  margin-left: 89px;
+  margin-top: 6px;
+  margin-left: 104px;
   color: red;
   font-size: 2em;
   font-weight: bold;
@@ -163,6 +163,13 @@
   display: inline;
 }
 
+.next-bidlist {
+  margin-top: 22%;
+}
+
+.jscroll-added {
+  margin-bottom: 5%;
+}
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color: #f32e6d;
