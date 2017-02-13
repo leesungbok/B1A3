@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
-/* @import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
- */
+ 
 body {
   font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
   font-size: small;
@@ -212,4 +212,3 @@ body>.container {
 .header-menu-a.black {
   color: black;
 }
-/* 헤더 끝 */

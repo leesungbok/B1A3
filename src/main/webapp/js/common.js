@@ -33,6 +33,20 @@ $(function () {
             event.preventDefault();
             $(this).closest('.navbar-minimal').toggleClass('open');
         })
+        
+        $('#search-btn').on('click', function(event) {
+        	event.preventDefault();
+        	location.href='../search/search.html';
+        });
+        
+        $('#communicate-btn').click(function(event) {
+            $('.communicate').css('display', 'block');
+            event.preventDefault();
+        });
+        
+        $('.communicate-close-btn').click(function(event) {
+            $('.communicate').css('display', 'none');
+        });
     })
     
     $.get('../submenu.html', function (result) {

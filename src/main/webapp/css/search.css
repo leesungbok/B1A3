@@ -56,13 +56,11 @@
   }
   
   div.next-product {
-    border:1px solid black;  
-    display:inline-block; 
-    width:230px; 
-    height:250px;  
+    display:inline-block;
+    width:230px;
+    height:250px;
     padding-left:7px;
     padding-top:5px;
-    box-shadow: 5px 5px 5px 5px gray;
   }
   
   hr {
@@ -86,26 +84,27 @@
   }
   
   img.next-product {
-    padding-left:9px; 
-    height:130px; 
+    padding-left:9px;
+    height:130px;
     width:200px;
+    border-radius: 18px;
   }
   
   span.cate {
     font-size:18px; 
-    font-family: 맑은고딕; 
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
     padding-left: 4px;
   }
   
   span.cate1 {
     font-size:17px; 
-    font-family: 맑은고딕; 
+    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
   }
   
   span.title {
     border-radius: 15px 0 0 0;
     background-color: #D3D3D3;
-    font-family:맑은고딕; 
+    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
     font-size: 35px; 
     display:table-cell; 
     vertical-align:middle;
@@ -114,7 +113,7 @@
   
   span.title1 {
     background-color: #D3D3D3; 
-    font-family:맑은고딕; 
+    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
     font-size: 35px; 
     display:table-cell; 
     text-align: center;
@@ -125,7 +124,7 @@
   span.title2 {
     border-radius: 0 0 0 15px;
     background-color: #D3D3D3; 
-    font-family:맑은고딕; 
+    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
     font-size: 35px; 
     display:table-cell; 
     text-align: center;
@@ -134,22 +133,18 @@
   }
   
   span.next-product {
-    padding-left: 5px; 
-    font-family: 맑은고딕; 
-    font-size:20px;
     vertical-align:middle;
   }
   
   span.next-product1 {
-    padding-left: 5px; 
-    font-family: 맑은고딕; 
+    padding-bottom: 5px;
+    padding-left: 13px;
     font-size:20px;
     color:red;
   }
   
   span.next-product2 {
     padding-left: 5px; 
-    font-family: 맑은고딕; 
     font-size:20px;
     vertical-align:middle;
     display:inline-block; 
@@ -178,6 +173,7 @@
   
   .a {
     font-size: 25px;
+    margin-left: 10px;
   }
   
   
