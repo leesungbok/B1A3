@@ -212,3 +212,56 @@ body>.container {
 .header-menu-a.black {
   color: black;
 }
+
+.communicate {
+  background-color: #fff;
+  bottom: 0;
+  width: 340px;
+  height: 51%;
+  position: fixed;
+  right: 6%;
+  z-index: 300;
+  display: none;
+  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, .5);
+}
+
+.nickname-search {
+  padding: 3.5%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.22);
+  display: inline-block;
+  width: 100%;
+}
+
+.search-btn:before {
+  content: "\e003";
+  font-family: 'Glyphicons Halflings';
+  font-size: 1.7em;
+  color: #000;
+}
+
+.search-btn {
+  display: block;
+  float: left;
+}
+
+.search-input {
+  float: left;
+  margin-left: 4%;
+  width: 79%;
+}
+
+.find-friends {
+  padding: 34% 16%;
+  color: #000;
+  text-align: center;
+}
+
+.icon-comment-empty:before {
+  font-size: 9.4em;
+}
+
+.find-friends>span {
+  font-size: 1.2em;
+}
+>>>>>>> branch 'master' of https://github.com/leesungbok/B1A3.git
+/* 헤더 끝 */
