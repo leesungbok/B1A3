@@ -13,7 +13,7 @@
   border: 1px solid gray;
 }
 
-#next-bodysolid {
+.next-bodysolid {
   height: 282px;
   width: 222px;
   margin-top: 226px;
@@ -22,17 +22,6 @@
   display: inline-block;
   border: 1px solid gray;
 }
-
-#next-bodysolid2 {
-  height: 282px;
-  width: 222px;
-  margin-top: 226px;
-  margin-left: 62px;
-  border-radius: 2px;
-  display: inline-block;
-  border: 1px solid gray;
-}
-
 #bidding {
   float: left;
   height: 340px;
@@ -67,6 +56,10 @@
 #decs-content>.title>span {
   font-size: 3em;
 }
+	
+.next-bodysolid:hover {
+	border:2px solid red;
+	}
 
 .share-btn {
   margin-top: 10px;

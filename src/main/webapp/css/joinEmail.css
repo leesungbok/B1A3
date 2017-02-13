@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+#test {
+  width: 60%;
+  margin: 0px auto;
+}
+
+#test>h1 {
+  padding: 114px 0 20px 15px;
+}
+
+.form-horizontal {
+  padding: 30px 40px;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  height: 375px;
+}
+
+.col-sm-2 {
+  width: 26.63%;
+  font-size: 1.2em;
+}
+
+.btn_confirm {
+  margin: 35px auto;
+  display: block;
+  padding: 12px 0;
+  border-radius: 4px;
+  background: #e62a4a;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: bold;
+  width: 30%;
+}
+
+.btn_confirm:hover, .btn_confirm:focus {
+  color: #fff !important;
+  text-decoration: none;
+}

@@ -8,7 +8,7 @@ $(function () {
         
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
-            location.href = "../auth/main.html";
+            location.href = "../auth/login.html";
             event.preventDefault();
         });
         
@@ -34,4 +34,29 @@ $(function () {
             $(this).closest('.navbar-minimal').toggleClass('open');
         })
     })
+    
+    $.get('../submenu.html', function (result) {
+    	$('#submenu').html(result);
+ 
+    	var submenu = location.search.split("?")[1].split("=")[1];
+	    $('#mypage').click(function (e) {
+	    	  e.preventDefault();
+	    	 location.href= "mypage.html?submenu=mypage";
+	    }); 
+
+	    $('#mybidding').click(function (e) {
+	    	  e.preventDefault();
+	    	 location.href= "mybidding.html?submenu=mybidding";
+	    }); 
+
+	    $('#myoption').click(function (e) {
+	    	  e.preventDefault();
+	    	 location.href= "myoption.html?submenu=myoption";
+	    }); 
+	    
+	    $("#"+submenu).parent().addClass('active');
+	     
+    })
+    
+    
 })

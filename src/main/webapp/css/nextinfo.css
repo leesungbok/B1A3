@@ -1,12 +1,11 @@
-@CHARSET "UTF-8"; * {
-    font-size: small;
+@CHARSET "UTF-8"; {
 }
 
-body {
+ /* body {
     font-family: 'ë³¸ê³ ë”•', 'ë§‘ì€ ê³ ë”•', sans-serif;
 }
-
-body > .container {
+ */
+ body > .container {
     width: 960px;
     margin: 0 auto;
 }
@@ -15,18 +14,18 @@ body > .next-class {
     width: 960px;
     margin: 0 auto;
 }
-
-.header {
-    /*border: 1px solid red;*/
+ 
+/* .header {
+    border: 1px solid red;
     background-color: #ffdead;
     margin: 50px 0 30px 0;
-    /* height: 40px; */
+    height: 40px;
     border-radius: 10px;
     text-align: center;
     font-size: 230%;
     color: black;
 }
-
+ */
 .left-time {
     /*border: 1px solid red;*/
     background-color: #e0ffff;
