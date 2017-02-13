@@ -38,5 +38,14 @@ $(function () {
         	event.preventDefault();
         	location.href='../search/search.html';
         });
+        
+        $('#communicate-btn').click(function(event) {
+            $('.communicate').css('display', 'block');
+            event.preventDefault();
+        });
+        
+        $('.communicate-close-btn').click(function(event) {
+            $('.communicate').css('display', 'none');
+        });
     })
 })
