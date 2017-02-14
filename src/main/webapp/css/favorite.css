@@ -1,19 +1,18 @@
-@CHARSET "UTF-8"; * {
-    font-size: small;
-}
+@CHARSET "UTF-8";
 
-body {
-    font-family: 'Ã«Â³Â¸ÃªÂ³Â Ã«â€â€¢', 'Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢', sans-serif;
-}
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+body, table, div, p {font-family:'Nanum Gothic'}
 
 body > .header {
     width: 960px;
     margin: 0 auto;
+    padding:0;
 }
 
 body > .container {
     width: 960px;
     margin: 0 auto;
+    padding: 0;
 }
 
 
@@ -21,6 +20,7 @@ h1 {
     /*border: 1px solid red;*/
     margin: 70px 0 10px 50px;
     font-size: 270%;
+    font-weight: bold;
 }
 
 h2 {margin: 70px 1px 15px 50px;display:inline-block;font-size: 200%;}
@@ -42,13 +42,13 @@ margin: 0px 10px 8px 10px;
 }
 .img-share2 {/* border: 1px solid red; */width: 25px;margin: -3px 3px 5px 3px;}
 
-hr {margin-top: 0px;margin-bottom:15px;}
+hr {margin-top: 10px;margin-bottom: 15px;}
 
 div.c1 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
 }
 
 div.c2 {
@@ -59,7 +59,7 @@ div.c2 {
     width: 345px;
     height: 400px;
     /* text-align: center; */
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
 }
 
 .t1 {
@@ -91,7 +91,7 @@ div.c2 {
 
 .next-list {
     margin: 100px 0 30px 150px;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     font-size: 25px;
     font-weight: bold;
 }
@@ -105,7 +105,7 @@ div.next-class1 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
     height: 310px;
 }
@@ -115,7 +115,7 @@ div.next-class2 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
 }
 
@@ -124,7 +124,7 @@ div.next-class3 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
     height: 290px;
 }
@@ -134,7 +134,7 @@ div.next-class4 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
     height: 310px;
 }
@@ -144,7 +144,7 @@ div.next-class5 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
 }
 
@@ -153,7 +153,7 @@ div.next-class6 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
 }
 
 
@@ -162,7 +162,7 @@ div.next-class7 {
     /*border: 1px solid red;*/
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
     width: 290px;
     height: 290px;
 }
@@ -172,7 +172,6 @@ div.next-class8 {
     /*border: 1px solid red;*/
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
     width: 290px;
 }
 
@@ -181,7 +180,7 @@ div.next-class9 {
     /* border: 1px solid red; */
     display: inline-block;
     text-align: center;
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ ÃªÂ³Â Ã«â€â€¢;
+    
 }
 
 
