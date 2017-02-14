@@ -10,13 +10,12 @@ $(document).ready(function() {
   })
 })
 
-$('#add-btn').click(function () {
+$('#add-btn').click(function (event) {
     var param = {
         "email" : $('#email').val(),
         "password" : $('#password').val(),
-        "passwordConf" : $('#password-conf').val(),
-        "nickname" : $('#nickname').val(),
-        "phone" : $('#phone').val()
+        "nickName" : $('#nickName').val(),
+        "phoneNo" : $('#phoneNo').val()
     };
 
     $.post('add.json', param, function (ajaxResult) {
@@ -24,6 +23,8 @@ $('#add-btn').click(function () {
             alert(ajaxResult.data);
             return;
         }
-        location.href = 'main.html';
+        location.href = 'login.html';
     }, 'json')
+
+    event.preventDefault();
 })
