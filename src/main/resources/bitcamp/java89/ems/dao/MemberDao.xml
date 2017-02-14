@@ -25,5 +25,17 @@
     insert into memb(email, pwd, nknm, phon)
     values(#{email}, password(#{password}), #{nickName}, #{phoneNo});
   </insert>
+  
+  <select id="countEmail" parameterType="string" resultType="int">
+    select count(*) from memb where email=#{value}
+  </select>
+  
+  <select id="countNickName" parameterType="string" resultType="int">
+    select count(*) from memb where nknm=#{value}
+  </select>
+  
+  <select id="countPhone" parameterType="string" resultType="int">
+    select count(*) from memb where phon=#{value}
+  </select>
 
 </mapper>

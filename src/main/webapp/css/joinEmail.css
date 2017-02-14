@@ -1,11 +1,11 @@
 @CHARSET "UTF-8";
 
-#test {
+#body {
   width: 60%;
   margin: 0px auto;
 }
 
-#test>h1 {
+#body>h1 {
   padding: 114px 0 20px 15px;
 }
 
@@ -13,7 +13,7 @@
   padding: 30px 40px;
   border: 1px solid #e8e8e8;
   border-radius: 10px;
-  height: 375px;
+  height: 442px;
 }
 
 .col-sm-2 {
@@ -22,7 +22,7 @@
 }
 
 .btn_confirm {
-  margin: 35px auto;
+  margin: 0px auto;
   display: block;
   padding: 12px 0;
   border-radius: 4px;
@@ -38,3 +38,47 @@
   color: #fff !important;
   text-decoration: none;
 }
+
+.errormsg {  font-size: 1.1em;  color: #e62a4a;  display: none;
+}
+
+.glyphicon-ok:before {
+  color: #e62a4a;
+}
+
+.glyphicon-ok {
+  display: none;
+}
+
+.form-group {
+  height: 13%;
+}
+/* input type='number' 인경우 숫자 증가감소 버튼 감추기 시작*/
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  cursor:pointer;
+  display:block;
+  width:8px;
+  color: #333;
+  text-align:center;
+  position:relative;
+}
+
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+  content: "^";
+  position:absolute;
+  right: 0;
+  font-family:monospace;
+  line-height:
+}
+
+input[type=number]::-webkit-inner-spin-button:before {
+  top:0px;
+}
+
+input[type=number]::-webkit-inner-spin-button:after {
+  bottom:0px;
+  -webkit-transform: rotate(180deg);
+}
+/* input type='number' 인경우 숫자 증가감소 버튼 감추기 끝*/
