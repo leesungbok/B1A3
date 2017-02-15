@@ -65,7 +65,7 @@ $(function () {
 
 	    $('#myoption').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= "myoption.html?submenu=myoption";
+	    	 location.href= "mysettings.html?submenu=myoption";
 	    }); 
 	    
 	    $("#"+submenu).parent().addClass('active');

@@ -7,8 +7,7 @@ body {
   font-size: small;
 }
 .body-contents {
-	width: 70%;
-	margin: 0px auto;
+	width: 100%;
 }
 body>.container {
   width: 960px;
@@ -63,7 +62,7 @@ text-decoration: none;
   position: absolute;
   top: 19.5%;
   width: 150px;
-  height: 199px;
+  height: 219px;
   opacity: 0;
 }
 
@@ -87,7 +86,7 @@ text-decoration: none;
 
 .desc {
   margin-left: 122px !important;
-  padding-top: 10px;
+  padding-top: 9px;
 }
 
 .term-bgc {
@@ -166,6 +165,52 @@ input[type=password], input[type=text] {
 .edit-btn>a:hover {
   text-decoration: none;
 }
+
+.settings {
+  margin: 0 12%;
+}
+
+.form-control[readonly] {
+  background-color: #fff;
+}
+
+.col-sm-2 {
+  width: 18.666667%;
+}
+
+#zip-code {
+  text-align: center;
+}
+
+/* input type='number' 인경우 숫자 증가감소 버튼 감추기 시작*/
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  cursor:pointer;
+  display:block;
+  width:8px;
+  color: #333;
+  text-align:center;
+  position:relative;
+}
+
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+  content: "^";
+  position:absolute;
+  right: 0;
+  font-family:monospace;
+  line-height:
+}
+
+input[type=number]::-webkit-inner-spin-button:before {
+  top:0px;
+}
+
+input[type=number]::-webkit-inner-spin-button:after {
+  bottom:0px;
+  -webkit-transform: rotate(180deg);
+}
+/* input type='number' 인경우 숫자 증가감소 버튼 감추기 끝*/
 
 /* Tabs panel */
 .tabbable-panel {
