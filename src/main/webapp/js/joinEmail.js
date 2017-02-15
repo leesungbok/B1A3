@@ -186,7 +186,6 @@ $(function() {
                 alert(ajaxResult.data);
                 return;
             }
-            swal("Good job!", "You clicked the button!", "success")
             location.href = 'login.html';
         }, 'json')
         
