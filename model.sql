@@ -31,7 +31,7 @@ CREATE TABLE `MEMB` (
 	`EMAIL`   VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
 	`NKNM`    VARCHAR(6)   NOT NULL COMMENT '닉네임', -- 닉네임
 	`PHON`    VARCHAR(30)  NOT NULL COMMENT '휴대폰', -- 휴대폰
-	`PWD`     VARCHAR(20)  NOT NULL COMMENT '비밀번호', -- 비밀번호
+	`PWD`     VARCHAR(50)  NOT NULL COMMENT '비밀번호', -- 비밀번호
 	`PATH`    VARCHAR(255) NULL     COMMENT '사진경로', -- 사진경로
 	`PST_NO`  VARCHAR(10)  NULL     COMMENT '우편번호', -- 우편번호
 	`BAS_ADR` VARCHAR(255) NULL     COMMENT '기본주소', -- 기본주소
@@ -120,7 +120,7 @@ CREATE TABLE `ITEM` (
 	`DAY`   INTEGER     NOT NULL COMMENT '사용일수', -- 사용일수
 	`DEAL`  VARCHAR(10) NOT NULL COMMENT '거래방식', -- 거래방식
 	`CONT`  TEXT        NULL     COMMENT '상세설명', -- 상세설명
-	`TIME`  DATETIME    NOT NULL COMMENT '시작시간', -- 시작시간
+	`TIME`  VARCHAR(30)    NOT NULL COMMENT '시작시간', -- 시작시간
 	`STPC`  INTEGER     NOT NULL COMMENT '시작가' -- 시작가
 )
 COMMENT '상품';
