@@ -53,6 +53,37 @@
 .form-group {
   height: 13%;
 }
+
+/* sweet-alert */
+.sweet-alert {
+  font-family: 'Noto Sans KR';
+  margin-left: -239px;
+}
+
+.sweet-alert .sa-icon.sa-success {
+    border-color: rgba(243, 46, 109, 0.38);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: rgb(243, 46, 109);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid rgba(243, 46, 109, 0.38);
+}
+
+.confirm {
+  background-color: #f32e6d !important;
+}
+
+.confirm:hover {
+  background-color: #d2275d !important;
+}
+
+.confirm:active {
+  background-color: #bd2253 !important;
+}
+
 /* input type='number' 인경우 숫자 증가감소 버튼 감추기 시작*/
 input[type=number]::-webkit-inner-spin-button { 
   -webkit-appearance: none;

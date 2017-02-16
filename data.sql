@@ -19,6 +19,17 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(8,4,'�
 insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,'상품9','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','19:30~20:00',5300000);
 
 
+-- 상품 데이터
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(1,1,'상품1','의류','2017-01-01',30,'직거래','상품1입니다.','16:00~16:30',500000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(2,1,'상품2','전자제품','2017-01-02',80,'택배','상품2입니다.','16:30~17:00',1500000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(3,1,'상품3','책','2017-01-03',130,'직거래','상품3입니다.','17:00~17:30',80000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,2,'상품4','의루','2017-01-04',230,'택배 또는 직거래','상품4입니다.','17:30~18:00',8000000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(5,3,'상품5','책','2017-01-05',130,'직거래','상품5입니다.','18:00~18:30',300000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(6,3,'상품6','전자제품','2017-01-06',530,'택배','상품6입니다.','18:30~19:00',2000000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(7,3,'상품7','의류','2017-01-07',730,'직거래','상품7입니다.','19:00~19:30',2500000);
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(8,4,'상품8','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','19:30~20:00',5300000);
+
+
 -- 상품 사진 데이터
 insert into phot(pno,itno,path) values(1,1,'t1_1.gif');
 insert into phot(pno,itno,path) values(2,1,'t1_2.gif');
