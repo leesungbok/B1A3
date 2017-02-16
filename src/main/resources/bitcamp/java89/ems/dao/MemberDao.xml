@@ -23,10 +23,19 @@
   
     <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
     select 
-      mno, 
-      nknm, 
-      phon, 
-      email
+      mno,
+      email,
+      nknm,
+      phon,
+      pwd,
+      path,
+      pst_no,
+      bas_adr,
+      det_adr,
+      tel,
+      fcbk,
+      katok,
+      naver
     from memb
     where email=#{email} 
       and pwd=password(#{password})

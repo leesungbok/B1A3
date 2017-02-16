@@ -5,11 +5,12 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
 #bid {
 	width:400px;
 	margin-top: 400px;
+	top:-100px;
+	
 }
 
 #tender-header {
   color: #4abeca;
-   
 }
 
  .price {
@@ -20,14 +21,15 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
  
  #l {
 	float: right;
-	font-size: 25px;
-	text-decoration: underline;
+	padding-bottom: 10px;
+	font-size: 200%;
+	/* text-decoration: underline; */
 	text-align: right;
-	width: 130px;
+	width: 200px;
 	}
 
 .body-content {
-	color: #b1b3b5;
+	color: #A0A19C;
 	}
 	
 #tender-body .body-content1 {

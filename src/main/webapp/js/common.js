@@ -99,6 +99,4 @@ $(function () {
 	    $("#"+submenu).parent().addClass('active');
 	     
     })
-    
-    
 })
