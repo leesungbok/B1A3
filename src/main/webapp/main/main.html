@@ -155,7 +155,9 @@
 <div class="container"> 
 <!-- 공유버튼 시작 -->
 <div class='share-btn' style="width:960px; margin:auto;">
-<img class='photodesine' src="../image/facebook.png"  style='height: 49px; margin-top:10px; margin-left:169px;'>
+<div class="fb-share-button" data-href="http://a.bitcamp.com:8080/B1A3/main/main.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fa.bitcamp.com%3A8080%2FB1A3%2Fmain%2Fmain.html&amp;src=sdkpreparse">공유</a></div>
+<!-- <div id="instaPics"></div>  --> 
+<!-- <img class='photodesine' src="../image/facebook.png"  style='height: 49px; margin-top:10px; margin-left:169px;'> -->
 <img class='photodesine' src="../image/kakao.png" style='margin-top:10px;height: 50px; width:50px;'>
 </div>
 <!-- 공유버튼 끝 --> 
@@ -190,9 +192,25 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">상품명</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3"
+              <input id="titl" type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3"
               data-toggle="popover" data-placement="left" data-trigger="focus"
               data-content="테스트중">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">카테고리</label>
+            <div class="col-sm-10">
+            <select id="categ">
+                <option value='패션'>패션</option>
+                <option value='가방'>가방</option>
+                <option value='가구'>가구</option>
+                <option value='취미'>취미</option>
+                <option value='디지털'>디지털</option>
+                <option value='컴퓨터'>컴퓨터</option>
+                <option value='레져'>레져</option>
+                <option value='생활품'>생활품</option>
+                <option value='도서'>도서</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
@@ -206,7 +224,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">시작가</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" placeholder="80000"
+              <input id="stpc"type="number" class="form-control" placeholder="80000"
               data-toggle="popover" data-placement="left" data-trigger="focus"
               data-content="테스트중">
             </div>
@@ -214,7 +232,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">구입시기</label>
             <div class="col-sm-10">
-              <input type="date" class="form-control"
+              <input id="buy" type="date" class="form-control"
               data-toggle="popover" data-placement="left" data-trigger="focus"
               data-content="테스트중">
             </div>
@@ -222,7 +240,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">사용일수</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" placeholder="365"
+              <input id="day" type="number" class="form-control" placeholder="365"
               data-toggle="popover" data-placement="left" data-trigger="focus"
               data-content="테스트중">
             </div>
@@ -230,24 +248,29 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">상세설명</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."
+              <textarea id="cont" class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."
               data-toggle="popover" data-placement="left" data-trigger="focus"
               data-content="테스트중"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">거래방식</label>
-            <div class="radio" id="deal">
-              <label class="radio-inline"><input type="radio" name="optradio" checked>택배</label>
-              <label class="radio-inline"><input type="radio" name="optradio">직거래</label>
-              <label class="radio-inline"><input type="radio" name="optradio">택배 또는 직거래</label>
+            <div class="radio">
+              <select id="deal">
+                <option value='택배'>택배</option>
+                <option value='직거래'>직거래</option>
+                <option value='택배 또는 직거래'>택배 또는 직거래</option>
+              </select>
+              <!-- <label class="radio-inline"><input id="deal1" type="radio" name="optradio" checked>택배</label>
+              <label class="radio-inline"><input id="deal2" type="radio" name="optradio">직거래</label>
+              <label class="radio-inline"><input id="deal3" type="radio" name="optradio">택배 또는 직거래</label> -->
             </div>
           </div>
         </form>
       </div>
 
       <div class="modal-footer" id="add-footer">
-        <button type="button" class="btn btn-primary btn-lg">등록</button>
+        <button id="add-btn" type="button" class="btn btn-primary btn-lg">등록</button>
         <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">취소</button>
       </div>
     </div>
@@ -397,6 +420,59 @@ $(function(){
  }, 500);
 });
 </script> -->
+<script src="../js/main.js"></script>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id =id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- 인스타공유 <script>  
+   (function($) {  
+        var tocken = ""; /* Access Tocken 입력 */  
+        var count = "6";  
+        $.ajax({  
+            type: "GET",  
+            dataType: "jsonp",  
+            cache: false,  
+            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + tocken + "&count=" + count,  
+            success: function(response) {  
+             if ( response.data.length > 0 ) {  
+                  for(var i = 0; i < response.data.length; i++) {  
+                       var insta = '<div class="insta-box">';  
+                       insta += "<a target='_blank' href='" + response.data[i].link + "'>";  
+                       insta += "<div class'image-layer'>";  
+                       //insta += "<img src='" + response.data[i].images.thumbnail.url + "'>";  
+                       insta += '<img src="' + response.data[i].images.thumbnail.url + '">';  
+                       insta += "</div>";  
+                       //console.log(response.data[i].caption.text);  
+                       if ( response.data[i].caption !== null ) {  
+                            insta += "<div class='caption-layer'>";  
+                            if ( response.data[i].caption.text.length > 0 ) {  
+                                 insta += "<p class='insta-caption'>" + response.data[i].caption.text + "</p>"  
+                            }  
+                            insta += "<span class='insta-likes'>" + response.data[i].likes.count + " Likes</span>";  
+                            insta += "</div>";  
+                       }  
+                       insta += "</a>";  
+                       insta += "</div>";  
+                       $("#instaPics").append(insta);  
+                  }  
+             }  
+             $(".insta-box").hover(function(){  
+                  $(this).find(".caption-layer").css({"backbround" : "rgba(255,255,255,0.7)", "display":"block"});  
+             }, function(){  
+                  $(this).find(".caption-layer").css({"display":"none"});  
+             });  
+            }  
+           });  
+   });  
+   </script> 
+ -->
 <script>
 var nav = $('.nav');
 
