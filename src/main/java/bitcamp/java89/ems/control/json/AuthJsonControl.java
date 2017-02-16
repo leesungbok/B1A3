@@ -31,6 +31,23 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "로그인 성공!");
   }
   
+  @RequestMapping("/auth/logout")
+  public AjaxResult logout(HttpSession session) throws Exception {
+    session.invalidate(); // 기존 세션을 무효화시킨다.
+    return new AjaxResult(AjaxResult.SUCCESS, "로그아웃 성공입니다.");
+  }
+  
+  @RequestMapping("/auth/loginUser")
+  public AjaxResult loginUser(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    System.out.println(member);
+    if (member == null) { // 로그인이 되지 않은 상태
+      return new AjaxResult(AjaxResult.FAIL, "로그인을 하지 않았습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, member);
+  }
+  
   @RequestMapping("/auth/add")
   public AjaxResult add(Member member) throws Exception {
     memberService.add(member);
