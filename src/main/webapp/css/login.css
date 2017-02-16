@@ -131,6 +131,7 @@ input[type=checkbox]:checked+span {
   text-align: center;
   font-size: 1.2em;
   font-weight: bold;
+  width: 100%;
 }
 
 .btn_confirm:hover, .btn_confirm:focus {
@@ -183,3 +184,8 @@ input[type=checkbox]:checked+span {
   color: rgba(0, 0, 0, 0.69) !important;
   text-decoration: none;
 }
+
+ .fb-login-button {
+  position: fixed;
+  display: inline-block;
+ }

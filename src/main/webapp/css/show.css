@@ -8,7 +8,7 @@ figure.snip1174 {
   /* background-color: #1a1a1a; */
   color: #ffffff;
   text-align: left;
-  margin: 10px;
+  margin: 3px;
   width: 100%;
   border-radius: 0px;
 }
@@ -28,7 +28,7 @@ figure.snip1174 img {
 }
 figure.snip1174 figcaption {
   position: absolute;
-  padding: 40px 25px;
+  padding: 48px 34px;
   top: 0;
   left: 0;
 }
@@ -62,7 +62,7 @@ figure.snip1174 a {
   opacity: 0;
 }
 figure.snip1174 a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 figure.snip1174.blue {
   background-color: #20638f;
@@ -81,7 +81,7 @@ figure.snip1174.red {
 }
 figure.snip1174:hover img,
 figure.snip1174.hover img {
-  opacity: 0;
+  opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
 }

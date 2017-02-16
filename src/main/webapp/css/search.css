@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
-/* @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
- */
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+ 
   a {
     color:black;
     text-decoration:none;
@@ -12,11 +12,18 @@
   }
   
   div.header1 {
-    border-radius: 15px;
-    border:1px solid black; 
-    width:750px; 
-    margin-left:10px;
+  width:100%;
+    border-radius: 10px;
+    border: 1px solid #9c9595;
   }
+ 
+ 
+  h1 {
+    font-size:2em;
+    letter-spacing:-2px;
+    margin-top:50px;
+  }
+  
   
   div.inside {
     display:table; 
@@ -63,6 +70,79 @@
     padding-top:5px;
   }
   
+  div.desktop:before {
+    font-family:"FontAwesome";
+    content:"\f108";
+    font-size: 25px;
+    padding-left: 10px;
+    color: #272b2d;
+  }
+  
+  div.camera:before {
+    font-family:"FontAwesome";
+    content:"\f030";
+    font-size: 25px;
+    padding-left: 10px;
+    color: #b1afaf;
+  }
+  
+  div.book:before {
+    font-family:"FontAwesome";
+    content:"\f02d";
+    font-size: 25px;
+    padding-left: 10px;
+    color: #b78b09;
+  }
+  
+  div.hobby:before {
+    font-family:"FontAwesome";
+    content:"\f001";
+    font-size: 25px;
+    padding-left: 10px;
+    color: #458fb3;
+  }
+  
+  div.sbag:before {
+    font-family:"FontAwesome";
+    content:"\f0b1";
+    font-size: 25px;
+    padding-left:7px;
+    color: #272b33;
+  }
+  
+  div.bicycle:before {
+    font-family:"FontAwesome";
+    content:"\f206";
+    font-size: 25px;
+    padding-left: 7px;
+    color: #332a27;
+  }
+  
+  div.magic:before {
+  margin-top:5px;
+    font-family:"FontAwesome";
+    content:"\f0d0";
+    font-size: 25px;
+    padding-left: 7px;
+    color: #332a27;
+  }
+  
+  div.home:before {
+    font-family:"FontAwesome";
+    content:"\f015";
+    font-size: 25px;
+    padding-left: 10px;
+    color: #332a27;
+  }
+    
+  div.bed:before {
+    font-family:"FontAwesome";
+    content:"\f236";
+    font-size: 25px;
+    padding-left: 7px;
+    color: #332a27;
+  }
+  
   hr {
     margin: 2px;
   }
@@ -77,56 +157,40 @@
 	  padding-left: 2px;
   }
   
-  img.img-state1 {
-    width:47px; 
-    padding-top: 1px; 
-    padding-left: 6px;
-  }
-  
-  img.next-product {
-    padding-left:9px;
-    height:130px;
-    width:200px;
-    border-radius: 18px;
-  }
-  
   span.cate {
-    font-size:18px; 
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
-    padding-left: 4px;
+    font-size: 15px;
+    padding-left: 7px;
   }
   
   span.cate1 {
-    font-size:17px; 
-    font-family: Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
+    font-size: 14px;
+    padding-left: 5px;
   }
   
   span.title {
-    border-radius: 15px 0 0 0;
-    background-color: #D3D3D3;
-    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
-    font-size: 35px; 
-    display:table-cell; 
+    border-radius: 9px 0 0 0;
+    background-color: #e8e4e4;
+    font-size: 18px;
+    display:table-cell;
     vertical-align:middle;
     width:150px;
+    text-align:center;
   }
   
   span.title1 {
-    background-color: #D3D3D3; 
-    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
-    font-size: 35px; 
-    display:table-cell; 
+    background-color: #e8e4e4;
+    font-size: 18px;
+    display:table-cell;
     text-align: center;
     vertical-align:middle;
     width:150px;
   }
   
   span.title2 {
-    border-radius: 0 0 0 15px;
-    background-color: #D3D3D3; 
-    font-family:Ã«Â§â€˜Ã¬Ââ‚¬ÃªÂ³Â Ã«â€â€¢; 
-    font-size: 35px; 
-    display:table-cell; 
+    border-radius: 0 0 0 9px;
+    background-color: #e8e4e4;
+    font-size: 18px;
+    display:table-cell;
     text-align: center;
     vertical-align:middle;
     width:150px;
@@ -137,18 +201,17 @@
   }
   
   span.next-product1 {
-    padding-bottom: 5px;
-    padding-left: 13px;
+    padding-left: 2px;
     font-size:20px;
     color:red;
   }
   
   span.next-product2 {
-    padding-left: 5px; 
-    font-size:20px;
+    padding-left: 5px;
+    font-size: 15px;
     vertical-align:middle;
-    display:inline-block; 
-    margin-top: 15px;
+    display:inline-block;
+    margin-top: 8px;
   }
   
   span.next-product3 {
@@ -164,15 +227,15 @@
   }
   
   input.content {
-    display:inline-block; 
-    margin: 15px 0 0 15px; 
-    vertical-align:middle; 
-    width: 15px; 
+    display:inline-block;
+    margin: 7px 0 0 15px;
+    vertical-align:middle;
+    width: 15px;
     height: 15px;
   }
   
   .a {
-    font-size: 25px;
+    font-size: 19px;
     margin-left: 10px;
   }
   

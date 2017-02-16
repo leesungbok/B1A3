@@ -20,6 +20,17 @@
     <result column="katok"   property="kakaoTalk"/>
     <result column="naver"   property="naver"/>
   </resultMap>
+  
+    <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
+    select 
+      mno, 
+      nknm, 
+      phon, 
+      email
+    from memb
+    where email=#{email} 
+      and pwd=password(#{password})
+  </select>
 
   <insert id="insert" parameterType="member">
     insert into memb(email, pwd, nknm, phon)

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Member implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int    membmerNo;
+  protected int    memberNo;
   protected String email;
   protected String nickName;
   protected String phoneNo;
@@ -19,12 +19,12 @@ public class Member implements Serializable {
   protected String kakaoTalk;
   protected String naver;
 
-  public int getMembmerNo() {
-    return membmerNo;
+  public int getMemberNo() {
+    return memberNo;
   }
 
-  public void setMembmerNo(int membmerNo) {
-    this.membmerNo = membmerNo;
+  public void setMemberNo(int membmerNo) {
+    this.memberNo = membmerNo;
   }
 
   public String getEmail() {
