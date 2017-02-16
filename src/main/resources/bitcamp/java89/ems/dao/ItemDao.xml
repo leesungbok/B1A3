@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.ems.dao.ItemDao">
+
+  <resultMap type="item" id="item-map">
+    <id     column="itno"        property="itemNo"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="titl"       property="title"/>
+    <result column="categ"      property="category"/>
+    <result column="buy"        property="buyDate"/>
+    <result column="day"        property="useDay"/>
+    <result column="deal"        property="deal"/>
+    <result column="cont"        property="content"/>
+    <result column="time"        property="startTime"/>
+    <result column="stpc"        property="startPrice"/>
+    
+  </resultMap>
+  
+  
+  <insert id="insert" parameterType="item">
+    insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
+    values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice})
+  </insert> 
+  
+  <update id="update" parameterType="item">
+    update item set
+      titl=#{title}, 
+      categ=#{category}, 
+      buy=#{buyDate}, 
+      day=#{useDay}, 
+      deal=#{deal}, 
+      cont=#{content}, 
+      time=#{startTime}, 
+      stpc=#{startPrice}
+    where itno=#{itemNo}
+  </update> 
+
+  <delete id="delete" parameterType="int">
+    delete from item where itno=#{value}
+  </delete>
+</mapper>
