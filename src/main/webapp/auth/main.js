@@ -10,6 +10,6 @@ $('#login-btn').click(function() {
 			location.href = "../main/main.html";	
 			return;
 		}
-		alert(ajaxResult.data);
+		alert(ajaxResult.data);   
 	}, 'json');
 });
