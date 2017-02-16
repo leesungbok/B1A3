@@ -1,4 +1,42 @@
 $(function() {
+    $.getJSON('getOne.json', function(ajaxResult) {
+        var status = ajaxResult.status;
+
+        if (status != "success") {
+            alert(ajaxResult.data);
+            return;
+        }
+
+        var member = ajaxResult.data;
+
+        $('#email').val(member.email);
+        $('#nickName').val(member.nickName);
+        $('#zip-code').val(member.postNo);
+        $('#address').val(member.basicAddress);
+        $('#address-detail').val(member.detailAddress);
+        
+        if (member.facebook != null) {
+            $('#facebook-cbx').prop("checked", true);
+            $('#facebook-off').css('display', 'inline');
+        } else {
+            $('#facebook-on').css('display', 'inline');
+        }
+        
+        if (member.kakaoTalk != null) {
+            $('#kakao-cbx').prop("checked", true);
+            $('#kakao-off').css('display', 'inline');
+        } else {
+            $('#kakao-on').css('display', 'inline');
+        }
+        
+        if (member.naver != null) {
+            $('#naver-cbx').prop("checked", true);
+            $('#naver-off').css('display', 'inline');
+        } else {
+            $('#naver-on').css('display', 'inline');
+        }
+    });
+    
     $('.addr-find').click(function(event) {
         new daum.Postcode({
             oncomplete: function(data) {

@@ -186,7 +186,10 @@ $(function() {
                 alert(ajaxResult.data);
                 return;
             }
-            location.href = 'login.html';
+            swal("가입 완료!", "아래 확인버튼을 눌러 로그인 하세요.", "success");
+            $('.confirm').click(function() {
+                location.href = 'login.html';
+            })
         }, 'json')
         
         event.preventDefault();

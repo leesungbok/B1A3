@@ -1,52 +1,60 @@
-<!--   <i class="fa menu-bars" aria-hidden="true"></i> -->
-<nav class="navbar navbar-fixed-left navbar-minimal animate" role="navigation">
-  <div class="navbar-toggler animate">
-    <span class="menu-icon"></span>
-  </div>
-  <ul class="navbar-menu animate">
-    <li>
-      <a href="../mypage/mypage.html?submenu=mypage" class="animate">
-        <span class="desc animate"> 마이페이지</span>
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </li>
-    <li>
-      <a href="" class="animate" id="communicate-btn">
-        <span class="desc animate">판매자와 대화하기</span>
-        <span class="glyphicon glyphicon-comment"></span>
-      </a>
-    </li>
-  </ul>
-</nav>
-<a href="../main/main.html">
-<img src="../image/logo.png" style='height: 47px; margin-top: -13px;'></a>
-<h1 style="display: none;">여기어때</h1>
-<div class="search-bar">
-  <input type='text' placeholder="상품별 검색이 가능합니다."
-   style='width: 290px; font-size: 1.15em; color: #f32e6d; border: 0px;'>
-  <a id='search-btn' href='#'><span class="glyphicon glyphicon-search" aria-hidden="true"
-   style='padding: 30px 0px 0px 0px; font-size: 1.6em; color: #f32e6d;'></span></a>
-</div>
-<img src="../image/iconvkd.png" style='height: 20px; position: relative;' aria-hidden="true">
-<a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
-<img src="../image/loginicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
-<a href='#' class='header-menu-a' id='login-btn'>로그인</a>
-<img src="../image/rkdlqicon.png" style='height: 20px; margin-left: 5px;' aria-hidden="true">
-<a href='#' class='header-menu-a' id='join-btn'>회원가입</a>
-
-<!-- 대화하기 시작 -->
-<div class="communicate">
-  <div class="nickname-search">
-    <div class="search-btn"></div>
-    <div class="search-input">
-      <input type="text" class="form-control" placeholder="닉네임을 입력하세요.">
+<div class="header-wrap">
+  <!--   <i class="fa menu-bars" aria-hidden="true"></i> -->
+  <nav class="navbar navbar-fixed-left navbar-minimal animate" role="navigation">
+    <div class="navbar-toggler animate">
+      <span class="menu-icon"></span>
     </div>
-    <button type="button" class="close communicate-close-btn">
-      <span>&times;</span>
-    </button>
+    <ul class="navbar-menu animate">
+      <li>
+        <a href="../mypage/mypage.html?submenu=mypage" class="animate">
+          <span class="desc animate"> 마이페이지</span>
+          <span class="glyphicon glyphicon-user"></span>
+        </a>
+      </li>
+      <li>
+        <a href="" class="animate" id="communicate-btn">
+          <span class="desc animate">판매자와 대화하기</span>
+          <span class="glyphicon glyphicon-comment"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <a href="../main/main.html">
+  <img src="../image/logo.png" style='height: 47px; margin-top: -13px;'></a>
+  <h1 style="display: none;">여기어때</h1>
+  <div class="search-bar">
+    <div>
+      <input type='text' placeholder="상품별 검색이 가능합니다."
+       style='width: 290px; font-size: 1.15em; color: #f32e6d; border: 0px; outline: none;'>
+      <a id='search-btn' href='#'>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"
+         style='padding: 30px 0px 0px 0px; font-size: 1.6em; color: #f32e6d;'></span>
+      </a>
+    </div>
   </div>
-  <div class="find-friends">
-    <div class="icon-comment-empty"></div>
-    <span>닉네임 검색을 통해<br>채팅할 상대방을 찾으세요.</span>
+  <div class="btns">
+    <div id="icon-hammer"></div>
+    <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
+    <div id="icon-user-circle-o"></div>
+    <a href='#' class='header-menu-a' id='login-btn'>로그인</a>
+    <div id="icon-edit"></div>
+    <a href='#' class='header-menu-a' id='join-btn'>회원가입</a>
+  </div>
+  
+  <!-- 대화하기 시작 -->
+  <div class="communicate">
+    <div class="nickname-search">
+      <div class="search-btn"></div>
+      <div class="search-input">
+        <input type="text" class="form-control" placeholder="닉네임을 입력하세요.">
+      </div>
+      <button type="button" class="close communicate-close-btn">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="find-friends">
+      <div class="icon-comment-empty"></div>
+      <span>닉네임 검색을 통해<br>채팅할 상대방을 찾으세요.</span>
+    </div>
   </div>
 </div>

@@ -13,8 +13,8 @@
 </head>
 
 <body>
+  <div id='header'></div>
   <div class="container">
-    <div id='header'></div>
     <div class='body-contents'>
       <div id="bodycon-title">마이페이지</div>
       <div id='submenu'></div>
@@ -26,7 +26,7 @@
           <a href="" class="image-btn">
             <img id="photo-img" src="../image/user.png" class="img-circle">
             <span id="icon-camera-alt"></span>
-            <input type="file" name='files' class="image-upload">
+            <input type="file" name='files' class="image-upload" accept="image/*">
             <input type='hidden' id='photo-path'>
           </a>
         </div>
@@ -36,7 +36,7 @@
             <dt class="term">*이메일</dt>
             <dd class="desc">
               <div class="col-sm-6">
-                <input type="email" class="form-control">
+                <input id="email" type="email" class="form-control">
               </div>
             </dd>
           </dl>
@@ -44,7 +44,7 @@
             <dt class="term">*닉네임</dt>
             <dd class="desc">
               <div class="col-sm-6">
-                <input type="text" class="form-control">
+                <input id="nickName" type="text" class="form-control">
               </div>
             </dd>
           </dl>
@@ -63,7 +63,7 @@
             <dd class="desc">
               <div class="col-sm-6">
                 <label class="tgl">
-                  <input type="checkbox" checked>
+                  <input id="facebook-cbx" type="checkbox">
                   <span class="tgl_body">
                     <span class="tgl_switch fb-btn"></span>
                     <span class="tgl_track">
@@ -71,10 +71,11 @@
                       <span class="tgl_bgd tgl_bgd-negative"></span>
                     </span>
                   </span>
-                  <span class="text">페이스북 계정 연동 해제하기</span>
+                  <span id="facebook-off" class="text">페이스북 계정 연동 해제하기</span>
+                  <span id="facebook-on" class="text">페이스북 계정 연동 하기</span>
                 </label>
                 <label class="tgl">
-                  <input type="checkbox" checked>
+                  <input id="kakao-cbx" type="checkbox">
                   <span class="tgl_body">
                     <span class="tgl_switch kakao-btn"></span>
                     <span class="tgl_track">
@@ -82,10 +83,11 @@
                       <span class="tgl_bgd tgl_bgd-negative"></span>
                     </span>
                   </span>
-                  <span class="text">카카오톡 계정 연동 해제하기</span>
+                  <span id="kakao-off" class="text">카카오톡 계정 연동 해제하기</span>
+                  <span id="kakao-on" class="text">카카오톡 계정 연동 하기</span>
                 </label>
                 <label class="tgl">
-                  <input type="checkbox" checked>
+                  <input id="naver-cbx" type="checkbox">
                   <span class="tgl_body">
                     <span class="tgl_switch naver-btn"></span>
                     <span class="tgl_track">
@@ -93,7 +95,8 @@
                       <span class="tgl_bgd tgl_bgd-negative"></span>
                     </span>
                   </span>
-                  <span class="text">네이버 계정 연동 해제하기</span>
+                  <span id="naver-off" class="text">네이버 계정 연동 해제하기</span>
+                  <span id="naver-on" class="text">네이버 계정 연동 하기</span>
                 </label>
               </div>
             </dd>
