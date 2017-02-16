@@ -1,11 +1,10 @@
 $(function () {
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
-        $('#header').html(result);
-        
+    	$('#header').html(result);
         // 
-     /*   $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	$('#header').html(result);
+        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+        	
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     			// 로그온 상태 출력 창을 감춘다.
     			$('#logon-state').css('display', 'none');
@@ -20,7 +19,7 @@ $(function () {
     		
     		// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
     		$('#logout-state').css('display', 'none');
-    		$('#logon-div span').text(ajaxResult.data.name);
+    		$('#logon-state span').text(ajaxResult.data.name);
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
@@ -29,7 +28,7 @@ $(function () {
     				location.href = '../main/main.html'
     			});
     		});
-    	  });*/
+    	  });
         
         //경매등록 입력시 팝업창 표시
         $('.form-control').popover();

@@ -18,6 +18,7 @@ public class AuthServiceImpl implements AuthService {
     HashMap<String,String> paramMap = new HashMap<>();
     paramMap.put("email", email);
     paramMap.put("password", password);
+    
     Member member = memberDao.getOneByEmailPassword(paramMap);
     if (member == null) {
       return null;
