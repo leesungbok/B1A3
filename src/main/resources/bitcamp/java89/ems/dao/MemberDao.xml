@@ -21,21 +21,13 @@
     <result column="naver"   property="naver"/>
   </resultMap>
   
-    <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
+  <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
     select 
       mno,
       email,
       nknm,
-      phon,
       pwd,
-      path,
-      pst_no,
-      bas_adr,
-      det_adr,
-      tel,
-      fcbk,
-      katok,
-      naver
+      path
     from memb
     where email=#{email} 
       and pwd=password(#{password})
@@ -56,6 +48,35 @@
   
   <select id="countPhone" parameterType="string" resultType="int">
     select count(*) from memb where phon=#{value}
+  </select>
+  
+  <update id="updatePhoto" parameterType="map">
+    update memb set
+      path=#{photoPath}
+    where email=#{email}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from memb where mno=#{value}
+  </delete>
+  
+  <select id="getOneByMemberNo" parameterType="int" resultMap="member-map">
+    select 
+      mno,
+      email,
+      nknm,
+      phon,
+      pwd,
+      path,
+      pst_no,
+      bas_adr,
+      det_adr,
+      tel,
+      fcbk,
+      katok,
+      naver
+    from memb
+    where mno=#{memberNo}
   </select>
 
 </mapper>

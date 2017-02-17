@@ -12,13 +12,23 @@ import bitcamp.java89.ems.service.MemberService;
 @RestController
 public class MypageJsonControl {
   @Autowired MemberService memberService;
-
-  @RequestMapping("mypage/getOne")
-  public AjaxResult getMemberInfo(HttpSession session) throws Exception {
+  
+  @RequestMapping("/mypage/updatePhoto")
+  public AjaxResult updatePhoto(String photoPath, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
-    if (member == null) {
-      return new AjaxResult(AjaxResult.FAIL, "로그인이 필요한 항목입니다."); 
+    if (memberService.updatePhoto(member.getEmail(), photoPath) == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "사진 변경 실패했습니다.");
     }
-    return new AjaxResult(AjaxResult.SUCCESS, member);
+    return new AjaxResult(AjaxResult.SUCCESS, "사진 변경 성공했습니다.");
+  }
+  
+  @RequestMapping("/mypage/delete")
+  public AjaxResult updatePhoto(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    if (memberService.delete(member.getMemberNo()) == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "회원 삭제 실패했습니다.");
+    }
+    session.invalidate();
+    return new AjaxResult(AjaxResult.SUCCESS, "회원 삭제 성공했습니다.");
   }
 }

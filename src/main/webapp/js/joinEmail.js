@@ -186,10 +186,14 @@ $(function() {
                 alert(ajaxResult.data);
                 return;
             }
-            swal("가입 완료!", "아래 확인버튼을 눌러 로그인 하세요.", "success");
-            $('.confirm').click(function() {
-                location.href = 'login.html';
-            })
+            swal({
+                title: "가입 완료!",
+                text: "가입하신 이메일로 로그인 하세요.",
+                timer: 2250,
+                showConfirmButton: false,
+                type: "success"
+            });
+            setTimeout(function(){location.href='login.html'} , 2250);
         }, 'json')
         
         event.preventDefault();

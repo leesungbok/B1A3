@@ -293,7 +293,7 @@ body>.container {
   font-size: 1.4em;
 }
 
-#icon-hammer, #icon-user-circle-o, #icon-edit {
+#icon-hammer, #icon-user-circle-o, #icon-edit, #logon-img, #icon-logout{
   display: inline-block;
   margin-left: 11px;
 }
@@ -302,7 +302,7 @@ body>.container {
 
 @media (max-width: 1217px) {
   .header-wrap {
-    width: auto;
+    width: auto !important;
   }
 }
 
@@ -339,5 +339,27 @@ input:focus::-webkit-input-placeholder
   width: 1200px;
   height: 75px;
   position: relative;
+}
+
+#logon-img {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  top: -2px;
+}
+
+#logon-nick-name {
+  color: #2f2f2f;
+  font-size: 1.2em;
+}
+
+#icon-logout:before {
+  content: '\e809';
+  font-family: fontello;
+  font-size: 1.4em;
+}
+
+#logout-state, #logon-state {
+  display: none;
 }
 /* 헤더 끝 */

@@ -28,25 +28,31 @@
        style='width: 290px; font-size: 1.15em; color: #f32e6d; border: 0px; outline: none;'>
       <a id='search-btn' href='#'>
         <span class="glyphicon glyphicon-search" aria-hidden="true"
-         style='padding: 30px 0px 0px 0px; font-size: 1.6em; color: #f32e6d;'></span>
+         style='padding: 30px 0px 0px 0px; font-size: 1.6em; color: #f32e6d; top: 4px;'></span>
       </a>
     </div>
   </div>
 
   <div class="btns">
-    <div id="icon-hammer"></div>
-    <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
-    <div id='logout-state' style='display: inline-block;'>
-    <div id="icon-user-circle-o"></div>
-    <a href='#' class='header-menu-a' id='login-btn'>로그인</a>
+    <!-- 비로그인 상태 -->
+    <div id='logout-state'>
+      <div id="icon-hammer"></div>
+      <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
+      <div id="icon-user-circle-o"></div>
+      <a href='#' class='header-menu-a' id='login-btn'>로그인</a>
+      <div id="icon-edit"></div>
+      <a href='#' class='header-menu-a' id='join-btn'>회원가입</a>
     </div>
-    <div id='logon-state' style='display: inline-block;'>
-    <div id="icon-user-circle-o"></div>
-    <span></span>
-    <a href='#' class='header-menu-a' id='logout-btn'>로그아웃</a>
-    </div> 
-    <div id="icon-edit"></div>
-    <a href='#' class='header-menu-a' id='join-btn'>회원가입</a>
+    
+    <!-- 로그인 상태 -->
+    <div id='logon-state'>
+      <div id="icon-hammer"></div>
+      <a href='#' class='header-menu-a' data-target="#add" data-toggle="modal">경매등록</a>
+      <img id="logon-img" class="img-circle"></img>
+      <span id="logon-nick-name"></span>
+      <span id="icon-logout"></span>
+      <a href='#' class='header-menu-a' id='logout-btn'>로그아웃</a>
+    </div>
   </div>
   
   <!-- 대화하기 시작 -->
