@@ -17,7 +17,7 @@ body > .next-class {
     /* border: 1px solid red; */
     /* background-color: #ffdead; */
     font-weight: bold;
-    margin: 50px 0 0px 0;
+    margin: 50px 0 25px 0;
     height: 40px;
     border-radius: 10px;
     text-align: center;
@@ -29,7 +29,7 @@ body > .next-class {
     /*border: 1px solid red;*/
     /* background-color: #e0ffff; */
     font-weight: bold;
-    margin: 10px 0 15px 0;
+    margin: 5px 0 0px 0;
     border-radius: 10px;
     text-align: center;
     font-size: 340%;
@@ -45,16 +45,20 @@ body > .next-class {
     /* border: 1px solid #ABABAB; */
     width: 550px;
     height: 390px;
+    margin: 10px 0;
 }
 
-.img-share1 {/* border: 1px solid red; */width: 35px;margin: 5px 10px 8px 10px;}
+.img-share1 {/* border: 1px solid red; */width: 35px;margin: 10px 10px 15px 10px;}
 .img-share2 {/* border: 1px solid red; */width: 20px;margin: 5px 3px 5px 3px;}
 
-h1 {margin-left: 35px;}
+h1 {margin-left: 35px;margin-bottom: 15px;}
+
+span {letter-spacing:-1px;}
 
 hr {margin-top: 10px;margin-bottom: 0px;}
 
 div.c1 {
+    border-radius: 5px;
     border: 1px solid #ABABAB;
     display: inline-block;
     float: left;
@@ -63,11 +67,13 @@ div.c1 {
 
 div.c2 {
     border: 1px solid #ABABAB;
-    margin: 50px 5px 0 30px;
+    border-radius: 5px;
+    margin: 75px 5px 0 30px;
+    padding-left: 10px;
     float: left;
     /* display:inline-block; */
     width: 345px;
-    height: 400px;
+    height: 500px;
     /* text-align: center; */
 }
 
@@ -95,7 +101,7 @@ div.c2 {
 }
 
 .d2 {
-    font-size: 20px;
+    font-size: 120%;
 }
 
 .next-list {
@@ -207,20 +213,22 @@ div.next-class12 {
 
 .n1-1 {
     /*border: 1px solid red;*/
-    font-size: 25px;
+    font-size: 160%;
     font-weight: bold;
     color: red;
 }
 
 .n1-2 {
     border: 1px solid #ABABAB;
+    margin: 5px 0;
     width: 210px;
     height: 140px;
 }
 
 .n1-3 {
-    /*border: 1px solid red;*/
+    /* border: 1px solid red; */
     font-weight: bold;
+    font-size: 130%;
 }
 
 .n1-4 {
