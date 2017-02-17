@@ -362,4 +362,8 @@ input:focus::-webkit-input-placeholder
 #logout-state, #logon-state {
   display: none;
 }
+
+#logon-img, #logon-nick-name {
+  cursor: pointer
+}
 /* 헤더 끝 */
