@@ -1,11 +1,5 @@
 @CHARSET "UTF-8";
 
-@import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
-
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: small;
-}
 .body-contents {
 	width: 100%;
 }
@@ -36,8 +30,10 @@ body>.container {
   float: right;
 }
 
-.img-circle {
+.image-btn>.img-circle {
   box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.29);
+  width: 150px;
+  height: 150px;
 }
 
 #icon-camera-alt:before {
@@ -60,9 +56,9 @@ text-decoration: none;
 
 .image-upload {
   position: absolute;
-  top: 19.5%;
+  top: 28.5%;
   width: 150px;
-  height: 219px;
+  height: 171px;
   opacity: 0;
 }
 
@@ -186,7 +182,25 @@ input[type=password], input[type=text] {
   display: none;
 }
 
-/* input type='number' 인경우 숫자 증가감소 버튼 감추기 시작*/
+
+/* sweet-alert */
+.sweet-alert {
+  font-family: 'Noto Sans KR';
+  margin-left: -239px;
+}
+
+.sweet-alert .sa-icon.sa-success {
+    border-color: rgba(243, 46, 109, 0.38);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: rgb(243, 46, 109);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid rgba(243, 46, 109, 0.38);
+}
+
 input[type=number]::-webkit-inner-spin-button { 
   -webkit-appearance: none;
   cursor:pointer;
@@ -214,7 +228,6 @@ input[type=number]::-webkit-inner-spin-button:after {
   bottom:0px;
   -webkit-transform: rotate(180deg);
 }
-/* input type='number' 인경우 숫자 증가감소 버튼 감추기 끝*/
 
 /* Tabs panel */
 .tabbable-panel {

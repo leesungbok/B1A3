@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <title>나의 설정</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css" type="text/css">
   <link rel="stylesheet" href="../font/fontello.css">
   <link rel="stylesheet" href="../css/toggle.css">
+  <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/mypage.css">
   <link rel="stylesheet" href="../css/mysettings.css">
 </head>
@@ -24,7 +25,7 @@
             <span>회원탈퇴</span>
           </a>
           <a href="" class="image-btn">
-            <img id="photo-img" src="../image/user.png" class="img-circle">
+            <img id="photo-img" class="img-circle">
             <span id="icon-camera-alt"></span>
             <input type="file" name='files' class="image-upload" accept="image/*">
             <input type='hidden' id='photo-path'>
@@ -117,26 +118,32 @@
             </dd>
           </dl>
           <dl class="dl-horizontal">
-            <dt class="term">전화번호</dt>
+            <dt class="term">*휴대폰번호</dt>
             <dd class="desc">
-            <div class="col-sm-6">
+<!--             <div class="col-sm-6">
                 <input type="number" class="form-control tel">
               <span class="dash">-</span>
                 <input type="number" class="form-control tel">
               <span class="dash">-</span>
                 <input type="number" class="form-control tel">
+            </div> -->
+            <div class="col-sm-4">
+              <input id="cell-phone" type="number" class="form-control">
             </div>
             </dd>
           </dl>
           <dl class="dl-horizontal">
-            <dt class="term">*휴대전화</dt>
+            <dt class="term">전화번호</dt>
             <dd class="desc">
-            <div class="col-sm-6">
+<!--             <div class="col-sm-6">
                 <input type="number" class="form-control tel">
               <span class="dash">-</span>
                 <input type="number" class="form-control tel">
               <span class="dash">-</span>
                 <input type="number" class="form-control tel">
+            </div> -->
+            <div class="col-sm-4">
+              <input id="home-telephone"type="number" class="form-control">
             </div>
             </dd>
           </dl>
@@ -149,8 +156,9 @@
     </div>
   </div>
 
-  <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
   <script src="../node_modules/blueimp-load-image/js/load-image.js"></script>
   <script src="../node_modules/blueimp-load-image/js/load-image-meta.js"></script>

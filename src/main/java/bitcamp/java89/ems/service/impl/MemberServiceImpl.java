@@ -1,5 +1,8 @@
 package bitcamp.java89.ems.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +28,23 @@ public class MemberServiceImpl implements MemberService {
     } else /* (type.equals("phoneNo")) */ {
       return memberDao.countPhone(data);
     }
+  }
+
+  @Override
+  public int updatePhoto(String email, String photoPath) throws Exception {
+    Map<String, String> paramMap = new HashMap<>();
+    paramMap.put("email", email);
+    paramMap.put("photoPath", photoPath);
+    return memberDao.updatePhoto(paramMap);
+  }
+
+  @Override
+  public int delete(int memberNo) throws Exception {
+    return memberDao.delete(memberNo);
+  }
+
+  @Override
+  public Member getOne(int memberNo) throws Exception {
+    return memberDao.getOneByMemberNo(memberNo);
   }
 }

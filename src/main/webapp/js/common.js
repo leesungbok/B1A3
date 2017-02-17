@@ -5,6 +5,7 @@ $(function () {
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	
+            var member = ajaxResult.data;
         	$('[data-target]').click(function(){ 
         	
 	        	if (ajaxResult.status == "fail") {
@@ -15,7 +16,7 @@ $(function () {
         	});
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     			// 로그온 상태 출력 창을 감춘다.
-    			$('#logon-state').css('display', 'none');
+    			$('#logout-state').css('display', 'inline-block');
     			
     			// 로그인 버튼의 클릭 이벤트 핸들러 등록하기
     			$('#login-btn').click(function(event) {
@@ -26,12 +27,18 @@ $(function () {
     		}
     		
     		// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
-    		$('#logout-state').css('display', 'none');
-    		$('#logon-state span').text(ajaxResult.data.nickName);
+    		$('#logon-state').css('display', 'inline-block');
+    		
+    		if (member.photoPath == null) {
+    		    $('#logon-img').attr('src', '../image/user.png');
+    		} else {
+    		    $('#logon-img').attr('src', '../image/' + member.photoPath);
+    		}
+    		
+    		$('#logon-nick-name').text(member.nickName);
     		
     		// 로그인 시 회원가입 화면 없애기
-    		$('#icon-edit').css('display', 'none');
-    		$('#join-btn').css('display', 'none');
+    		$('#logout-state').css('display', 'none');
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
@@ -40,7 +47,14 @@ $(function () {
     				location.href = '../auth/login.html'
     			});
     		});
-    
+    		
+    		$('#logon-img').click(function() {
+    		    location.href = '../mypage/mysettings.html?submenu=myoption'
+    		})
+            
+    		$('#logon-nick-name').click(function() {
+                location.href = '../mypage/mysettings.html?submenu=myoption'
+            })
     	  });
 
 		//경매등록 입력시 팝업창 표시
