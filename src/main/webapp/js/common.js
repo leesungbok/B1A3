@@ -5,6 +5,13 @@ $(function () {
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	
+        	$('[data-target]').click(function(){ 
+        	
+	        	if (ajaxResult.status == "fail") {
+	        		location.href='../auth/login.html';
+	        	}
+	        	
+        	});
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     			// 로그온 상태 출력 창을 감춘다.
     			$('#logon-state').css('display', 'none');
@@ -19,20 +26,21 @@ $(function () {
     		
     		// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
     		$('#logout-state').css('display', 'none');
-    		$('#logon-state span').text(ajaxResult.data.name);
+    		$('#logon-state span').text(ajaxResult.data.nickName);
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
     			event.preventDefault()
     			$.getJSON('../auth/logout.json', function(ajaxResult) {
-    				location.href = '../main/main.html'
+    				location.href = '../auth/login.html'
     			});
     		});
+    
     	  });
-        
-        //경매등록 입력시 팝업창 표시
-        $('.form-control').popover();
-        
+
+		//경매등록 입력시 팝업창 표시
+		$('.form-control').popover();
+
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
             location.href = "../auth/login.html";
