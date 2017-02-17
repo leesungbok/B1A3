@@ -217,10 +217,6 @@
             <label class="col-sm-2 control-label">사진</label>
             <div class="col-sm-10" id="file-selector">
               <input id="fileupload" type="file" name="files" multiple="multiple"><br>
-              <input type="hidden" id="photo-path1">
-              <input type="hidden" id="photo-path2">
-              <input type="hidden" id="photo-path3">
-              <input type="hidden" id="photo-path4">
               <div id='images-div'></div>
             </div>
           </div>
@@ -440,7 +436,7 @@ $(function(){
 $('#fileupload').fileupload({
 	url: '../common/fileupload.json',        // 서버에 요청할 URL
 	dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
-	sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+	sequentialUploads: false,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
 	singleFileUploads: true, // 한 요청에 여러 개의 파일을 전송시키기.
   autoUpload: true,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
 	disableImageResize: /Android(?!.*Chrome)|Opera/
@@ -465,14 +461,12 @@ $('#fileupload').fileupload({
     };
   }, 
 	done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-		$('#photo-path1').val(data.result.data[0]);
-		$('#photo-path2').val(data.result.data[1]);
-		$('#photo-path3').val(data.result.data[2]);
-		$('#photo-path4').val(data.result.data[3]);
-		
 		console.log('done()...');
-    console.log(data.result.data);
-    var param = data.result.data[0];
+		$('<input>', {
+		    type: 'hidden',
+		    class: 'photoPath',
+		    value: data.result.data[0]
+		}).appendTo('#file-selector');
     /* $.each(data.result.data, function(index, param) {
       if (param.filename) {
           $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);

@@ -2,25 +2,19 @@ package bitcamp.java89.ems.domain;
 
 import java.io.Serializable;
 
-public class Photo implements Serializable{
+public class Photo implements Serializable {
   private static final long serialVersionUID = 1L;
-  
-  protected int no;
+
+  protected int    photoNo;
   protected String filePath;
-  protected int ownerNo;
-  
-  public Photo() {}
-  
-  public Photo(String filePath) {
-    this.filePath = filePath;
+  protected int    itemNo;
+
+  public int getPhotoNo() {
+    return photoNo;
   }
 
-  public int getNo() {
-    return no;
-  }
-
-  public void setNo(int no) {
-    this.no = no;
+  public void setPhotoNo(int photoNo) {
+    this.photoNo = photoNo;
   }
 
   public String getFilePath() {
@@ -31,13 +25,11 @@ public class Photo implements Serializable{
     this.filePath = filePath;
   }
 
-  public int getOwnerNo() {
-    return ownerNo;
+  public int getItemNo() {
+    return itemNo;
   }
 
-  public void setOwnerNo(int ownerNo) {
-    this.ownerNo = ownerNo;
+  public void setItemNo(int itemNo) {
+    this.itemNo = itemNo;
   }
-  
-
 }

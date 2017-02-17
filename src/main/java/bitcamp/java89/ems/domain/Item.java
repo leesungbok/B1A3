@@ -16,17 +16,7 @@ public class Item implements Serializable{
   protected String content;
   protected String startTime;
   protected int startPrice;
-  protected String photoPath;
   protected List<Photo> photoList;
-  
-  
-  
-  public String getPhotoPath() {
-    return photoPath;
-  }
-  public void setPhotoPath(String photoPath) {
-    this.photoPath = photoPath;
-  }
   
   public List<Photo> getPhotoList() {
     return photoList;
