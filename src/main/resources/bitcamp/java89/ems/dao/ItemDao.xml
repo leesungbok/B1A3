@@ -17,6 +17,10 @@
     <result column="time"        property="startTime"/>
     <result column="stpc"        property="startPrice"/>
     
+    <collection property="photoList" ofType="photo">
+      <id     column="pno"     property="no"/>
+      <result column="path"     property="filePath"/>
+    </collection>
   </resultMap>
   
   
@@ -39,6 +43,15 @@
   </update> 
 
   <delete id="delete" parameterType="int">
-    delete from item where itno=#{value}
+    delete from item where no=#{value}
   </delete>
+  
+  <insert id="insertPhoto" parameterType="item">
+    insert into phot(itno,path) 
+    values
+    <foreach collection="photoList" item="photo" separator=",">
+      (#{memberNo}, #{photo.filePath})
+    </foreach>
+  </insert> 
+  
 </mapper>

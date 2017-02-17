@@ -1,5 +1,7 @@
 package bitcamp.java89.ems.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,16 @@ public class ItemServiceImpl implements ItemService{
   @Override
   public int delete(int itemNo) throws Exception {
     return itemDao.delete(itemNo);
+  }
+
+  @Override
+  public List<Item> getList() throws Exception {
+    return itemDao.getList();
+  }
+
+  @Override
+  public Item getDetail(int no) throws Exception {
+    return itemDao.getOne(no);
   }
 
 }

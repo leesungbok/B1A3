@@ -26,7 +26,7 @@ public class CommonJsonControl {
       for (MultipartFile file : files) {
         if (file.getSize() > 0) {
           String newFilename = MultipartUtil.generateFilename();
-          file.transferTo(new File(sc.getRealPath("/image/" + newFilename)));
+          file.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
           filenames.add(newFilename);
         }
       }
