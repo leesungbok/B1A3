@@ -189,9 +189,8 @@ body {
   width: 100%;
 }
 
-
 .container-big {
-	width:960px;
+	width:960px !important;
 	margin:auto;
   display: table-cell;
   padding: 1em;
@@ -204,41 +203,12 @@ body {
 }
 h1.heading {
   color: #fff;
-  font-size: 1.15em;
+  font-size: 3em;
   font-weight: 900;
   margin: 0 0 0.5em;
   color: #505050;
 }
-@media (min-width: 450px) {
-  h1.heading {
-    font-size: 3.55em;
-  }
-}
-@media (min-width: 760px) {
-  h1.heading {
-    font-size: 3.05em;
-  }
-}
-@media (min-width: 900px) {
-  h1.heading {
-    font-size: 3.25em;
-    margin: 0 0 0.3em;
-  }
-} 
 
-.container {
-  .container-fixed();
-
-  @media (min-width: @screen-sm-min) {
-    width: 960px;
-  }
-  @media (min-width: @screen-md-min) {
-    width: 960px;
-  }
-  @media (min-width: @screen-lg-min) {
-    width: 960px;
-  }
-}
 .carbox {
   display: block; 
     margin-bottom: 20px;

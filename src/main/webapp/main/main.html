@@ -25,7 +25,8 @@
 	    <span style='font-size: 2.0em; margin-top: 20px;'>온라인 실시간 경매중!</span>
 	    <span style='font-size: 2.0em; margin-top: 20px; color:#e74c3c;'>ON AIR!</span>
     <div class="nav">
-	    <p id="timer"><span id="blink-text" style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'></span></p>
+	    <p id="showCountdown" style='display:inline-block; font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'></p>
+	    <span style='display:inline-block; font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>남음</span>
     </div>
   </div>
   <!-- 시간헤더 끝-->
@@ -427,6 +428,44 @@ $(function(){
 });
 </script> -->
 <script src="../js/main.js"></script>
+<script>
+function countdown(elelmentId, milliseconds) {
+	var element, endTime, mins, seconds, millisecond, msLeft, time;
+	
+	function updateTimer(){
+		msLeft = endTime -(+new Date);
+		if ( msLeft < 0) {
+			return msLeft;
+		} else {
+			time = 
+		}
+	}
+}
+</script>
+<script>
+function countdown( elementId, seconds ){
+	  var element, endTime, hours, mins, msLeft, time;
+
+	  function updateTimer(){
+	    msLeft = endTime - (+new Date);
+	    if ( msLeft < 0 ) {
+	      console.log('done');
+	    } else {
+	      time = new Date( msLeft );
+	      hours = time.getUTCHours();
+	      mins = time.getUTCMinutes();
+	      element.innerHTML = (hours ? hours + ':' + ('0' + mins).slice(-2) : mins) + ':' + ('0' + time.getUTCSeconds()).slice(-2);
+	      setTimeout( updateTimer, time.getUTCMilliseconds());
+	    }
+	  }
+
+	  element = document.getElementById( elementId );
+	  endTime = (+new Date) + 1000 * seconds;
+	  updateTimer();
+	}
+
+	countdown('countdown', 43200);	 // second base
+</script>
 <script>
 $('#fileupload').fileupload({
 	url: '../common/fileupload.json',        // 서버에 요청할 URL
