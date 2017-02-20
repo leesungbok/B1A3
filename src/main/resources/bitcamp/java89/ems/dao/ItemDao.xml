@@ -6,52 +6,52 @@
 <mapper namespace="bitcamp.java89.ems.dao.ItemDao">
 
   <resultMap type="item" id="item-map">
-    <id     column="itno"        property="itemNo"/>
-    <result column="mno"       property="memberNo"/>
-    <result column="titl"       property="title"/>
-    <result column="categ"      property="category"/>
-    <result column="buy"        property="buyDate"/>
-    <result column="day"        property="useDay"/>
-    <result column="deal"        property="deal"/>
-    <result column="cont"        property="content"/>
-    <result column="time"        property="startTime"/>
-    <result column="stpc"        property="startPrice"/>
-    
+    <id     column="itno"  property="itemNo"/>
+    <result column="mno"   property="memberNo"/>
+    <result column="titl"  property="title"/>
+    <result column="categ" property="category"/>
+    <result column="buy"   property="buyDate"/>
+    <result column="day"   property="useDay"/>
+    <result column="deal"  property="deal"/>
+    <result column="cont"  property="content"/>
+    <result column="time"  property="startTime"/>
+    <result column="stpc"  property="startPrice"/>
+
     <collection property="photoList" ofType="photo">
-      <id     column="pno"     property="no"/>
-      <result column="path"     property="filePath"/>
+      <id     column="pno"  property="photoNo"/>
+      <result column="path" property="filePath"/>
     </collection>
   </resultMap>
-  
-  
-  <insert id="insert" parameterType="item">
+
+  <insert id="insert" parameterType="item"
+  useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
     insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
     values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice})
-  </insert> 
-  
-  <update id="update" parameterType="item">
-    update item set
-      titl=#{title}, 
-      categ=#{category}, 
-      buy=#{buyDate}, 
-      day=#{useDay}, 
-      deal=#{deal}, 
-      cont=#{content}, 
-      time=#{startTime}, 
-      stpc=#{startPrice}
-    where itno=#{itemNo}
-  </update> 
+  </insert>
 
-  <delete id="delete" parameterType="int">
-    delete from item where no=#{value}
-  </delete>
-  
   <insert id="insertPhoto" parameterType="item">
     insert into phot(itno,path) 
     values
     <foreach collection="photoList" item="photo" separator=",">
-      (#{memberNo}, #{photo.filePath})
+      (#{itemNo}, #{photo.filePath})
     </foreach>
-  </insert> 
-  
+  </insert>
+
+  <update id="update" parameterType="item">
+    update item set
+      titl=#{title},
+      categ=#{category},
+      buy=#{buyDate},
+      day=#{useDay},
+      deal=#{deal},
+      cont=#{content},
+      time=#{startTime},
+      stpc=#{startPrice}
+    where itno=#{itemNo}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from item where no=#{value}
+  </delete>
+
 </mapper>

@@ -84,6 +84,11 @@ public class Item implements Serializable{
   public void setStartPrice(int startPrice) {
     this.startPrice = startPrice;
   }
-  
 
+  @Override
+  public String toString() {
+    return "Item [itemNo=" + itemNo + ", memberNo=" + memberNo + ", title=" + title + ", category=" + category
+        + ", buyDate=" + buyDate + ", useDay=" + useDay + ", deal=" + deal + ", content=" + content + ", startTime="
+        + startTime + ", startPrice=" + startPrice + ", photoList=" + photoList + "]";
+  }
 }

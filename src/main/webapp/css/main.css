@@ -170,6 +170,10 @@
 .jscroll-added {
   margin-bottom: 5%;
 }
+
+.carousel-inner {
+  cursor: pointer;
+}
 /* 인스타공유
        #instaPics {  
             max-width: 320px;  

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>이거어때</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css" type="text/css">
 <link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
 <link href="../font/fontello.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
@@ -40,30 +41,28 @@
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
       </ol>
-      <a href="" data-toggle="modal" data-target="#detail">
-        <div class="carousel-inner" role="listbox" style='margin:10px 0px 0px 23px;'>
-          <div class="item active">
-            <img src="../image/kettle1.jpg">
-            <div class="carousel-caption">
-            </div>
-          </div>
-          <div class="item">
-            <img src="../image/kettle2.jpg">
-            <div class="carousel-caption">
-            </div>
-          </div>
-          <div class="item">
-            <img src="../image/kettle3.jpg">
-            <div class="carousel-caption">
-            </div>
-          </div>
-          <div class="item">
-            <img src="../image/kettle4.jpg">
-            <div class="carousel-caption">
-            </div>
+      <div data-toggle="modal" data-target="#detail" class="carousel-inner" role="listbox" style='margin:10px 0px 0px 23px;'>
+        <div class="item active">
+          <img src="../image/kettle1.jpg">
+          <div class="carousel-caption">
           </div>
         </div>
-      </a>
+        <div class="item">
+          <img src="../image/kettle2.jpg">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../image/kettle3.jpg">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../image/kettle4.jpg">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
     </div>
     <div id='decs-content'>
       <div class="title" style='text-align:center; margin-top:9px;'>
@@ -174,255 +173,25 @@
 </div>
 <!-- 다음경매 무한 스크롤 끝-->
 
-
 <!-- 경매등록 -->
-<div class="modal fade" tabindex="-1" role="dialog" id="add">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-
-      <div class="modal-header" id="add-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h2>경매등록</h2>
-      </div>
-
-      <div class="modal-body" id="add-body">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">상품명</label>
-            <div class="col-sm-10">
-              <input id="titl" type="text" class="form-control" placeholder="[MAC] Pro Retina 13.3"
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">카테고리</label>
-            <div class="col-sm-10">
-              <select id="categ">
-                <option value='패션'>패션</option>
-                <option value='가방'>가방</option>
-                <option value='가구'>가구</option>
-                <option value='취미'>취미</option>
-                <option value='디지털'>디지털</option>
-                <option value='컴퓨터'>컴퓨터</option>
-                <option value='레져'>레져</option>
-                <option value='생활품'>생활품</option>
-                <option value='도서'>도서</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">사진</label>
-            <div class="col-sm-10" id="file-selector">
-              <input id="fileupload" type="file" name="files" multiple="multiple"><br>
-              <div id='images-div'></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">시작가</label>
-            <div class="col-sm-10">
-              <input id="stpc"type="number" class="form-control" placeholder="80000"
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">구입시기</label>
-            <div class="col-sm-10">
-              <input id="buy" type="date" class="form-control"
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">사용일수</label>
-            <div class="col-sm-10">
-              <input id="day" type="number" class="form-control" placeholder="365"
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">상세설명</label>
-            <div class="col-sm-10">
-              <textarea id="cont" class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중"></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">거래방식</label>
-            <div class="col-sm-10" style="margin-left:-115px">
-              <select id="deal">
-                <option value='택배'>택배</option>
-                <option value='직거래'>직거래</option>
-                <option value='택배 또는 직거래'>택배 또는 직거래</option>
-              </select>
-              <!-- <label class="radio-inline"><input id="deal1" type="radio" name="optradio" checked>택배</label>
-              <label class="radio-inline"><input id="deal2" type="radio" name="optradio">직거래</label>
-              <label class="radio-inline"><input id="deal3" type="radio" name="optradio">택배 또는 직거래</label> -->
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="modal-footer" id="add-footer">
-        <button id="add-btn" type="button" class="btn btn-primary btn-lg">등록</button>
-        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">취소</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 경매등록 끝 -->
+<div class="bid-regist"></div>
 
 <!-- 현재경매 상세보기 -->
-<div class="modal fade bs-example-modal-lg" id="detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-head" id="detail-head">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h1>00:05:22 남음</h1>
-      </div>
-      <div class="modal-body" id="detail-body">
-        <div id="detail-photo" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#detail-photo" data-slide-to="0" class="active"></li>
-            <li data-target="#detail-photo" data-slide-to="1"></li>
-            <li data-target="#detail-photo" data-slide-to="2"></li>
-            <li data-target="#detail-photo" data-slide-to="3"></li>
-          </ol>
+<div class="bid-current"></div>
 
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="../image/kettle1.jpg">
-            </div>
-            <div class="item">
-              <img src="../image/kettle2.jpg">
-            </div>
-            <div class="item">
-              <img src="../image/kettle3.jpg">
-            </div>
-            <div class="item">
-              <img src="../image/kettle4.jpg">
-            </div>
-          </div>
-
-          <a class="left carousel-control" href="#detail-photo" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          </a>
-          <a class="right carousel-control" href="#detail-photo" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div class="bid-content">
-          <div class="title">
-            <span>[드롱기] 주전자</span>
-            <img src="../image/empty-heart.gif">
-            <img src="../image/facebook.png" class="img-rounded">
-            <img src="../image/kakaostory.png" class="img-rounded">
-          </div>
-
-          <dl class="dl-horizontal">
-            <dt class="term">현재가</dt>
-            <dd class="desc">
-              <span class="present_num">90,000원</span>
-              <div class="startprice">
-                <span class="start_num">시작가 80,000원</span>
-              </div>
-            </dd>
-            <dt class="term">입찰수</dt>
-            <dd class="desc">
-              <div class="ddvalue">
-                <span>17회<u id="record">입찰기록</u></span>
-              </div>
-            </dd>
-          </dl>
-
-          <dl class="dl-horizontal">
-            <dt class="term">구입시기</dt>
-            <dd class="desc">
-              <div class="ddvalue">
-                <span>2016.02.21</span>
-              </div>
-            </dd>
-            <dt class="term">사용일수</dt>
-            <dd class="desc">
-              <div class="ddvalue">
-                <span>337일</span>
-              </div>
-            </dd>
-          </dl>
-
-          <dl class="dl-horizontal">
-            <dt class="term">거래방식</dt>
-            <dd class="desc">
-              <div class="ddvalue">
-                <span>택배 또는 직거래</span>
-              </div>
-            </dd>
-            <dt class="term">판매자</dt>
-            <dd class="desc">
-              <div class="ddvalue">
-                <span>sungboklee</span>
-              </div>
-            </dd>
-          </dl>
-
-          <div id="bid-btn">
-            <button type="button" class="btn btn-primary btn-lg">입찰하기</button>
-          </div>
-        </div>
-
-      </div>
-      <div class="modal-footer" id="detail-footer">
-        <div class="detail-info">
-          <span>상세정보</span>
-        </div>
-        <div class="sellrcontents">
-          - 용량: 1.7L<br>
-          - 고급스러운 디자인과 부드러운 곡선 디테일<br>HHHHH
-          - 360도 회전식 받침대 : 분리 가능하며 무선이라 더욱 간편하게 사용<br>
-          - 수위 표시창<br>
-          - 스테인리스 스틸 재질의 평면 가열 열판<br>
-          - 3단계 안전 시스템:<br>
-          1) 물이 끓으면 자동으로 전원 차단<br>
-          2) 온도 센서를 통한 전원 제어<br>
-          3) 본체가 받침대에서 분리될 시 자동으로 전원 차단<br>
-          - 분리 및 세척 가능한 거름망<br>
-          - 간편한 코드 보관<br>
-          - 미끄럼 방지 바닥<br>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 현재경매 상세보기 끝 -->
-
-<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <!-- 경매등록시 사진첨부 관련 js -->
-<!-- <script src="../node_modules/bootstrap-fileinput/js/fileinput.js"></script>-->
+<script src="../node_modules/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script src="../js/kr.js"></script>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="../node_modules/blueimp-load-image/js/load-image.js"></script>
-<script src="../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
-<script src="../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
-<script src="../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
-<script src="../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
-<script src="../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-<script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
-<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>  
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- 다음경매 무한 스크롤 관련 js -->
 <script src="../node_modules/jscroll/jquery.jscroll.min.js"></script>
 <script src="../js/common.js"></script>
-<!-- 경매등록시 사진첨부 관련 js 한국어 설정 -->
-<!-- <script src="../js/kr.js"></script> -->
+<script src="../js/main.js"></script>
 
 <!-- <script>
 $(function(){ 
@@ -431,62 +200,6 @@ $(function(){
  }, 500);
 });
 </script> -->
-<script src="../js/main.js"></script>
-<script>
-$('#fileupload').fileupload({
-	url: '../common/fileupload.json',        // 서버에 요청할 URL
-	dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
-	sequentialUploads: false,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
-	singleFileUploads: true, // 한 요청에 여러 개의 파일을 전송시키기.
-  autoUpload: true,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
-	disableImageResize: /Android(?!.*Chrome)|Opera/
-        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
-  previewMaxWidth: 800,   // 미리보기 이미지 너비
-  previewMaxHeight: 800,  // 미리보기 이미지 높이 
-  previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
-  processalways: function(e, data) {
-	    var imagesDiv = $('#images-div');
-	    var canvas = data.files[0].preview;
-	    var dataURL = canvas.toDataURL();
-	    $("<img>").attr('src', dataURL).css('width', '100px').appendTo(imagesDiv);
-	    $('#upload-btn').click(function() {
-	        data.submit();
-	    });
-	}, 
-	submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
-    console.log('submit()...');
-    data.formData = {
-        name: $('#name').val(),
-        age: $('#age').val()
-    };
-  }, 
-	done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-		console.log('done()...');
-		$('<input>', {
-		    type: 'hidden',
-		    class: 'photoPath',
-		    value: data.result.data[0]
-		}).appendTo('#file-selector');
-    /* $.each(data.result.data, function(index, param) {
-      if (param.filename) {
-          $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);
-      } else {
-          $('<p/>').text(param.name + " : " + param.value).appendTo(document.body);
-      }
-    }); */
-  }
-});
-
-</script>
-<script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id =id;
-  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
 
 <!-- 인스타공유 <script>  
    (function($) {  
@@ -530,24 +243,6 @@ $('#fileupload').fileupload({
    });  
    </script> 
  -->
-<script>
-var nav = $('.nav');
-
-$(window).scroll(function () {
-    if ($(this).scrollTop() > 130) {
-        nav.addClass("f-nav");
-    } else {
-        nav.removeClass("f-nav");
-    }
-});
-
-// 다음경매 무한 스크롤
-$('.next-bidlist').jscroll({
-    // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
-    autoTriggerUntil : 6
-});
-</script>
-
 
 </body>
 </html>
