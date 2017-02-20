@@ -1,5 +1,8 @@
 package bitcamp.java89.ems.control.json;
 
+import java.util.List;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,13 @@ import bitcamp.java89.ems.service.ItemService;
 @RestController
 public class ItemJsonControl {
   @Autowired ItemService itemService;
+  @Autowired ServletContext sc;
+  
+  @RequestMapping("/main/list")
+  public AjaxResult list() throws Exception {
+    List<Item> list = itemService.getList();
+    return new AjaxResult(AjaxResult.SUCCESS, list);
+  }
   
   @RequestMapping("/main/add")
   public AjaxResult add(Item item, HttpSession session) throws Exception {
@@ -26,6 +36,24 @@ public class ItemJsonControl {
     itemService.add(item);
     return new AjaxResult(AjaxResult.SUCCESS, "경매등록이 완료되었습니다.");
   }
+  
+  
+/*  @RequestMapping("/main/add")
+  public AjaxResult add(Item item, MultipartFile[] photo) throws Exception {
+    ArrayList<Photo> photoList = new ArrayList<>();
+    for (MultipartFile file : photo) {
+      if (file.getSize() > 0) { 
+        String newFilename = MultipartUtil.generateFilename();    
+       file.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+        photoList.add(new Photo(newFilename));
+        }
+    }
+    item.setPhotoList(photoList);
+    itemService.add(item);
+    return new AjaxResult(AjaxResult.SUCCESS, "경매등록이 완료되었습니다.");
+  }*/
+  
+  
   
 //  @RequestMapping("/main/update")
 //  public AjaxResult update(Item item) throws Exception {

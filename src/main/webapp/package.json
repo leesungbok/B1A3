@@ -1,7 +1,6 @@
 {
   "name": "webapp",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,7 @@
     "jquery": "^1.12.4",
     "jscroll": "^2.3.7",
     "sweetalert": "^1.1.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

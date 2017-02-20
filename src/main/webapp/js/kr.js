@@ -64,13 +64,13 @@
     };
 })(window.jQuery);
 
-// 사진추가 관련 코드입니다.
+//사진추가 관련 코드입니다.
 $(document).on('ready', function () {
     $("#input-4").fileinput({
         showCaption : false,
         showUpload : false,
         language : "kr",
-        uploadUrl : "/file-upload-batch/2",
+        uploadUrl : "/common/fileupload",
         allowedFileExtensions : [ "jpg", "png", "gif", "jpeg" ],
         maxFileCount : 4
     });

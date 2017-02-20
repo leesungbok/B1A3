@@ -1,6 +1,7 @@
 package bitcamp.java89.ems.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Item implements Serializable{
   private static final long serialVersionUID = 1L;
@@ -15,8 +16,14 @@ public class Item implements Serializable{
   protected String content;
   protected String startTime;
   protected int startPrice;
+  protected List<Photo> photoList;
   
-  
+  public List<Photo> getPhotoList() {
+    return photoList;
+  }
+  public void setPhotoList(List<Photo> photoList) {
+    this.photoList = photoList;
+  }
   public int getMemberNo() {
     return memberNo;
   }

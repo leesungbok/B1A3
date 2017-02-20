@@ -25,7 +25,7 @@
 	    <span style='font-size: 2.0em; margin-top: 20px;'>온라인 실시간 경매중!</span>
 	    <span style='font-size: 2.0em; margin-top: 20px; color:#e74c3c;'>ON AIR!</span>
     <div class="nav">
-	    <p><span id="blink-text" style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'>00:05:20 남음</span></p>
+	    <p id="timer"><span id="blink-text" style='font-weight: bold; font-size: 5em; margin-top: 20px; color:#f32e6d;'></span></p>
     </div>
   </div>
   <!-- 시간헤더 끝-->
@@ -200,7 +200,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">카테고리</label>
             <div class="col-sm-10">
-            <select id="categ">
+              <select id="categ">
                 <option value='패션'>패션</option>
                 <option value='가방'>가방</option>
                 <option value='가구'>가구</option>
@@ -216,9 +216,8 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">사진</label>
             <div class="col-sm-10" id="file-selector">
-              <input id="input-4" name="input4[]" type="file" multiple class="file-loading"
-              data-toggle="popover" data-placement="left" data-trigger="focus"
-              data-content="테스트중">
+              <input id="fileupload" type="file" name="files" multiple="multiple"><br>
+              <div id='images-div'></div>
             </div>
           </div>
           <div class="form-group">
@@ -255,7 +254,7 @@
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">거래방식</label>
-            <div class="radio">
+            <div class="col-sm-10" style="margin-left:-115px">
               <select id="deal">
                 <option value='택배'>택배</option>
                 <option value='직거래'>직거래</option>
@@ -404,14 +403,26 @@
 
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <!-- 경매등록시 사진첨부 관련 js -->
-<script src="../node_modules/bootstrap-fileinput/js/fileinput.js"></script>
+<!-- <script src="../node_modules/bootstrap-fileinput/js/fileinput.js"></script>-->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+<script src="../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>  
+
 <!-- 다음경매 무한 스크롤 관련 js -->
 <script src="../node_modules/jscroll/jquery.jscroll.min.js"></script>
 <script src="../js/common.js"></script>
 <!-- 경매등록시 사진첨부 관련 js 한국어 설정 -->
-<script src="../js/kr.js"></script>
+<!-- <script src="../js/kr.js"></script> -->
 
 <!-- <script>
 $(function(){ 
@@ -421,6 +432,52 @@ $(function(){
 });
 </script> -->
 <script src="../js/main.js"></script>
+<script>
+$('#fileupload').fileupload({
+	url: '../common/fileupload.json',        // 서버에 요청할 URL
+	dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+	sequentialUploads: false,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+	singleFileUploads: true, // 한 요청에 여러 개의 파일을 전송시키기.
+  autoUpload: true,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+	disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+  previewMaxWidth: 800,   // 미리보기 이미지 너비
+  previewMaxHeight: 800,  // 미리보기 이미지 높이 
+  previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+  processalways: function(e, data) {
+	    var imagesDiv = $('#images-div');
+	    var canvas = data.files[0].preview;
+	    var dataURL = canvas.toDataURL();
+	    $("<img>").attr('src', dataURL).css('width', '100px').appendTo(imagesDiv);
+	    $('#upload-btn').click(function() {
+	        data.submit();
+	    });
+	}, 
+	submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
+    console.log('submit()...');
+    data.formData = {
+        name: $('#name').val(),
+        age: $('#age').val()
+    };
+  }, 
+	done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+		console.log('done()...');
+		$('<input>', {
+		    type: 'hidden',
+		    class: 'photoPath',
+		    value: data.result.data[0]
+		}).appendTo('#file-selector');
+    /* $.each(data.result.data, function(index, param) {
+      if (param.filename) {
+          $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);
+      } else {
+          $('<p/>').text(param.name + " : " + param.value).appendTo(document.body);
+      }
+    }); */
+  }
+});
+
+</script>
 <script>
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -487,7 +544,7 @@ $(window).scroll(function () {
 // 다음경매 무한 스크롤
 $('.next-bidlist').jscroll({
     // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
-    autoTriggerUntil : 4
+    autoTriggerUntil : 6
 });
 </script>
 
