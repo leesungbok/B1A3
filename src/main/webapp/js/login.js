@@ -1,4 +1,3 @@
-
 window.fbAsyncInit = function() {
 	FB.init({
 		appId      : '1794128977577774',
@@ -29,21 +28,79 @@ function statusChangeCallback(response) {
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
     }
-  }
+}
 
-  //이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+//이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
 
-  // 로그인 성공시 호출
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(ajaxResult) {
-        sessionStorage.setItem('fcbk-id', ajaxResult.id);
-        sessionStorage.setItem('fcbk-name', ajaxResult.name);
-    	/*location.href='joinEmail.html';*/
+// 로그인 성공시 호출
+function testAPI() {
+  console.log('Welcome!  Fetching your information.... ');
+  FB.api('/me', function(ajaxResult) {
+      sessionStorage.setItem('fcbk-id', ajaxResult.id);
+      sessionStorage.setItem('fcbk-name', ajaxResult.name);
+  	location.href='joinEmail.html';
+  });
+}
+
+//<![CDATA[
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
+// 카카오 로그인 버튼을 생성합니다.
+Kakao.Auth.createLoginButton({
+    container: '#kakao-login-btn',
+    success: function(authObj) {
+        // 로그인 성공시, API를 호출합니다.
+        Kakao.API.request({
+            url: '/v1/user/me',
+            success: function(res) {
+                $.getJSON('loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
+                    if (ajaxResult.status == "success") {
+                        location.href = "../main";
+                    } else {
+                        window.sessionStorage.setItem('kakao-id', res.id);
+                        window.sessionStorage.setItem('kakao-name', res.properties.nickname);
+                        location.href = "joinEmail.html";
+                    }
+                })
+            },
+            fail: function(error) {
+                alert(JSON.stringify(error));
+            }
+        });
+    },
+    fail: function(err) {
+        alert(JSON.stringify(err));
+    }
+});
+//]]>
+
+$(function() {
+    $('#login-btn').click(function() {
+        
+        if ($('#save-email').is(':checked')) {
+            setCookie('email', $('#email').val(), 30);
+        } else {
+            setCookie('email', '', 0);
+        }
+        
+        var param = {
+                email: $('#email').val(),
+                password: $('#password').val(),
+        };
+        
+        $.post('login.json', param, function(ajaxResult) {
+            if (ajaxResult.status == "success") {
+                location.href = "../main/main.html";    
+                return;
+            }
+            alert(ajaxResult.data);   
+        }, 'json');
     });
-  }
+    
+    $('#email').val(getCookie('email').replace(/"/g, ''));
+})

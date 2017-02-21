@@ -1,18 +1,23 @@
-var facebook = sessionStorage.getItem('fcbk-id');
-var fcbkname = sessionStorage.getItem('fcbk-name');
 $(function() {
-    if (sessionStorage.getItem('kakao-name') != null) {
-        $("#nickName").val(sessionStorage.getItem('kakao-name'));
+    var kakaoName = sessionStorage.getItem('kakao-name')
+    var kakaoId = sessionStorage.getItem('kakao-id')
+    var fcbkName = sessionStorage.getItem('fcbk-name');
+    var facebook = sessionStorage.getItem('fcbk-id');
+    
+    if (kakaoName != null) {
+        $("#nickName").val(kakaoName);
+    }  else if (fcbkName != null) {
+        $("#nickName").val(fcbkName);
     }
     
-    if (sessionStorage.getItem('kakao-id') != null) {
+    if (kakaoId != null) {
         $('<input>').attr({
             type: 'hidden',
             id: 'kakao-id',
             value: sessionStorage.getItem('kakao-id')
         }).appendTo(".form-horizontal");
     }
-    
+            
     /* 이메일 유효성검사 */
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     
@@ -80,7 +85,6 @@ $(function() {
             $('#password-conf-ok').css('display', 'block');
         }
     })
-    $("#nickName").val(fcbkname);
     
     $("#nickName").keyup(function() {
         var nickName = $("#nickName").val();
@@ -216,7 +220,6 @@ $(function() {
         }, 'json')
         
         event.preventDefault();
-        sessionStorage.clear();
     })
     
     setInterval(function() {
@@ -238,4 +241,6 @@ $(function() {
             $('#add-btn').css('opacity', '1');
         }
      }, 100);
+    
+    sessionStorage.clear();
 })

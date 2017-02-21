@@ -32,6 +32,15 @@
     where email=#{email} 
       and pwd=password(#{password})
   </select>
+  
+  <select id="getOneByKakao" parameterType="map" resultMap="member-map">
+    select 
+      mno,
+      nknm,
+      path
+    from memb
+    where katok=#{katok}
+  </select>
 
   <insert id="insert" parameterType="member">
     insert into memb(email, pwd, nknm, phon, katok, fcbk)
