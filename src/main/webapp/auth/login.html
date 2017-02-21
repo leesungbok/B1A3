@@ -80,7 +80,6 @@
         Kakao.API.request({
           url: '/v1/user/me',
           success: function(res) {
-              res.id
               window.sessionStorage.setItem('kakao-id', res.id);
               window.sessionStorage.setItem('kakao-name', res.properties.nickname);
               location.href = "joinEmail.html";
