@@ -58,13 +58,14 @@ Kakao.Auth.createLoginButton({
         Kakao.API.request({
             url: '/v1/user/me',
             success: function(res) {
+            	checklogin();
                 $.getJSON('loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
                     if (ajaxResult.status == "success") {
                         location.href = "../main";
                     } else {
                         window.sessionStorage.setItem('kakao-id', res.id);
                         window.sessionStorage.setItem('kakao-name', res.properties.nickname);
-                        location.href = "joinEmail.html";
+                        /*location.href = "joinEmail.html";*/
                     }
                 })
             },
@@ -77,6 +78,17 @@ Kakao.Auth.createLoginButton({
         alert(JSON.stringify(err));
     }
 });
+
+function checklogin() {
+	Kakao.Auth.getStatus(function(statusObj) {
+		console.log(statusObj);
+	});
+};
+
+Kakao.Auth.logout(function(callback) {
+	console.log(callback);
+	/*location.href='../auth/login.html';*/
+})
 //]]>
 
 $(function() {
