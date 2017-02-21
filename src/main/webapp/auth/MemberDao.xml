@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitcamp.java89.ems.dao.MemberDao">
+
+  <resultMap type="member" id="member-map">
+    <id     column="mno"     property="memberNo"/>
+    <result column="email"   property="email"/>
+    <result column="nknm"    property="nickName"/>
+    <result column="phon"    property="phoneNo"/>
+    <result column="pwd"     property="password"/>
+    <result column="path"    property="photoPath"/>
+    <result column="pst_no"  property="postNo"/>
+    <result column="bas_adr" property="basicAddress"/>
+    <result column="det_adr" property="detailAddress"/>
+    <result column="tel"     property="telphone"/>
+    <result column="fcbk"    property="facebook"/>
+    <result column="katok"   property="kakaoTalk"/>
+    <result column="naver"   property="naver"/>
+  </resultMap>
+  
+  <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
+    select 
+      mno,
+      email,
+      nknm,
+      pwd,
+      path
+    from memb
+    where email=#{email} 
+      and pwd=password(#{password})
+  </select>
+
+  <insert id="insert" parameterType="member">
+    insert into memb(email, pwd, nknm, phon)
+    values(#{email}, password(#{password}), #{nickName}, #{phoneNo});
+  </insert>
+  
+  <select id="countEmail" parameterType="string" resultType="int">
+    select count(*) from memb where email=#{value}
+  </select>
+  
+  <select id="countNickName" parameterType="string" resultType="int">
+    select count(*) from memb where nknm=#{value}
+  </select>
+  
+  <select id="countPhone" parameterType="string" resultType="int">
+    select count(*) from memb where phon=#{value}
+  </select>
+  
+  <update id="updatePhoto" parameterType="map">
+    update memb set
+      path=#{photoPath}
+    where email=#{email}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from memb where mno=#{value}
+  </delete>
+  
+  <select id="getOneByMemberNo" parameterType="int" resultMap="member-map">
+    select 
+      mno,
+      email,
+      nknm,
+      phon,
+      pwd,
+      path,
+      pst_no,
+      bas_adr,
+      det_adr,
+      tel,
+      fcbk,
+      katok,
+      naver
+    from memb
+    where mno=#{memberNo}
+  </select>
+
+</mapper>
