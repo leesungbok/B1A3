@@ -12,7 +12,6 @@ $(function () {
 	        		location.href='../auth/login.html';
 	        	}
 	        	
-	        	
         	});
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     			// 로그온 상태 출력 창을 감춘다.
@@ -42,10 +41,15 @@ $(function () {
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
-    			event.preventDefault()
+    		    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
+    		    
     			$.getJSON('../auth/logout.json', function(ajaxResult) {
-    				location.href = '../auth/login.html'
+    			    Kakao.Auth.logout(function() {
+    			        location.href = "../auth/login.html";
+    			    })
     			});
+    			
+    			event.preventDefault();
     		});
     		
     		$('#logon-img').click(function() {
@@ -106,7 +110,7 @@ $(function () {
     $.get('../submenu.html', function (result) {
     	$('#submenu').html(result);
  
-    	var submenu = location.search.split("?")[1].split("=")[1];
+    	/*var submenu = location.search.split("?")[1].split("=")[1];*/
 	    $('#mypage').click(function (e) {
 	    	  e.preventDefault();
 	    	 location.href= "mypage.html?submenu=mypage";
@@ -122,7 +126,7 @@ $(function () {
 	    	 location.href= "mysettings.html?submenu=myoption";
 	    }); 
 	    
-	    $("#"+submenu).parent().addClass('active');
+	    /*$("#"+submenu).parent().addClass('active');*/
 	     
     })
 })

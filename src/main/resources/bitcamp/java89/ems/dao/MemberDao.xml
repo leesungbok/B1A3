@@ -37,7 +37,8 @@
     select 
       mno,
       nknm,
-      path
+      path,
+      email
     from memb
     where katok=#{katok}
   </select>
