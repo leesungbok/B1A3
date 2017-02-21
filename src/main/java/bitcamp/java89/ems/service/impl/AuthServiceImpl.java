@@ -26,4 +26,12 @@ public class AuthServiceImpl implements AuthService {
     return member;
   }
 
+  @Override
+  public Member getOneBySNS(String type, String snsId) throws Exception {
+    if (type.equals("kakao")) {
+      return memberDao.getOneByKakao(snsId);
+    } else {
+      return null;
+    }
+  }
 }

@@ -1,4 +1,23 @@
 $(function() {
+    var kakaoName = sessionStorage.getItem('kakao-name')
+    var kakaoId = sessionStorage.getItem('kakao-id')
+    var fcbkName = sessionStorage.getItem('fcbk-name');
+    var facebook = sessionStorage.getItem('fcbk-id');
+    
+    if (kakaoName != null) {
+        $("#nickName").val(kakaoName);
+    }  else if (fcbkName != null) {
+        $("#nickName").val(fcbkName);
+    }
+    
+    if (kakaoId != null) {
+        $('<input>').attr({
+            type: 'hidden',
+            id: 'kakao-id',
+            value: sessionStorage.getItem('kakao-id')
+        }).appendTo(".form-horizontal");
+    }
+            
     /* 이메일 유효성검사 */
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     
@@ -181,6 +200,10 @@ $(function() {
                 "phoneNo" : $('#phoneNo').val()
         };
         
+        if ($('#kakao-id').val() != null) {
+            param.kakaoTalk = $('#kakao-id').val();
+        }
+        
         $.post('add.json', param, function (ajaxResult) {
             if (ajaxResult.status != "success") {
                 alert(ajaxResult.data);
@@ -218,4 +241,6 @@ $(function() {
             $('#add-btn').css('opacity', '1');
         }
      }, 100);
+    
+    sessionStorage.clear();
 })
