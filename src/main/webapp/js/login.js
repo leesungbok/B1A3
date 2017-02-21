@@ -47,49 +47,34 @@ function testAPI() {
   });
 }
 
-//<![CDATA[
 // 사용할 앱의 JavaScript 키를 설정해 주세요.
 Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
-// 카카오 로그인 버튼을 생성합니다.
-Kakao.Auth.createLoginButton({
-    container: '#kakao-login-btn',
-    success: function(authObj) {
-        // 로그인 성공시, API를 호출합니다.
-        Kakao.API.request({
-            url: '/v1/user/me',
-            success: function(res) {
-            	checklogin();
-                $.getJSON('loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
-                    if (ajaxResult.status == "success") {
-                        location.href = "../main";
-                    } else {
-                        window.sessionStorage.setItem('kakao-id', res.id);
-                        window.sessionStorage.setItem('kakao-name', res.properties.nickname);
-                        /*location.href = "joinEmail.html";*/
-                    }
-                })
-            },
-            fail: function(error) {
-                alert(JSON.stringify(error));
-            }
-        });
-    },
-    fail: function(err) {
+  function loginWithKakao() {
+    Kakao.Auth.login({
+      success: function(authObj) {
+          Kakao.API.request({
+              url: '/v1/user/me',
+              success: function(res) {
+                  $.getJSON('loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
+                      if (ajaxResult.status == "success") {
+                          location.href = "../main";
+                      } else {
+                          window.sessionStorage.setItem('kakao-id', res.id);
+                          window.sessionStorage.setItem('kakao-name', res.properties.nickname);
+                          location.href = "joinEmail.html";
+                      }
+                  })
+              },
+              fail: function(error) {
+                  alert(JSON.stringify(error));
+              }
+          });
+      },
+      fail: function(err) {
         alert(JSON.stringify(err));
-    }
-});
-
-function checklogin() {
-	Kakao.Auth.getStatus(function(statusObj) {
-		console.log(statusObj);
-	});
+      }
+  });
 };
-
-Kakao.Auth.logout(function(callback) {
-	console.log(callback);
-	/*location.href='../auth/login.html';*/
-})
-//]]>
 
 $(function() {
     $('#login-btn').click(function() {
