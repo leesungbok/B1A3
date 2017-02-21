@@ -40,7 +40,7 @@
   border-color: #a90a3c !important;
 }
 
-.fileinput-remove, .file-upload-indicator, .kv-file-upload, .kv-file-zoom {
+.file-actions {
   display: none
 }
 
@@ -59,4 +59,22 @@
 
 textarea.form-control + div.popover {
   top: 0 !important;
+}
+
+/* sweet-alert */
+.sweet-alert {
+  font-family: 'Noto Sans KR';
+  margin-left: -239px;
+}
+
+.sweet-alert .sa-icon.sa-success {
+    border-color: rgba(243, 46, 109, 0.38);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: rgb(243, 46, 109);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid rgba(243, 46, 109, 0.38);
 }

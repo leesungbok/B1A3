@@ -10,12 +10,18 @@ import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.service.ItemService;
 
 @Service
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
   @Autowired ItemDao itemDao;
-  
+
   @Override
   public int add(Item item) throws Exception {
-    return itemDao.insert(item);      
+    int count = itemDao.insert(item);
+
+    if (item.getPhotoList().size() > 0) {
+      itemDao.insertPhoto(item);
+    }
+
+    return count;
   }
 
   @Override
@@ -37,5 +43,4 @@ public class ItemServiceImpl implements ItemService{
   public Item getDetail(int no) throws Exception {
     return itemDao.getOne(no);
   }
-
 }
