@@ -22,6 +22,20 @@
       <result column="path" property="filePath"/>
     </collection>
   </resultMap>
+  
+  <select id="getList" resultMap="item-map">
+    select 
+        itno,
+        pno,
+        mno,
+        path,
+        titl,
+        stpc,
+        time
+      from item
+        join phot
+        using(itno);
+  </select>
 
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
@@ -49,6 +63,10 @@
       stpc=#{startPrice}
     where itno=#{itemNo}
   </update>
+  
+  <delete id="deletePhoto" parameterType="int">
+    delete from phot where itno=#{value}
+  </delete>
 
   <delete id="delete" parameterType="int">
     delete from item where no=#{value}

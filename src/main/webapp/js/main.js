@@ -7,7 +7,7 @@
 }(document, 'script', 'facebook-jssdk'));
 
 $(function () {
-    // header.html을 가져와서 붙인다.
+    // add.html을 가져와서 붙인다.
     $.get('add.html', function (result) {
         $('.bid-regist').html(result);
         
@@ -68,6 +68,8 @@ $(function () {
         }); // click()
     });
     
+    
+    
     $.get('detail.html', function (result) {
         $('.bid-current').html(result);
     })
@@ -86,5 +88,25 @@ $(function () {
     $('.next-bidlist').jscroll({
         // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
         autoTriggerUntil : 6
+    });
+    
+    $.getJSON('list.json', function(ajaxResult) {
+    	var status = ajaxResult.status;
+    	  
+    	  if (status != "success")
+    		  return;
+    	  
+    	  var list = ajaxResult.data;
+    	  var parent = $('#nextlist');
+    	  var template = Handlebars.compile($('#trTemplate').html());
+    	  var div
+    	  for(var i = 0; i < list.length; i++){
+    		  if(i % 3 == 0) {
+    			  div = $("<div>").addClass('row')
+    			  parent.append(div);
+    			  console.log(list);
+    		  }
+    		  div.append(template(list[i]));
+    	  }
     });
 });

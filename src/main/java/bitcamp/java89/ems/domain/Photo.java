@@ -9,6 +9,10 @@ public class Photo implements Serializable {
   protected String filePath;
   protected int    itemNo;
 
+  public Photo() {
+    
+  }
+  
   public Photo(String filePath) {
     this.filePath = filePath;
   }
