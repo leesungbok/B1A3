@@ -1,3 +1,5 @@
+var facebook = sessionStorage.getItem('fcbk-id');
+var fcbkname = sessionStorage.getItem('fcbk-name');
 $(function() {
     if (sessionStorage.getItem('kakao-name') != null) {
         $("#nickName").val(sessionStorage.getItem('kakao-name'));
@@ -78,6 +80,7 @@ $(function() {
             $('#password-conf-ok').css('display', 'block');
         }
     })
+    $("#nickName").val(fcbkname);
     
     $("#nickName").keyup(function() {
         var nickName = $("#nickName").val();

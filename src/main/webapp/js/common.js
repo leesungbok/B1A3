@@ -4,7 +4,7 @@ $(function () {
     	$('#header').html(result);
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	
+        	console.log(ajaxResult)
             var member = ajaxResult.data;
         	$('[data-target]').click(function(){ 
         	

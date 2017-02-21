@@ -21,4 +21,3 @@ $('#login-btn').click(function() {
 });
 
 $('#email').val(getCookie('email').replace(/"/g, ''));
-console.log(email)
