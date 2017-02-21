@@ -1,3 +1,5 @@
+var facebook = sessionStorage.getItem('fcbk-id');
+var fcbkname = sessionStorage.getItem('fcbk-name');
 $(function() {
     /* 이메일 유효성검사 */
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -66,6 +68,7 @@ $(function() {
             $('#password-conf-ok').css('display', 'block');
         }
     })
+    $("#nickName").val(fcbkname);
     
     $("#nickName").keyup(function() {
         var nickName = $("#nickName").val();

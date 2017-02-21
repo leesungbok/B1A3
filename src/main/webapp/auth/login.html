@@ -22,10 +22,11 @@
         <a href="#" class="btn_sns btn_naver">
           <span>네이버</span>
         </a>
-				<div class="fb-login-button" data-max-rows="1" data-size="xlarge" 
-				data-show-faces="false" data-auto-logout-link="true"
-				onlogin="checkLoginState();"></div>
+				<div  class="fb-login-button" data-max-rows="1" data-size='xlarge'
+				data-show-faces="false" data-auto-logout-link="true" data-scope=' public_profile'
+				onlogin="checkLoginState();">페이스북</div>
       </div>
+      
       <div class="user_login_email">
         <span class="icon-mail"></span>
         <h4>이메일로 로그인</h4>
@@ -33,6 +34,7 @@
         <input type="password"  id='password' class="form-control" placeholder="비밀번호">
         <input id='save-email' type="checkbox">
         <span class="icon-ok-circled2"></span>
+        
         <p>이메일 저장</p>
         <div class="login_btn">
           <button type='button' class="btn_confirm" id="login-btn">로그인</button>
@@ -52,13 +54,15 @@
   <div id="status">
   </div>
   <div id="fb-root"></div>
-	<script>(function(d, s, id) {
+	<script type='text/javascript'>
+	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8";
+	  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
 	  fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));</script>
+	  }(document, 'script', 'facebook-jssdk'));
+	</script>
   
 </div>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
@@ -80,7 +84,9 @@
         Kakao.API.request({
           url: '/v1/user/me',
           success: function(res) {
-            console.log(JSON.stringify(res));
+             console.log(res.properties.nickname); 
+            /* console.log(JSON.stringify(res)); */
+            
           },
           fail: function(error) {
             alert(JSON.stringify(error));
