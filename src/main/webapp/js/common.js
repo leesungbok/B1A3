@@ -32,7 +32,7 @@ $(function () {
     		if (member.photoPath == null) {
     		    $('#logon-img').attr('src', '../image/user.png');
     		} else {
-    		    $('#logon-img').attr('src', '../image/' + member.photoPath);
+    		    $('#logon-img').attr('src', '../upload/' + member.photoPath);
     		}
     		
     		$('#logon-nick-name').text(member.nickName);

@@ -34,8 +34,8 @@
   </select>
 
   <insert id="insert" parameterType="member">
-    insert into memb(email, pwd, nknm, phon)
-    values(#{email}, password(#{password}), #{nickName}, #{phoneNo});
+    insert into memb(email, pwd, nknm, phon, katok, fcbk)
+    values(#{email}, password(#{password}), #{nickName}, #{phoneNo}, #{kakaoTalk}, #{facebook});
   </insert>
   
   <select id="countEmail" parameterType="string" resultType="int">

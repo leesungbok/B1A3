@@ -7,7 +7,7 @@
 }(document, 'script', 'facebook-jssdk'));
 
 $(function () {
-    // header.html을 가져와서 붙인다.
+    // add.html을 가져와서 붙인다.
     $.get('add.html', function (result) {
         $('.bid-regist').html(result);
         

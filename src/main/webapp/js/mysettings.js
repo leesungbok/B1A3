@@ -10,7 +10,7 @@ $(function() {
         var member = ajaxResult.data;
         
         if (member.photoPath != null) {
-            $('#photo-img').attr('src', '../image/' + member.photoPath);
+            $('#photo-img').attr('src', '../upload/' + member.photoPath);
         } else {
             $('#photo-img').attr('src', '../image/user.png');
         }
