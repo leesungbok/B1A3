@@ -73,7 +73,7 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
       fail: function(err) {
         alert(JSON.stringify(err));
       }
-    });
+  });
 };
 
 $(function() {
