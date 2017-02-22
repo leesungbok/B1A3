@@ -42,6 +42,16 @@
     from memb
     where katok=#{katok}
   </select>
+  
+    <select id="getOneByFacebook" parameterType="map" resultMap="member-map">
+    select 
+      mno,
+      nknm,
+      path,
+      email
+    from memb
+    where fcbk=#{fcbk}
+  </select>
 
   <insert id="insert" parameterType="member">
     insert into memb(email, pwd, nknm, phon, katok, fcbk)

@@ -13,8 +13,8 @@ window.fbAsyncInit = function() {
 };
 
 function statusChangeCallback(response) {
-    console.log('statusChangeCallback'); 
-    console.log(response);
+    /*console.log('statusChangeCallback'); 
+    console.log(response);*/
     // response 객체는 현재 로그인 상태를 나타내는 정보를 보여준다. 
     // 앱에서 현재의 로그인 상태에 따라 동작하면 된다. 
     // FB.getLoginStatus().의 레퍼런스에서 더 자세한 내용이 참조 가능하다.
@@ -29,7 +29,6 @@ function statusChangeCallback(response) {
         'into Facebook.';
     }
 }
-
 //이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
@@ -39,11 +38,18 @@ function checkLoginState() {
 
 // 로그인 성공시 호출
 function testAPI() {
-  console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', function(ajaxResult) {
-      sessionStorage.setItem('fcbk-id', ajaxResult.id);
-      sessionStorage.setItem('fcbk-name', ajaxResult.name);
-  	location.href='joinEmail.html';
+  /*console.log('Welcome!  Fetching your information.... ');*/
+  FB.api('/me', function(res) {
+      $.getJSON('loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
+          if (ajaxResult.status == "success") {
+              location.href = "../main";
+          } else {
+        	  window.sessionStorage.setItem('fcbk-id', res.id);
+              window.sessionStorage.setItem('fcbk-name', res.name);
+          	location.href='joinEmail.html';
+          }
+      })
+      
   });
 }
 

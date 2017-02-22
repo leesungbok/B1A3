@@ -30,6 +30,8 @@ public class AuthServiceImpl implements AuthService {
   public Member getOneBySNS(String type, String snsId) throws Exception {
     if (type.equals("kakao")) {
       return memberDao.getOneByKakao(snsId);
+    } else if(type.equals("fcbk")) {
+      return memberDao.getOneByFacebook(snsId);
     } else {
       return null;
     }

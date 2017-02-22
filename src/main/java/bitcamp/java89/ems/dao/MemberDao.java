@@ -12,6 +12,7 @@ public interface MemberDao {
   Member getOneByEmailPassword(Map<String,String> paramMap) throws Exception;
   Member getOneByMemberNo(int memberNo) throws Exception;
   Member getOneByKakao(String kakaoId) throws Exception;
+  Member getOneByFacebook(String kakaoId) throws Exception;
   int updatePhoto(Map<String,String> paramMap) throws Exception;
   int delete(int memberNo) throws Exception;
 }

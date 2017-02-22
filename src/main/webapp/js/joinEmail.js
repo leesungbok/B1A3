@@ -2,7 +2,7 @@ $(function() {
     var kakaoName = sessionStorage.getItem('kakao-name')
     var kakaoId = sessionStorage.getItem('kakao-id')
     var fcbkName = sessionStorage.getItem('fcbk-name');
-    var facebook = sessionStorage.getItem('fcbk-id');
+    var fcbkId = sessionStorage.getItem('fcbk-id');
     
     if (kakaoName != null) {
         $("#nickName").val(kakaoName);
@@ -15,6 +15,14 @@ $(function() {
             type: 'hidden',
             id: 'kakao-id',
             value: sessionStorage.getItem('kakao-id')
+        }).appendTo(".form-horizontal");
+    }
+    
+    if (fcbkId != null) {
+        $('<input>').attr({
+            type: 'hidden',
+            id: 'fcbk-id',
+            value: sessionStorage.getItem('fcbk-id')
         }).appendTo(".form-horizontal");
     }
             
@@ -202,6 +210,10 @@ $(function() {
         
         if ($('#kakao-id').val() != null) {
             param.kakaoTalk = $('#kakao-id').val();
+        }
+        
+        if ($('#fcbk-id').val() != null) {
+            param.facebook = $('#fcbk-id').val();
         }
         
         $.post('add.json', param, function (ajaxResult) {

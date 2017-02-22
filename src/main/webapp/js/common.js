@@ -4,7 +4,7 @@ $(function () {
     	$('#header').html(result);
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	console.log(ajaxResult)
+        	/*console.log(ajaxResult)*/
             var member = ajaxResult.data;
         	$('[data-target]').click(function(){ 
         	
@@ -43,12 +43,25 @@ $(function () {
     		$('#logout-btn').click(function(event) {
     		    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
     		    
-    			$.getJSON('../auth/logout.json', function(ajaxResult) {
-    			    Kakao.Auth.logout(function() {
-    			        location.href = "../auth/login.html";
-    			    })
+    			FB.init({
+    				appId      : '1794128977577774',
+    				cookie     : false,  
+    				xfbml      : false,
+    				version    : 'v2.8' 
     			});
-    			
+    			$.getJSON('../auth/logout.json', function(ajaxResult) {
+				    FB.getLoginStatus(function(response) {
+				        if (response && response.status === 'connected') {
+				            FB.logout(function(response) {
+				            location.href = "../auth/login.html";
+				            });
+				        } else {
+				        	Kakao.Auth.logout(function() {
+					            location.href = "../auth/login.html";
+					        })
+				        }
+				    });
+    			});
     			event.preventDefault();
     		});
     		
