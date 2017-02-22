@@ -61,13 +61,13 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
           Kakao.API.request({
               url: '/v1/user/me',
               success: function(res) {
-                  $.getJSON('loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
+                  $.getJSON(serverRoot + '/auth/loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
                       if (ajaxResult.status == "success") {
-                          location.href = "../main";
+                          location.href = clientRoot + "/main/main.html";
                       } else {
                           window.sessionStorage.setItem('kakao-id', res.id);
                           window.sessionStorage.setItem('kakao-name', res.properties.nickname);
-                          location.href = "joinEmail.html";
+                          location.href = clientRoot + "/auth/joinEmail.html";
                       }
                   })
               },
@@ -98,7 +98,7 @@ $(function() {
         
         $.post('login.json', param, function(ajaxResult) {
             if (ajaxResult.status == "success") {
-                location.href = "../main/main.html";    
+                location.href = clientRoot + "/main/main.html";    
                 return;
             }
             alert(ajaxResult.data);   

@@ -8,12 +8,12 @@
 
 $(function () {
     // add.html을 가져와서 붙인다.
-    $.get('add.html', function (result) {
+    $.get(serverRoot + '/main/add.html', function (result) {
         $('.bid-regist').html(result);
         
         var $input = $("#fileupload");
         $input.fileinput({
-            uploadUrl : "../common/fileupload.json",
+            uploadUrl : serverRoot + "/common/fileupload.json",
             showRemove : false,
             showCaption: false,
             showUpload : false,
@@ -63,14 +63,14 @@ $(function () {
                     showConfirmButton: false,
                     type: "success"
                 });
-                setTimeout(function(){location.href='../main'} , 2250);
+                setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
             }, 'json'); // post();
         }); // click()
     });
     
     
     
-    $.get('detail.html', function (result) {
+    $.get(serverRoot + '/main/detail.html', function (result) {
         $('.bid-current').html(result);
     })
 
@@ -85,28 +85,28 @@ $(function () {
     });
 
     // 다음경매 무한 스크롤
-    $('.next-bidlist').jscroll({
+    /*$('.next-bidlist').jscroll({
         // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
         autoTriggerUntil : 6
-    });
+    });*/
     
-    $.getJSON('list.json', function(ajaxResult) {
-    	var status = ajaxResult.status;
+    $.getJSON(serverRoot + '/main/list.json', function(ajaxResult) {
+        var status = ajaxResult.status;
     	  
-    	  if (status != "success")
-    		  return;
-    	  
-    	  var list = ajaxResult.data;
-    	  var parent = $('#nextlist');
-    	  var template = Handlebars.compile($('#trTemplate').html());
-    	  var div
-    	  for(var i = 0; i < list.length; i++){
-    		  if(i % 3 == 0) {
-    			  div = $("<div>").addClass('row')
-    			  parent.append(div);
-    			  console.log(list);
-    		  }
-    		  div.append(template(list[i]));
+    	if (status != "success")
+    	    return;
+    	
+    	var list = ajaxResult.data;
+    	console.log(list);
+    	var parent = $('#nextlist');
+    	var template = Handlebars.compile($('#trTemplate').html());
+    	var div
+    	for(var i = 0; i < list.length; i++){
+    	  if(i % 3 == 0) {
+    		  div = $("<div>").addClass('row')
+    		  parent.append(div);
     	  }
+    	  div.append(template(list[i]));
+    	}
     });
 });

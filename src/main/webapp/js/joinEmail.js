@@ -42,7 +42,7 @@ $(function() {
             $('#erroremail2').css('display', 'none');
             $('#email-ok').css('display', 'none');
         } else {
-            $.getJSON('count.json', {type: "email", data: email}, function (ajaxResult) {
+            $.getJSON(serverRoot + '/auth/count.json', {type: "email", data: email}, function (ajaxResult) {
                 if (ajaxResult.status != "success") {
                     return;
                 } else if (ajaxResult.data == 0){
@@ -107,7 +107,7 @@ $(function() {
             $('#errornickName2').css('display', 'none');
             $('#nickName-ok').css('display', 'none');
         } else {
-            $.getJSON('count.json', {type: "nickName", data: nickName}, function (ajaxResult) {
+            $.getJSON(serverRoot + '/auth/count.json', {type: "nickName", data: nickName}, function (ajaxResult) {
                 if (ajaxResult.status != "success") {
                     return;
                 } else if (ajaxResult.data == 0){
@@ -141,7 +141,7 @@ $(function() {
             $('#errorphoneNo2').css('display', 'none');
             $('#phoneNo-ok').css('display', 'none');
         } else {
-            $.getJSON('count.json', {type: "phoneNo", data: phoneNo}, function (ajaxResult) {
+            $.getJSON(serverRoot + '/auth/count.json', {type: "phoneNo", data: phoneNo}, function (ajaxResult) {
                 if (ajaxResult.status != "success") {
                     return;
                 } else if (ajaxResult.data == 0){
@@ -216,7 +216,7 @@ $(function() {
             param.facebook = $('#fcbk-id').val();
         }
         
-        $.post('add.json', param, function (ajaxResult) {
+        $.post(serverRoot + '/auth/add.json', param, function (ajaxResult) {
             if (ajaxResult.status != "success") {
                 alert(ajaxResult.data);
                 return;
@@ -228,7 +228,7 @@ $(function() {
                 showConfirmButton: false,
                 type: "success"
             });
-            setTimeout(function(){location.href='login.html'} , 2250);
+            setTimeout(function(){location.href = clientRoot + '/auth/login.html'} , 2250);
         }, 'json')
         
         event.preventDefault();
