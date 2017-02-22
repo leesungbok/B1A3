@@ -38,8 +38,20 @@
 
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-    insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
-    values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice})
+    insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
+    select
+      #{memberNo},
+      #{title},
+      #{category},
+      #{buyDate},
+      #{useDay},
+      #{deal},
+      #{content},
+      #{startPrice},
+      time + INTERVAL 30 MINUTE
+    from item
+    order by time desc
+    limit 1;
   </insert>
 
   <insert id="insertPhoto" parameterType="item">
