@@ -1,5 +1,5 @@
 $(function() {
-    $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+    $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
         var status = ajaxResult.status;
 
         if (status != "success") {
@@ -10,9 +10,9 @@ $(function() {
         var member = ajaxResult.data;
         
         if (member.photoPath != null) {
-            $('#photo-img').attr('src', '../upload/' + member.photoPath);
+            $('#photo-img').attr('src', serverRoot + '/upload/' + member.photoPath);
         } else {
-            $('#photo-img').attr('src', '../image/user.png');
+            $('#photo-img').attr('src', serverRoot + '/image/user.png');
         }
         
         $('#email').val(member.email);
@@ -102,7 +102,7 @@ $(function() {
             closeOnConfirm: false
           },
           function(){
-              $.post('delete.json', function(ajaxResult) {
+              $.post(serverRoot + '/mypage/delete.json', function(ajaxResult) {
                   if (ajaxResult.status != 'success') {
                       alert(ajaxResult.data);
                       return;
@@ -115,14 +115,14 @@ $(function() {
                       confirmButtonColor: "rgb(244, 46, 109)"
                   },
                   function(){
-                      location.href='../main'
+                      location.href = clientRoot + '/main/main.html'
                   });
               })
           });
     })
     
     $('.image-upload').fileupload({
-        url: '../common/fileupload.json', // 서버에 요청할 URL
+        url: serverRoot + '/common/fileupload.json', // 서버에 요청할 URL
         dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
         sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
         singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
@@ -133,7 +133,7 @@ $(function() {
         previewMaxHeight: 150,  // 미리보기 이미지 높이 
         previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
         done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-            $.post('updatePhoto.json', {"photoPath": data.result.data[0]}, function(ajaxResult) {
+            $.post(serverRoot + '/mypage/updatePhoto.json', {"photoPath": data.result.data[0]}, function(ajaxResult) {
                 if (ajaxResult.status == 'fail') {
                     alret(ajaxResult.data);
                 }

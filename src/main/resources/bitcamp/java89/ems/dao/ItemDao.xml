@@ -24,17 +24,16 @@
   </resultMap>
   
   <select id="getList" resultMap="item-map">
-    select 
-        itno,
-        pno,
-        mno,
-        path,
-        titl,
-        stpc,
-        time
-      from item
-        join phot
-        using(itno);
+    select
+      i.itno,
+      i.titl,
+      i.time,
+      i.stpc,
+      p.path
+    from item i
+    left outer join phot p on i.itno=p.itno
+    where time > now()
+    order by time asc;
   </select>
 
   <insert id="insert" parameterType="item"
