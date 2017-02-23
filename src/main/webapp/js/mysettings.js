@@ -10,9 +10,9 @@ $(function() {
         var member = ajaxResult.data;
         
         if (member.photoPath != null) {
-            $('#photo-img').attr('src', serverRoot + '/upload/' + member.photoPath);
+            $('#photo-img').attr('src', clientRoot + '/upload/' + member.photoPath);
         } else {
-            $('#photo-img').attr('src', serverRoot + '/image/user.png');
+            $('#photo-img').attr('src', clientRoot + '/image/user.png');
         }
         
         $('#email').val(member.email);
