@@ -5,14 +5,13 @@
   margin: 30px auto;
 }
 
-#detail-head h1 {
-  font-weight: bolder;
-  text-align: center;
-  color: #f32e6d;
+.modal-head {
+  width: 100%;
+  height: 28px;
 }
 
 #detail-head button {
-  margin: -6px 20px 0px -35px;
+  margin: 9px 20px 0px -35px;
 }
 
 #detail-body {
