@@ -42,6 +42,14 @@ insert into phot(pno,itno,path) values(8,4,'t4_8.gif');
 
 
 
+--관심 데이터
+insert into inter(mno,itno,type,rdt) values(1,10,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,11,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(3,13,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,14,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(4,10,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(4,12,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,13,1,'2017-01-01');
 
 
 

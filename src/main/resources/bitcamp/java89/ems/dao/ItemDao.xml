@@ -81,6 +81,22 @@
     order by bids desc;
   </select>
 
+  <select id="likeList" resultMap="item-map">
+    select
+      i.itno,
+      i.titl,
+      i.time,
+      i.stpc,
+      p.path,
+      t.type,
+      t.rdt
+    from inter t
+    left outer join item i on t.itno=i.itno
+    left outer join phot p on t.itno=p.itno
+    where rdt > now()
+    order by rdt desc;
+  </select>
+
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
   insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 

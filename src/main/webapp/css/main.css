@@ -215,6 +215,15 @@ h1.heading {
   margin-bottom: 25px;
 }
 
+div.heart:before {
+    font-family:"FontAwesome";
+    content:"\f08a";
+    margin-top:10px;
+    height: 150px;
+    width:150px;
+    color: #b1afaf;
+  }
+
 .carbox {
   /* display: block; */
   margin-bottom: 20px;
