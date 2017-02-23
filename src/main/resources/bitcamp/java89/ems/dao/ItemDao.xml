@@ -2,12 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="bitcamp.java89.ems.dao.ItemDao">
 
   <resultMap type="item" id="item-map">
     <id     column="itno"  property="itemNo"/>
-    <result column="mno"   property="memberNo"/>
     <result column="titl"  property="title"/>
     <result column="categ" property="category"/>
     <result column="buy"   property="buyDate"/>
@@ -17,12 +16,25 @@
     <result column="time"  property="startTime"/>
     <result column="stpc"  property="startPrice"/>
 
+    <result column="mno"     property="memberNo"/>
+    <result column="nknm"    property="nickName"/>
+
     <collection property="photoList" ofType="photo">
       <id     column="pno"  property="photoNo"/>
       <result column="path" property="filePath"/>
     </collection>
   </resultMap>
-  
+
+  <resultMap type="bidHistory" id="bidHistory-map">
+    <id     column="hsno" property="bidHistoryNo"/>
+    <result column="bids" property="bids"/>
+    <result column="time" property="bidTime"/>
+    <result column="itno" property="itemNo"/>
+    <result column="mno"  property="memberNo"/>
+    <result column="nknm" property="nickName"/>
+    <result column="path" property="photoPath"/>
+  </resultMap>
+
   <select id="getList" resultMap="item-map">
     select
       i.itno,
@@ -36,9 +48,43 @@
     order by time asc;
   </select>
 
-  
+  <select id="getNowBid" resultMap="item-map">
+    <![CDATA[
+      select
+        i.itno,
+        m.nknm,
+        i.titl,
+        i.categ,
+        DATE_FORMAT(i.buy, '%Y-%m-%e') as buy,
+        i.day,
+        i.deal,
+        i.cont,
+        i.time + interval 30 minute as time,
+        i.stpc,
+        p.path
+      from item i
+      left outer join phot p on i.itno=p.itno
+      left outer join memb m on i.mno=m.mno
+      where i.time <= now() and now() <= i.time + interval 30 minute;
+    ]]>
+  </select>
+
+  <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
+    select
+      m.nknm,
+      m.path,
+      b.bids,
+      DATE_FORMAT(b.time, '%H:%i:%s') as time
+    from bdhs b
+    left outer join memb m on b.mno=m.mno
+    where itno=#{value}
+    order by bids desc;
+  </select>
+
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
+  <!-- insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
+  values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice}) -->
     insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
     select
       #{memberNo},
@@ -49,7 +95,7 @@
       #{deal},
       #{content},
       #{startPrice},
-      time + INTERVAL 30 MINUTE
+      time + interval 30 minute
     from item
     order by time desc
     limit 1;
@@ -75,7 +121,7 @@
       stpc=#{startPrice}
     where itno=#{itemNo}
   </update>
-  
+
   <delete id="deletePhoto" parameterType="int">
     delete from phot where itno=#{value}
   </delete>

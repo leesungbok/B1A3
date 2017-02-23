@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java89.ems.dao.ItemDao;
+import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.service.ItemService;
 
@@ -42,5 +43,15 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public Item getDetail(int no) throws Exception {
     return itemDao.getOne(no);
+  }
+
+  @Override
+  public Item getNowBid() throws Exception {
+    return itemDao.getNowBid();
+  }
+
+  @Override
+  public List<BidHistory> getNowBidHistory(int itemNo) throws Exception {
+    return itemDao.getNowBidHistory(itemNo);
   }
 }
