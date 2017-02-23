@@ -13,6 +13,7 @@
     "bootstrap-fileinput": "^4.3.6",
     "handlebars": "^4.0.6",
     "jquery": "^1.12.4",
+    "jquery-countdown": "^2.2.0",
     "jscroll": "^2.3.7",
     "sweetalert": "^1.1.3"
   },

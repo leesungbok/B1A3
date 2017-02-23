@@ -8,7 +8,7 @@
 
 $(function () {
     // add.html을 가져와서 붙인다.
-    $.get(serverRoot + '/main/add.html', function (result) {
+    $.get(clientRoot + '/main/add.html', function (result) {
         $('.bid-regist').html(result);
         
         var $input = $("#fileupload");
@@ -51,7 +51,7 @@ $(function () {
                     "startTime": JSON.stringify(photoPathList)
             };
             
-            $.post('add.json', item, function(ajaxResult) {
+            $.post(serverRoot + '/main/add.json', item, function(ajaxResult) {
                 if (ajaxResult.status != "success") {
                     alert(ajaxResult.data);
                     return;
@@ -70,7 +70,7 @@ $(function () {
     
     
     
-    $.get(serverRoot + '/main/detail.html', function (result) {
+    $.get(clientRoot + '/main/detail.html', function (result) {
         $('.bid-current').html(result);
     })
 
@@ -97,16 +97,23 @@ $(function () {
     	    return;
     	
     	var list = ajaxResult.data;
-    	console.log(list);
     	var parent = $('#nextlist');
     	var template = Handlebars.compile($('#trTemplate').html());
     	var div
-    	for(var i = 0; i < list.length; i++){
-    	  if(i % 3 == 0) {
+    	for(var i = 0; i < list.length; i++) {
+    	  if (i % 3 == 0) {
     		  div = $("<div>").addClass('row')
     		  parent.append(div);
     	  }
     	  div.append(template(list[i]));
     	}
+    	
+    	$('[data-countdown]').each(function() {
+    	    var $this = $(this), finalDate = $(this).data('countdown');
+    	    $this.countdown(finalDate, function(event) {
+    	        $this.html(event.strftime('%H:%M:%S'));
+    	    });
+    	});
     });
+    
 });

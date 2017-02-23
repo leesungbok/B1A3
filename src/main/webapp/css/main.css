@@ -10,7 +10,7 @@
   width: 500px;
   margin: 2px;
   float: left;
-  border: 1px solid gray;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 .next-bodysolid {
@@ -26,7 +26,8 @@
   float: left;
   height: 340px;
   width: 360px;
-  border: 1px solid gray;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  text-align: center;
 }
 
 #header_sub {
@@ -99,9 +100,9 @@
 
 .pinktext {
   font-size: 1.5em;
-  color: #f32e6d;
+  /* color: #f32e6d; */
   font-weight: bold;
-  margin-left: 38px;
+  margin-left: 20px;
   margin-top: 12px;
   display: inline-block;
 }
@@ -147,7 +148,7 @@
 
 .black {
   margin-left: 1px;
-  font-size: 1.2em;
+  font-size: 1.4em;
   display: inline;
 }
 
@@ -164,25 +165,26 @@
 }
 
 .next-bidlist {
-  margin-top: 22%;
+  margin-top: 8%;
+  text-align: center;
 }
 
 .jscroll-added {
   margin-bottom: 5%;
 }
 
-/*nextlist*/
-
-html,
-body {
-	
-  height: 100%;
-  width: 100%; 
-  background: #FFF;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+#bid-history {
+  font-weight: bold;
+  font-size:2.5em;
+  display: block;
+  margin-top: 18px;
 }
- 
+
+.desc-record{
+  margin-right: 24px;
+}
+
+/*nextlist*/
 .wrapper {
   display: table;
   height: 100%;
@@ -192,21 +194,19 @@ body {
 .container-big {
 	width:960px !important;
 	margin:auto;
-  display: table-cell;
-  padding: 1em;
-  text-align: center;
-  vertical-align: middle;
+	display: table-cell;
+	/* padding: 1em; */
+	text-align: center;
+	vertical-align: middle;
 }
 .big-logo {
   width: 100px;
   margin-bottom:15px
 }
 h1.heading {
-  color: #fff;
   font-size: 3em;
   font-weight: 900;
-  margin: -98px 0 0.5em 319px;
-  color: #505050;
+  margin-bottom: 25px;
 }
 
 div.heart:before {
@@ -219,13 +219,14 @@ div.heart:before {
   }
 
 .carbox {
-  display: block; 
-    margin-bottom: 20px;
-    line-height: 1.42857143;
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
-    transition: box-shadow .25s; 
+  /* display: block; */
+  margin-bottom: 20px;
+  /* line-height: 1.42857143; */
+  /* background-color: #fff; */
+  border-radius: 9px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  transition: box-shadow .25s;
+  /* height: 453px; */
 }
 .carbox:hover {
   box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -249,29 +250,65 @@ div.heart:before {
   text-align:left;
 }
 .carbox-title {
-  margin-top:0px;
   font-weight: 700;
   font-size: 1.65em;
+  text-align: center;
 }
 .carbox-title a {
   color: #000;
   text-decoration: none !important;
 }
+
 .carbox-read-more {
-  border-top: 1px solid #D4D4D4;
-}
-.carbox-read-more a {
   text-decoration: none !important;
-  padding:10px;
-  font-weight:600;
-  text-transform: uppercase
+  padding-top: 10px;
+  font-weight: 900;
+  font-size: 2.5em;
+  color: #f32e6d;
 }
 
 .carousel-inner {
   cursor: pointer;
 }
 
-/* 인스타공유
+#next-bid-photos {
+  padding: 9px;
+  height: 48%;
+}
+
+.next-bidlist > .container {
+  padding-left: 0px;
+}
+
+.item-img {
+  height: 216px !important;
+  margin: 0 auto;
+}
+
+#next-bid-photos > .carousel-indicators {margin-bottom: 0px;bottom: 10px;}
+
+.next-horizontal {
+  margin-bottom: 0px;
+}
+
+.stp-text {
+  margin-right: 29px;
+}
+
+.st-text {
+  margin-right: 11px;
+}
+
+#next-bid-photos > .carousel-indicators > li {
+  border: 1px solid #c4c5c8;
+}
+
+#next-bid-photos > .carousel-indicators > .active{
+  width: 15px;
+  height: 15px;
+  margin-bottom: -1px;
+}
+/*
        #instaPics {  
             max-width: 320px;  
             overflow: hidden;  
