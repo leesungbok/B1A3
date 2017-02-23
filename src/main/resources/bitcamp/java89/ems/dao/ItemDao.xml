@@ -99,9 +99,9 @@
 
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-  insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
-  values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice})
-<!--     insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
+  <!-- insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
+  values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice}) -->
+    insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
     select
       #{memberNo},
       #{title},
@@ -114,7 +114,7 @@
       time + interval 30 minute
     from item
     order by time desc
-    limit 1; -->
+    limit 1;
   </insert>
 
   <insert id="insertPhoto" parameterType="item">

@@ -34,9 +34,13 @@
 }
 
 #header_sub {
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
   font-weight: bold;
+}
+
+.nav {
+  text-align: center;
 }
 
 .f-nav {
@@ -424,6 +428,32 @@ div.heart:before {
 .won2 {
   
 }
+
+.desc-line1 {
+  display: none;
+}
+
+.bids-empty {
+  font-size: 2em;
+  display: inline-block;
+}
+
+.icon-exclamation:before {
+  content: '\e80a';
+  font-family: fontello;
+  font-size: 2em;
+}
+
+.icon-exclamation {
+  
+}
+
+.desc-non-record {
+  display: none;
+  padding: 110px 35px 119px 44px;
+}
+
+
 /*
        #instaPics {  
             max-width: 320px;  

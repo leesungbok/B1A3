@@ -79,8 +79,10 @@ $(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 158) {
             nav.addClass("f-nav");
+            $('#header_sub').css('margin-bottom', '122px');
         } else {
             nav.removeClass("f-nav");
+            $('#header_sub').css('margin-bottom', '0');
         }
     });
 
@@ -111,7 +113,9 @@ $(function () {
         
         $.getJSON(serverRoot + '/main/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
             if (ajaxResult.status != "success") {
-                alert(ajaxResult.data);
+                $('.present_num').text(nowbid.startPrice);
+                $('.desc-non-record').css('display', 'block');
+                console.log(ajaxResult.data);
                 return;
             }
             
@@ -153,5 +157,4 @@ $(function () {
             });
         });
     })
-    
 });
