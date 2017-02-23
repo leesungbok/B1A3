@@ -209,6 +209,15 @@ h1.heading {
   color: #505050;
 }
 
+div.heart:before {
+    font-family:"FontAwesome";
+    content:"\f08a";
+    margin-top:10px;
+    height: 150px;
+    width:150px;
+    color: #b1afaf;
+  }
+
 .carbox {
   display: block; 
     margin-bottom: 20px;

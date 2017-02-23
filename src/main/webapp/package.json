@@ -11,6 +11,7 @@
     "blueimp-file-upload": "^9.16.0",
     "bootstrap": "^3.3.7",
     "bootstrap-fileinput": "^4.3.6",
+    "handlebars": "^4.0.6",
     "jquery": "^1.12.4",
     "jscroll": "^2.3.7",
     "sweetalert": "^1.1.3"

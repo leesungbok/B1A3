@@ -22,7 +22,7 @@ public class MypageJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "사진 변경 성공했습니다.");
   }
   
-  @RequestMapping("/mypage/delete")
+  @RequestMapping("/mypage/delete1")
   public AjaxResult updatePhoto(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
     if (memberService.delete(member.getMemberNo()) == 0) {
