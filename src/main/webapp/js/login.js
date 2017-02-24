@@ -1,3 +1,11 @@
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
 window.fbAsyncInit = function() {
 	FB.init({
 		appId      : '1794128977577774',
@@ -18,17 +26,11 @@ function statusChangeCallback(response) {
     // response 객체는 현재 로그인 상태를 나타내는 정보를 보여준다. 
     // 앱에서 현재의 로그인 상태에 따라 동작하면 된다. 
     // FB.getLoginStatus().의 레퍼런스에서 더 자세한 내용이 참조 가능하다.
-
     if (response.status === 'connected') {
       testAPI();
-    } else if (response.status === 'not_authorized') {
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
     }
 }
+
 //이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
@@ -51,6 +53,23 @@ function testAPI() {
       })
       
   });
+}
+
+function fb_login(){
+    FB.login(function(response) {
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            //console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+            testAPI();
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+        }
+    }, {
+        scope: 'publish_stream,email'
+    });
 }
 
 // 사용할 앱의 JavaScript 키를 설정해 주세요.
