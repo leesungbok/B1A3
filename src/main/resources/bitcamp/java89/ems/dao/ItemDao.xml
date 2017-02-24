@@ -129,5 +129,24 @@
   <delete id="delete" parameterType="int">
     delete from item where no=#{value}
   </delete>
+  
+  <select id="getSearchTitle" parameterType="map" resultMap="item-map">
+    select
+     i.itno,
+     i.mno,
+     i.titl,
+     i.categ,
+     i.buy,
+     i.day,
+     i.deal,
+     i.cont,
+     i.time,
+     i.stpc,
+     p.itno,
+     p.path
+    from item i
+    left outer join phot p on i.itno=p.itno
+    where titl=#{title}
+  </select>
 
 </mapper>

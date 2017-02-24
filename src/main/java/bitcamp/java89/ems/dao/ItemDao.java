@@ -1,6 +1,7 @@
 package bitcamp.java89.ems.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import bitcamp.java89.ems.domain.BidHistory;
@@ -16,4 +17,5 @@ public interface ItemDao {
   int insertPhoto(Item item) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
+  List<Item> getSearchTitle(HashMap<String, String> paramMap) throws Exception;
 }

@@ -68,4 +68,17 @@ public class ItemJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "경매등록에 성공했습니다.");
   }
+  
+  @RequestMapping("/item/searchTitle")
+  public AjaxResult searchTitle(String title, HttpSession session) throws Exception {
+    List<Item> item = itemService.getSearchTitle(title);
+    System.out.println(item);
+    
+    if (item == null) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 상품을 찾지 못하였습니다");
+    }
+    
+    session.setAttribute("title", title);
+    return new AjaxResult(AjaxResult.SUCCESS, item);
+  }
 }
