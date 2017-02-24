@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java89.ems.dao.ItemDao;
+import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.service.ItemService;
 
@@ -43,12 +44,12 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public Item getDetail(int no) throws Exception {
     return itemDao.getOne(no);
-  }
+  }  
   
   @Override
   public List<Item> getSearchTitle(String title) throws Exception {
     HashMap<String,String> paramMap = new HashMap<>();
-    paramMap.put("title", title);
+    paramMap.put("title", title); 
     
     List<Item> item = itemDao.getSearchTitle(paramMap);
     
@@ -57,5 +58,15 @@ public class ItemServiceImpl implements ItemService {
       
     }
     return item;
+  }
+
+  @Override
+  public Item getNowBid() throws Exception {
+    return itemDao.getNowBid();
+  }
+
+  @Override
+  public List<BidHistory> getNowBidHistory(int itemNo) throws Exception {
+    return itemDao.getNowBidHistory(itemNo);
   }
 }

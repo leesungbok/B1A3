@@ -17,7 +17,7 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(7,3,'�
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(8,4,'상품8','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','19:30~20:00',5300000);
 
 insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,'상품9','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','2017-02-24 20:00:00',5300000);
-
+insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,'상품9','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','2017-02-23 20:00:00',5300000);
 
 -- 상품 데이터
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(1,1,'상품1','의류','2017-01-01',30,'직거래','상품1입니다.','16:00~16:30',500000);
@@ -39,9 +39,21 @@ insert into phot(pno,itno,path) values(5,3,'t3_5.gif');
 insert into phot(pno,itno,path) values(6,3,'t3_6.gif');
 insert into phot(pno,itno,path) values(7,3,'t3_7.gif');
 insert into phot(pno,itno,path) values(8,4,'t4_8.gif');
+insert into phot(itno,path) values(13,'t4_8.gif');
+insert into phot(itno,path) values(13,'t4_8.gif');
+insert into phot(itno,path) values(13,'t4_8.gif');
+insert into phot(itno,path) values(13,'t4_8.gif');
 
 
 
+--관심 데이터
+insert into inter(mno,itno,type,rdt) values(1,10,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,11,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(3,13,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,14,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(4,10,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(4,12,1,'2017-01-01');
+insert into inter(mno,itno,type,rdt) values(2,13,1,'2017-01-01');
 
 
 

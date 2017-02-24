@@ -77,10 +77,12 @@ $(function () {
     var nav = $('.nav');
 
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 130) {
+        if ($(this).scrollTop() > 158) {
             nav.addClass("f-nav");
+            $('#header_sub').css('margin-bottom', '122px');
         } else {
             nav.removeClass("f-nav");
+            $('#header_sub').css('margin-bottom', '0');
         }
     });
 
@@ -115,5 +117,75 @@ $(function () {
     	    });
     	});
     });
+    $(".hover").mouseleave(
+    	    function () {
+    	      $(this).removeClass("hover");
+    	    }
+    	  );
     
+    $.getJSON(serverRoot + '/main/nowbid.json', function(ajaxResult) {
+        if (ajaxResult.status != "success") {
+            console.log(ajaxResult.data);   
+        }
+        
+        var nowbid = ajaxResult.data;
+        $('#nb-countdown').attr('data-countdown', nowbid.startTime);
+        $('.nb-img1').attr('src', clientRoot + '/upload/' + nowbid.photoList[0].filePath);
+        $('.nb-img2').attr('src', clientRoot + '/upload/' + nowbid.photoList[1].filePath);
+        $('.nb-img3').attr('src', clientRoot + '/upload/' + nowbid.photoList[2].filePath);
+        $('.nb-img4').attr('src', clientRoot + '/upload/' + nowbid.photoList[3].filePath);
+        $('.nb-title').text(nowbid.title);
+        $('.start_num').text(nowbid.startPrice);
+        $('.when-to-buy').text(nowbid.buyDate);
+        $('.day-of-use').text(nowbid.useDay);
+        $('.deal-method').text(nowbid.deal);
+        $('.seller').text(nowbid.nickName);
+        $('.sellrcontents').text(nowbid.content);
+        
+        $.getJSON(serverRoot + '/main/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
+            if (ajaxResult.status != "success") {
+                $('.present_num').text(nowbid.startPrice);
+                $('.desc-non-record').css('display', 'block');
+                console.log(ajaxResult.data);
+                return;
+            }
+            
+            var bdhs = ajaxResult.data;
+            $('.successful-bidder-img').attr('src', clientRoot + '/upload/' + bdhs[0].photoPath);
+            $('.successful-bidder').text(bdhs[0].nickName);
+            $('.present_num').text(bdhs[0].bids);
+            
+            var parent2 = $('.desc-line1');
+            var template2 = Handlebars.compile($('#mini-bid-history').html());
+            for(var i = 1; i < 5; i++) {
+                parent2.append(template2(bdhs[i]));
+            }
+        })
+        
+        $.getJSON(serverRoot + '/main/list.json', function(ajaxResult) {
+            var status = ajaxResult.status;
+              
+            if (status != "success")
+                return;
+            
+            var list = ajaxResult.data;
+            var parent = $('#nextlist');
+            var template = Handlebars.compile($('#trTemplate').html());
+            var div
+            for(var i = 0; i < list.length; i++) {
+              if (i % 3 == 0) {
+                  div = $("<div>").addClass('row')
+                  parent.append(div);
+              }
+              div.append(template(list[i]));
+            }
+            
+            $('[data-countdown]').each(function() {
+                var $this = $(this), finalDate = $(this).data('countdown');
+                $this.countdown(finalDate, function(event) {
+                    $this.html(event.strftime('%H:%M:%S'));
+                });
+            });
+        });
+    })
 });

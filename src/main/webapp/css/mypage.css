@@ -2,6 +2,8 @@
 
 /* @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css"); */
 
+
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: small;
@@ -23,7 +25,7 @@ body>.container {
 }
 #bodycon-title {
 	font-size:2em; 
-	padding-left:178px; 
+	padding-left:108px; 
 	margin-top:54px; 
 	font-weight: bold; 
 	display:inline-block;
@@ -246,22 +248,14 @@ input[type=password], input[type=text] {
 #favorite-bodysolid {
   height: 282px;
   width: 222px;
-  margin-left: 190px;
-  margin-top: -117px;
+  margin-left: 126px;
+  margin-top: -133px;
   border-radius: 2px;
   display: inline-block;
   position:absolute;
   border: 1px solid gray;
 }
-#favorite-bodysolid2 {
-  height: 282px;
-  width: 222px;
-  margin-top: -117px;
-  margin-left: 441px;
-  border-radius: 2px;
-  display: inline-block;
-  border: 1px solid gray;
-}
+
 .favorite-share {
   margin-top: 5px;
   display: inline-block;
@@ -303,16 +297,11 @@ input[type=password], input[type=text] {
   display: inline;
 }
 
-
-
-
-
 .blogShort{ border-bottom:1px solid rgb(243, 46, 109);}
 
 .nav-sidebar { 
     width: 10%;
     padding: 30px 0; 
-    margin-left:71px;
     border-right: 1px solid #ddd;
 }
 .nav-sidebar a {

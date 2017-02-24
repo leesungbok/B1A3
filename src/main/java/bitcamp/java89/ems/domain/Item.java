@@ -3,11 +3,10 @@ package bitcamp.java89.ems.domain;
 import java.io.Serializable;
 import java.util.List;
 
-public class Item implements Serializable{
+public class Item extends Member implements Serializable{
   private static final long serialVersionUID = 1L;
   
   protected int itemNo;
-  protected int memberNo;
   protected String title;
   protected String category;
   protected String buyDate;

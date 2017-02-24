@@ -2,7 +2,11 @@
 
 #model-body {
   height: 400px;
-  width: 450px;
+  width: 100%;
+}
+
+.blank {
+  width: 100%;
 }
 
 #body-solid {
@@ -27,13 +31,16 @@
   height: 340px;
   width: 360px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-  text-align: center;
 }
 
 #header_sub {
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
   font-weight: bold;
+}
+
+.nav {
+  text-align: center;
 }
 
 .f-nav {
@@ -95,7 +102,6 @@
 
 .pinkprice {
   font-size: 2em;
-  text-align: center;
 }
 
 .pinktext {
@@ -113,11 +119,11 @@
   text-align: center;
   color: #f32e6d;
   font-weight: bold;
+  margin-right: 50px;
+  width: 174px !important;
 }
 
-.desc-line {
-  margin-top: 17px;
-}
+.desc-line {margin-top: 14px;position: relative;right: -13px;}
 
 .bidding-btn {
   margin: 20px 0px 0px 120px;
@@ -178,10 +184,14 @@
   font-size:2.5em;
   display: block;
   margin-top: 18px;
+  text-align: center;
 }
 
 .desc-record{
-  margin-right: 24px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 /*nextlist*/
@@ -208,6 +218,15 @@ h1.heading {
   font-weight: 900;
   margin-bottom: 25px;
 }
+
+div.heart:before {
+    font-family:"FontAwesome";
+    content:"\f08a";
+    margin-top:10px;
+    height: 150px;
+    width:150px;
+    color: #b1afaf;
+  }
 
 .carbox {
   /* display: block; */
@@ -290,15 +309,152 @@ h1.heading {
   margin-right: 11px;
 }
 
-#next-bid-photos > .carousel-indicators > li {
+.carousel-indicators > li {
   border: 1px solid #c4c5c8;
 }
 
-#next-bid-photos > .carousel-indicators > .active{
+.carousel-indicators > .active{
   width: 15px;
   height: 15px;
   margin-bottom: -1px;
 }
+
+.nb-img1, .nb-img2, .nb-img3, .nb-img4 {
+  height: 382px !important;
+  margin: auto auto;
+}
+
+.nb-imgs > .item {
+  padding: 6%;
+}
+
+.start_num {
+  font-size: 1.5em;
+}
+
+.pink-num {
+  font-size:1.5em;
+  font-weight: bold;
+}
+
+.dl-horizontal > dt.pinkprice {
+  font-size:2.2em;
+  margin-top:10px;
+  margin-right: 50px;
+  width: 174px;
+}
+
+#on-air-text {
+  font-size: 2.0em;
+  margin-top: 20px;
+}
+
+#on-air-text2 {
+  font-size: 2.0em;
+  margin-top: 20px;
+  color:#e74c3c;
+}
+
+#nb-countdown {
+  display:inline-block;
+  font-weight: bold;
+  font-size: 5em;
+  margin-top: 20px;
+  color:#f32e6d;
+}
+
+#remains {
+  display:inline-block;
+  font-weight: bold;
+  font-size: 5em;
+  margin-top: 20px;
+  color:#f32e6d;
+}
+
+#bidding {
+  margin:130px 0px 0px 30px;
+}
+
+.successful-bidder-img {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  left: 6px;
+}
+
+.title {
+  text-align:center;
+  margin-bottom: 21px;
+}
+
+.bidder-img {width: 26px;height: 26px;}
+
+.successful-bidder {
+  font-size: 1.6em;
+  position: relative;
+  top: 5px;
+  left: 0px;
+  display: inline-block;
+  width: 118px;
+}
+
+.present_num2 {font-size: 2.5em;font-weight: bold;color: #f32e6d;position: relative;top: 9px;}
+
+.bidder {
+  position: relative;
+  top: 1px;
+  font-size: 1.4em;
+  display: inline-block;
+  width: 105px;
+}
+
+.bid-time {
+    position: relative;
+    font-size: 1.4em;
+    display: inline-block;
+    width: 87px;
+}
+
+.bid-won {
+  font-size: 1.4em;
+}
+
+.won1 {
+  top: 9px;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.won2 {
+  
+}
+
+.desc-line1 {
+  display: none;
+}
+
+.bids-empty {
+  font-size: 2em;
+  display: inline-block;
+}
+
+.icon-exclamation:before {
+  content: '\e80a';
+  font-family: fontello;
+  font-size: 2em;
+}
+
+.icon-exclamation {
+  
+}
+
+.desc-non-record {
+  display: none;
+  padding: 110px 35px 119px 44px;
+}
+
+
+>>>>>>> branch 'master' of https://github.com/leesungbok/B1A3.git
 /*
        #instaPics {  
             max-width: 320px;  

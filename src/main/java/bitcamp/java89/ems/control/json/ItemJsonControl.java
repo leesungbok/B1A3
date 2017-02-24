@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.domain.Member;
 import bitcamp.java89.ems.domain.Photo;
@@ -19,6 +20,28 @@ import bitcamp.java89.ems.service.ItemService;
 public class ItemJsonControl {
   @Autowired ItemService itemService;
   @Autowired ServletContext sc;
+
+  @RequestMapping("/main/nowbid")
+  public AjaxResult nowbid() throws Exception {
+    Item nowBid = itemService.getNowBid();
+
+    if (nowBid != null) {
+      return new AjaxResult(AjaxResult.SUCCESS, nowBid);
+    }
+
+    return new AjaxResult(AjaxResult.FAIL, "현재 경매품 정보를 가져오지 못했습니다."); 
+  }
+
+  @RequestMapping("/main/nowbidhistory")
+  public AjaxResult nowbidHistory(int itemNo) throws Exception {
+    List<BidHistory> bdhs = itemService.getNowBidHistory(itemNo);
+
+    if (!bdhs.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, bdhs);
+    }
+
+    return new AjaxResult(AjaxResult.FAIL, "현재 경매품 입찰기록을 가져오지 못했습니다."); 
+  }
 
   @RequestMapping("/main/list")
   public AjaxResult list() throws Exception {
