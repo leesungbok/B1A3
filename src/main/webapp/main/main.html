@@ -25,8 +25,8 @@
       <span id="on-air-text2">ON AIR!</span>
     </div>
     <div class="nav">
-        <p id="nb-countdown"></p>
-        <span id="remains">남음</span>
+      <p id="nb-countdown"></p>
+      <span id="remains">남음</span>
     </div>
     <!-- 시간헤더 끝-->
     <!-- 컨텐츠 본문 시작-->
@@ -120,34 +120,34 @@
     <!-- 입찰버튼 끝 -->
   </div>
   <!-- 다음경매 타이틀 시작-->
-    <!-- 공유버튼 시작 -->
-    <a href='#' id='like-btn'>
-    	<div class='heart'></div>
-    </a>
-<!--     <div class='share-btn' style="width:960px; margin:auto;">
+  <!-- 공유버튼 시작 -->
+  <a href='#' id='like-btn'>
+    <div class='heart'></div>
+  </a>
+  <!--     <div class='share-btn' style="width:960px; margin:auto;">
       <div class="fb-share-button" data-href="http://a.bitcamp.com:8080/B1A3/main/main.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fa.bitcamp.com%3A8080%2FB1A3%2Fmain%2Fmain.html&amp;src=sdkpreparse">공유</a></div>
       <div id="instaPics"></div> 
       <img class='photodesine' src="../image/facebook.png"  style='height: 49px; margin-top:10px; margin-left:169px;'>
       <img class='photodesine' src="../image/kakao.png" style='margin-top:10px;height: 50px; width:50px;'>
     </div> -->
-    <!-- 공유버튼 끝 -->
-    <!-- 다음경매 타이틀 끝-->
+  <!-- 공유버튼 끝 -->
+  <!-- 다음경매 타이틀 끝-->
 
-    <!-- 다음경매 무한 스크롤 시작-->
-    <div class="next-bidlist">
-      <h1 class="heading"> NEXT BIDDING LIST</h1>
-      <!-- 다음경매 리스트 시작 -->
-      <div class="container">
-        <!-- 다음경매 컨텐츠 본문 시작-->
-        <section class="wrapper">
-          <div class="container-big">
-            <div class="content">
-              <div id="nextlist" class="container"></div>
-            </div>
+  <!-- 다음경매 무한 스크롤 시작-->
+  <div class="next-bidlist">
+    <h1 class="heading"> NEXT BIDDING LIST</h1>
+    <!-- 다음경매 리스트 시작 -->
+    <div class="container">
+      <!-- 다음경매 컨텐츠 본문 시작-->
+      <section class="wrapper">
+        <div class="container-big">
+          <div class="content">
+            <div id="nextlist" class="container"></div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
+  </div>
 
   <!-- 경매등록 -->
   <div class="bid-regist"></div>
@@ -157,54 +157,54 @@
 
   <script id="trTemplate" type="text/x-handlebars-template">
     <div class="col-xs-12 col-sm-4">
-     <figure class="snip1206">
-                          <figcaption>
-                            <h2>하하</h2>
-      <div class="carbox">
-        <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
-        <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img class="item-img" src="../upload/{{photoList.0.filePath}}">
-              <div class="carousel-caption"></div>
+      <figure class="snip1206">
+        <figcaption>
+          <h2>하하</h2>
+          <div class="carbox">
+            <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
+            <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img class="item-img" src="../upload/{{photoList.0.filePath}}">
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                  <img class="item-img" src="../upload/{{photoList.1.filePath}}">
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                  <img class="item-img" src="../upload/{{photoList.2.filePath}}">
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                  <img class="item-img" src="../upload/{{photoList.3.filePath}}">
+                  <div class="carousel-caption"></div>
+                </div>
+              </div>
             </div>
-            <div class="item">
-              <img class="item-img" src="../upload/{{photoList.1.filePath}}">
-              <div class="carousel-caption"></div>
-            </div>
-            <div class="item">
-              <img class="item-img" src="../upload/{{photoList.2.filePath}}">
-              <div class="carousel-caption"></div>
-            </div>
-            <div class="item">
-              <img class="item-img" src="../upload/{{photoList.3.filePath}}">
-              <div class="carousel-caption"></div>
+            <div class="carbox-content">
+              <h4 class="carbox-title">{{title}}</h4>
+              <dl class="next-horizontal">
+                <dt class="pinktext stp-text">시작가</dt>
+                <dd class="black">
+                  <span>{{startPrice}}원</span>
+                </dd>
+              </dl>
+              <dl class="next-horizontal">
+                <dt class="pinktext st-text">시작시간</dt>
+                <dd class='black'>
+                  <span>{{startTime}}</span>
+                </dd>
+              </dl>
             </div>
           </div>
-        </div>
-        <div class="carbox-content">
-          <h4 class="carbox-title">{{title}}</h4>
-          <dl class="next-horizontal">
-            <dt class="pinktext stp-text">시작가</dt>
-            <dd class="black">
-              <span>{{startPrice}}원</span>
-            </dd>
-          </dl>
-          <dl class="next-horizontal">
-            <dt class="pinktext st-text">시작시간</dt>
-            <dd class='black'>
-              <span>{{startTime}}</span>
-            </dd>
-          </dl>
-        </div>
-      </div>
-      </figcaption>
+        </figcaption>
       </figure>
     </div>
   </script>

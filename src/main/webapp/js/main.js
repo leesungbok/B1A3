@@ -125,7 +125,7 @@ $(function () {
     
     $.getJSON(serverRoot + '/main/nowbid.json', function(ajaxResult) {
         if (ajaxResult.status != "success") {
-            console.log(ajaxResult.data);   
+            
         }
         
         var nowbid = ajaxResult.data;
