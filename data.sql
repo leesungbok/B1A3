@@ -43,6 +43,14 @@ insert into phot(itno,path) values(13,'t4_8.gif');
 insert into phot(itno,path) values(13,'t4_8.gif');
 insert into phot(itno,path) values(13,'t4_8.gif');
 insert into phot(itno,path) values(13,'t4_8.gif');
+insert into phot(itno,path) values(11,'꽃.gif');
+insert into phot(itno,path) values(11,'미키.gif');
+insert into phot(itno,path) values(11,'바다.gif');
+insert into phot(itno,path) values(11,'성.gif');
+insert into phot(itno,path) values(14,'꽃.gif');
+insert into phot(itno,path) values(14,'미키.gif');
+insert into phot(itno,path) values(14,'바다.gif');
+insert into phot(itno,path) values(14,'성.gif');
 
 
 
