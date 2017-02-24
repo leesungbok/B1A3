@@ -3,10 +3,10 @@
 /* @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css"); */
 
 
-
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: small;
+ 
 }
 .body-contents {
 	width: 70%;
@@ -26,7 +26,7 @@ body>.container {
 #bodycon-title {
 	font-size:2em; 
 	padding-left:108px; 
-	margin-top:54px; 
+	margin-top:20px; 
 	font-weight: bold; 
 	display:inline-block;
 }
