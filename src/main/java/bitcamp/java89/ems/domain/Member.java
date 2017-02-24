@@ -122,4 +122,14 @@ public class Member implements Serializable {
   public void setNaver(String naver) {
     this.naver = naver;
   }
+
+  @Override
+  public String toString() {
+    return "Member [memberNo=" + memberNo + ", email=" + email + ", nickName=" + nickName + ", phoneNo=" + phoneNo
+        + ", password=" + password + ", photoPath=" + photoPath + ", postNo=" + postNo + ", basicAddress="
+        + basicAddress + ", detailAddress=" + detailAddress + ", telphone=" + telphone + ", facebook=" + facebook
+        + ", kakaoTalk=" + kakaoTalk + ", naver=" + naver + "]";
+  }
+  
+  
 }

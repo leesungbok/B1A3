@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import bitcamp.java89.ems.domain.Like;
 
 public interface LikeDao {
-  ArrayList<Like> getLikeList() throws Exception;
+  ArrayList<Like> getLikeList(int memberNo) throws Exception;
   int insert(Like like) throws Exception;
   int delete(int likeNo) throws Exception;
 

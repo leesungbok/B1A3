@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.ems.domain.Like;
+import bitcamp.java89.ems.domain.Member;
 import bitcamp.java89.ems.service.LikeService;
+
 
 @RestController
 public class LikeJsonControl {
@@ -18,8 +20,9 @@ public class LikeJsonControl {
   @Autowired ServletContext sc;
 
   @RequestMapping("/mypage/list")
-  public AjaxResult list() throws Exception {
-    List<Like> list = likeService.getLikeList();
+  public AjaxResult list(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    List<Like> list = likeService.getLikeList(member.getMemberNo());
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
 
