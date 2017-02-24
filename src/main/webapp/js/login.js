@@ -42,13 +42,13 @@ function checkLoginState() {
 function testAPI() {
   /*console.log('Welcome!  Fetching your information.... ');*/
   FB.api('/me', function(res) {
-      $.getJSON('loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
+      $.getJSON(serverRoot + '/auth/loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
           if (ajaxResult.status == "success") {
-              location.href = "../main";
+              location.href = clientRoot +  "/main/main.html";
           } else {
         	  window.sessionStorage.setItem('fcbk-id', res.id);
               window.sessionStorage.setItem('fcbk-name', res.name);
-          	location.href='joinEmail.html';
+          	location.href= clientRoot + '/auth/joinEmail.html';
           }
       })
       

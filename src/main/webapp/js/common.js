@@ -18,7 +18,6 @@ $(function () {
                     } else {
                         event.cancelBubble = true;
                     }
-                    
                 });
                 
     			// 로그온 상태 출력 창을 감춘다.
@@ -27,7 +26,7 @@ $(function () {
     			// 로그인 버튼의 클릭 이벤트 핸들러 등록하기
     			$('#login-btn').click(function(event) {
     				event.preventDefault()
-    				location.href = '../auth/login.html'
+    				location.href = clientRoot +  '/auth/login.html'
     			});
     			return;
     		}
@@ -56,15 +55,16 @@ $(function () {
     				xfbml      : false,
     				version    : 'v2.8' 
     			});
-    			$.getJSON('../auth/logout.json', function(ajaxResult) {
+    			$.getJSON(serverRoot + '/auth/logout.json', function(ajaxResult) {
+    				console.log(ajaxResult);
 				    FB.getLoginStatus(function(response) {
 				        if (response && response.status === 'connected') {
 				            FB.logout(function(response) {
-				            location.href = "../auth/login.html";
+				            location.href = clientRoot +  "/auth/login.html";
 				            });
 				        } else {
 				        	Kakao.Auth.logout(function() {
-					            location.href = "../auth/login.html";
+					            location.href = clientRoot +  "/auth/login.html";
 					        })
 				        }
 				    });
@@ -73,11 +73,11 @@ $(function () {
     		});
     		
     		$('#logon-img').click(function() {
-    		    location.href = '../mypage/mysettings.html?submenu=myoption'
+    		    location.href = clientRoot + '/mypage/mysettings.html?submenu=myoption'
     		})
             
     		$('#logon-nick-name').click(function() {
-                location.href = '../mypage/mysettings.html?submenu=myoption'
+                location.href = clientRoot + '/mypage/mysettings.html?submenu=myoption'
             })
     	  });
 
@@ -86,13 +86,13 @@ $(function () {
 
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
-            location.href = "../auth/login.html";
+            location.href = clientRoot + "/auth/login.html";
             event.preventDefault();
         });
         
         // 회원가입시 회원가입 페이지로 이동
         $('#join-btn').click(function(event) {
-            location.href = "../auth/joinEmail.html";
+            location.href = clientRoot + "/auth/joinEmail.html";
             event.preventDefault();
         });
         
@@ -113,8 +113,12 @@ $(function () {
         })
         
         $('#search-btn').on('click', function(event) {
-        	event.preventDefault();
-        	location.href='../search/search.html';
+        	
+        	var param =  {
+        			"title" : $('#searchTitle').val()
+        	}
+        	location.href= clientRoot + '/search/search.html?title=' + param.title; 
+        	
         });
         
         $('#communicate-btn').click(function(event) {
@@ -133,17 +137,17 @@ $(function () {
     	/*var submenu = location.search.split("?")[1].split("=")[1];*/
 	    $('#mypage').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= "mypage.html?submenu=mypage";
+	    	 location.href= clientRoot +  "/mypage.html?submenu=mypage";
 	    }); 
 
 	    $('#mybidding').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= "mybidding.html?submenu=mybidding";
+	    	 location.href= clientRoot +  "/mybidding.html?submenu=mybidding";
 	    }); 
 
 	    $('#myoption').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= "mysettings.html?submenu=myoption";
+	    	 location.href= clientRoot +  "/mysettings.html?submenu=myoption";
 	    }); 
 	    
 	    /*$("#"+submenu).parent().addClass('active');*/
