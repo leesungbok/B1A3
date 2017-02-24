@@ -8,6 +8,7 @@ public class Like extends Item implements Serializable{
   protected int type;
   protected String readTime;
   
+  
   public int getType() {
     return type;
   }
