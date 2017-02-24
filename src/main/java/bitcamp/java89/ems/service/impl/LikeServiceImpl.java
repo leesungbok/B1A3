@@ -26,8 +26,7 @@ public class LikeServiceImpl implements LikeService {
   }
 
   @Override
-  public List<Like> getLikeList() throws Exception {
-    return likeDao.getLikeList();
+  public List<Like> getLikeList(int memberNo) throws Exception {
+    return likeDao.getLikeList(memberNo);
   }
- 
 }

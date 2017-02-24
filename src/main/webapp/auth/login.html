@@ -21,12 +21,12 @@
         <a href="javascript:loginWithKakao()" class="btn_sns btn_kakao">
           <span>카카오톡</span>
         </a>
-        <a href="#" class="btn_sns btn_naver">
+        <a href="#" class="btn_sns btn_naver" >
           <span>네이버</span>
         </a>
-				<div  class="fb-login-button" data-max-rows="1" data-size='xlarge'
-				data-show-faces="false" data-scope=' public_profile'
-				onlogin="checkLoginState();">페이스북</div>
+        <a href="javascript:fb_login()" class="btn_sns btn_facebook" >
+          <span>페이스북</span>
+        </a>
       </div>
       
       <div class="user_login_email">
@@ -53,19 +53,8 @@
         </a>
       </div>
     </div>
-  <div id="status">
-  </div>
   <div id="fb-root"></div>
-	<script type='text/javascript'>
-	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
-	  fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));
-	</script>
-  
+
 </div>
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>

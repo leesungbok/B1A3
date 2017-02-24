@@ -4,13 +4,11 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
 
 #bid {
 	width:400px;
-	margin-top: 400px;
-	top:-100px;
-	
+	top: 31%;
 }
 
 #tender-header {
-  color: #4abeca;
+  /* color: #4abeca; */
 }
 
  .price {
@@ -20,12 +18,13 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
  }
  
  #l {
-	float: right;
 	padding-bottom: 10px;
-	font-size: 200%;
+	font-size: 2.2em;
 	/* text-decoration: underline; */
 	text-align: right;
-	width: 200px;
+	width: 131px;
+	display: inline-block;
+	color: #f32e6d;
 	}
 
 .body-content {
@@ -42,7 +41,7 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
 
 .btn-primary1, .btn-primary1:hover {
 	background-color: #fff;
-	color: #4abeca;
+	color: #f32e6d;
 	border-color: #fff;
 	padding-left: 50px;
 }
@@ -53,3 +52,30 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
     padding-right: 50px;
 }
 
+.bidding-present {margin-bottom: 10px;padding-right: 63px;}
+
+.bidding-present-text {
+  font-size: 2.2em;
+  display: inline-block;
+  margin-left: 75px;
+}
+
+.bidding_present_num {font-size: 2.2em;float: right;}
+
+.bidding-price {
+  margin-bottom: 6px;
+}
+
+.bidding-price-text {
+  font-size: 2.2em;
+  display: inline-block;
+  width: 125px;
+  margin-left: 48px;
+}
+
+.bidding-present-won {
+  float: right;
+  position: relative;
+  top: 20px;
+  right: -3px;
+}

@@ -20,7 +20,7 @@
     </collection>
   </resultMap>
   
-  <select id="getLikeList" resultMap="like-map">
+  <select id="getLikeList" parameterType="int" resultMap="like-map">
     <![CDATA[
     select
       m.mno,

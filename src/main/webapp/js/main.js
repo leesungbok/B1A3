@@ -68,8 +68,6 @@ $(function () {
         }); // click()
     });
     
-    
-    
     $.get(clientRoot + '/main/detail.html', function (result) {
         $('.bid-current').html(result);
     })
@@ -92,31 +90,6 @@ $(function () {
         autoTriggerUntil : 6
     });*/
     
-    $.getJSON(serverRoot + '/main/list.json', function(ajaxResult) {
-        var status = ajaxResult.status;
-    	  
-    	if (status != "success")
-    	    return;
-    	
-    	var list = ajaxResult.data;
-    	var parent = $('#nextlist');
-    	var template = Handlebars.compile($('#trTemplate').html());
-    	var div
-    	for(var i = 0; i < list.length; i++) {
-    	  if (i % 3 == 0) {
-    		  div = $("<div>").addClass('row')
-    		  parent.append(div);
-    	  }
-    	  div.append(template(list[i]));
-    	}
-    	
-    	$('[data-countdown]').each(function() {
-    	    var $this = $(this), finalDate = $(this).data('countdown');
-    	    $this.countdown(finalDate, function(event) {
-    	        $this.html(event.strftime('%H:%M:%S'));
-    	    });
-    	});
-    });
     $(".hover").mouseleave(
     	    function () {
     	      $(this).removeClass("hover");
@@ -125,7 +98,7 @@ $(function () {
     
     $.getJSON(serverRoot + '/main/nowbid.json', function(ajaxResult) {
         if (ajaxResult.status != "success") {
-            console.log(ajaxResult.data);   
+            
         }
         
         var nowbid = ajaxResult.data;
@@ -142,25 +115,29 @@ $(function () {
         $('.seller').text(nowbid.nickName);
         $('.sellrcontents').text(nowbid.content);
         
-        $.getJSON(serverRoot + '/main/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
-            if (ajaxResult.status != "success") {
-                $('.present_num').text(nowbid.startPrice);
-                $('.desc-non-record').css('display', 'block');
-                console.log(ajaxResult.data);
-                return;
-            }
-            
-            var bdhs = ajaxResult.data;
-            $('.successful-bidder-img').attr('src', clientRoot + '/upload/' + bdhs[0].photoPath);
-            $('.successful-bidder').text(bdhs[0].nickName);
-            $('.present_num').text(bdhs[0].bids);
-            
-            var parent2 = $('.desc-line1');
-            var template2 = Handlebars.compile($('#mini-bid-history').html());
-            for(var i = 1; i < 5; i++) {
-                parent2.append(template2(bdhs[i]));
-            }
-        })
+        (function getBidHistory() {
+            $.getJSON(serverRoot + '/main/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
+                if (ajaxResult.status != "success") {
+                    $('.present_num').text(nowbid.startPrice);
+                    $('.desc-non-record').css('display', 'block');
+                    $('#l').val(nowbid.startPrice);
+                    return;
+                }
+                
+                var bdhs = ajaxResult.data;
+                $('.successful-bidder-img').attr('src', clientRoot + '/upload/' + bdhs[0].photoPath);
+                $('.successful-bidder').text(bdhs[0].nickName);
+                $('.present_num').text(bdhs[0].bids);
+                $('#l').val(bdhs[0].bids + 10000);
+                
+                var parent2 = $('.desc-line1');
+                var template2 = Handlebars.compile($('#mini-bid-history').html());
+                for(var i = 1; i < 5; i++) {
+                    parent2.append(template2(bdhs[i]));
+                }
+            })
+            setTimeout(getBidHistory, 1000);
+        })();
         
         $.getJSON(serverRoot + '/main/list.json', function(ajaxResult) {
             var status = ajaxResult.status;
@@ -174,7 +151,7 @@ $(function () {
             var div
             for(var i = 0; i < list.length; i++) {
               if (i % 3 == 0) {
-                  div = $("<div>").addClass('row')
+                  div = $("<div>").addClass('row');
                   parent.append(div);
               }
               div.append(template(list[i]));
@@ -184,6 +161,8 @@ $(function () {
                 var $this = $(this), finalDate = $(this).data('countdown');
                 $this.countdown(finalDate, function(event) {
                     $this.html(event.strftime('%H:%M:%S'));
+                }).on('finish.countdown', function() {
+                    location.reload();
                 });
             });
         });

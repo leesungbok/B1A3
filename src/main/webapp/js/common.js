@@ -6,14 +6,20 @@ $(function () {
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	/*console.log(ajaxResult)*/
             var member = ajaxResult.data;
-        	$('[data-target]').click(function(){ 
-        	
-	        	if (ajaxResult.status == "fail") {
-	        		location.href= clientRoot + '/auth/login.html';
-	        	}
-	        	
-        	});
+
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+                $('.navbar-menu, #addbid-btn, .bidding-btn').click(function() {
+                    location.href = clientRoot + '/auth/login.html';
+                    event.preventDefault();
+                    
+                    // 이벤트 전파를 중단시킨다.
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else {
+                        event.cancelBubble = true;
+                    }
+                });
+                
     			// 로그온 상태 출력 창을 감춘다.
     			$('#logout-state').css('display', 'inline-block');
     			
