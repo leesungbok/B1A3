@@ -23,6 +23,7 @@
   <select id="getLikeList" resultMap="like-map">
     <![CDATA[
     select
+      m.mno,
       i.itno,
       i.titl,
       i.time,
@@ -30,10 +31,11 @@
       p.path,
       t.type,
       t.rdt
-    from inter t
-    left outer join item i on t.itno=i.itno
-    left outer join phot p on t.itno=p.itno
-    where rdt < now() and t.type=1
+    from memb m
+    left outer join item i on m.mno=i.itno
+    left outer join inter t on m.mno=t.mno
+    left outer join phot p on i.itno=p.itno
+    where rdt < now() and t.type=1 and m.mno=#{memberNo}
     order by rdt desc;
     ]]>
   </select>
