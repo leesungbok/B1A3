@@ -16,7 +16,7 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(6,3,'�
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(7,3,'상품7','의류','2017-01-07',730,'직거래','상품7입니다.','19:00~19:30',2500000);
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc) values(8,4,'상품8','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','19:30~20:00',5300000);
 
-insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,'상품9','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','19:30~20:00',5300000);
+insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) values(4,'상품9','책','2017-01-08',730,'택배 또는 직거래','상품8입니다.','2017-02-24 20:00:00',5300000);
 
 
 -- 상품 데이터

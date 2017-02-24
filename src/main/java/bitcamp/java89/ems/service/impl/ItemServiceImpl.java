@@ -1,5 +1,6 @@
 package bitcamp.java89.ems.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,19 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public Item getDetail(int no) throws Exception {
     return itemDao.getOne(no);
+  }
+  
+  @Override
+  public List<Item> getSearchTitle(String title) throws Exception {
+    HashMap<String,String> paramMap = new HashMap<>();
+    paramMap.put("title", title);
+    
+    List<Item> item = itemDao.getSearchTitle(paramMap);
+    
+    if (item == null) {
+      return null;
+      
+    }
+    return item;
   }
 }

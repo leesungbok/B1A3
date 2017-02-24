@@ -10,4 +10,5 @@ public interface ItemService {
   int add(Item item) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
+  List<Item> getSearchTitle(String title) throws Exception;
 }
