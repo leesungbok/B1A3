@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitcamp.java89.ems.dao.BidHistoryDao">
+
+  <resultMap type="bidHistory" id="bidHistory-map">
+    <id     column="hsno" property="bidHistoryNo"/>
+    <result column="bids" property="bids"/>
+    <result column="time" property="bidTime"/>
+    <result column="itno" property="itemNo"/>
+    <result column="mno"  property="memberNo"/>
+    <result column="nknm" property="nickName"/>
+    <result column="path" property="photoPath"/>
+  </resultMap>
+
+  <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
+    select
+      m.nknm,
+      m.path,
+      b.bids,
+      DATE_FORMAT(b.time, '%H:%i:%s') as time
+    from bdhs b
+    left outer join memb m on b.mno=m.mno
+    where itno=#{value}
+    order by bids desc;
+  </select>
+  
+  <insert id="insert" parameterType="bidhistory">
+    insert into bdhs(mno,itno,bids,time)
+    values(#{memberNo},#{itemNo},#{bids},now())
+  </insert>
+
+</mapper>

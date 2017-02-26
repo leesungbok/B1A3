@@ -25,16 +25,6 @@
     </collection>
   </resultMap>
 
-  <resultMap type="bidHistory" id="bidHistory-map">
-    <id     column="hsno" property="bidHistoryNo"/>
-    <result column="bids" property="bids"/>
-    <result column="time" property="bidTime"/>
-    <result column="itno" property="itemNo"/>
-    <result column="mno"  property="memberNo"/>
-    <result column="nknm" property="nickName"/>
-    <result column="path" property="photoPath"/>
-  </resultMap>
-
   <select id="getList" resultMap="item-map">
     select
       i.itno,
@@ -67,18 +57,6 @@
       left outer join memb m on i.mno=m.mno
       where i.time <= now() and now() <= i.time + interval 30 minute;
     ]]>
-  </select>
-
-  <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
-    select
-      m.nknm,
-      m.path,
-      b.bids,
-      DATE_FORMAT(b.time, '%H:%i:%s') as time
-    from bdhs b
-    left outer join memb m on b.mno=m.mno
-    where itno=#{value}
-    order by bids desc;
   </select>
 
   <insert id="insert" parameterType="item"

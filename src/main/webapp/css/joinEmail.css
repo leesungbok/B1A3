@@ -5,6 +5,14 @@
   margin: 0px auto;
 }
 
+.container {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  margin-left: -479px !important;
+  margin-top: -280px !important;
+}
+
 #body>h1 {
   padding: 114px 0 20px 15px;
 }

@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
 
+.container {  position: absolute;  left: 50%;  top: 53%;  margin-left: -479px !important;  margin-top: -280px !important;
+}
+
 .user_login {
   padding: 30px 40px;
   border: 1px solid #e8e8e8;
@@ -12,7 +15,7 @@
 }
 
 .container>h1 {
-  padding: 114px 0 20px 15px;
+  /* padding: 114px 0 20px 15px; */
 }
 
 .icon-clock:before {

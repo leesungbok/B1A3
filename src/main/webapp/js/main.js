@@ -116,7 +116,7 @@ $(function () {
         $('.sellrcontents').text(nowbid.content);
         
         (function getBidHistory() {
-            $.getJSON(serverRoot + '/main/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
+            $.getJSON(serverRoot + '/bidhistory/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
                 if (ajaxResult.status != "success") {
                     $('.present_num').text(nowbid.startPrice);
                     $('.desc-non-record').css('display', 'block');
@@ -166,5 +166,19 @@ $(function () {
                 });
             });
         });
+        
+        $('.btn-primary1').click(function() {
+        	$.post(serverRoot + '/bidhistory/add.json',
+        		{
+        		"bids": $('#l').val(),
+        		"itemNo": nowbid.itemNo
+        		}, function(ajaxResult) {
+        			if (ajaxResult.status != "success") {
+        				alert(ajaxResult.data);
+        				return;
+        			}
+        			console.log(ajaxResult.data)
+        		}, 'json'); // post();
+        })
     })
 });
