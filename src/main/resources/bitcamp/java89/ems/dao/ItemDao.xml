@@ -25,7 +25,7 @@
     </collection>
   </resultMap>
 
-  <select id="getList" resultMap="item-map">
+  <select id="getList" resultMap="item-map" parameterType="map">
     select
       i.itno,
       i.titl,
@@ -35,7 +35,8 @@
     from item i
     left outer join phot p on i.itno=p.itno
     where time > now()
-    order by time asc;
+    order by time asc
+    limit #{startRowIndex}, #{rowSize}
   </select>
 
   <select id="getNowBid" resultMap="item-map">
@@ -107,7 +108,7 @@
   <delete id="delete" parameterType="int">
     delete from item where no=#{value}
   </delete>
-  
+
   <select id="getSearchTitle" parameterType="map" resultMap="item-map">
     select
      i.itno,
@@ -125,6 +126,12 @@
     from item i
     left outer join phot p on i.itno=p.itno
     where titl=#{title}
+  </select>
+
+  <select id="countAll" resultType="int">
+    select count(*)
+    from item i
+    where time > now()
   </select>
 
 </mapper>

@@ -1,5 +1,6 @@
 package bitcamp.java89.ems.control.json;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,11 +19,20 @@ public class BidHistoryJsonControl {
   @Autowired BidHistoryService bidHistoryService;
 
   @RequestMapping("nowbidhistory")
-  public AjaxResult nowbidHistory(int itemNo) throws Exception {
+  public AjaxResult nowbidHistory(int itemNo, HttpSession session) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    
     List<BidHistory> bdhs = bidHistoryService.getNowBidHistory(itemNo);
-
+    Member member = (Member)session.getAttribute("member");
+    
+    paramMap.put("bdhs", bdhs);
+    
+    if (member != null) {
+      paramMap.put("nickName", member.getNickName());
+    }
+    
     if (!bdhs.isEmpty()) {
-      return new AjaxResult(AjaxResult.SUCCESS, bdhs);
+      return new AjaxResult(AjaxResult.SUCCESS, paramMap);
     }
 
     return new AjaxResult(AjaxResult.FAIL, "현재 경매품 입찰기록을 가져오지 못했습니다.");

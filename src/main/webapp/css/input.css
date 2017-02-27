@@ -79,3 +79,15 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
   top: 20px;
   right: -3px;
 }
+
+.sweet-alert .sa-icon.sa-error {
+  border-color: #f32e6d;
+}
+
+.sweet-alert .sa-icon.sa-error .sa-line {
+  background-color: #f32e6d;
+}
+
+.atLeastBids {
+  color: red;
+}
