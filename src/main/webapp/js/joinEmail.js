@@ -205,7 +205,8 @@ $(function() {
                 "email" : $('#email').val(),
                 "password" : $('#password').val(),
                 "nickName" : $('#nickName').val(),
-                "phoneNo" : $('#phoneNo').val()
+                "phoneNo" : $('#phoneNo').val(),
+                "photoPath" : 'user.png'
         };
         
         if ($('#kakao-id').val() != null) {

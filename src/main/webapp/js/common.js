@@ -8,7 +8,7 @@ $(function () {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -34,11 +34,7 @@ $(function () {
     		// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
     		$('#logon-state').css('display', 'inline-block');
     		
-    		if (member.photoPath == null) {
-    		    $('#logon-img').attr('src', '../image/user.png');
-    		} else {
-    		    $('#logon-img').attr('src', '../upload/' + member.photoPath);
-    		}
+    		$('#logon-img').attr('src', '../upload/' + member.photoPath);
     		
     		$('#logon-nick-name').text(member.nickName);
     		

@@ -1,6 +1,7 @@
 package bitcamp.java89.ems.control.json;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,9 +31,14 @@ public class ItemJsonControl {
   }
 
   @RequestMapping("/main/list")
-  public AjaxResult list() throws Exception {
-    List<Item> list = itemService.getList();
-    return new AjaxResult(AjaxResult.SUCCESS, list);
+  public AjaxResult list(int pageNo, int pageSize) throws Exception {
+    List<Item> list = itemService.getList(pageNo, pageSize);
+    int totalCount = itemService.getSize();
+    
+    HashMap<String, Object> resultMap = new HashMap<>();
+    resultMap.put("list", list);
+    resultMap.put("totalCount", totalCount);
+    return new AjaxResult(AjaxResult.SUCCESS, resultMap);
   }
 
   @RequestMapping("/main/add")
