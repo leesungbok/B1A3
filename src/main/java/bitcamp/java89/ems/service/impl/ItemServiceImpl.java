@@ -52,9 +52,7 @@ public class ItemServiceImpl implements ItemService {
   public List<Item> getSearchTitle(String title) throws Exception {
     HashMap<String,String> paramMap = new HashMap<>();
     paramMap.put("title", title); 
-    
     List<Item> item = itemDao.getSearchTitle(paramMap);
-    
     if (item == null) {
       return null;
       

@@ -53,7 +53,6 @@ public class ItemJsonControl {
   @RequestMapping("/item/searchTitle")
   public AjaxResult searchTitle(String title, HttpSession session) throws Exception {
     List<Item> item = itemService.getSearchTitle(title);
-    System.out.println(item);
     
     if (item == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 상품을 찾지 못하였습니다");

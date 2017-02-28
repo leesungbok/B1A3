@@ -12,11 +12,10 @@
   }
   
   div.header1 {
-  width:100%;
+    width:100%;
     border-radius: 10px;
     border: 1px solid #9c9595;
   }
- 
  
   h1 {
     font-size:2em;
@@ -24,32 +23,22 @@
     margin-top:50px;
   }
   
-  
   div.inside {
     display:table; 
-    width:750px;
+    width:800px;
   }
   
   div.category {
     display:inline-block;
-    width:43px;
+    width: 52px;
     margin-left: 15px;
   }
   
   div.category1 {
     display:inline-block;
-    width:53px;
-    margin-left: 15px;
-  }
-  
-  div.category:hover {
-    background-color: red;
-    color: blue;
-  }
-  
-  div.category1:hover {
-    background-color: red;
-    color: blue;
+    width: 58px;
+    margin-left: 10px;
+    margin-right: 5px;
   }
   
   div.next-pro-first {
@@ -74,7 +63,7 @@
     font-family:"FontAwesome";
     content:"\f108";
     font-size: 25px;
-    padding-left: 10px;
+    padding-left: 5px;
     color: #272b2d;
   }
   
@@ -82,7 +71,7 @@
     font-family:"FontAwesome";
     content:"\f030";
     font-size: 25px;
-    padding-left: 10px;
+    padding-left: 5px;
     color: #b1afaf;
   }
   
@@ -90,7 +79,7 @@
     font-family:"FontAwesome";
     content:"\f02d";
     font-size: 25px;
-    padding-left: 10px;
+    padding-left: 6px;
     color: #b78b09;
   }
   
@@ -98,7 +87,7 @@
     font-family:"FontAwesome";
     content:"\f001";
     font-size: 25px;
-    padding-left: 10px;
+    padding-left: 3px;
     color: #458fb3;
   }
   
@@ -114,7 +103,7 @@
     font-family:"FontAwesome";
     content:"\f206";
     font-size: 25px;
-    padding-left: 7px;
+    padding-left: 4px;
     color: #332a27;
   }
   
@@ -131,7 +120,7 @@
     font-family:"FontAwesome";
     content:"\f015";
     font-size: 25px;
-    padding-left: 10px;
+    padding-left: 3px;
     color: #332a27;
   }
     
@@ -159,7 +148,7 @@
   
   span.cate {
     font-size: 15px;
-    padding-left: 7px;
+    padding-left: 2px;
   }
   
   span.cate1 {
@@ -239,6 +228,7 @@
     margin-left: 10px;
   }
   
-  
-  
+  .btn-default {
+    border-color: #fff;
+  }
   

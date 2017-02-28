@@ -14,6 +14,7 @@ $('#search3').click(function() {
 	location.href = clientRoot + '/search/search3.html';
 });
 
+
 $(function () {
   var param = location.href.split('?')[1].split('=')[1];
 	$.get(serverRoot + '/item/searchTitle.json?title=' + param , function(ajaxResult) {
