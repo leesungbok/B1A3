@@ -7,70 +7,6 @@
 }(document, 'script', 'facebook-jssdk'));
 
 $(function () {
-    // add.html을 가져와서 붙인다.
-    $.get(clientRoot + '/main/add.html', function (result) {
-        $('.bid-regist').html(result);
-        
-        // 경매등록 사진첨부
-        var $input = $("#fileupload");
-        $input.fileinput({
-            uploadUrl : serverRoot + "/common/fileupload.json",
-            showRemove : false,
-            showCaption: false,
-            showUpload : false,
-            uploadAsync: false,
-            language : "kr",
-            allowedFileExtensions : [ "jpg", "png", "gif", "jpeg" ],
-            minFileCount: 4,
-            maxFileCount : 4
-        }).on("filebatchselected", function(event, data, previewId, index) {
-            $('.kv-upload-progress').css('display', 'none');
-            $input.fileinput("upload");
-        }).on('filebatchuploadsuccess', function(event, data, previewId, index) {
-            for (var i = 0; i < 4; i++) {
-                $('<input>').attr({
-                    type: 'hidden',
-                    class: 'file-path',
-                    value: data.response.data[i]
-                }).appendTo("#file-selector");
-            }
-        })/*.on('filesuccessremove', function(event, id, data, previewId, index) {
-        });*/
-        
-        // 경매등록 버튼클릭시
-        $('#add-btn').click(function() {
-            var photoPathList = $('.file-path').map(function() {
-                return this.getAttribute("value");
-            }).get();
-            
-            var item = {
-                    "title": $('#titl').val(),
-                    "category": $('#categ').val(),
-                    "startPrice": $('#stpc').val(),
-                    "buyDate": $('#buy').val(),
-                    "useDay": $('#day').val(),
-                    "content": $('#cont').val(),
-                    "deal": $('#deal').val(),
-                    "startTime": JSON.stringify(photoPathList)
-            };
-            
-            $.post(serverRoot + '/main/add.json', item, function(ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    alert(ajaxResult.data);
-                    return;
-                }
-                swal({
-                    title: "등록 완료!",
-                    text: "등록하신 경매품을 확인하세요.",
-                    timer: 2250,
-                    showConfirmButton: false,
-                    type: "success"
-                });
-                setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
-            }, 'json'); // post();
-        }); // click()
-    });
-    
     var nav = $('.nav');
 
     $(window).scroll(function () {
@@ -141,34 +77,11 @@ $(function () {
                     }
                     
                     var bdhs = ajaxResult.data.bdhs;
-                    var nickName = ajaxResult.data.nickName
                     if ($('.successful-bidder').text() == bdhs[0].nickName) {
                         return;
                     }
                     
-                    if (bdhs[1] != null && bdhs[1].nickName == nickName) {
-                        swal({
-                            title: "새로운 입찰!",
-                            type: "warning",
-                            text: "입찰 순위가 밀려났습니다.",
-                            confirmButtonText: "확인",
-                            confirmButtonColor: "#f32e6d"
-                        });
-                    }
-                    
-                    $('.desc-non-record').css('display', 'none');
-                    if (bdhs[0].nickName == nickName) {
-                        $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
-                        $('.bidding-btn, #detail-bid').css('opacity', '.65');
-                    } else {
-                        $('.bidding-btn, #detail-bid').css('pointer-events', 'auto');
-                        $('.bidding-btn, #detail-bid').css('opacity', '1');
-                    }
-                    
-                    $('.successful-bidder-img').attr('src', clientRoot + '/upload/' + bdhs[0].photoPath);
-                    $('.successful-bidder').text(bdhs[0].nickName);
-                    $('.present_num').text(bdhs[0].bids);
-                    $('.desc-line1').css('display', 'block');
+                    var nickName = ajaxResult.data.nickName
                     
                     // 현재가
                     var bids = bdhs[0].bids;
@@ -188,9 +101,41 @@ $(function () {
                         atLeastBids = bids + 5000;
                     }
                     
-                    $('#l').val(atLeastBids);
-                    $('.atLeastBids').text(atLeastBids);
+                    if (atLeastBids > 10000000) {
+                        atLeastBids = 10000000;
+                    }
+                    
                     $('#l').attr('data-atLeastBids', atLeastBids)
+                    $('.atLeastBids').text(atLeastBids);
+                    
+                    // 입찰등록 팝업창을 띄울시 입찰가격 변경금지
+                    if (!$('#tender').hasClass('in')) {
+                        $('#l').val(atLeastBids);
+                    }
+                    
+                    if (bdhs[1] != null && bdhs[1].nickName == nickName) {
+                        swal({
+                            title: "새로운 입찰!",
+                            type: "warning",
+                            text: "입찰 순위가 밀려났습니다.",
+                            confirmButtonText: "확인",
+                            confirmButtonColor: "#f32e6d"
+                        });
+                    }
+                    
+                    $('.desc-non-record').css('display', 'none');
+                    if (bdhs[0].nickName == nickName || atLeastBids == 10000000) {
+                        $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
+                        $('.bidding-btn, #detail-bid').css('opacity', '.65');
+                    } else {
+                        $('.bidding-btn, #detail-bid').css('pointer-events', 'auto');
+                        $('.bidding-btn, #detail-bid').css('opacity', '1');
+                    }
+                    
+                    $('.successful-bidder-img').attr('src', clientRoot + '/upload/' + bdhs[0].photoPath);
+                    $('.successful-bidder').text(bdhs[0].nickName);
+                    $('.present_num').text(bdhs[0].bids);
+                    $('.desc-line1').css('display', 'block');
                     
                     for (var i = 1; i < bdhs.length; i++) {
                         $('#dl'+i+'-img').attr('src', clientRoot + '/upload/' + bdhs[i].photoPath);
@@ -200,8 +145,23 @@ $(function () {
                         $('#dl'+i+'').css('display', 'block');
                     }
                     
+                    // 입찰하락자 SMS 전송
+/*                    var nickName = $('#dl1-bidder').text();
+                    if (nickName != '' && nowbid.title != '') {
+                        $.post(serverRoot + '/bidhistory/sms.json',
+                        {
+                            "nickName": nickName,
+                            "title": nowbid.title
+                        },
+                        function(ajaxResult){
+                            if (ajaxResult.status != "success") {
+                                alert(ajaxResult.data);
+                                return;
+                            }
+                        })
+                    }*/
                 })
-                setTimeout(getBidHistory, 1000);
+                setTimeout(getBidHistory, 100);
             })();
             
             // 처음에는 1페이지 6개를 로딩한다.
@@ -266,7 +226,21 @@ $(function () {
             
             // 입찰하기
             $('.btn-primary1').click(function() {
-                if ($('#l').val() < $('#l').attr('data-atLeastBids')) {
+                var bidPrice = Number($('#l').val());
+                var atLeastBids = Number($('#l').attr('data-atLeastBids'));
+                
+                if (bidPrice > 10000000) {
+                    swal({
+                        title: "입찰 실패!",
+                        type: "error",
+                        text: "최대 입찰가는 천만원입니다.",
+                        confirmButtonText: "확인",
+                        confirmButtonColor: "#f32e6d"
+                    });
+                    return;
+                }
+                
+                if (bidPrice < atLeastBids) {
                     swal({
                         title: "입찰 실패!",
                         type: "error",
@@ -277,7 +251,7 @@ $(function () {
                     return;
                 }
                 
-                if ($('#l').val() % 100 != 0) {
+                if (bidPrice % 100 != 0) {
                     swal({
                         title: "입찰 실패!",
                         type: "error",
@@ -290,7 +264,7 @@ $(function () {
                 
                 $.post(serverRoot + '/bidhistory/add.json',
                 {
-                "bids": $('#l').val(),
+                "bids": bidPrice,
                 "itemNo": nowbid.itemNo
                 }, function(ajaxResult) {
                     if (ajaxResult.status != "success") {

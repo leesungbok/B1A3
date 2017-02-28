@@ -99,4 +99,10 @@
     where mno=#{memberNo}
   </select>
 
+  <select id="getPhoneByNickName" parameterType="String" resultType="String">
+    select 
+      phon
+    from memb
+    where nknm=#{nickName}
+  </select>
 </mapper>
