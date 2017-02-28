@@ -124,7 +124,8 @@
      p.path
     from item i
     left outer join phot p on i.itno=p.itno
-    where titl=#{title}
+    where titl like concat('%', #{title}, '%');
+
   </select>
 
 </mapper>
