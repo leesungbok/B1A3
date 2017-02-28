@@ -1,6 +1,6 @@
 package bitcamp.java89.ems.control.json;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.domain.Member;
-import bitcamp.java89.ems.domain.Photo;
 import bitcamp.java89.ems.service.ItemService;
 
 @RestController
@@ -30,23 +29,19 @@ public class ItemJsonControl {
   }
 
   @RequestMapping("/main/list")
-  public AjaxResult list() throws Exception {
-    List<Item> list = itemService.getList();
-    return new AjaxResult(AjaxResult.SUCCESS, list);
+  public AjaxResult list(int pageNo, int pageSize) throws Exception {
+    List<Item> list = itemService.getList(pageNo, pageSize);
+    int totalCount = itemService.getSize();
+
+    HashMap<String, Object> resultMap = new HashMap<>();
+    resultMap.put("list", list);
+    resultMap.put("totalCount", totalCount);
+    return new AjaxResult(AjaxResult.SUCCESS, resultMap);
   }
 
   @RequestMapping("/main/add")
   public AjaxResult add(Item item, HttpSession session) throws Exception {
-    String[] files = item.getStartTime().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\"", "").split(",");
     Member member = (Member)session.getAttribute("member");
-    
-    ArrayList<Photo> photoList = new ArrayList<>();
-    
-    for (String file : files) {
-      photoList.add(new Photo(file));
-    }
-
-    item.setPhotoList(photoList);
     item.setMemberNo(member.getMemberNo());
 
     if (itemService.add(item) == 0) {
@@ -58,7 +53,6 @@ public class ItemJsonControl {
   @RequestMapping("/item/searchTitle")
   public AjaxResult searchTitle(String title, HttpSession session) throws Exception {
     List<Item> item = itemService.getSearchTitle(title);
-    System.out.println(item);
     
     if (item == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 상품을 찾지 못하였습니다");

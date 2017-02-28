@@ -8,4 +8,5 @@ public interface MemberService {
   int updatePhoto(String email, String photoPath) throws Exception;
   int delete(int memberNo) throws Exception;
   Member getOne(int memberNo) throws Exception;
+  String getPhone(String nickName) throws Exception;
 }

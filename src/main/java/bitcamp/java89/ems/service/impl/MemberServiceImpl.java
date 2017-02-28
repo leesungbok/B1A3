@@ -47,4 +47,9 @@ public class MemberServiceImpl implements MemberService {
   public Member getOne(int memberNo) throws Exception {
     return memberDao.getOneByMemberNo(memberNo);
   }
+
+  @Override
+  public String getPhone(String nickName) throws Exception {
+    return memberDao.getPhoneByNickName(nickName);
+  }
 }

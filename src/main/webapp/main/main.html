@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all">
   <link rel="stylesheet" href="../font/fontello.css">
   <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/add.css">
   <link rel="stylesheet" href="../css/detail.css">
   <link rel="stylesheet" href="../css/input.css">
   <link rel="stylesheet" href="../css/main.css">
@@ -84,8 +83,78 @@
         <div class='desc-line1'>
           <img class="img-circle successful-bidder-img">
           <span class="successful-bidder"></span>
-          <span class="present_num present_num2"></span>
           <span class="won1">원</span>
+          <span class="present_num present_num2"></span>
+        </div>
+        <div class='desc-line' id="dl1">
+          <img class='img-circle bidder-img' id="dl1-img">
+          <span class="bidder" id="dl1-bidder"></span>
+          <span class="bid-time" id="dl1-time"></span>
+          <span class="bid-won" id="dl1-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl2">
+          <img class='img-circle bidder-img' id="dl2-img">
+          <span class="bidder" id="dl2-bidder"></span>
+          <span class="bid-time" id="dl2-time"></span>
+          <span class="bid-won" id="dl2-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl3">
+          <img class='img-circle bidder-img' id="dl3-img">
+          <span class="bidder" id="dl3-bidder"></span>
+          <span class="bid-time" id="dl3-time"></span>
+          <span class="bid-won" id="dl3-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl4">
+          <img class='img-circle bidder-img' id="dl4-img">
+          <span class="bidder" id="dl4-bidder"></span>
+          <span class="bid-time" id="dl4-time"></span>
+          <span class="bid-won" id="dl4-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl5">
+          <img class='img-circle bidder-img' id="dl5-img">
+          <span class="bidder" id="dl5-bidder"></span>
+          <span class="bid-time" id="dl5-time"></span>
+          <span class="bid-won" id="dl5-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl6">
+          <img class='img-circle bidder-img' id="dl6-img">
+          <span class="bidder" id="dl6-bidder"></span>
+          <span class="bid-time" id="dl6-time"></span>
+          <span class="bid-won" id="dl6-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl7">
+          <img class='img-circle bidder-img' id="dl7-img">
+          <span class="bidder" id="dl7-bidder"></span>
+          <span class="bid-time" id="dl7-time"></span>
+          <span class="bid-won" id="dl7-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl8">
+          <img class='img-circle bidder-img' id="dl8-img">
+          <span class="bidder" id="dl8-bidder"></span>
+          <span class="bid-time" id="dl8-time"></span>
+          <span class="bid-won" id="dl8-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl9">
+          <img class='img-circle bidder-img' id="dl9-img">
+          <span class="bidder" id="dl9-bidder"></span>
+          <span class="bid-time" id="dl9-time"></span>
+          <span class="bid-won" id="dl9-bid"></span>
+          <span class="won2">원</span>
+        </div>
+        <div class='desc-line' id="dl10">
+          <img class='img-circle bidder-img' id="dl10-img">
+          <span class="bidder" id="dl10-bidder"></span>
+          <span class="bid-time" id="dl10-time"></span>
+          <span class="bid-won" id="dl10-bid"></span>
+          <span class="won2">원</span>
         </div>
       </div>
     </div>
@@ -110,6 +179,11 @@
           </div>
 
           <div class="modal-body" id="tender-body">
+            <div>
+              <span class="body-content">*현재 </span>
+              <span class="atLeastBids"></span>
+              <span class="body-content">원 부터 입찰하실 수 있습니다.</span>
+            </div>
             <span class='body-content'>*낙찰 후 거래 취소 시 불이익이 있으니 신중히 입찰하여 주시기 바랍니다.</span><br>
             <span class='body-content1'>*입찰 진행 중엔 로그아웃 하지 마세요. </span>
           </div>
@@ -147,6 +221,7 @@
         <div class="container-big">
           <div class="content">
             <div id="nextlist" class="container"></div>
+            <div id="nextPgBtn">다음경매 더보기</div>
           </div>
         </div>
       </section>
@@ -208,16 +283,6 @@
     </div>
   </script>
 
-  <script id="mini-bid-history" type="text/x-handlebars-template">
-    <div class='desc-line'>
-      <img class='img-circle bidder-img' src='/B1A3/upload/{{photoPath}}'>
-      <span class="bidder">{{nickName}}</span>
-      <span class="bid-time">{{bidTime}}</span>
-      <span class="bid-won">{{bids}}</span>
-      <span class="won2">원</span>
-    </div>
-  </script>
-
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -229,7 +294,8 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../node_modules/jquery-countdown/dist/jquery.countdown.min.js"></script>
   <!-- 다음경매 무한 스크롤 관련 js -->
-  <!-- <script src="../node_modules/jscroll/jquery.jscroll.min.js"></script> -->
+  <script src="../node_modules/jscroll/jquery.jscroll.min.js"></script>
+  <!-- <script src="../js/parallax.min.js"></script> -->
   <script src="../js/common.js"></script>
   <script src="../js/main.js"></script>
 

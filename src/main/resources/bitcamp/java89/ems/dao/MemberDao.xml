@@ -54,8 +54,8 @@
   </select>
 
   <insert id="insert" parameterType="member">
-    insert into memb(email, pwd, nknm, phon, katok, fcbk)
-    values(#{email}, password(#{password}), #{nickName}, #{phoneNo}, #{kakaoTalk}, #{facebook});
+    insert into memb(email, pwd, nknm, phon, katok, fcbk, path)
+    values(#{email}, password(#{password}), #{nickName}, #{phoneNo}, #{kakaoTalk}, #{facebook}, #{photoPath});
   </insert>
   
   <select id="countEmail" parameterType="string" resultType="int">
@@ -99,4 +99,10 @@
     where mno=#{memberNo}
   </select>
 
+  <select id="getPhoneByNickName" parameterType="String" resultType="String">
+    select 
+      phon
+    from memb
+    where nknm=#{nickName}
+  </select>
 </mapper>

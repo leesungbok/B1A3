@@ -13,7 +13,7 @@ public class Item extends Member implements Serializable{
   protected int useDay;
   protected String deal;
   protected String content;
-  protected String startTime;
+  protected String startTime; 
   protected int startPrice;
   protected List<Photo> photoList;
   

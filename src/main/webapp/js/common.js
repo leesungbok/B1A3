@@ -8,7 +8,7 @@ $(function () {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -34,11 +34,7 @@ $(function () {
     		// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
     		$('#logon-state').css('display', 'inline-block');
     		
-    		if (member.photoPath == null) {
-    		    $('#logon-img').attr('src', '../image/user.png');
-    		} else {
-    		    $('#logon-img').attr('src', '../upload/' + member.photoPath);
-    		}
+    		$('#logon-img').attr('src', '../upload/' + member.photoPath);
     		
     		$('#logon-nick-name').text(member.nickName);
     		
@@ -80,9 +76,6 @@ $(function () {
                 location.href = clientRoot + '/mypage/mysettings.html?submenu=myoption'
             })
     	  });
-
-		//경매등록 입력시 팝업창 표시
-		$('.form-control').popover();
 
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
@@ -153,4 +146,77 @@ $(function () {
 	    /*$("#"+submenu).parent().addClass('active');*/
 	     
     })
+    
+    // add.html을 가져와서 붙인다.
+    $.get(clientRoot + '/add.html', function (result) {
+        $('.bid-regist').html(result);
+        
+        // 경매등록 사진첨부
+        var $input = $("#fileupload");
+        $input.fileinput({
+            uploadUrl : serverRoot + "/common/fileupload.json",
+            showRemove : false,
+            showCaption: false,
+            showUpload : false,
+            uploadAsync: false,
+            language : "kr",
+            allowedFileExtensions : [ "jpg", "png", "gif", "jpeg" ],
+            minFileCount: 4,
+            maxFileCount : 4
+        }).on("filebatchselected", function(event, data, previewId, index) {
+            $('.kv-upload-progress').css('display', 'none');
+            $input.fileinput("upload");
+        }).on('filebatchuploadsuccess', function(event, data, previewId, index) {
+            for (var i = 0; i < 4; i++) {
+                $('<input>').attr({
+                    type: 'hidden',
+                    class: 'file-path',
+                    value: data.response.data[i]
+                }).appendTo("#file-selector");
+            }
+        })/*.on('filesuccessremove', function(event, id, data, previewId, index) {
+        });*/
+        
+        // 경매등록 버튼클릭시
+        $('#add-btn').click(function() {
+            var getFilePath = $(".file-path");
+            var filePath = [];
+            
+            for(var i = 0; i < getFilePath.length; i++){
+                filePath.push($(getFilePath[i]).val());
+            }
+            
+            // jQuery 로 ajax 처리시 data 형식 중 배열(array)값을 넘기려면
+            // 다음과 같이 세팅값을 바꿔 주어야 한다.
+            jQuery.ajaxSettings.traditional = true;
+            
+            $.post(serverRoot + '/main/add.json',
+                {
+                    "title": $('#titl').val(),
+                    "category": $('#categ').val(),
+                    "startPrice": $('#stpc').val(),
+                    "buyDate": $('#buy').val(),
+                    "useDay": $('#day').val(),
+                    "content": $('#cont').val(),
+                    "deal": $('#deal').val(),
+                    "photoList": filePath
+                }
+                , function(ajaxResult) {
+                if (ajaxResult.status != "success") {
+                    alert(ajaxResult.data);
+                    return;
+                }
+                
+                console.log(ajaxResult.data)
+                swal({
+                    title: "등록 완료!",
+                    text: "등록하신 경매품을 확인하세요.",
+                    timer: 2250,
+                    showConfirmButton: false,
+                    type: "success"
+                });
+                setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+            }, 'json'); // post();
+        }); // click()
+    });
 })

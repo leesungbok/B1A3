@@ -8,13 +8,9 @@
 .container {
   position: absolute;
   left: 50%;
-  top: 53%;
+  top: 57%;
   margin-left: -479px !important;
   margin-top: -280px !important;
-}
-
-#body>h1 {
-  padding: 114px 0 20px 15px;
 }
 
 .form-horizontal {
@@ -80,7 +76,7 @@
     border: 4px solid rgba(243, 46, 109, 0.38);
 }
 
-/* input type='number' 인경우 숫자 증가감소 버튼 감추기 시작*/
+/* input type='number' ì¸ê²½ìš° ìˆ«ìž ì¦ê°€ê°ì†Œ ë²„íŠ¼ ê°ì¶”ê¸° ì‹œìž‘*/
 input[type=number]::-webkit-inner-spin-button { 
   -webkit-appearance: none;
   cursor:pointer;
@@ -108,4 +104,4 @@ input[type=number]::-webkit-inner-spin-button:after {
   bottom:0px;
   -webkit-transform: rotate(180deg);
 }
-/* input type='number' 인경우 숫자 증가감소 버튼 감추기 끝*/
+/* input type='number' ì¸ê²½ìš° ìˆ«ìž ì¦ê°€ê°ì†Œ ë²„íŠ¼ ê°ì¶”ê¸° ë*/

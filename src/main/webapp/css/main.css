@@ -28,8 +28,8 @@
 }
 #bidding {
   float: left;
-  height: 340px;
-  width: 360px;
+  height: 579px;
+  width: 396px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
@@ -123,7 +123,7 @@
   width: 174px !important;
 }
 
-.desc-line {margin-top: 14px;position: relative;right: -13px;}
+.desc-line {display:none;margin-top: 14px;position: relative;right: -19px;}
 
 .bidding-btn {
   margin: 20px 0px 0px 120px;
@@ -188,7 +188,7 @@
 }
 
 .desc-record{
-    padding-top: 15px;
+    padding-top: 9px;
     padding-bottom: 15px;
     padding-right: 20px;
     padding-left: 20px;
@@ -372,14 +372,13 @@ div.heart:before {
 }
 
 #bidding {
-  margin:130px 0px 0px 30px;
+    margin-left: 27px;
 }
 
 .successful-bidder-img {
   width: 64px;
   height: 64px;
   position: relative;
-  left: 6px;
 }
 
 .title {
@@ -393,19 +392,18 @@ div.heart:before {
   font-size: 1.6em;
   position: relative;
   top: 5px;
-  left: 0px;
   display: inline-block;
-  width: 118px;
+  width: 117px;
 }
 
-.present_num2 {font-size: 2.5em;font-weight: bold;color: #f32e6d;position: relative;top: 9px;}
+.present_num2 {font-size: 2.5em;font-weight: bold;color: #f32e6d;position: relative;top: 9px;float: right;}
 
 .bidder {
   position: relative;
   top: 1px;
   font-size: 1.4em;
   display: inline-block;
-  width: 105px;
+  width: 111px;
 }
 
 .bid-time {
@@ -420,9 +418,10 @@ div.heart:before {
 }
 
 .won1 {
-  top: 9px;
+  top: 32px;
   font-size: 1.2em;
   position: relative;
+  float: right;
 }
 
 .won2 {
@@ -445,16 +444,33 @@ div.heart:before {
 }
 
 .icon-exclamation {
-  
+  margin-left: 18px;
 }
 
 .desc-non-record {
   display: none;
-  padding: 110px 35px 119px 44px;
+  padding: 227px 35px 227px 44px;
 }
 
+.sweet-alert .sa-icon.sa-warning {
+  border-color: #f32e6d;
+}
 
->>>>>>> branch 'master' of https://github.com/leesungbok/B1A3.git
+.sweet-alert .sa-icon.sa-warning .sa-body {
+  background-color: #f32e6d;
+}
+
+#nextPgBtn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f32e6d;
+  color: #fff;
+  font-size: 1.5em;
+  border-radius: 24px;
+  margin-bottom: 13px;
+  cursor: pointer;
+}
+
 /*
        #instaPics {  
             max-width: 320px;  

@@ -22,7 +22,7 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
 	font-size: 2.2em;
 	/* text-decoration: underline; */
 	text-align: right;
-	width: 131px;
+	width: 152px;
 	display: inline-block;
 	color: #f32e6d;
 	}
@@ -52,12 +52,12 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
     padding-right: 50px;
 }
 
-.bidding-present {margin-bottom: 10px;padding-right: 63px;}
+.bidding-present {margin-bottom: 10px;padding-right: 50px;}
 
 .bidding-present-text {
   font-size: 2.2em;
   display: inline-block;
-  margin-left: 75px;
+  margin-left: 67px;
 }
 
 .bidding_present_num {font-size: 2.2em;float: right;}
@@ -70,12 +70,24 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
   font-size: 2.2em;
   display: inline-block;
   width: 125px;
-  margin-left: 48px;
+  margin-left: 39px;
 }
 
 .bidding-present-won {
   float: right;
   position: relative;
   top: 20px;
-  right: -3px;
+  right: -4px;
+}
+
+.sweet-alert .sa-icon.sa-error {
+  border-color: #f32e6d;
+}
+
+.sweet-alert .sa-icon.sa-error .sa-line {
+  background-color: #f32e6d;
+}
+
+.atLeastBids {
+  color: red;
 }

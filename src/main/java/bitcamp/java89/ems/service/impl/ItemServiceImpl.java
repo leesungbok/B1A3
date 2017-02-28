@@ -36,8 +36,11 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public List<Item> getList() throws Exception {
-    return itemDao.getList();
+  public List<Item> getList(int pageNo, int pageSize) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startRowIndex", (pageNo - 1) * pageSize);
+    paramMap.put("rowSize", pageSize);
+    return itemDao.getList(paramMap);
   }
 
   @Override
@@ -49,9 +52,7 @@ public class ItemServiceImpl implements ItemService {
   public List<Item> getSearchTitle(String title) throws Exception {
     HashMap<String,String> paramMap = new HashMap<>();
     paramMap.put("title", title); 
-    
     List<Item> item = itemDao.getSearchTitle(paramMap);
-    
     if (item == null) {
       return null;
       
@@ -62,5 +63,10 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public Item getNowBid() throws Exception {
     return itemDao.getNowBid();
+  }
+
+  @Override
+  public int getSize() throws Exception {
+    return itemDao.countAll();
   }
 }
