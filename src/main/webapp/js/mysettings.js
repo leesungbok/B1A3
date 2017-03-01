@@ -1,20 +1,13 @@
 $(function() {
     $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
-        var status = ajaxResult.status;
-
-        if (status != "success") {
+        if (ajaxResult.status != "success") {
             alert(ajaxResult.data);
             return;
         }
 
         var member = ajaxResult.data;
         
-        if (member.photoPath != null) {
-            $('#photo-img').attr('src', clientRoot + '/upload/' + member.photoPath);
-        } else {
-            $('#photo-img').attr('src', clientRoot + '/image/user.png');
-        }
-        
+        $('#photo-img').attr('src', clientRoot + '/upload/' + member.photoPath);
         $('#email').val(member.email);
         $('#nickName').val(member.nickName);
         
@@ -44,6 +37,34 @@ $(function() {
         $('#address-detail').val(member.detailAddress);
         $('#cell-phone').val(member.phoneNo);
         $('#home-telephone').val(member.telphone);
+        
+        /* 이메일 유효성검사 */
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email
+        
+        $("#email").keyup(function() {
+        	email = $("#email").val();
+            if (email == '') {
+                $('#necessary').css('display', 'inline-block');
+                $('#erroremail, #erroremail2').css('display', 'none');
+            } else if (!re.test(email)) {
+            	$('#erroremail').css('display', 'inline-block');
+                $('#necessary, #erroremail2').css('display', 'none');
+            } else if (email == member.email) {
+                $('#necessary, #erroremail, #erroremail2').css('display', 'none');
+            } else {
+                $.getJSON(serverRoot + '/auth/count.json', {type: "email", data: email}, function (ajaxResult) {
+                    if (ajaxResult.status != "success") {
+                        return;
+                    } else if (ajaxResult.data == 0){
+                    	$('#necessary, #erroremail, #erroremail2').css('display', 'none');
+                    } else {
+                    	$('#erroremail2').css('display', 'inline-block');
+                        $('#necessary, #erroremail').css('display', 'none');
+                    }
+                })
+            }
+        })
     });
     
     $('.addr-find').click(function(event) {
