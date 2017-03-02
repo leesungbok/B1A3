@@ -153,45 +153,46 @@ $(function () {
         
         // 경매등록 사진첨부
         var $input = $("#fileupload");
-        $input.fileinput({
-            uploadUrl : serverRoot + "/common/fileupload.json",
-            showRemove : false,
-            showCaption: false,
-            showUpload : false,
-            uploadAsync: false,
-            language : "kr",
-            allowedFileExtensions : [ "jpg", "png", "gif", "jpeg" ],
-            minFileCount: 4,
-            maxFileCount : 4
-        }).on("filebatchselected", function(event, data, previewId, index) {
-            $('.kv-upload-progress').css('display', 'none');
-            $input.fileinput("upload");
-        }).on('filebatchuploadsuccess', function(event, data, previewId, index) {
-            for (var i = 0; i < 4; i++) {
-                $('<input>').attr({
-                    type: 'hidden',
-                    class: 'file-path',
-                    value: data.response.data[i]
-                }).appendTo("#file-selector");
-            }
-        })/*.on('filesuccessremove', function(event, id, data, previewId, index) {
+        if ($input.fileinput != null) {
+            $input.fileinput({
+                uploadUrl : serverRoot + "/common/fileupload.json",
+                showRemove : false,
+                showCaption: false,
+                showUpload : false,
+                uploadAsync: false,
+                language : "kr",
+                allowedFileExtensions : [ "jpg", "png", "gif", "jpeg" ],
+                minFileCount: 4,
+                maxFileCount : 4
+            }).on("filebatchselected", function(event, data, previewId, index) {
+                $('.kv-upload-progress').css('display', 'none');
+                $input.fileinput("upload");
+            }).on('filebatchuploadsuccess', function(event, data, previewId, index) {
+                for (var i = 0; i < 4; i++) {
+                    $('<input>').attr({
+                        type: 'hidden',
+                        class: 'file-path',
+                        value: data.response.data[i]
+                    }).appendTo("#file-selector");
+                }
+            })/*.on('filesuccessremove', function(event, id, data, previewId, index) {
         });*/
-        
-        // 경매등록 버튼클릭시
-        $('#add-btn').click(function() {
-            var getFilePath = $(".file-path");
-            var filePath = [];
             
-            for(var i = 0; i < getFilePath.length; i++){
-                filePath.push($(getFilePath[i]).val());
-            }
-            
-            // jQuery 로 ajax 처리시 data 형식 중 배열(array)값을 넘기려면
-            // 다음과 같이 세팅값을 바꿔 주어야 한다.
-            jQuery.ajaxSettings.traditional = true;
-            
-            $.post(serverRoot + '/main/add.json',
-                {
+            // 경매등록 버튼클릭시
+            $('#add-btn').click(function() {
+                var getFilePath = $(".file-path");
+                var filePath = [];
+                
+                for(var i = 0; i < getFilePath.length; i++){
+                    filePath.push($(getFilePath[i]).val());
+                }
+                
+                // jQuery 로 ajax 처리시 data 형식 중 배열(array)값을 넘기려면
+                // 다음과 같이 세팅값을 바꿔 주어야 한다.
+                jQuery.ajaxSettings.traditional = true;
+                
+                $.post(serverRoot + '/main/add.json',
+                        {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
@@ -200,23 +201,24 @@ $(function () {
                     "content": $('#cont').val(),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                }
+                        }
                 , function(ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    alert(ajaxResult.data);
-                    return;
-                }
-                
-                console.log(ajaxResult.data)
-                swal({
-                    title: "등록 완료!",
-                    text: "등록하신 경매품을 확인하세요.",
-                    timer: 2250,
-                    showConfirmButton: false,
-                    type: "success"
-                });
-                setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
-            }, 'json'); // post();
-        }); // click()
+                    if (ajaxResult.status != "success") {
+                        alert(ajaxResult.data);
+                        return;
+                    }
+                    
+                    console.log(ajaxResult.data)
+                    swal({
+                        title: "등록 완료!",
+                        text: "등록하신 경매품을 확인하세요.",
+                        timer: 2250,
+                        showConfirmButton: false,
+                        type: "success"
+                    });
+                    setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+                }, 'json'); // post();
+            }); // click()
+        }
     });
 })

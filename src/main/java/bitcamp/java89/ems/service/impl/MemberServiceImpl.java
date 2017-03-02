@@ -31,9 +31,14 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public int updatePhoto(String email, String photoPath) throws Exception {
-    Map<String, String> paramMap = new HashMap<>();
-    paramMap.put("email", email);
+  public int update(Member member) throws Exception {
+    return memberDao.update(member);
+  }
+
+  @Override
+  public int updatePhoto(int memberNo, String photoPath) throws Exception {
+    Map<String, Object> paramMap = new HashMap<>();
+    paramMap.put("memberNo", memberNo);
     paramMap.put("photoPath", photoPath);
     return memberDao.updatePhoto(paramMap);
   }

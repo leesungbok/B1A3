@@ -14,6 +14,7 @@ public interface MemberDao {
   Member getOneByKakao(String kakaoId) throws Exception;
   Member getOneByFacebook(String kakaoId) throws Exception;
   String getPhoneByNickName(String nickName) throws Exception;
-  int updatePhoto(Map<String,String> paramMap) throws Exception;
+  int update(Member member) throws Exception;
+  int updatePhoto(Map<String,Object> paramMap) throws Exception;
   int delete(int memberNo) throws Exception;
 }
