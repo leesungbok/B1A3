@@ -43,6 +43,25 @@ public class BidHistoryJsonControl {
     return new AjaxResult(AjaxResult.FAIL, "현재 경매품 입찰기록을 가져오지 못했습니다.");
   }
 
+  @RequestMapping("beforebidhistory")
+  public AjaxResult beforebidHistory(HttpSession session) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Member member = (Member)session.getAttribute("member");
+    List<BidHistory> bdhs = bidHistoryService.getBeforeBidHistory();
+
+    if (member != null) {
+      paramMap.put("memberNo", member.getMemberNo());
+    }
+
+    paramMap.put("bdhs", bdhs);
+
+    if (!bdhs.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, paramMap);
+    }
+
+    return new AjaxResult(AjaxResult.FAIL, "현재 경매품 입찰기록을 가져오지 못했습니다.");
+  }
+
   @RequestMapping("add")
   public AjaxResult add(BidHistory bid, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");

@@ -75,7 +75,7 @@ $(function () {
     		$('#logon-nick-name').click(function() {
                 location.href = clientRoot + '/mypage/mysettings.html?submenu=myoption'
             })
-    	  });
+    	});
 
         // 로그인시 로그인 페이지로 이동
         $('#login-btn').click(function(event) {
