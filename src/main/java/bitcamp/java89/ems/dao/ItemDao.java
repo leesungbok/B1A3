@@ -10,7 +10,7 @@ import bitcamp.java89.ems.domain.Item;
 public interface ItemDao {
   ArrayList<Item> getList(Map<String,Object> paramMap) throws Exception;
   Item getNowBid() throws Exception;
-  Item getOne(int memberNo) throws Exception;
+  Item getOne(int itemNo) throws Exception;
   int countByNo(int memberNo) throws Exception;
   int countAll() throws Exception;
   int insert(Item item) throws Exception;

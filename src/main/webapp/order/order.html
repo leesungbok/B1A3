@@ -18,7 +18,7 @@
   <div class="container">
     <h1>낙찰결제</h1>
     <div class="destination">
-      <h4 class="sub-text">배송지 선택</h4>
+      <h4 class="sub-text dest-head">배송지 선택</h4>
         <dl class="dl-horizontal">
           <dt class="term">*받는분</dt>
           <dd class="desc">
@@ -31,7 +31,7 @@
           <dt class="term">*휴대전화</dt>
           <dd class="desc">
             <div class="col-sm-7">
-              <input id="receiver" type="text" class="form-control">
+              <input id="phoneNo" type="number" class="form-control">
             </div>
           </dd>
         </dl>
@@ -58,12 +58,33 @@
             </div>
           </dd>
         </dl>
-      <div class="term-bgc"></div>
+      <div class="term-bgc">
+        <input id="email" type="hidden">
+      </div>
     </div>
-    <div class="product-information">
+    <div class="information">
       <h4 class="sub-text">상품 정보</h4>
-      <img id="product-img" src="../upload/1487897161498_24">
-      <span id="title">test</span>
+      <div id="product">
+        <img id="product-img">
+        <p id="title"></p>
+        <span id=seller></span>
+        <span id=icon-phone></span>
+        <span id=seller-phone></span>
+      </div>
+      <div class="payment">
+        <dl class="dl-horizontal dl-payment">
+          <dt class="final-bid">최종낙찰가</dt>
+          <dd class="final-bid-price">
+            <span class="won">원</span>
+            <span class="winning-amount"></span>
+          </dd>
+        </dl>
+        <div class="payment-btn">
+          <span>
+            결제하기
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -78,7 +99,6 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../node_modules/jquery-countdown/dist/jquery.countdown.min.js"></script>
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  <script src="../js/common.js"></script>
   <script src="../js/order.js"></script>
 
 </body>

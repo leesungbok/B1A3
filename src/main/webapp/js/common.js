@@ -221,4 +221,89 @@ $(function () {
             }); // click()
         }
     });
+    
+    
+    // 바로 전 경매의 입찰기록을 요청
+    (function getBeforeBidHistory() {
+        $.getJSON(serverRoot + '/bidhistory/beforebidhistory.json', function(ajaxResult){
+            if (ajaxResult.status != 'success') {
+                console.log(ajaxResult.data)
+                return;
+            }
+            
+            var bdhs = ajaxResult.data.bdhs;
+            
+            if (bdhs[0].memberNo == 0) {
+                return;
+            }
+            
+            var endTime = new Date(bdhs[0].startTime);
+            endTime.setMinutes(endTime.getMinutes() + 35);
+            
+            var nowTime = new Date();
+            
+            if (endTime < nowTime) {
+                if (bdhs[0].state == 0) {
+                    // 상태값 2로변경하는 ajax 요청문
+                }
+                endTime.setMinutes(endTime.getMinutes() + 5);
+                if (endTime < nowTime) {
+                    if (bdhs[1].state == 0) {
+                        // 상태값 2로변경하는 ajax 요청문
+                    }
+                    endTime.setMinutes(endTime.getMinutes() + 5);
+                    if (endTime < nowTime) {
+                        if (bdhs[2].state == 0) {
+                            // 상태값 2로변경하는 ajax 요청문
+                        }
+                        endTime.setMinutes(endTime.getMinutes() + 5);
+                        if (endTime < nowTime) {
+                            if (bdhs[3].state == 0) {
+                                // 상태값 2로변경하는 ajax 요청문
+                            }
+                            endTime.setMinutes(endTime.getMinutes() + 5);
+                            if (endTime < nowTime) {
+                                if (bdhs[4].state == 0) {
+                                    // 상태값 2로변경하는 ajax 요청문
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            var memberNo = ajaxResult.data.memberNo;
+            var count = 0;
+            var mybid
+            for (var i = 0; i < bdhs.length; i++) {
+                if (bdhs[i].state == 1) {
+                    count = 1;
+                    break;
+                } else if (bdhs[i].memberNo == memberNo && bdhs[i].state == 0) {
+                    mybid = bdhs[i].bids;
+                    break;
+                } else if (bdhs[i].memberNo != memberNo && bdhs[i].state == 0) {
+                    count = 1;
+                    break;
+                }
+            }
+            
+            if (count > 0) {
+                return;
+            } else {
+                swal({
+                    title: "낙찰을 축하드립니다!",
+                    text: "결제페이지로 이동하셔서 배송정보를 확인하세요.",
+                    type: "success",
+                    confirmButtonText: "확인",
+                    confirmButtonColor: "rgb(244, 46, 109)"
+                }, function() {
+                    sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+                    sessionStorage.setItem('mybid', mybid);
+                    location.href = clientRoot + "/order/order.html"
+                })
+            }
+        })
+        setTimeout(getBeforeBidHistory, 1000);
+    })();
 })

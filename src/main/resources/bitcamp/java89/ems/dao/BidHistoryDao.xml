@@ -49,6 +49,12 @@
       limit 5;
     ]]>
   </select>
+  
+  <update id="updateState" parameterType="map">
+    update bdhs set
+      stat=#{state}
+    where itno=#{itemNo} and bids=#{bids}
+  </update>
 
   <insert id="insert" parameterType="bidhistory">
     insert into bdhs(mno,itno,bids,time)

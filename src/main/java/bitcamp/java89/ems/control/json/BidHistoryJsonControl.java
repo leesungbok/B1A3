@@ -59,7 +59,7 @@ public class BidHistoryJsonControl {
       return new AjaxResult(AjaxResult.SUCCESS, paramMap);
     }
 
-    return new AjaxResult(AjaxResult.FAIL, "현재 경매품 입찰기록을 가져오지 못했습니다.");
+    return new AjaxResult(AjaxResult.FAIL, "전 경매품 입찰기록을 가져오지 못했습니다.");
   }
 
   @RequestMapping("add")
@@ -74,7 +74,14 @@ public class BidHistoryJsonControl {
 
     return new AjaxResult(AjaxResult.FAIL, "입찰 실패했습니다.");
   }
-  
+
+  /*@RequestMapping("updatestate")
+  public AjaxResult updatestate(int itemNo, int bids, int state) throws Exception {
+    if (itemNo == 0 || bids == 0 || state == 0) {
+      
+    }
+  }*/
+
   @RequestMapping("sms")
   public AjaxResult sms(String nickName, String title) throws Exception {
     Message coolsms = new Message("NCS58B4FDA4F1C07", "51005CD999726FE18642C3B34BA2FA90");
