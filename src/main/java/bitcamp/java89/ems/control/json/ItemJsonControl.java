@@ -72,4 +72,18 @@ public class ItemJsonControl {
     session.setAttribute("title", title);
     return new AjaxResult(AjaxResult.SUCCESS, item);
   }
+  
+  @RequestMapping("/item/category")
+  public AjaxResult category( String c1, String c2, String c3,
+      String c4, String c5, String c6, String c7,
+      String c8, String c9, HttpSession session) throws Exception {
+    List<Item> item = itemService.getCategory( c1, c2, c3, c4, c5, c6, c7, c8, c9);
+    System.out.println(item);
+    if (item == null) {
+      return new AjaxResult(AjaxResult.FAIL, "선택한 상품을 찾을수가 없습니다.");
+    }
+    
+    session.setAttribute("item", item);
+    return new AjaxResult(AjaxResult.SUCCESS, item);
+  }
 }
