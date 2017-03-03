@@ -11,8 +11,7 @@ import bitcamp.java89.ems.service.BidHistoryService;
 
 @Service
 public class BidHistoryServiceImpl implements BidHistoryService {
-  @Autowired
-  BidHistoryDao bidHistoryDao;
+  @Autowired BidHistoryDao bidHistoryDao;
 
   @Override
   public List<BidHistory> getNowBidHistory(int itemNo) throws Exception {
@@ -22,5 +21,10 @@ public class BidHistoryServiceImpl implements BidHistoryService {
   @Override
   public int add(BidHistory bid) throws Exception {
     return bidHistoryDao.insert(bid);
+  }
+
+  @Override
+  public List<BidHistory> getBeforeBidHistory() throws Exception {
+    return bidHistoryDao.getBeforeBidHistory();
   }
 }
