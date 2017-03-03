@@ -1,6 +1,5 @@
 package bitcamp.java89.ems.control.json;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.domain.Member;
-import bitcamp.java89.ems.domain.Photo;
 import bitcamp.java89.ems.service.ItemService;
 
 @RestController
@@ -34,7 +32,7 @@ public class ItemJsonControl {
   public AjaxResult list(int pageNo, int pageSize) throws Exception {
     List<Item> list = itemService.getList(pageNo, pageSize);
     int totalCount = itemService.getSize();
-    
+
     HashMap<String, Object> resultMap = new HashMap<>();
     resultMap.put("list", list);
     resultMap.put("totalCount", totalCount);
@@ -43,16 +41,7 @@ public class ItemJsonControl {
 
   @RequestMapping("/main/add")
   public AjaxResult add(Item item, HttpSession session) throws Exception {
-    String[] files = item.getStartTime().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\"", "").split(",");
     Member member = (Member)session.getAttribute("member");
-    
-    ArrayList<Photo> photoList = new ArrayList<>();
-    
-    for (String file : files) {
-      photoList.add(new Photo(file));
-    }
-
-    item.setPhotoList(photoList);
     item.setMemberNo(member.getMemberNo());
 
     if (itemService.add(item) == 0) {

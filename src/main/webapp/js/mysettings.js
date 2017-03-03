@@ -1,20 +1,13 @@
 $(function() {
     $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
-        var status = ajaxResult.status;
-
-        if (status != "success") {
+        if (ajaxResult.status != "success") {
             alert(ajaxResult.data);
             return;
         }
 
         var member = ajaxResult.data;
         
-        if (member.photoPath != null) {
-            $('#photo-img').attr('src', clientRoot + '/upload/' + member.photoPath);
-        } else {
-            $('#photo-img').attr('src', clientRoot + '/image/user.png');
-        }
-        
+        $('#photo-img').attr('src', clientRoot + '/upload/' + member.photoPath);
         $('#email').val(member.email);
         $('#nickName').val(member.nickName);
         
@@ -42,9 +35,151 @@ $(function() {
         $('#zip-code').val(member.postNo);
         $('#address').val(member.basicAddress);
         $('#address-detail').val(member.detailAddress);
-        $('#cell-phone').val(member.phoneNo);
+        $('#phoneNo').val(member.phoneNo);
         $('#home-telephone').val(member.telphone);
+        
+        /* 이메일 유효성검사 */
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        var email
+        
+        $("#email").keyup(function() {
+        	email = $("#email").val();
+            if (email == '') {
+                $('#necessary, #email-check').css('display', 'inline-block');
+                $('#erroremail, #erroremail2').css('display', 'none');
+            } else if (!re.test(email)) {
+            	$('#erroremail, #email-check').css('display', 'inline-block');
+                $('#necessary, #erroremail2').css('display', 'none');
+            } else if (email == member.email) {
+                $('#necessary, #erroremail, #erroremail2, #email-check').css('display', 'none');
+            } else {
+                $.getJSON(serverRoot + '/auth/count.json', {type: "email", data: email}, function (ajaxResult) {
+                    if (ajaxResult.status != "success") {
+                        alert(ajaxResult.data);
+                        return;
+                    } else if (ajaxResult.data == 0){
+                    	$('#necessary, #erroremail, #erroremail2, #email-check').css('display', 'none');
+                    } else {
+                    	$('#erroremail2, #email-check').css('display', 'inline-block');
+                        $('#necessary, #erroremail').css('display', 'none');
+                    }
+                })
+            }
+        })
+        
+        var nickName
+        
+        $("#nickName").keyup(function() {
+            nickName = $("#nickName").val();
+            if (nickName.length == 0) {
+                $('#necessary2, #nickName-check').css('display', 'inline-block');
+                $('#errornickName, #errornickName2').css('display', 'none');
+            } else if (nickName.length < 2 || nickName.length > 6) {
+                $('#errornickName, #nickName-check').css('display', 'inline-block');
+                $('#necessary2, #errornickName2').css('display', 'none');
+            } else if (nickName == member.nickName) {
+                $('#necessary2, #errornickName, #errornickName2, #nickName-check').css('display', 'none');
+            } else {
+                $.getJSON(serverRoot + '/auth/count.json', {type: "nickName", data: nickName}, function (ajaxResult) {
+                    if (ajaxResult.status != "success") {
+                        alert(ajaxResult.data);
+                        return;
+                    } else if (ajaxResult.data == 0){
+                        $('#necessary2, #errornickName, #errornickName2, #nickName-check').css('display', 'none');
+                    } else {
+                        $('#errornickName2, #nickName-check').css('display', 'inline-block');
+                        $('#necessary2, #errornickName').css('display', 'none');
+                    }
+                })
+            }
+        })
+        
+        var password
+        var passwordSha1
+    
+        $("#password").keyup(function() {
+            password = $("#password").val();
+            if (password == '') {
+                $('#errorpassword-conf, #password-check').css('display', 'none');
+                return;
+            }
+            
+            passwordSha1 = ("*"+CryptoJS.SHA1(CryptoJS.SHA1(password))).toUpperCase();
+            if (member.password != passwordSha1) {
+                $('#errorpassword-conf, #password-check').css('display', 'inline-block');
+            } else {
+                $('#errorpassword-conf, #password-check').css('display', 'none');
+            }
+        })
+        
+        /* 휴대폰 유효성 검사 */
+        var re2 = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+        var phoneNo
+        
+        $("#phoneNo").keyup(function() {
+            phoneNo = $("#phoneNo").val();
+            if (phoneNo == '') {
+                $('#necessary3, #phoneNo-check').css('display', 'inline-block');
+                $('#errorphoneNo, #errorphoneNo2').css('display', 'none');
+            } else if (!re2.test(phoneNo)) {
+                $('#errorphoneNo, #phoneNo-check').css('display', 'inline-block');
+                $('#necessary3, #errorphoneNo2').css('display', 'none');
+            } else if (phoneNo == member.phoneNo) {
+                $('#necessary3, #errorphoneNo, #errorphoneNo2, #phoneNo-check').css('display', 'none');
+            } else {
+                $.getJSON(serverRoot + '/auth/count.json', {type: "phoneNo", data: phoneNo}, function (ajaxResult) {
+                    if (ajaxResult.status != "success") {
+                        alert(ajaxResult.data);
+                        return;
+                    } else if (ajaxResult.data == 0){
+                        $('#necessary3, #errorphoneNo, #errorphoneNo2, #phoneNo-check').css('display', 'none');
+                    } else {
+                        $('#errorphoneNo2, #phoneNo-check').css('display', 'inline-block');
+                        $('#necessary3, #errorphoneNo').css('display', 'none');
+                    }
+                })
+            }
+        })
     });
+    
+    var newPassword
+    
+    $("#new-password").keyup(function() {
+        newPassword = $("#new-password").val();
+        if (newPassword.length == 0) {
+            $('#errorpassword-conf2, #password-check').css('display', 'none');
+        } else if (newPassword.length < 6 || newPassword.length > 20) {
+            $('#errorpassword-conf2, #password-check').css('display', 'inline-block');
+        } else {
+            $('#errorpassword-conf2, #password-check').css('display', 'none');
+        }
+    })
+    
+    var newPasswordConf
+    
+    $("#new-password-conf").keyup(function() {
+        newPasswordConf = $("#new-password-conf").val();
+        if (newPasswordConf != newPassword){
+            $('#errorpassword-conf3, #password-check').css('display', 'inline-block');
+        } else {
+            $('#errorpassword-conf3, #password-check').css('display', 'none');
+        }
+    })
+    
+    // 일반 전화번호 유효성 검사
+    var re3 = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+    var homeTelephone
+    $("#home-telephone").keyup(function() {
+        homeTelephone = $("#home-telephone").val();
+        if (homeTelephone == '') {
+            $('#errortelNo, #tel-check').css('display', 'none');
+        } else if (!re3.test(homeTelephone)) {
+            $('#errortelNo, #tel-check').css('display', 'inline-block');
+        } else {
+            $('#errortelNo, #tel-check').css('display', 'none');
+        }
+    })
+    
     
     $('.addr-find').click(function(event) {
         new daum.Postcode({
@@ -145,4 +280,53 @@ $(function() {
             $('#photo-img').attr('src', dataURL);
         }
     });
+    
+    $('.edit-btn').click(function(event) {
+        var editMember = {
+            "email": $('#email').val(),
+            "nickName": $('#nickName').val(),
+            "phoneNo": $('#phoneNo').val(),
+            "password": $('#new-password').val(),
+            "postNo": $('#zip-code').val(),
+            "basicAddress": $('#address').val(),
+            "detailAddress": $('#address-detail').val(),
+            "telphone": $('#home-telephone').val()
+        }
+        
+        $.post(serverRoot + '/mypage/update.json', editMember, function (ajaxResult) {
+            if (ajaxResult.status != "success") {
+                alert(ajaxResult.data);
+                return;
+            }
+            swal({
+                title: "수정 완료!",
+                text: "회원님 정보가 올바르게 수정됬습니다.",
+                timer: 2250,
+                showConfirmButton: false,
+                type: "success"
+            });
+            setTimeout(function(){location.reload();} , 2000);
+        }, 'json')
+        event.preventDefault();
+    })
+    
+    setInterval(function() {
+        $('.edit-btn').css('pointer-events', 'none');
+        $('.edit-btn').css('opacity', '.65');
+        
+        if ($('#email-check').css('display') != 'none') {
+            return;
+        } else if ($('#nickName-check').css('display') != 'none') {
+            return;
+        } else if ($('#password-check').css('display') != 'none') {
+            return;
+        } else if ($('#phoneNo-check').css('display') != 'none') {
+            return;
+        } else if ($('#tel-check').css('display') != 'none') {
+            return;
+        } else {
+            $('.edit-btn').css('pointer-events', 'auto');
+            $('.edit-btn').css('opacity', '1');
+        }
+    }, 100);
 })

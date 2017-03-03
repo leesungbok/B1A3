@@ -8,6 +8,15 @@ public class BidHistory extends Item implements Serializable {
   protected int    bidHistoryNo;
   protected int    bids;
   protected String bidTime;
+  protected int    state;
+
+  public int getState() {
+    return state;
+  }
+
+  public void setState(int state) {
+    this.state = state;
+  }
 
   public int getBids() {
     return bids;
