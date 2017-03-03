@@ -9,10 +9,14 @@
     <id     column="hsno" property="bidHistoryNo"/>
     <result column="bids" property="bids"/>
     <result column="time" property="bidTime"/>
+    <result column="stat" property="state"/>
+
     <result column="itno" property="itemNo"/>
+    <result column="titl" property="title"/>
     <result column="mno"  property="memberNo"/>
     <result column="nknm" property="nickName"/>
     <result column="path" property="photoPath"/>
+    <result column="time"  property="startTime"/>
   </resultMap>
 
   <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
@@ -26,7 +30,32 @@
     where itno=#{value}
     order by bids desc;
   </select>
+
+  <select id="getBeforeBidHistory" resultMap="bidHistory-map">
+    <![CDATA[
+      select
+        i.itno,
+        i.titl,
+        i.time,
+        b.stat,
+        b.hsno,
+        b.mno,
+        b.itno,
+        b.bids
+      from item i
+      left outer join bdhs b on i.itno=b.itno
+      where now() - interval 6 minute < i.time and i.time < now() - interval 3 minute
+      order by b.bids desc
+      limit 5;
+    ]]>
+  </select>
   
+  <update id="updateState" parameterType="map">
+    update bdhs set
+      stat=#{state}
+    where itno=#{itemNo} and bids=#{bids}
+  </update>
+
   <insert id="insert" parameterType="bidhistory">
     insert into bdhs(mno,itno,bids,time)
     values(#{memberNo},#{itemNo},#{bids},now())

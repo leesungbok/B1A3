@@ -40,24 +40,37 @@
               <div class="col-sm-6">
                 <input id="email" type="email" class="form-control">
               </div>
+              <span class="errormsg" id="necessary">필수 입력란입니다.</span>
+              <span class="errormsg" id="erroremail">올바른 이메일 형식이 아닙니다.</span>
+              <span class="errormsg" id="erroremail2">중복된 이메일입니다.</span>
             </dd>
           </dl>
           <dl class="dl-horizontal">
             <dt class="term">*닉네임</dt>
             <dd class="desc">
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <input id="nickName" type="text" class="form-control">
               </div>
+              <span class="errormsg" id="necessary2">필수 입력란입니다.</span>
+              <span class="errormsg" id="errornickName">한글,영문,숫자 포함 최소2자, 최대6자까지 가능합니다.</span>
+              <span class="errormsg" id="errornickName2">이미 사용중인 닉네임입니다.</span>
             </dd>
           </dl>
           <dl class="dl-horizontal">
             <dt class="term">*비밀번호</dt>
             <dd class="desc">
-              <div class="col-sm-6">
-                <input type="password" class="form-control" placeholder="기존 비밀번호">
-                <input type="password" class="form-control" placeholder="새 비밀번호">
-                <input type="password" class="form-control" placeholder="새 비밀번호 확인">
+              <div class="col-sm-6 password-float">
+                <input id="password" type="password" class="form-control" placeholder="기존 비밀번호">
               </div>
+              <span class="errormsg" id="errorpassword-conf">비밀번호가 일치하지 않습니다.</span>
+              <div class="col-sm-6 password-float">
+                <input id="new-password" type="password" class="form-control" placeholder="새 비밀번호">
+              </div>
+              <span class="errormsg" id="errorpassword-conf2">영문,숫자 포함 최소6자, 최대 20자까지 가능합니다.</span>
+              <div class="col-sm-6 password-float">
+                <input id="new-password-conf" type="password" class="form-control" placeholder="새 비밀번호 확인">
+              </div>
+              <span class="errormsg" id="errorpassword-conf3">입력하신 비밀번호와 일치하지 않습니다.</span>
             </dd>
           </dl>
           <dl class="dl-horizontal">
@@ -129,8 +142,11 @@
                 <input type="number" class="form-control tel">
             </div> -->
             <div class="col-sm-4">
-              <input id="cell-phone" type="number" class="form-control">
+              <input id="phoneNo" type="number" class="form-control">
             </div>
+            <span class="errormsg" id="necessary3">필수 입력란입니다.</span>
+            <span class="errormsg" id="errorphoneNo">올바른 휴대전화 형식이 아닙니다.</span>
+            <span class="errormsg" id="errorphoneNo2">이미 사용중인 휴대전화입니다.</span>
             </dd>
           </dl>
           <dl class="dl-horizontal">
@@ -146,9 +162,16 @@
             <div class="col-sm-4">
               <input id="home-telephone"type="number" class="form-control">
             </div>
+            <span class="errormsg" id="errortelNo">올바른 전화번호 형식이 아닙니다.</span>
             </dd>
           </dl>
-          <div class="term-bgc"></div>
+          <div class="term-bgc">
+            <span id="email-check"></span>
+            <span id="password-check"></span>
+            <span id="phoneNo-check"></span>
+            <span id="nickName-check"></span>
+            <span id="tel-check"></span>
+          </div>
         </div>
         <div class="edit-btn">
           <a href="">수정하기</a>
@@ -177,6 +200,7 @@
   <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
   <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script src="../node_modules/crypto-js/crypto-js.js"></script>
   <script src="../js/common.js"></script>
   <script src="../js/mysettings.js"></script>
 </body>

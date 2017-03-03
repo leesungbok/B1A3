@@ -70,11 +70,6 @@
     select count(*) from memb where phon=#{value}
   </select>
   
-  <update id="updatePhoto" parameterType="map">
-    update memb set
-      path=#{photoPath}
-    where email=#{email}
-  </update>
   
   <delete id="delete" parameterType="int">
     delete from memb where mno=#{value}
@@ -105,4 +100,25 @@
     from memb
     where nknm=#{nickName}
   </select>
+
+  <update id="updatePhoto" parameterType="map">
+    update memb set
+      path=#{photoPath}
+    where mno=#{memberNo}
+  </update>
+
+  <update id="update" parameterType="member">
+    update memb set
+      email = #{email},
+      nknm = #{nickName},
+      phon = #{phoneNo},
+      <if test="password != ''">
+        pwd = password(#{password}),
+      </if>
+      pst_no = #{postNo},
+      bas_adr = #{basicAddress},
+      det_adr = #{detailAddress},
+      tel = #{telphone}
+    where mno = #{memberNo}
+  </update>
 </mapper>
