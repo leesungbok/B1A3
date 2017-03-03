@@ -130,17 +130,17 @@ $(function () {
     	/*var submenu = location.search.split("?")[1].split("=")[1];*/
 	    $('#mypage').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage.html?submenu=mypage";
+	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
 	    }); 
 
 	    $('#mybidding').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mybidding.html?submenu=mybidding";
+	    	 location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
 	    }); 
 
 	    $('#myoption').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mysettings.html?submenu=myoption";
+	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
 	    }); 
 	    
 	    /*$("#"+submenu).parent().addClass('active');*/
