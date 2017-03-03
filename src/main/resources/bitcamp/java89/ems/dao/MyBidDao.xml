@@ -7,34 +7,31 @@
   <resultMap type="mybid" id="mybid-map">
     <id     column="mno"   property="memberNo"/>
     <id     column="itno"  property="itemNo"/>
-    
     <result column="titl"  property="title"/>
-    <result column="time"  property="startTime"/>
-    <result column="stpc"  property="startPrice"/>
+    <result column="bids"  property="bids"/>
+    <result column="time"  property="time"/>
     
     <collection property="photoList" ofType="photo">
       <id     column="pno"  property="photoNo"/>
       <result column="path" property="filePath"/>
     </collection>
+
   </resultMap>
   
   <select id="getMyBidList" parameterType="int" resultMap="mybid-map">
     <![CDATA[
     select
-      m.mno,
       i.itno,
       i.titl,
+      i.bids,
       i.time,
-      i.stpc,
-      p.path,
-      t.type,
-      t.rdt
-    from inter t
-    left outer join item i on m.mno=i.itno
-    left outer join memb m on m.mno=t.mno
+      (select count(*) from BDHS where ITNO = 1) as i.cnt,
+      p.path
+    from item i
     left outer join phot p on i.itno=p.itno
-    where rdt < now() and t.type=1 and m.mno=#{memberNo}
-    order by rdt desc;
+    where time > now()
+    order by time asc
+    limit #{startRowIndex}, #{rowSize}
     ]]>
   </select>
   
