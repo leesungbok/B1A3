@@ -1,11 +1,7 @@
 @CHARSET "UTF-8";
 
 .container {
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  margin-left: -479px !important;
-  margin-top: -280px !important;
+  display:none;
 }
 
 .container>h1 {

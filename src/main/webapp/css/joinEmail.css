@@ -6,11 +6,7 @@
 }
 
 .container {
-  position: absolute;
-  left: 50%;
-  top: 57%;
-  margin-left: -479px !important;
-  margin-top: -280px !important;
+  display:none;
 }
 
 .form-horizontal {

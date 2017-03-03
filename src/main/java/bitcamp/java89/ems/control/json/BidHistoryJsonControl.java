@@ -75,12 +75,17 @@ public class BidHistoryJsonControl {
     return new AjaxResult(AjaxResult.FAIL, "입찰 실패했습니다.");
   }
 
-  /*@RequestMapping("updatestate")
+  @RequestMapping("updatestate")
   public AjaxResult updatestate(int itemNo, int bids, int state) throws Exception {
     if (itemNo == 0 || bids == 0 || state == 0) {
-      
+      return new AjaxResult(AjaxResult.FAIL, "입찰 기록 업데이트 실패했습니다.");
     }
-  }*/
+
+    if (bidHistoryService.updateState(itemNo, bids, state) == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "입찰 기록 업데이트 실패했습니다.");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "입찰 기록 업데이트 성공했습니다.");
+  }
 
   @RequestMapping("sms")
   public AjaxResult sms(String nickName, String title) throws Exception {

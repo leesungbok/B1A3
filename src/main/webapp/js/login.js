@@ -117,12 +117,23 @@ $(function() {
         
         $.post('login.json', param, function(ajaxResult) {
             if (ajaxResult.status == "success") {
-                location.href = clientRoot + "/main/main.html";    
+                location.href = clientRoot + "/main/main.html";
                 return;
             }
-            alert(ajaxResult.data);   
+            alert(ajaxResult.data);
         }, 'json');
     });
     
     $('#email').val(getCookie('email').replace(/"/g, ''));
+    
+    setInterval(function() {
+        if (window.innerHeight <= 759) {
+            $('.container').css('margin-top', '0');
+            return;
+        }
+        $('.container').css('margin-top', (window.innerHeight-759)/2 + 'px');
+        if ($('.container').css('display') != 'block') {
+            $('.container').css('display', 'block');
+        }
+    }, 100);
 })

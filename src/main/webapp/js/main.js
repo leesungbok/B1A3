@@ -226,45 +226,9 @@ $(function () {
             
             // 입찰하기
             $('.btn-primary1').click(function() {
-                var bidPrice = Number($('#l').val());
-                var atLeastBids = Number($('#l').attr('data-atLeastBids'));
-                
-                if (bidPrice > 10000000) {
-                    swal({
-                        title: "입찰 실패!",
-                        type: "error",
-                        text: "최대 입찰가는 천만원입니다.",
-                        confirmButtonText: "확인",
-                        confirmButtonColor: "#f32e6d"
-                    });
-                    return;
-                }
-                
-                if (bidPrice < atLeastBids) {
-                    swal({
-                        title: "입찰 실패!",
-                        type: "error",
-                        text: "최저 입찰 가능가보다 낮은 가격으로 입찰하실 수 없습니다.",
-                        confirmButtonText: "확인",
-                        confirmButtonColor: "#f32e6d"
-                    });
-                    return;
-                }
-                
-                if (bidPrice % 100 != 0) {
-                    swal({
-                        title: "입찰 실패!",
-                        type: "error",
-                        text: "입찰금액은 100원 단위로 입력해주세요.",
-                        confirmButtonText: "확인",
-                        confirmButtonColor: "#f32e6d"
-                    });
-                    return;
-                }
-                
                 $.post(serverRoot + '/bidhistory/add.json',
                 {
-                "bids": bidPrice,
+                "bids": $('#l').val(),
                 "itemNo": nowbid.itemNo
                 }, function(ajaxResult) {
                     if (ajaxResult.status != "success") {
@@ -282,4 +246,33 @@ $(function () {
             })
         })
     })
+    
+    var bidPrice
+    var minimumbid
+    setInterval(function() {
+        if ($('#tender').hasClass('in')) {
+            bidPrice = Number($('#l').val());
+            minimumbid = Number($('.atLeastBids').text());
+            if (bidPrice > 10000000) {
+                $('.atbids2, .atbids4').css('display', 'inline-block');
+                $('.atbids1, .atbids3').css('display', 'none');
+            } else if (bidPrice < minimumbid) {
+                $('.atbids1, .atbids4').css('display', 'inline-block');
+                $('.atbids2, .atbids3').css('display', 'none');
+            } else if (bidPrice % 100 != 0) {
+                $('.atbids3, .atbids4').css('display', 'inline-block');
+                $('.atbids1, .atbids2').css('display', 'none');
+            } else {
+                $('.atbids1, .atbids2, .atbids3, .atbids4').css('display', 'none');
+            }
+        }
+        
+        if ($('.atbids4').css('display') == 'none') {
+            $('#bid2-btn').css('pointer-events', 'auto');
+            $('#bid2-btn').css('opacity', '1');
+        } else {
+            $('#bid2-btn').css('pointer-events', 'none');
+            $('#bid2-btn').css('opacity', '.65');
+        }
+    }, 100);
 });

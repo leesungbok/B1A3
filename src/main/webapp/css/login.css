@@ -1,8 +1,5 @@
 @CHARSET "UTF-8";
 
-.container {  position: absolute;  left: 50%;  top: 53%;  margin-left: -479px !important;  margin-top: -280px !important;
-}
-
 .user_login {
   padding: 30px 40px;
   border: 1px solid #e8e8e8;
@@ -10,12 +7,12 @@
   height: 477px;
 }
 
-.user_login_sns {
-  height: 100px;
+.container {
+  display:none;
 }
 
-.container>h1 {
-  /* padding: 114px 0 20px 15px; */
+.user_login_sns {
+  height: 100px;
 }
 
 .icon-clock:before {
@@ -187,5 +184,3 @@ input[type=checkbox]:checked+span {
   color: rgba(0, 0, 0, 0.69) !important;
   text-decoration: none;
 }
-
-
