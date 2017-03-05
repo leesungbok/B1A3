@@ -4,7 +4,6 @@ $(function () {
     	$('#header').html(result);
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	/*console.log(ajaxResult)*/
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -192,7 +191,7 @@ $(function () {
                 jQuery.ajaxSettings.traditional = true;
                 
                 $.post(serverRoot + '/main/add.json',
-                        {
+                    {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
@@ -201,7 +200,7 @@ $(function () {
                     "content": $('#cont').val(),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                        }
+                    }
                 , function(ajaxResult) {
                     if (ajaxResult.status != "success") {
                         alert(ajaxResult.data);
@@ -222,6 +221,22 @@ $(function () {
         }
     });
 
+    function notiWinning(bdhs, endTime) {
+/*    	$.post(serverRoot + '/bidhistory/sms.json',
+		{
+    		"nickName": bdhs.nickName,
+    		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다." + endTime + "전 까지 결제하세요."
+		}, function(ajaxResult) {
+			if (ajaxResult.status != 'success') {
+				alert(ajaxResult.data);
+				return;
+			}
+		})*/
+		console.log(bdhs.nickName)
+		console.log(bdhs.title)
+		console.log(endTime)
+    }
+
     function bdhsUpdate(itemNo, mybid, state) {
         $.post(serverRoot + "/bidhistory/updatestate.json",
         {
@@ -235,10 +250,12 @@ $(function () {
             }
         })
     }
-
+    
+    // 제한시간안에 결제를 안한경우 상태값을 2로변경
     function updateState2(i, endTime, nowTime, bdhs) {
         if (endTime < nowTime && i < 5) {
-            if (bdhs[i].state == 0) {
+            if (bdhs[i] != null && bdhs[i].state == 0) {
+            	notiWinning(bdhs[i+1], endTime)
                 bdhsUpdate(bdhs[0].itemNo, bdhs[i].bids, 2)
             }
             endTime.setSeconds(endTime.getSeconds() + 30);
@@ -255,17 +272,16 @@ $(function () {
             }
             
             var bdhs = ajaxResult.data.bdhs;
-            
             if (bdhs[0].memberNo == 0) {
                 return;
             }
             
             var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 3);
+            endTime.setMinutes(endTime.getMinutes() + 4);
             
             var nowTime = new Date();
             
-            updateState2(0, endTime, nowTime, bdhs);
+            /*updateState2(0, endTime, nowTime, bdhs);*/
             
             var memberNo = ajaxResult.data.memberNo;
             var count = 0;
@@ -281,21 +297,54 @@ $(function () {
                 }
             }
             
-            if (count > 0) {
-                return;
-            } else {
-                swal({
-                    title: "낙찰을 축하드립니다!",
-                    text: "결제페이지로 이동하셔서 배송정보를 확인하세요.",
-                    type: "success",
-                    confirmButtonText: "확인",
-                    confirmButtonColor: "rgb(244, 46, 109)"
-                }, function() {
-                    sessionStorage.setItem('itemNo', bdhs[0].itemNo);
-                    sessionStorage.setItem('mybid', mybid);
-                    location.href = clientRoot + "/order/order.html"
-                })
-            }
+            if (count == 0 && $('.sweet-overlay').css('display') != 'block') {
+        		swal({
+        			title: "낙찰을 축하드립니다!",
+        			text: "결제페이지로 이동하셔서 배송정보를 확인하세요.",
+        			type: "success",
+        			cancelButtonText: "주문취소",
+        			cancelButtonColor: "#e5e5e5",
+        			confirmButtonText: "결제하기",
+        			confirmButtonColor: "rgb(244, 46, 109)",
+        			showCancelButton: true,
+        			closeOnConfirm: false,
+        			closeOnCancel: false
+        		}, function(isConfirm) {
+        			if (isConfirm) {
+        				sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+        				sessionStorage.setItem('mybid', mybid);
+        				location.href = clientRoot + "/order/order.html"
+        			} else {
+        				swal({
+        					title: "경고!",
+        					text: "주문 취소하시면 구매거부가 되어 경매 패널티가 1점 부여됩니다.",
+        					type: "warning",
+        					confirmButtonText: "결제하기",
+        					confirmButtonColor: "rgb(244, 46, 109)",
+        					cancelButtonText: "주문취소",
+        					cancelButtonColor: "#e5e5e5",
+        					showCancelButton: true,
+        					closeOnConfirm: false,
+                			closeOnCancel: false
+        				}, function(isConfirm) {
+        					if (isConfirm) {
+        						sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+        						sessionStorage.setItem('mybid', mybid);
+        						location.href = clientRoot + "/order/order.html"
+        					} else {
+        						bdhsUpdate(bdhs[0].itemNo, mybid, 2)
+        			            swal({
+        			                title: "취소 완료!",
+        			                text: "주문 취소가 정상적으로 처리됬습니다.",
+        			                timer: 2250,
+        			                showConfirmButton: false,
+        			                type: "success"
+        			            });
+        					}
+        				})
+        			}
+        		})
+        	}
         })
         setTimeout(getBeforeBidHistory, 1000);
     })();

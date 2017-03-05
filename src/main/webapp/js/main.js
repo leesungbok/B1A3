@@ -145,13 +145,13 @@ $(function () {
                         $('#dl'+i+'').css('display', 'block');
                     }
                     
-                    // 입찰하락자 SMS 전송
-/*                    var nickName = $('#dl1-bidder').text();
+/*                    // 입찰하락자 SMS 전송
+                    var nickName = $('#dl1-bidder').text();
                     if (nickName != '' && nowbid.title != '') {
                         $.post(serverRoot + '/bidhistory/sms.json',
                         {
                             "nickName": nickName,
-                            "title": nowbid.title
+                            "text": "[" + nowbid.title + "] " + "입찰순위가 하락했습니다."
                         },
                         function(ajaxResult){
                             if (ajaxResult.status != "success") {

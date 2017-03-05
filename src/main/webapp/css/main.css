@@ -460,6 +460,14 @@ div.heart:before {
   background-color: #f32e6d;
 }
 
+.sa-button-container {
+  padding: 0 83px;
+}
+
+.sa-confirm-button-container {
+  float: left;
+}
+
 #nextPgBtn {
   display: inline-block;
   padding: 10px;

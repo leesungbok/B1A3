@@ -88,14 +88,14 @@ public class BidHistoryJsonControl {
   }
 
   @RequestMapping("sms")
-  public AjaxResult sms(String nickName, String title) throws Exception {
+  public AjaxResult sms(String nickName, String text) throws Exception {
     Message coolsms = new Message("NCS58B4FDA4F1C07", "51005CD999726FE18642C3B34BA2FA90");
 
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("to", memberService.getPhone(nickName));
     params.put("from", "01059600335");
     params.put("type", "SMS");
-    params.put("text", "[" + title + "] 입찰순위가 하락했습니다.");
+    params.put("text", text);
     params.put("app_version", "test app 1.2");
 
     try {

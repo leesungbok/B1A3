@@ -129,9 +129,10 @@ $(function() {
     setInterval(function() {
         if (window.innerHeight <= 759) {
             $('.container').css('margin-top', '0');
-            return;
+        } else {
+        	$('.container').css('margin-top', (window.innerHeight-759)/2 + 'px');
         }
-        $('.container').css('margin-top', (window.innerHeight-759)/2 + 'px');
+        
         if ($('.container').css('display') != 'block') {
             $('.container').css('display', 'block');
         }

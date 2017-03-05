@@ -25,13 +25,19 @@
             <div class="col-sm-5">
               <input id="receiver" type="text" class="form-control">
             </div>
+            <span class="errormsg" id="errorReceiver">올바른 이름이 아닙니다.</span>
+            <span class="errormsg" id="necessary1">필수 입력란입니다.</span>
+            <span class="errormsg" id="receiver-conf"></span>
           </dd>
         </dl>
         <dl class="dl-horizontal">
           <dt class="term">*휴대전화</dt>
           <dd class="desc">
-            <div class="col-sm-7">
+            <div class="col-sm-6">
               <input id="phoneNo" type="number" class="form-control">
+              <span class="errormsg" id="necessary2">필수 입력란입니다.</span>
+              <span class="errormsg" id="errorphoneNo">휴대전화 형식이 아닙니다.</span>
+              <span class="errormsg" id="phoneNo-conf"></span>
             </div>
           </dd>
         </dl>
@@ -41,13 +47,15 @@
               <a href="" class="btn addr-find">
                 <span>주소찾기</span>
               </a>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <input type="text" id="zip-code" class="form-control" placeholder="우편번호" readonly>
             </div>
             <div class="col-sm-12 addr-detail">
               <input type="text" id="address" class="form-control" placeholder="주소" readonly>
               <input type="text" id="address-detail" class="form-control" placeholder="상세주소">
             </div>
+            <span class="errormsg" id="necessary3">필수 입력란입니다.</span>
+            <span class="errormsg" id="address-conf"></span>
           </dd>
         </dl>
         <dl class="dl-horizontal">

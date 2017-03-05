@@ -4,7 +4,7 @@ var mybid = window.sessionStorage.getItem('mybid');
 if (itemNo == null || mybid == null) {
         swal({
         title: "잘못된 접근!",
-        text: "사이트 URL를 다시한번 확인해주세요.",
+        text: "웹브라우저 주소창을 다시한번 확인해주세요.",
         type: "error",
         confirmButtonText: "확인",
         confirmButtonColor: "rgb(244, 46, 109)"
@@ -249,6 +249,10 @@ $(function() {
         $('#address').val(member.basicAddress);
         $('#address-detail').val(member.detailAddress);
         $('#email').val(member.email);
+        
+        if (member.postNo == null) {
+        	$('#necessary3, #address-conf').css('display', 'inline-block');
+        }
     });
     
     $.getJSON(serverRoot + '/main/detail.json', {"itemNo":itemNo}, function(ajaxResult) {
@@ -304,6 +308,7 @@ $(function() {
                 
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById('address-detail').focus();
+                $('#necessary3, #address-conf').css('display', 'none');
             }
         }).open();
         event.preventDefault();
@@ -372,15 +377,65 @@ $(function() {
         });
     })
     
+    var receiver
+    var re1 = /^[가-힣]{2,}$/; //이름 유효성 검사 2자 이상
+
+    $("#receiver").keyup(function() {
+    	receiver = $('#receiver').val();
+    	if (receiver == '') {
+    		$('#necessary1, #receiver-conf').css('display', 'inline-block');
+    		$('#errorReceiver').css('display', 'none');
+    	} else if (!re1.test(receiver)) {
+    		$('#errorReceiver, #receiver-conf').css('display', 'inline-block');
+    		$('#necessary1').css('display', 'none');
+    	} else {
+    		$('#necessary1, #errorReceiver, #receiver-conf').css('display', 'none');
+    	}
+    })
+    
+    /* 휴대폰 유효성 검사 */
+    var re2 = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+    var phoneNo
+    
+    $("#phoneNo").keyup(function() {
+        phoneNo = $("#phoneNo").val();
+        if (phoneNo == '') {
+            $('#necessary2, #phoneNo-conf').css('display', 'inline-block');
+            $('#errorphoneNo').css('display', 'none');
+        } else if (!re2.test(phoneNo)) {
+        	$('#errorphoneNo, #phoneNo-conf').css('display', 'inline-block');
+            $('#necessary2').css('display', 'none');
+        } else {
+        	$('#necessary2, #errorphoneNo, #phoneNo-conf').css('display', 'none');
+        }
+    })
+    
     setInterval(function() {
         if (window.innerHeight <= 757) {
             $('.container').css('margin-top', '0');
-            return;
+        } else {
+        	$('.container').css('margin-top', (window.innerHeight-757)/2 + 'px');
         }
-        $('.container').css('margin-top', (window.innerHeight-757)/2 + 'px');
+        
         if ($('.container').css('display') != 'block') {
             console.log(1)
             $('.container').css('display', 'block');
         }
+        
+        if ($('#receiver-conf').css('display') == 'none' && $('#phoneNo-conf').css('display') == 'none'
+        	&& $('#address-conf').css('display') == 'none') {
+        	$('.payment-btn').css('pointer-events', 'auto');
+        	$('.payment-btn').css('opacity', '1');
+        } else {
+        	$('.payment-btn').css('pointer-events', 'none');
+        	$('.payment-btn').css('opacity', '.65');
+        }
     }, 100);
+    
+    // 브라우저가 새로고침이나 페이지 이동하려고 할 때 발생
+    window.onbeforeunload = function(e) {
+    	var dialogText = 'Dialog text here';
+    	e.returnValue = dialogText;
+    	return dialogText;
+    };
 })

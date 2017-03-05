@@ -29,10 +29,12 @@ font-awesome/4.2.0/css/font-awesome.min.css"); */
 
 .body-content {
   color: #A0A19C;
+  font-size: 1.1em;
 }
 
 #tender-body .body-content1 {
   color: red;
+  font-size: 1.1em;
 }
 
 #tender-footer {
