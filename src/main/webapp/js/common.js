@@ -222,45 +222,34 @@ $(function () {
     });
 
     function notiWinning(bdhs, endTime) {
+        console.log(bdhs.nickName)
+        console.log("[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
+        endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 결제하세요.")
 /*    	$.post(serverRoot + '/bidhistory/sms.json',
 		{
     		"nickName": bdhs.nickName,
-    		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다." + endTime + "전 까지 결제하세요."
+    		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
+    		endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전 까지 결제하세요."
 		}, function(ajaxResult) {
 			if (ajaxResult.status != 'success') {
 				alert(ajaxResult.data);
 				return;
 			}
 		})*/
-		console.log(bdhs.nickName)
-		console.log(bdhs.title)
-		console.log(endTime)
     }
 
     function bdhsUpdate(itemNo, mybid, state) {
         $.post(serverRoot + "/bidhistory/updatestate.json",
         {
-        "itemNo": itemNo,
-        "bids": mybid,
-        "state": state
+            "itemNo": itemNo,
+            "bids": mybid,
+            "state": state
         }, function(ajaxResult) {
             if (ajaxResult.status != "success") {
                 alert(ajaxResult.data)
                 return;
             }
         })
-    }
-    
-    // 제한시간안에 결제를 안한경우 상태값을 2로변경
-    function updateState2(i, endTime, nowTime, bdhs) {
-        if (endTime < nowTime && i < 5) {
-            if (bdhs[i] != null && bdhs[i].state == 0) {
-            	notiWinning(bdhs[i+1], endTime)
-                bdhsUpdate(bdhs[0].itemNo, bdhs[i].bids, 2)
-            }
-            endTime.setSeconds(endTime.getSeconds() + 30);
-            updateState2(++i, endTime, nowTime, bdhs)
-        }
     }
 
     // 바로 전 경매의 입찰기록을 요청
@@ -272,35 +261,31 @@ $(function () {
             }
             
             var bdhs = ajaxResult.data.bdhs;
-            if (bdhs[0].memberNo == 0) {
-                return;
-            }
-            
             var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 4);
-            
-            var nowTime = new Date();
-            
-            /*updateState2(0, endTime, nowTime, bdhs);*/
-            
+            endTime.setMinutes(endTime.getMinutes() + 35);
             var memberNo = ajaxResult.data.memberNo;
             var count = 0;
             var mybid
-            for (var i = 0; i < 5; i++) {
-                if ((bdhs[i].state == 1) || (bdhs[i].memberNo == memberNo && bdhs[i].state != 0)
-                    || (bdhs[i].memberNo != memberNo && bdhs[i].state == 0)) {
-                    count = 1;
+            var index
+            
+            for (var i = 0; i < bdhs.length; i++) {
+                if ((bdhs[i].state == 1) || (bdhs[i].memberNo != memberNo && bdhs[i].state == 0)) {
+                    count = 5;
                     break;
                 } else if (bdhs[i].memberNo == memberNo && bdhs[i].state == 0) {
                     mybid = bdhs[i].bids;
+                    index = i;
+                    endTime.setMinutes(endTime.getMinutes() + (i+1)*5);
                     break;
+                } else {
+                    count++;
                 }
             }
             
-            if (count == 0 && $('.sweet-overlay').css('display') != 'block') {
+            if (count < 5 && $('.sweet-overlay').css('display') != 'block') {
         		swal({
         			title: "낙찰을 축하드립니다!",
-        			text: "결제페이지로 이동하셔서 배송정보를 확인하세요.",
+        			text: endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 미결제시 자동으로 주문취소가 되고 패널티가 부여됩니다.",
         			type: "success",
         			cancelButtonText: "주문취소",
         			cancelButtonColor: "#e5e5e5",
@@ -332,6 +317,9 @@ $(function () {
         						sessionStorage.setItem('mybid', mybid);
         						location.href = clientRoot + "/order/order.html"
         					} else {
+        					    if (i < 4) {
+        					        notiWinning(bdhs[i+1], endTime)
+        					    }
         						bdhsUpdate(bdhs[0].itemNo, mybid, 2)
         			            swal({
         			                title: "취소 완료!",
@@ -344,6 +332,13 @@ $(function () {
         				})
         			}
         		})
+        		
+        	    // 브라우저가 새로고침이나 페이지 이동하려고 할 때 발생
+        	    window.onbeforeunload = function(e) {
+        	        var dialogText = 'Dialog text here';
+        	        e.returnValue = dialogText;
+        	        return dialogText;
+        	    };
         	}
         })
         setTimeout(getBeforeBidHistory, 1000);

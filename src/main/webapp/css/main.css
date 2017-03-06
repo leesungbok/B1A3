@@ -461,11 +461,18 @@ div.heart:before {
 }
 
 .sa-button-container {
-  padding: 0 83px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
-
-.sa-confirm-button-container {
-  float: left;
+.sa-button-container .cancel {
+  -webkit-order: 2;
+  order: 2;
+}
+.sa-button-container .sa-confirm-button-container {
+  -webkit-order: 1;
+  order: 1;
 }
 
 #nextPgBtn {
