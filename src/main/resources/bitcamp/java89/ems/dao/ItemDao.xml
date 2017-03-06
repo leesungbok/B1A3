@@ -16,8 +16,9 @@
     <result column="time"  property="startTime"/>
     <result column="stpc"  property="startPrice"/>
 
-    <result column="mno"     property="memberNo"/>
-    <result column="nknm"    property="nickName"/>
+    <result column="mno"  property="memberNo"/>
+    <result column="nknm" property="nickName"/>
+    <result column="phon" property="phoneNo"/>
 
     <collection property="photoList" ofType="photo">
       <id     column="pno"  property="photoNo"/>
@@ -58,6 +59,27 @@
       left outer join memb m on i.mno=m.mno
       where i.time <= now() and now() <= i.time + interval 30 minute;
     ]]>
+  </select>
+
+  <select id="getOne" parameterType="int" resultMap="item-map">
+    select
+      i.itno,
+      i.mno,
+      i.titl,
+      i.categ,
+      i.buy,
+      i.day,
+      i.deal,
+      i.cont,
+      i.time,
+      i.stpc,
+      m.nknm,
+      m.phon,
+      p.path
+    from item i
+    left outer join phot p on i.itno=p.itno
+    left outer join memb m on i.mno=m.mno
+    where i.itno=#{value}
   </select>
 
   <insert id="insert" parameterType="item"

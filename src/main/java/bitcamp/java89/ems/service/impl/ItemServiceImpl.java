@@ -44,8 +44,8 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public Item getDetail(int no) throws Exception {
-    return itemDao.getOne(no);
+  public Item getDetail(int itemNo) throws Exception {
+    return itemDao.getOne(itemNo);
   }  
   
   @Override

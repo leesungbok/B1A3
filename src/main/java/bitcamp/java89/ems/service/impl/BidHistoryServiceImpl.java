@@ -1,5 +1,6 @@
 package bitcamp.java89.ems.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,14 @@ public class BidHistoryServiceImpl implements BidHistoryService {
   @Override
   public List<BidHistory> getBeforeBidHistory() throws Exception {
     return bidHistoryDao.getBeforeBidHistory();
+  }
+
+  @Override
+  public int updateState(int itemNo, int bids, int state) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("itemNo", itemNo);
+    paramMap.put("bids", bids);
+    paramMap.put("state", state);
+    return bidHistoryDao.updateState(paramMap);
   }
 }

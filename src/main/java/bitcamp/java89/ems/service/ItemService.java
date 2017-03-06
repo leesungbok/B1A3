@@ -7,7 +7,7 @@ import bitcamp.java89.ems.domain.Item;
 public interface ItemService {
   List<Item> getList(int pageNo, int pageSize) throws Exception;
   Item getNowBid() throws Exception;
-  Item getDetail(int no) throws Exception;
+  Item getDetail(int itemNo) throws Exception;
   int add(Item item) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
