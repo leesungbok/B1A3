@@ -7,7 +7,7 @@ $(function () {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     

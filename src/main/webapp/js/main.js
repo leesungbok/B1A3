@@ -1,10 +1,10 @@
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id =id;
-  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+//(function(d, s, id) {
+//  var js, fjs = d.getElementsByTagName(s)[0];
+//  if (d.getElementById(id)) return;
+//  js = d.createElement(s); js.id =id;
+//  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
+//  fjs.parentNode.insertBefore(js, fjs);
+//}(document, 'script', 'facebook-jssdk'));
 
 $(function () {
     var nav = $('.nav');
@@ -18,6 +18,8 @@ $(function () {
             $('#header_sub').css('margin-bottom', '0');
         }
     });
+    
+    
 
     // 다음경매 무한 스크롤
     /*$('.next-bidlist').jscroll({
@@ -58,6 +60,7 @@ $(function () {
             $('.deal-method').text(nowbid.deal);
             $('.seller').text(nowbid.nickName);
             $('.sellrcontents').text(nowbid.content);
+            $('.social-btn-dissolve.heart').attr('data-itno',nowbid.itemNo);
             
             // 현재 경매정보에 대한 입찰기록
             (function getBidHistory() {
@@ -199,6 +202,7 @@ $(function () {
                         div.append(template(list[i]));
                     }
                     
+                    
                     var totalCount = ajaxResult.data.totalCount
                     var maxPageNo = parseInt(totalCount / (pageSize/4));
                     if ((totalCount % (pageSize/4)) > 0) {
@@ -221,6 +225,60 @@ $(function () {
                             setTimeout(function(){location.reload();} , 500);
                         });
                     });
+                    
+                    $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
+                    	var itemNo = $(this).attr('data-itno');
+                    	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+                        	/*console.log(ajaxResult)*/
+                            var member = ajaxResult.data;
+
+                    		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+                    		}
+                			var param = {
+                					memberNo : member.memberNo,
+                					itemNo : itemNo
+                    		}
+                    		$.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                             var count = ajaxResult.data
+                             
+                             console.log(count);
+                             if (count == 1) {
+                            	 $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo, function(ajaxResult) {
+                     				if (ajaxResult.status != "success") { 
+                     					alert(ajaxResult.data);
+                     					return;
+                     				}
+                     				swal({
+                                        title: "좋아요 삭제 완료!",
+                                        text: "마이페이지에서 관심상품이 삭제되었습니다.",
+                                        timer: 2250,
+                                        showConfirmButton: false,
+                                        type: "success"
+                                    });
+                                    setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+                     			}); // getJSON()
+                             } else {
+                	        	 $.post('../mypage/add.json',param ,function(ajaxResult) {
+                	        		 if (ajaxResult.status != "success") {
+                	        			 alert(ajaxResult.data);
+                	        			 return;
+                	        		 } 
+                	        		 var item=ajaxResult.data
+                	        		 console.log(ajaxResult.data)
+                	        		 swal({
+                	        			 title: "좋아요 등록 완료!",
+                	        			 text: "마이페이지에서 목록을 확인하세요.",
+                	        			 timer: 2250,
+                	        			 showConfirmButton: false,
+                	        			 type: "success"
+                	        		 });
+                	        		 setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+                	        	 }, 'json'); // post();
+                    		}
+                    	});
+                    	});
+                		
+                	}); // click()
                 });
             }
             
