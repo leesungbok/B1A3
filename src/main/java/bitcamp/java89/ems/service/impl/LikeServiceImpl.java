@@ -1,5 +1,6 @@
 package bitcamp.java89.ems.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,13 @@ public class LikeServiceImpl implements LikeService {
   public List<Like> getLikeList(int memberNo) throws Exception {
     return likeDao.getLikeList(memberNo);
   }
+
+  @Override
+  public String check(int memberNo, int itemNo) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("memberNo", memberNo);
+    paramMap.put("itemNo", itemNo);
+    return likeDao.getOneLike(paramMap);
+  }
+  
 }

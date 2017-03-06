@@ -40,22 +40,28 @@
     ]]>
   </select>
   
-<!--   <insert id="insert" parameterType="like"
-  useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-    insert into like(mno,titl,stpc,path,type,time)
-    select
+  <insert id="insert" parameterType="like">
+    insert into inter(mno,itno,type,rdt)
+    value(
       #{memberNo},
-      #{title},
-      #{startPrice},
-      #{path},
-      #{type},
-      #{rdt}
-    from like
-    order by rdt desc
-  </insert>  -->
+      #{itemNo},
+      1,
+      now())
+    </insert>
+   
+   <select id="getOneLike"  parameterType="map" resultType="string">
+    select
+      t.type
+    from inter t
+     where mno=#{memberNo} and itno=#{itemNo}
+   </select> 
+    
+    
+  <delete id="delete" parameterType="int">
+  <![CDATA[
+    delete from inter where itno=#{value}
+  ]]>
+  </delete>
   
-   <!-- <delete id="delete" parameterType="int">
-    delete from like where likeNo=#{value}
-  </delete> -->
 
 </mapper>

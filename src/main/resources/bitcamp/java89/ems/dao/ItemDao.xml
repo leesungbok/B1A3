@@ -50,13 +50,13 @@
         i.day,
         i.deal,
         i.cont,
-        i.time + interval 3 minute as time,
+        i.time + interval 30 minute as time,
         i.stpc,
         p.path
       from item i
       left outer join phot p on i.itno=p.itno
       left outer join memb m on i.mno=m.mno
-      where i.time <= now() and now() <= i.time + interval 3 minute;
+      where i.time <= now() and now() <= i.time + interval 30 minute;
     ]]>
   </select>
 

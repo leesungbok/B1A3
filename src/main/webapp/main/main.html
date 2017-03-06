@@ -1,6 +1,190 @@
 <!DOCTYPE html>
 <html>
+<style>
+/* Buttons */
+.social-btns {
+    text-align: center;
+}
 
+.social-btns li {
+    margin: 8px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.social-btns2 {
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+.social-btns2 li {
+    margin: 2px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+@-webkit-keyframes beat {
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    40% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    60% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes beat {
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    40% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    60% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+.social-btn-heart-bg.facebook {
+    color: #3b5998;
+}
+
+.social-btn-heart-bg.instagram {
+    color: #9b6954;
+}
+
+.social-btn-heart-bg.heart {
+    color: #FF0000;
+}
+
+
+/* Dissolve Button */
+.social-btn-dissolve {
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    color: #fff;
+    line-height: 42px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+}
+
+.social-btn-dissolve2 {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    color: #fff;
+    line-height: 35px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+}
+
+.social-btn-dissolve:hover {
+    color: #fff;
+}
+
+.social-btn-dissolve:hover:before {
+    opacity: 0;
+    -webkit-transform: scale(1.35);
+    transform: scale(1.35);
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.social-btn-dissolve:before {
+    background: inherit;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    border-radius: 50%;
+    -webkit-transition: none;
+    transition: none;
+}
+
+.social-btn-dissolve.facebook {
+    background: #3b5998;
+}
+
+.social-btn-dissolve.instagram {
+    background: #9b6954;
+}
+
+.social-btn-dissolve.heart {
+    background: #FF0000;
+}
+
+.social-btn-dissolve2:hover {
+    color: #fff;
+}
+
+.social-btn-dissolve2:hover:before {
+    opacity: 0;
+    -webkit-transform: scale(1.35);
+    transform: scale(1.35);
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.social-btn-dissolve2:before {
+    background: inherit;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    border-radius: 50%;
+    -webkit-transition: none;
+    transition: none;
+}
+
+.social-btn-dissolve2.facebook {
+    background: #3b5998;
+}
+
+.social-btn-dissolve2.instagram {
+    background: #9b6954;
+}
+
+.social-btn-dissolve2.heart {
+    background: #FF0000;
+}
+
+
+/* Sections */
+.section {
+    width:500px;
+    position:relative;
+    padding-left:0px;
+}
+.section2 {
+    width:265px;
+    position:relative;
+}
+</style>
 <head>
   <meta charset="UTF-8">
   <title>이거어때</title>
@@ -57,6 +241,25 @@
         <div id='decs-content'>
           <div class="title">
             <span class="nb-title"></span>
+          </div>
+           <div class="section">
+              <ul class="social-btns" style="padding-left:0px;">
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve facebook">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve instagram">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve heart">
+                    <i class="fa fa-heart-o"></i>
+                  </a>
+                </li>
+              </ul>
           </div>
           <dl class="dl-horizontal">
             <dt class="pinkprice">시작가</dt>
@@ -199,9 +402,6 @@
   </div>
   <!-- 다음경매 타이틀 시작-->
   <!-- 공유버튼 시작 -->
-  <a href='#' id='like-btn'>
-    <div class='heart'></div>
-  </a>
   <!--     <div class='share-btn' style="width:960px; margin:auto;">
       <div class="fb-share-button" data-href="http://a.bitcamp.com:8080/B1A3/main/main.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fa.bitcamp.com%3A8080%2FB1A3%2Fmain%2Fmain.html&amp;src=sdkpreparse">공유</a></div>
       <div id="instaPics"></div> 
@@ -214,6 +414,9 @@
   <!-- 다음경매 무한 스크롤 시작-->
   <div class="next-bidlist">
     <h1 class="heading"> NEXT BIDDING LIST</h1>
+    
+        
+        
     <!-- 다음경매 리스트 시작 -->
     <div class="container">
       <!-- 다음경매 컨텐츠 본문 시작-->
@@ -265,6 +468,25 @@
           </div>
         </div>
         <div class="carbox-content">
+           <div class="section2">
+              <ul class="social-btns2" style="padding-left:0px;">
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve2 facebook">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve2 instagram">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="social-btn-dissolve2 heart" data-itno="{{itemNo}}">
+                    <i class="fa fa-heart-o"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
           <h4 class="carbox-title">{{title}}</h4>
           <dl class="next-horizontal">
             <dt class="pinktext stp-text">시작가</dt>
@@ -300,55 +522,6 @@
   <script src="../js/common.js"></script>
   <script src="../js/main.js"></script>
 
-  <!-- <script>
-$(function(){ 
- window.setInterval(function(){
-   $('#blink-text').toggleClass('blink');
- }, 500);
-});
-
-  <!-- 인스타공유 <script>  
-   (function($) {  
-        var tocken = ""; /* Access Tocken 입력 */  
-        var count = "6";  
-        $.ajax({  
-            type: "GET",  
-            dataType: "jsonp",  
-            cache: false,  
-            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + tocken + "&count=" + count,  
-            success: function(response) {  
-             if ( response.data.length > 0 ) {  
-                  for(var i = 0; i < response.data.length; i++) {  
-                       var insta = '<div class="insta-box">';  
-                       insta += "<a target='_blank' href='" + response.data[i].link + "'>";  
-                       insta += "<div class'image-layer'>";  
-                       //insta += "<img src='" + response.data[i].images.thumbnail.url + "'>";  
-                       insta += '<img src="' + response.data[i].images.thumbnail.url + '">';  
-                       insta += "</div>";  
-                       //console.log(response.data[i].caption.text);  
-                       if ( response.data[i].caption !== null ) {  
-                            insta += "<div class='caption-layer'>";  
-                            if ( response.data[i].caption.text.length > 0 ) {  
-                                 insta += "<p class='insta-caption'>" + response.data[i].caption.text + "</p>"  
-                            }  
-                            insta += "<span class='insta-likes'>" + response.data[i].likes.count + " Likes</span>";  
-                            insta += "</div>";  
-                       }  
-                       insta += "</a>";  
-                       insta += "</div>";  
-                       $("#instaPics").append(insta);  
-                  }  
-             }  
-             $(".insta-box").hover(function(){  
-                  $(this).find(".caption-layer").css({"backbround" : "rgba(255,255,255,0.7)", "display":"block"});  
-             }, function(){  
-                  $(this).find(".caption-layer").css({"display":"none"});  
-             });  
-            }  
-           });  
-   });  
-   </script> 
- -->
 </body>
 
 </html>

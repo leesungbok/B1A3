@@ -3,6 +3,7 @@ package bitcamp.java89.ems.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,26 +26,6 @@ public class LikeJsonControl {
     List<Like> list = likeService.getLikeList(member.getMemberNo());
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
-
-//  @RequestMapping("/main/add")
-//  public AjaxResult add(Like like, HttpSession session) throws Exception {
-//    String[] likefiles = like.getReadTime().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\"", "").split(",");
-//    Item item = (Item)session.getAttribute("item");
-//    
-//    ArrayList<Item> sitemList = new ArrayList<>();
-//    
-//    for (String likefile : likefiles) {
-//      itemList.add(new Item(likefile));
-//    }
-//    
-//    like.setItemList(itemList);
-//    like.setItemNo(item.getItemNo());
-//    
-//    if (likeService.add(like) == 0) {
-//      return new AjaxResult(AjaxResult.FAIL, "관심상품 등록 실패");
-//    }
-//    return new AjaxResult(AjaxResult.SUCCESS, "관심상품 등록 성공");
-//  }
   
   @RequestMapping("/mypage/add")
   public AjaxResult add(Like like) throws Exception {
@@ -52,8 +33,14 @@ public class LikeJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
+  @RequestMapping("/mypage/check")
+  public AjaxResult check(int memberNo, int itemNo) throws Exception {
+    String count = likeService.check(memberNo, itemNo);
+    return new AjaxResult(AjaxResult.SUCCESS, count);
+  }  
+  
   @RequestMapping("/mypage/delete")
-  public AjaxResult delete(int likeNo, HttpSession session) throws Exception {
+  public AjaxResult delete(int likeNo, HttpServletRequest request) throws Exception {
     int count = likeService.delete(likeNo);
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 번호의 관심상품이 없습니다.");
