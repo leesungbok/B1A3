@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.ems.domain.Item;
@@ -72,4 +73,16 @@ public class ItemJsonControl {
     session.setAttribute("title", title);
     return new AjaxResult(AjaxResult.SUCCESS, item);
   }
+  
+  @RequestMapping("/item/category")
+  public AjaxResult category(@RequestParam (value = "categoryList") List<String> categoryList) throws Exception {
+    List<Item> item = itemService.getCategory(categoryList);
+    if (item == null) {
+      return new AjaxResult(AjaxResult.FAIL, "선택한 상품을 찾을수가 없습니다.");
+    }
+    
+    /*session.setAttribute("item", item);*/
+    return new AjaxResult(AjaxResult.SUCCESS, item);
+  }
+  
 }
