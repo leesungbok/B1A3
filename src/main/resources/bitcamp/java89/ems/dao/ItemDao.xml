@@ -128,11 +128,22 @@
     where titl like concat('%', #{title}, '%');
   </select>
   
-    <select id="getCategory" parameterType="map" resultMap="item-map">
-    select
-     categ
-    from item
-    where categ=#{category} or categ=#{category} 
+   <select id="getCategory" parameterType="map" resultMap="item-map">
+   select
+     i.itno,
+     i.mno,
+     i.titl,
+     i.time,
+     i.stpc,
+     p.path
+    from item i
+    left outer join phot p on i.itno=p.itno
+    <where> 
+      categ in
+      <foreach collection="list" item="category" index="index" separator="," open="(" close=")">
+        #{category}
+      </foreach>
+    </where>
   </select>
 
   <select id="countAll" resultType="int">
