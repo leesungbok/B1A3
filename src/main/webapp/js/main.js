@@ -100,7 +100,7 @@ $(function () {
                         $('#l').val(atLeastBids);
                     }
                     
-                    if (bdhs[1] != null && bdhs[1].nickName == nickName) {
+                    if (bdhs[1] != null && $('.successful-bidder').text() == nickName) {
                         swal({
                             title: "새로운 입찰!",
                             type: "warning",
