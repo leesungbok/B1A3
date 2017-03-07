@@ -1,11 +1,3 @@
-//(function(d, s, id) {
-//  var js, fjs = d.getElementsByTagName(s)[0];
-//  if (d.getElementById(id)) return;
-//  js = d.createElement(s); js.id =id;
-//  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
-//  fjs.parentNode.insertBefore(js, fjs);
-//}(document, 'script', 'facebook-jssdk'));
-
 $(function () {
     var nav = $('.nav');
 
@@ -18,14 +10,6 @@ $(function () {
             $('#header_sub').css('margin-bottom', '0');
         }
     });
-    
-    
-
-    // 다음경매 무한 스크롤
-    /*$('.next-bidlist').jscroll({
-        // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
-        autoTriggerUntil : 6
-    });*/
     
     $(".hover").mouseleave(
     	    function () {
