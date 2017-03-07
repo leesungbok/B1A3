@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <title>나의 설정</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-<link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
-<link href="../css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" type="text/css">
+<link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../font/fontello.css">
 <link rel="stylesheet" href="../css/toggle.css">
-<link href="../css/main.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/mypage.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/mybid.css">
 
 </head>
 <body>
@@ -38,7 +35,6 @@
     <div class="container-big">
         <div class="content" >
             <div id="nextlist" class="container" style="margin:-140px 0px 0 128px;">
-            
                 </div>
               </div>
             </div>
@@ -52,10 +48,7 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../js/common.js"></script>
   <script id="trTemplate" type="text/x-handlebars-template">
-
-  <figure class="snip1205" style="width:33.333%">
-    <div class="profile-pic">    
-     <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-4">
       <div class="carbox">
         <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
         <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
@@ -89,26 +82,19 @@
           <dl class="next-horizontal">
             <dt class="pinktext stp-text">시작가</dt>
             <dd class="black">
-              <span>{{startPrice}}원</span>
+              <span>{{bids}}원</span>
             </dd>
           </dl>
           <dl class="next-horizontal">
             <dt class="pinktext st-text">시작시간</dt>
             <dd class='black'>
-              <span>{{startTime}}</span>
+              <span>{{time}}</span>
             </dd>
           </dl>
         </div>
       </div>
     </div>
   </div>
-  <div class="shadow-div"></div>
-  <div class="edit">
-    <a href="../main/detail.html"><i class="fa fa-search" ></i></a>
-    <a class="tasha" data-itemno={{itemNo}}><i class="fa fa-trash"></i></a>
-  </div>
-</figure>
-									
   </script>
   <script>
   $(function (){
@@ -116,27 +102,9 @@
     	  e.preventDefault();
     	 alert('1');
     });
-    
-    $(".hover").mouseleave(
-    	  function () {
-    	    $(this).removeClass("hover");
-    	  }
-    );  
-    
-    $(document.body).on('mouseenter', '.profile-pic', function() {
-    	console.log('enter...')
-    	$(this).parent().find('.shadow-div').css('display', 'block')
-    	$(this).parent().find('.edit').css('display', 'block')
-    });
-    $(document.body).on('mouseleave', '.shadow-div', function() {
-    	console.log('leave...')
-    	$(this).css('display', '')
-    	$(this).parent().find('.edit').css('display', '')
-    });
-
-    
+	  
   });
   </script>
-  <script src="../js/mypage.js"></script>
+  <script src="../js/mybid.js"></script>
 </body>
 </html>

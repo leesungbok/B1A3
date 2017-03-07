@@ -34,21 +34,29 @@
   <select id="getBeforeBidHistory" resultMap="bidHistory-map">
     <![CDATA[
       select
+        b.hsno,
+        b.itno,
+        b.bids,
+        b.stat,
         i.itno,
         i.titl,
         i.time,
-        b.stat,
-        b.hsno,
-        b.mno,
-        b.itno,
-        b.bids
-      from item i
-      left outer join bdhs b on i.itno=b.itno
+        m.nknm,
+        m.mno
+      from bdhs b
+      left outer join item i on i.itno=b.itno
+      left outer join memb m on m.mno=b.mno
       where now() - interval 6 minute < i.time and i.time < now() - interval 3 minute
       order by b.bids desc
       limit 5;
     ]]>
   </select>
+  
+  <update id="updateState" parameterType="map">
+    update bdhs set
+      stat=#{state}
+    where itno=#{itemNo} and bids=#{bids}
+  </update>
 
   <insert id="insert" parameterType="bidhistory">
     insert into bdhs(mno,itno,bids,time)

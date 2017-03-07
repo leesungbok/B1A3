@@ -40,6 +40,17 @@ public class ItemJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, resultMap);
   }
 
+  @RequestMapping("/main/detail")
+  public AjaxResult list(int itemNo) throws Exception {
+    Item item = itemService.getDetail(itemNo);
+
+    if (item != null) {
+      return new AjaxResult(AjaxResult.SUCCESS, item);
+    }
+
+    return new AjaxResult(AjaxResult.FAIL, "해당 경매품 정보를 가져오지 못했습니다."); 
+  }
+
   @RequestMapping("/main/add")
   public AjaxResult add(Item item, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");

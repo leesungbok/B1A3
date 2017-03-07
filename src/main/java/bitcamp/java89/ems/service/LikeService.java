@@ -8,4 +8,8 @@ public interface LikeService {
   List<Like> getLikeList(int memberNo) throws Exception;
   int add(Like like) throws Exception;
   int delete(int likeNo) throws Exception;
+  String check(int memberNo, int itemNo) throws Exception;
+  
+  
+  
 }

@@ -4,11 +4,10 @@ $(function () {
     	$('#header').html(result);
         // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	/*console.log(ajaxResult)*/
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -130,17 +129,17 @@ $(function () {
     	/*var submenu = location.search.split("?")[1].split("=")[1];*/
 	    $('#mypage').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage.html?submenu=mypage";
+	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
 	    }); 
 
 	    $('#mybidding').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mybidding.html?submenu=mybidding";
+	    	 location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
 	    }); 
 
 	    $('#myoption').click(function (e) {
 	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mysettings.html?submenu=myoption";
+	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
 	    }); 
 	    
 	    /*$("#"+submenu).parent().addClass('active');*/
@@ -192,7 +191,7 @@ $(function () {
                 jQuery.ajaxSettings.traditional = true;
                 
                 $.post(serverRoot + '/main/add.json',
-                        {
+                    {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
@@ -201,7 +200,7 @@ $(function () {
                     "content": $('#cont').val(),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                        }
+                    }
                 , function(ajaxResult) {
                     if (ajaxResult.status != "success") {
                         alert(ajaxResult.data);
@@ -221,4 +220,127 @@ $(function () {
             }); // click()
         }
     });
+
+    function notiWinning(bdhs, endTime) {
+        console.log(bdhs.nickName)
+        console.log("[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
+        endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 결제하세요.")
+/*    	$.post(serverRoot + '/bidhistory/sms.json',
+		{
+    		"nickName": bdhs.nickName,
+    		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
+    		endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전 까지 결제하세요."
+		}, function(ajaxResult) {
+			if (ajaxResult.status != 'success') {
+				alert(ajaxResult.data);
+				return;
+			}
+		})*/
+    }
+
+    function bdhsUpdate(itemNo, mybid, state) {
+        $.post(serverRoot + "/bidhistory/updatestate.json",
+        {
+            "itemNo": itemNo,
+            "bids": mybid,
+            "state": state
+        }, function(ajaxResult) {
+            if (ajaxResult.status != "success") {
+                alert(ajaxResult.data)
+                return;
+            }
+        })
+    }
+
+    // 바로 전 경매의 입찰기록을 요청
+    (function getBeforeBidHistory() {
+        $.getJSON(serverRoot + '/bidhistory/beforebidhistory.json', function(ajaxResult){
+            if (ajaxResult.status != 'success') {
+                console.log(ajaxResult.data)
+                return;
+            }
+            
+            var bdhs = ajaxResult.data.bdhs;
+            var endTime = new Date(bdhs[0].startTime);
+            endTime.setMinutes(endTime.getMinutes() + 35);
+            var memberNo = ajaxResult.data.memberNo;
+            var count = 0;
+            var mybid
+            var index
+            
+            for (var i = 0; i < bdhs.length; i++) {
+                if ((bdhs[i].state == 1) || (bdhs[i].memberNo != memberNo && bdhs[i].state == 0)) {
+                    count = 5;
+                    break;
+                } else if (bdhs[i].memberNo == memberNo && bdhs[i].state == 0) {
+                    mybid = bdhs[i].bids;
+                    index = i;
+                    endTime.setMinutes(endTime.getMinutes() + (i+1)*5);
+                    break;
+                } else {
+                    count++;
+                }
+            }
+            
+            if (count < 5 && $('.sweet-overlay').css('display') != 'block') {
+        		swal({
+        			title: "낙찰을 축하드립니다!",
+        			text: endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 미결제시 자동으로 주문취소가 되고 패널티가 부여됩니다.",
+        			type: "success",
+        			cancelButtonText: "주문취소",
+        			cancelButtonColor: "#e5e5e5",
+        			confirmButtonText: "결제하기",
+        			confirmButtonColor: "rgb(244, 46, 109)",
+        			showCancelButton: true,
+        			closeOnConfirm: false,
+        			closeOnCancel: false
+        		}, function(isConfirm) {
+        			if (isConfirm) {
+        				sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+        				sessionStorage.setItem('mybid', mybid);
+        				location.href = clientRoot + "/order/order.html"
+        			} else {
+        				swal({
+        					title: "경고!",
+        					text: "주문 취소하시면 구매거부가 되어 경매 패널티가 1점 부여됩니다.",
+        					type: "warning",
+        					confirmButtonText: "결제하기",
+        					confirmButtonColor: "rgb(244, 46, 109)",
+        					cancelButtonText: "주문취소",
+        					cancelButtonColor: "#e5e5e5",
+        					showCancelButton: true,
+        					closeOnConfirm: false,
+                			closeOnCancel: false
+        				}, function(isConfirm) {
+        					if (isConfirm) {
+        						sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+        						sessionStorage.setItem('mybid', mybid);
+        						location.href = clientRoot + "/order/order.html"
+        					} else {
+        					    if (i < 4) {
+        					        notiWinning(bdhs[i+1], endTime)
+        					    }
+        						bdhsUpdate(bdhs[0].itemNo, mybid, 2)
+        			            swal({
+        			                title: "취소 완료!",
+        			                text: "주문 취소가 정상적으로 처리됬습니다.",
+        			                timer: 2250,
+        			                showConfirmButton: false,
+        			                type: "success"
+        			            });
+        					}
+        				})
+        			}
+        		})
+        		
+        	    // 브라우저가 새로고침이나 페이지 이동하려고 할 때 발생
+        	    window.onbeforeunload = function(e) {
+        	        var dialogText = 'Dialog text here';
+        	        e.returnValue = dialogText;
+        	        return dialogText;
+        	    };
+        	}
+        })
+        setTimeout(getBeforeBidHistory, 1000);
+    })();
 })

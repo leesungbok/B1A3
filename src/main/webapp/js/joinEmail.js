@@ -255,5 +255,17 @@ $(function() {
         }
      }, 100);
     
+    setInterval(function() {
+        if (window.innerHeight <= 707) {
+            $('.container').css('margin-top', '0');
+        } else {
+            $('.container').css('margin-top', (window.innerHeight-706)/2 + 'px');
+        }
+        
+        if ($('.container').css('display') != 'block') {
+            $('.container').css('display', 'block');
+        }
+    }, 100);
+    
     sessionStorage.clear();
 })
