@@ -10,6 +10,10 @@ $(function () {
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
+    	$('#main-title').click(function(){
+    	    location.href = clientRoot + '/main/main.html';
+    	})
+    	
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
@@ -222,7 +226,7 @@ $(function () {
                         showConfirmButton: false,
                         type: "success"
                     });
-                    setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+                    setTimeout(function(){location.href= clientRoot +  '/mypage/mybid.html?submenu=mybid'} , 2250);
                 }, 'json'); // post();
             }); // click()
         }
