@@ -28,27 +28,26 @@
     <div id="side-item" style="margin-left:-34px;">
 	    <nav class="nav-sidebar">
 				<ul class="nav tabs">
-		          <li class="active"><a id="mypage" href="#" data-toggle="tab">관심상품</a></li>
-		          <li class=""><a id="recentpage" href="#" data-toggle="tab">최근본상품</a></li>
+		          <li class=""><a id="mypage" href="#" data-toggle="tab">관심상품</a></li>
+		          <li class="active"><a id="recentpage" href="#" data-toggle="tab">최근본상품</a></li>
 				</ul>
 		  </nav>
 	 </div>
-	<!-- 관심상품 컨텐츠 본문 시작-->
+  <!-- 최근 본 상품 컨텐츠 본문 시작-->
   <section class="wrapper">
     <div class="container-big">
         <div class="content" >
-            <div id="nextlist" class="container" style="margin:-124px 0px 0 63px;">
+            <div id="recentList" class="container" style="margin:-124px 0px 0 63px;">
             </div>
         </div>
     </div>
   </section> 
- <!-- 관심상품 컨텐츠 본문 끝 -->
-
+ <!-- 최근 본 상품 컨텐츠 본문 끝 -->  
+ 
  </div>
 </div>
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -106,21 +105,21 @@
   <div class="shadow-div"></div>
   <div class="edit">
     <a href="../main/detail.html"><i class="fa fa-search" ></i></a>
-    <a class="tasha" data-itemno={{itemNo}}><i class="fa fa-trash"></i></a>
+    <a class="tasha" data-itemNo={{itemNo}}><i class="fa fa-trash"></i></a>
   </div>
 </figure>
 									
   </script>
   <script>
   $(function (){
-    $("#recentpage").click(function() {
+	  $("#recentpage").click(function() {
 		  location.href = clientRoot+"/mypage/recentpage.html";
 	  });
-    
-    $("#mypage").click(function() {
+	  
+	  $("#mypage").click(function() {
 		  location.href = clientRoot+"/mypage/mypage.html";
 	  });
-    
+	  
     $(".hover").mouseleave(
     	  function () {
     	    $(this).removeClass("hover");
