@@ -1,192 +1,22 @@
 <!DOCTYPE html>
 <html>
-<style>
-/* Buttons */
-.social-btns {
-    text-align: center;
-}
-
-.social-btns li {
-    margin: 8px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.social-btns2 {
-    text-align: center;
-    margin-bottom: 23px;
-}
-
-.social-btns2 li {
-    margin: 2px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-@-webkit-keyframes beat {
-    0% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    20% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-    40% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    60% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-@keyframes beat {
-    0% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    20% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-    40% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    60% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-
-.social-btn-heart-bg.facebook {
-    color: #3b5998;
-}
-
-.social-btn-heart-bg.instagram {
-    color: #9b6954;
-}
-
-.social-btn-heart-bg.heart {
-    color: #FF0000;
-}
-
-
-/* Dissolve Button */
-.social-btn-dissolve {
-    width: 42px;
-    height: 42px;
-    text-align: center;
-    color: #fff;
-    line-height: 42px;
-    border-radius: 50%;
-    display: block;
-    position: relative;
-}
-
-.social-btn-dissolve2 {
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    color: #fff;
-    line-height: 35px;
-    border-radius: 50%;
-    display: block;
-    position: relative;
-}
-
-.social-btn-dissolve:hover {
-    color: #fff;
-}
-
-.social-btn-dissolve:hover:before {
-    opacity: 0;
-    -webkit-transform: scale(1.35);
-    transform: scale(1.35);
-    -webkit-transition: all 0.5s linear;
-    transition: all 0.5s linear;
-}
-
-.social-btn-dissolve:before {
-    background: inherit;
-    content: " ";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.75;
-    border-radius: 50%;
-    -webkit-transition: none;
-    transition: none;
-}
-
-.social-btn-dissolve.facebook {
-    background: #3b5998;
-}
-
-.social-btn-dissolve.instagram {
-    background: #9b6954;
-}
-
-.social-btn-dissolve.heart {
-    background: #FF0000;
-}
-
-.social-btn-dissolve2:hover {
-    color: #fff;
-}
-
-.social-btn-dissolve2:hover:before {
-    opacity: 0;
-    -webkit-transform: scale(1.35);
-    transform: scale(1.35);
-    -webkit-transition: all 0.5s linear;
-    transition: all 0.5s linear;
-}
-
-.social-btn-dissolve2:before {
-    background: inherit;
-    content: " ";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.75;
-    border-radius: 50%;
-    -webkit-transition: none;
-    transition: none;
-}
-
-.social-btn-dissolve2.facebook {
-    background: #3b5998;
-}
-
-.social-btn-dissolve2.instagram {
-    background: #9b6954;
-}
-
-.social-btn-dissolve2.heart {
-    background: #FF0000;
-}
-
-
-/* Sections */
-.section {
-    width:500px;
-    position:relative;
-    padding-left:0px;
-}
-.section2 {
-    width:265px;
-    position:relative;
-}
-</style>
 <head>
   <meta charset="UTF-8">
+<!--   <meta property="og:url" content="http://a.bitcamp.com:8080/B1A3/main/main.html">
+  <meta property="fb:app_id" content="2229730730585360">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="이거어때">
+  <meta property="og:description" content="공유할 글의 내용중 일부..">
+  <meta property="og:image" content="공유할 글 주요 이미지 절대경로">
+  <meta property="og:image:width" content="공유할 글 주요 이미지 가로">
+  <meta property="og:image:height" content="공유할 글 주요 이미지 높이">-->
+	<!--<meta name="twitter:card" content="summary_large_image" />
+	<meta property="og:title" content="타이틀" />
+	<meta property="og:url" content="공유하는 해당 페이지 url" />
+	<meta property="og:description" content="description" />
+	<meta property="og:image" content="***Image URL***" />
+	<meta name="twitter:site" content="@kimbolla" />
+	<meta name="twitter:creator" content="@kimbolla" />-->
   <title>이거어때</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
@@ -196,6 +26,7 @@
   <link rel="stylesheet" href="../css/detail.css">
   <link rel="stylesheet" href="../css/input.css">
   <link rel="stylesheet" href="../css/main.css">
+   
 </head>
 
 <body>
@@ -245,13 +76,13 @@
            <div class="section">
               <ul class="social-btns" style="padding-left:0px;">
                 <li>
-                  <a href="javascript:void(0);" class="social-btn-dissolve facebook">
+                  <a href="#" id="shareBtnfacebook" class="social-btn-dissolve facebook">
                     <i class="fa fa-facebook"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);" class="social-btn-dissolve instagram">
-                    <i class="fa fa-instagram"></i>
+                  <a href="javascript:void(0);" class="social-btn-dissolve twitter">
+                    <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
@@ -405,23 +236,9 @@
     </div>
     <!-- 입찰버튼 끝 -->
   </div>
-  <!-- 다음경매 타이틀 시작-->
-  <!-- 공유버튼 시작 -->
-  <!--     <div class='share-btn' style="width:960px; margin:auto;">
-      <div class="fb-share-button" data-href="http://a.bitcamp.com:8080/B1A3/main/main.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fa.bitcamp.com%3A8080%2FB1A3%2Fmain%2Fmain.html&amp;src=sdkpreparse">공유</a></div>
-      <div id="instaPics"></div> 
-      <img class='photodesine' src="../image/facebook.png"  style='height: 49px; margin-top:10px; margin-left:169px;'>
-      <img class='photodesine' src="../image/kakao.png" style='margin-top:10px;height: 50px; width:50px;'>
-    </div> -->
-  <!-- 공유버튼 끝 -->
-  <!-- 다음경매 타이틀 끝-->
-
   <!-- 다음경매 무한 스크롤 시작-->
   <div class="next-bidlist">
     <h1 class="heading"> NEXT BIDDING LIST</h1>
-    
-        
-        
     <!-- 다음경매 리스트 시작 -->
     <div class="container">
       <!-- 다음경매 컨텐츠 본문 시작-->
@@ -481,8 +298,8 @@
                   </a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);" class="social-btn-dissolve2 instagram">
-                    <i class="fa fa-instagram"></i>
+                  <a href="javascript:void(0);" class="social-btn-dissolve2 twitter">
+                    <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
@@ -526,7 +343,48 @@
   <!-- <script src="../js/parallax.min.js"></script> -->
   <script src="../js/common.js"></script>
   <script src="../js/main.js"></script>
+  <div id="fb-root"></div>
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2229730730585360',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  </script>
+	<script>
+	document.getElementById('shareBtnfacebook').onclick = function(){
+		FB.ui({
+	        method: 'share',
+	        display:'popup',
+	        href: 'http://a.bitcamp.com:8080/B1A3/main/main.html'
+	    }, function(response) {});
+	}
+	</script>
+	<!-- <script> 트위터 공유하기
+   var shareURL = encodeURIComponent( $('meta[name="twitter:url"]').attr("content") );
+   var url;
+   var title = $('meta[property="og:title"]').attr("content");
+
+   var popOption = "width="+ pWidth +",height="+ pHeight +",left="+ pLeft +",top="+ pTop +
+      ",location=no,menubar=no,status=no,scrollbars=no,resizable=no,titlebar=no,toolbar=no";
+
+
+   url = "http://twitter.com/share?url=" + shareURL +
+         "&text=" + twitterContent;
+
+    window.open(url, 'Share to twitter', popOption);
+    </script> -->
 </body>
 
 </html>
