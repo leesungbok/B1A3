@@ -40,8 +40,8 @@ public class LikeJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
-  @RequestMapping("/mypage/update")
-  public AjaxResult update(Like like) throws Exception {
+  @RequestMapping("/mypage/recentUpdate")
+  public AjaxResult recentUpdate(Like like) throws Exception {
     likeService.update(like);
     return new AjaxResult(AjaxResult.SUCCESS, "업데이트 성공입니다.");
   }

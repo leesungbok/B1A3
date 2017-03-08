@@ -35,7 +35,7 @@
     left outer join item i on t.itno=i.itno
     left outer join memb m on t.mno=m.mno
     left outer join phot p on i.itno=p.itno
-    where rdt < now() and t.type=1 and m.mno=#{memberNo}
+    where rdt < now() and t.type=1 or t.type=3 and m.mno=#{memberNo}
     order by rdt desc;
     ]]>
   </select>
@@ -49,12 +49,13 @@
       now())
     </insert>
 
-    <update id="update" parameterType="like">
+   <update id="update" parameterType="like">
     update inter 
       set type=#{type}
       where mno=#{memberNo} and itno=#{itemNo}
       
     </update>  
+    
     <select id="getrecentList" parameterType="int" resultMap="like-map">
     <![CDATA[
     select
@@ -70,7 +71,7 @@
     left outer join item i on t.itno=i.itno
     left outer join memb m on t.mno=m.mno
     left outer join phot p on i.itno=p.itno
-    where i.time + interval 30 minute > now() and t.type=2 and m.mno=2
+    where i.time + interval 30 minute > now() and t.type=2 or t.type=3 and m.mno=#{memberNo}
     order by rdt desc;
     ]]>
   </select>
