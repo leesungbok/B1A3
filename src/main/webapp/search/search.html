@@ -24,13 +24,13 @@
 	   <div class="btn-group">
 	   
 	     <div class='category1'>
-         <input type='checkbox' name='g1' id='test1' value='패션'>
+         <input type='checkbox' name='g1' id='test1' value="패션">
          <div class='magic'></div>
          <span class='cate'>패션</span>
        </div>
 	     
 		   <div class='category2'>
-         <input type='checkbox' name='g1' id='test2' value='가방'>
+         <input type='checkbox' name='g1' id='test2' value="가방">
          <div class='sbag'></div>
          <span class='cate'>가방</span>
        </div>
@@ -81,9 +81,9 @@
 		<hr>
 		<div class='inside'>
 	  <span class='title1'>경매</span>
-	  <input class='content' type='radio' name='title' value='c1' checked>
+	  <input id='current' class='content' type='radio' name='title' value='true'  checked="checked">
 	  <span class='next-product2'>현재 경매</span>
-	  <input class='content' type='radio' name='title' value='c2' >
+	  <input id='last' class='content' type='radio' name='title' value='false' >
 	  <span class='next-product2'>과거 경매</span>
 	  </div>
 	  <hr>
@@ -92,11 +92,11 @@
     <span class='title2'>가격</span>
      <input style='display:inline-block; vertica-align:middle; margin: 0 0 5px 10px; 
        text-align:right; padding:20px 8px 11px 0; width:130px;'
-       class='form-control' type= "text" placeholder="1000"  >
+       class='form-control' type= "text" placeholder="1000" id='priceBefore'  >
      <span class='next-product3'>~</span>
      <input style='display:inline-block; vertica-align:middle; margin: 0 0 5px 10px; 
        text-align:right; padding:20px 8px 11px 0; width:130px;'
-      class='form-control' type= "text" placeholder="10000" >
+      class='form-control' type= "text" placeholder="10000" id='priceAfter' >
      <span class='next-product4'>원</span>
      <button style='margin: 13px 0 0 10px;'id='searchItem' type="button">검색</button>
      </div>
