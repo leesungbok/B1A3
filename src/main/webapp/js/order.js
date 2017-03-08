@@ -1,30 +1,66 @@
 var itemNo = window.sessionStorage.getItem('itemNo');
 var mybid = window.sessionStorage.getItem('mybid');
-
-if (itemNo == null || mybid == null) {
-        swal({
-        title: "잘못된 접근!",
-        text: "웹브라우저 주소창을 다시한번 확인해주세요.",
-        type: "error",
-        confirmButtonText: "확인",
-        confirmButtonColor: "rgb(244, 46, 109)"
-    }, function() {
-        location.href = clientRoot + "/main/main.html"
-    })
-}
+var endTime = new Date(window.sessionStorage.getItem('endTime'));
 
 $(function() {
- // common.js 시작
+    if (itemNo == null || mybid == null || endTime == null) {
+        swal({
+            title: "잘못된 접근!",
+            text: "웹브라우저 주소창을 다시한번 확인해주세요.",
+            type: "error",
+            confirmButtonText: "확인",
+            confirmButtonColor: "rgb(244, 46, 109)"
+        }, function() {
+            location.href = clientRoot + "/main/main.html"
+        })
+        return;
+    }
+
+    getOrderStatus(function(check) {
+        if (check != 0) {
+            swal({
+                title: "시간 초과!",
+                text: "제한된 결제 시간이 지났습니다.",
+                type: "error",
+                confirmButtonText: "확인",
+                confirmButtonColor: "rgb(244, 46, 109)"
+            }, function() {
+                location.href = clientRoot + "/main/main.html"
+            })
+        } else {
+            orderPayment()
+        }
+    })
+})
+
+function getOrderStatus(cb) {
+    $.getJSON(serverRoot + '/bidhistory/orderstatus.json',
+    {
+        "itemNo":itemNo,
+        "bids":mybid
+    }, function(ajaxResult) {
+        cb(ajaxResult.data);
+    })
+};
+
+function orderPayment() {
+    // common.js 시작
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
         $('#header').html(result);
-        // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-            /*console.log(ajaxResult)*/
             var member = ajaxResult.data;
 
             if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -68,7 +104,6 @@ $(function() {
                     version    : 'v2.8' 
                 });
                 $.getJSON(serverRoot + '/auth/logout.json', function(ajaxResult) {
-                    console.log(ajaxResult);
                     FB.getLoginStatus(function(response) {
                         if (response && response.status === 'connected') {
                             FB.logout(function(response) {
@@ -139,24 +174,24 @@ $(function() {
             $('.communicate').css('display', 'none');
         });
     })
-    
+        
     $.get('../submenu.html', function (result) {
         $('#submenu').html(result);
  
         /*var submenu = location.search.split("?")[1].split("=")[1];*/
         $('#mypage').click(function (e) {
               e.preventDefault();
-             location.href= clientRoot +  "/mypage.html?submenu=mypage";
+             location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
         }); 
 
         $('#mybidding').click(function (e) {
               e.preventDefault();
-             location.href= clientRoot +  "/mybidding.html?submenu=mybidding";
+             location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
         }); 
 
         $('#myoption').click(function (e) {
               e.preventDefault();
-             location.href= clientRoot +  "/mysettings.html?submenu=myoption";
+             location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
         }); 
         
         /*$("#"+submenu).parent().addClass('active');*/
@@ -208,7 +243,7 @@ $(function() {
                 jQuery.ajaxSettings.traditional = true;
                 
                 $.post(serverRoot + '/main/add.json',
-                        {
+                {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
@@ -217,13 +252,11 @@ $(function() {
                     "content": $('#cont').val(),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                        }
-                , function(ajaxResult) {
+                } , function(ajaxResult) {
                     if (ajaxResult.status != "success") {
                         alert(ajaxResult.data);
                         return;
                     }
-                    
                     console.log(ajaxResult.data)
                     swal({
                         title: "등록 완료!",
@@ -237,7 +270,7 @@ $(function() {
             }); // click()
         }
     }); // common.js 끝
-    
+
     $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
         if (ajaxResult.status != "success") {
             alert(ajaxResult.data);
@@ -251,7 +284,7 @@ $(function() {
         $('#email').val(member.email);
         
         if (member.postNo == null) {
-        	$('#necessary3, #address-conf').css('display', 'inline-block');
+            $('#necessary3, #address-conf').css('display', 'inline-block');
         }
     });
     
@@ -269,6 +302,28 @@ $(function() {
     });
     
     $('.winning-amount').text(mybid);
+    endTime.setMonth(endTime.getMonth() + 1)
+    $('#nb-countdown').attr('data-countdown',
+            endTime.getFullYear() + "-" + endTime.getMonth() + "-" + endTime.getDate() + " " + 
+            endTime.getHours() + ":" + endTime.getMinutes() + ":" + endTime.getSeconds());
+    
+    $('[data-countdown]').each(function() {
+        var $this = $(this), finalDate = $(this).data('countdown');
+        $this.countdown(finalDate, function(event) {
+            $this.html(event.strftime('%H:%M:%S'));
+        }).on('finish.countdown', function() {
+            swal({
+                title: "시간 초과!",
+                text: "제한된 결제 시간이 지났습니다.",
+                type: "error",
+                confirmButtonText: "확인",
+                confirmButtonColor: "rgb(244, 46, 109)"
+            }, function() {
+                window.onbeforeunload = function(){};
+                location.href = clientRoot + "/main/main.html"
+            })
+        });
+    });
     
     $('.addr-find').click(function(event) {
         new daum.Postcode({
@@ -313,21 +368,10 @@ $(function() {
         }).open();
         event.preventDefault();
     })
-    
-    $('.payment-btn').click(function(){
-        if ($('#receiver').val() == '' || $('#phoneNo').val() == '' ||
-            $('#zip-code').val() == '' || $('#address-detail').val() == '') {
-            swal({
-                title: "경고!",
-                text: "필수 항목 부분은 모두 작성해주세요.",
-                type: "warning",
-                confirmButtonText: "확인",
-                confirmButtonColor: "rgb(244, 46, 109)"
-            })
-            return;
-        }
+
+    $('.payment-btn').click(function() {
         // 아임포트
-        IMP.init('imp49837973'); // "가맹점 식별코드"를 사용
+        IMP.init('imp49837973');
         IMP.request_pay({
             pg : 'html5_inicis',
             pay_method : 'card',
@@ -341,29 +385,27 @@ $(function() {
             buyer_postcode : $('#zip-code').val()
         }, function(rsp) {
             if ( rsp.success ) {
-/*                msg += '고유ID : ' + rsp.imp_uid;
-                msg += '상점 거래ID : ' + rsp.merchant_uid;
-                msg += '결제 금액 : ' + rsp.paid_amount;
-                msg += '카드 승인번호 : ' + rsp.apply_num;*/
                 $.post(serverRoot + "/bidhistory/updatestate.json",
                 {
                     "itemNo": itemNo,
                     "bids": mybid,
                     "state": 1
                 }, function(ajaxResult) {
-                    if (ajaxResult.state != "success") {
+                    if (ajaxResult.status != "success") {
+                        console.log(ajaxResult.status)
                         alert(ajaxResult.data)
                         return;
                     }
-                })
-                swal({
-                    title: "결제 완료!",
-                    text: "결제가 완료되었습니다.",
-                    type: "success",
-                    confirmButtonText: "확인",
-                    confirmButtonColor: "rgb(244, 46, 109)"
-                }, function() {
-                    location.href = clientRoot + "/main/main.html" // 나의 경매로 이동할것
+                    swal({
+                        title: "결제 완료!",
+                        text: "결제가 완료되었습니다.",
+                        type: "success",
+                        confirmButtonText: "확인",
+                        confirmButtonColor: "rgb(244, 46, 109)"
+                    }, function() {
+                        window.onbeforeunload = function(){};
+                        location.href = clientRoot + "/mypage/mybid.html?submenu=mybid"
+                    })
                 })
             } else {
                 swal({
@@ -376,21 +418,21 @@ $(function() {
             }
         });
     })
-    
+
     var receiver
     var re1 = /^[가-힣]{2,}$/; //이름 유효성 검사 2자 이상
-
+    
     $("#receiver").keyup(function() {
-    	receiver = $('#receiver').val();
-    	if (receiver == '') {
-    		$('#necessary1, #receiver-conf').css('display', 'inline-block');
-    		$('#errorReceiver').css('display', 'none');
-    	} else if (!re1.test(receiver)) {
-    		$('#errorReceiver, #receiver-conf').css('display', 'inline-block');
-    		$('#necessary1').css('display', 'none');
-    	} else {
-    		$('#necessary1, #errorReceiver, #receiver-conf').css('display', 'none');
-    	}
+        receiver = $('#receiver').val();
+        if (receiver == '') {
+            $('#necessary1, #receiver-conf').css('display', 'inline-block');
+            $('#errorReceiver').css('display', 'none');
+        } else if (!re1.test(receiver)) {
+            $('#errorReceiver, #receiver-conf').css('display', 'inline-block');
+            $('#necessary1').css('display', 'none');
+        } else {
+            $('#necessary1, #errorReceiver, #receiver-conf').css('display', 'none');
+        }
     })
     
     /* 휴대폰 유효성 검사 */
@@ -403,10 +445,10 @@ $(function() {
             $('#necessary2, #phoneNo-conf').css('display', 'inline-block');
             $('#errorphoneNo').css('display', 'none');
         } else if (!re2.test(phoneNo)) {
-        	$('#errorphoneNo, #phoneNo-conf').css('display', 'inline-block');
+            $('#errorphoneNo, #phoneNo-conf').css('display', 'inline-block');
             $('#necessary2').css('display', 'none');
         } else {
-        	$('#necessary2, #errorphoneNo, #phoneNo-conf').css('display', 'none');
+            $('#necessary2, #errorphoneNo, #phoneNo-conf').css('display', 'none');
         }
     })
     
@@ -414,28 +456,29 @@ $(function() {
         if (window.innerHeight <= 757) {
             $('.container').css('margin-top', '0');
         } else {
-        	$('.container').css('margin-top', (window.innerHeight-757)/2 + 'px');
+            $('.container').css('margin-top', (window.innerHeight-757)/2 + 'px');
         }
         
         if ($('.container').css('display') != 'block') {
-            console.log(1)
             $('.container').css('display', 'block');
         }
         
         if ($('#receiver-conf').css('display') == 'none' && $('#phoneNo-conf').css('display') == 'none'
-        	&& $('#address-conf').css('display') == 'none') {
-        	$('.payment-btn').css('pointer-events', 'auto');
-        	$('.payment-btn').css('opacity', '1');
+            && $('#address-conf').css('display') == 'none') {
+            $('.payment-btn').css('pointer-events', 'auto');
+            $('.payment-btn').css('opacity', '1');
         } else {
-        	$('.payment-btn').css('pointer-events', 'none');
-        	$('.payment-btn').css('opacity', '.65');
+            $('.payment-btn').css('pointer-events', 'none');
+            $('.payment-btn').css('opacity', '.65');
         }
     }, 100);
     
     // 브라우저가 새로고침이나 페이지 이동하려고 할 때 발생
     window.onbeforeunload = function(e) {
-    	var dialogText = 'Dialog text here';
-    	e.returnValue = dialogText;
-    	return dialogText;
+        var dialogText = 'Dialog text here';
+        e.returnValue = dialogText;
+        return dialogText;
     };
-})
+    
+    sessionStorage.clear();
+}

@@ -63,10 +63,20 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public Item getNowBid() throws Exception {
     return itemDao.getNowBid();
-  }
+  } 
 
   @Override
   public int getSize() throws Exception {
     return itemDao.countAll();
+  }
+
+  @Override
+  public List<Item> getCategory(List<String> list) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("list", list); 
+    System.out.println(paramMap);
+    List<Item> item = itemDao.getCategory(paramMap);
+    
+    return item;
   }
 }

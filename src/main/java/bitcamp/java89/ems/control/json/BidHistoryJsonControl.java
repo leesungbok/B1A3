@@ -62,6 +62,11 @@ public class BidHistoryJsonControl {
     return new AjaxResult(AjaxResult.FAIL, "전 경매품 입찰기록을 가져오지 못했습니다.");
   }
 
+  @RequestMapping("orderstatus")
+  public AjaxResult orderStatus(int itemNo, int bids) throws Exception {
+    return new AjaxResult(AjaxResult.SUCCESS, bidHistoryService.getOrderStatus(itemNo, bids));
+  }
+
   @RequestMapping("add")
   public AjaxResult add(BidHistory bid, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");

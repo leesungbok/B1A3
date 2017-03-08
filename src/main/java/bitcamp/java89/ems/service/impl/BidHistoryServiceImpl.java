@@ -37,4 +37,12 @@ public class BidHistoryServiceImpl implements BidHistoryService {
     paramMap.put("state", state);
     return bidHistoryDao.updateState(paramMap);
   }
+
+  @Override
+  public int getOrderStatus(int itemNo, int bids) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("itemNo", itemNo);
+    paramMap.put("bids", bids);
+    return bidHistoryDao.getState(paramMap);
+  }
 }

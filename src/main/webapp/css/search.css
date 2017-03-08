@@ -28,27 +28,59 @@
     width:800px;
   }
   
-  div.category {
+  div.category1, div.category2, div.category3,
+  div.category6, div.category8, div.category9 {
     display:inline-block;
     width: 52px;
     margin-left: 15px;
+    cursor: pointer;
   }
   
-  div.category1 {
+  div.category4, div.category5, div.category7 {
     display:inline-block;
     width: 58px;
     margin-left: 10px;
     margin-right: 5px;
   }
   
-  div.next-pro-first {
-    padding-left: 15px;
+  div.category1:hover, div.category2:hover, div.category3:hover,
+  div.category6:hover, div.category8:hover, div.category9:hover {
+    display:inline-block;
+    width: 52px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #ccc;
   }
   
-  div.next-prd-sty {
-    padding-left: 15px; 
-    padding-bottom: 20px; 
+  div.category4:hover, div.category5:hover, div.category7:hover {
     display:inline-block;
+    width: 52px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #ccc;
+  }
+  
+  div.category1.active, div.category2.active, div.category3.active,
+  div.category6.active, div.category8.active, div.category9.active {
+    display:inline-block;
+    width: 52px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #000;
+    background-color: #f5f3f3;
+    border: 1px solid #b7b7d0;
+    border-radius: 5px;
+  }
+
+  div.category4.active, div.category5.active, div.category7.active {
+    display:inline-block;
+    width: 52px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #000;
+    background-color: #f5f3f3;
+    border: 1px solid #b7b7d0;
+    border-radius: 5px;
   }
   
   div.next-product {
@@ -63,7 +95,7 @@
     font-family:"FontAwesome";
     content:"\f108";
     font-size: 25px;
-    padding-left: 5px;
+    padding-left: 11px;
     color: #272b2d;
   }
   
@@ -71,7 +103,7 @@
     font-family:"FontAwesome";
     content:"\f030";
     font-size: 25px;
-    padding-left: 5px;
+    padding-left: 11px;
     color: #b1afaf;
   }
   
@@ -79,7 +111,7 @@
     font-family:"FontAwesome";
     content:"\f02d";
     font-size: 25px;
-    padding-left: 6px;
+    padding-left: 11px;
     color: #b78b09;
   }
   
@@ -87,7 +119,7 @@
     font-family:"FontAwesome";
     content:"\f001";
     font-size: 25px;
-    padding-left: 3px;
+    padding-left: 11px;
     color: #458fb3;
   }
   
@@ -95,7 +127,7 @@
     font-family:"FontAwesome";
     content:"\f0b1";
     font-size: 25px;
-    padding-left:7px;
+    padding-left:11px;
     color: #272b33;
   }
   
@@ -103,24 +135,24 @@
     font-family:"FontAwesome";
     content:"\f206";
     font-size: 25px;
-    padding-left: 4px;
+    padding-left: 11px;
     color: #332a27;
   }
   
   div.magic:before {
   margin-top:5px;
-    font-family:"FontAwesome";
-    content:"\f0d0";
-    font-size: 25px;
-    padding-left: 7px;
-    color: #332a27;
+  font-family:"FontAwesome";
+  content:"\f0d0";
+  font-size: 25px;
+  padding-left: 11px;
+  color: #332a27;
   }
   
   div.home:before {
     font-family:"FontAwesome";
     content:"\f015";
     font-size: 25px;
-    padding-left: 3px;
+    padding-left: 11px;
     color: #332a27;
   }
     
@@ -128,7 +160,7 @@
     font-family:"FontAwesome";
     content:"\f236";
     font-size: 25px;
-    padding-left: 7px;
+    padding-left: 11px;
     color: #332a27;
   }
   
@@ -148,7 +180,7 @@
   
   span.cate {
     font-size: 15px;
-    padding-left: 2px;
+    padding-left: 10px;
   }
   
   span.cate1 {
@@ -183,16 +215,6 @@
     text-align: center;
     vertical-align:middle;
     width:150px;
-  }
-  
-  span.next-product {
-    vertical-align:middle;
-  }
-  
-  span.next-product1 {
-    padding-left: 2px;
-    font-size:20px;
-    color:red;
   }
   
   span.next-product2 {
@@ -231,4 +253,10 @@
   .btn-default {
     border-color: #fff;
   }
+  
+  #test1, #test2, #test3, #test4, #test5, #test6,
+  #test7, #test8, #test9 {
+    display: none;
+  } 
+  
   

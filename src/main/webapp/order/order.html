@@ -62,7 +62,7 @@
           <dt class="term">요청사항</dt>
           <dd class="desc">
             <div class="col-sm-12">
-              <input id="receiver" type="text" class="form-control" placeholder="부재시, 전화 또는 문자 연락 주세요.">
+              <textarea id="receiver" class="form-control" rows="4" placeholder="부재시, 전화 또는 문자 연락 주세요."></textarea>
             </div>
           </dd>
         </dl>
@@ -80,6 +80,10 @@
         <span id=seller-phone></span>
       </div>
       <div class="payment">
+        <div class="nav">
+          <p id="nb-countdown"></p>
+          <span id="remains">남음</span>
+        </div>
         <dl class="dl-horizontal dl-payment">
           <dt class="final-bid">최종낙찰가</dt>
           <dd class="final-bid-price">
@@ -98,13 +102,13 @@
 
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="https://service.iamport.kr/js/iamport.payment-1.1.4.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="../node_modules/bootstrap-fileinput/js/fileinput.min.js"></script>
   <script src="../js/kr.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../node_modules/jquery-countdown/dist/jquery.countdown.min.js"></script>
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script src="../js/order.js"></script>

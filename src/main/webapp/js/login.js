@@ -1,11 +1,3 @@
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
 window.fbAsyncInit = function() {
 	FB.init({
 		appId      : '1794128977577774',
@@ -58,7 +50,6 @@ function testAPI() {
 function fb_login(){
     FB.login(function(response) {
         if (response.authResponse) {
-            console.log('Welcome!  Fetching your information.... ');
             //console.log(response); // dump complete info
             access_token = response.authResponse.accessToken; //get access token
             user_id = response.authResponse.userID; //get FB UID
@@ -102,30 +93,18 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
 };
 
 $(function() {
-    $('#login-btn').click(function() {
-        
-        if ($('#save-email').is(':checked')) {
-            setCookie('email', $('#email').val(), 30);
-        } else {
-            setCookie('email', '', 0);
-        }
-        
-        var param = {
-                email: $('#email').val(),
-                password: $('#password').val(),
-        };
-        
-        $.post('login.json', param, function(ajaxResult) {
-            if (ajaxResult.status == "success") {
-                location.href = clientRoot + "/main/main.html";
-                return;
-            }
-            alert(ajaxResult.data);
-        }, 'json');
+    $('#login-btn').click(function(event) {
+        login();
     });
-    
+
+    $('#password').keypress(function(event){
+        if(event.keyCode == 13){
+            login();
+        }
+    });
+
     $('#email').val(getCookie('email').replace(/"/g, ''));
-    
+
     setInterval(function() {
         if (window.innerHeight <= 759) {
             $('.container').css('margin-top', '0');
@@ -137,4 +116,25 @@ $(function() {
             $('.container').css('display', 'block');
         }
     }, 100);
+
+    function login() {
+        if ($('#save-email').is(':checked')) {
+            setCookie('email', $('#email').val(), 30);
+        } else {
+            setCookie('email', '', 0);
+        }
+        
+        var param = {
+            email: $('#email').val(),
+            password: $('#password').val()
+        };
+        
+        $.post('login.json', param, function(ajaxResult) {
+            if (ajaxResult.status == "success") {
+                location.href = clientRoot + "/main/main.html";
+                return;
+            }
+            alert(ajaxResult.data);
+        }, 'json');
+    }
 })
