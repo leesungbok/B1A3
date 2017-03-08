@@ -1,8 +1,15 @@
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
 $(function () {
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
-        // 
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
@@ -51,7 +58,6 @@ $(function () {
     				version    : 'v2.8' 
     			});
     			$.getJSON(serverRoot + '/auth/logout.json', function(ajaxResult) {
-    				console.log(ajaxResult);
 				    FB.getLoginStatus(function(response) {
 				        if (response && response.status === 'connected') {
 				            FB.logout(function(response) {
@@ -105,12 +111,13 @@ $(function () {
         })
         
         $('#search-btn').on('click', function(event) {
-        	
-        	var param =  {
-        			"title" : $('#searchTitle').val()
-        	}
-        	location.href= clientRoot + '/search/search.html?title=' + param.title; 
-        	
+        	location.href= clientRoot + '/search/search.html?title=' + $('#searchTitle').val();
+        });
+        
+        $('#searchTitle').keypress(function(event){
+            if(event.keyCode == 13){
+                location.href= clientRoot + '/search/search.html?title=' + $('#searchTitle').val();
+            }
         });
         
         $('#communicate-btn').click(function(event) {
@@ -126,7 +133,7 @@ $(function () {
     $.get('../submenu.html', function (result) {
     	$('#submenu').html(result);
  
-    	/*var submenu = location.search.split("?")[1].split("=")[1];*/
+    	var submenu = location.search.split("?")[1].split("=")[1];
 	    $('#mypage').click(function (e) {
 	    	  e.preventDefault();
 	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
@@ -142,7 +149,7 @@ $(function () {
 	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
 	    }); 
 	    
-	    /*$("#"+submenu).parent().addClass('active');*/
+	    $("#"+submenu).parent().addClass('active');
 	     
     })
     
@@ -221,7 +228,108 @@ $(function () {
         }
     });
 
-    function notiWinning(bdhs, endTime) {
+    // 전 경매의 입찰기록 가져오기
+    (function getBeforeBidHistory() {
+        $.getJSON(serverRoot + '/bidhistory/beforebidhistory.json', function(ajaxResult){
+            if (ajaxResult.status != 'success') {
+                return;
+            }
+            
+            var bdhs = ajaxResult.data.bdhs;
+            var endTime = new Date(bdhs[0].startTime);
+            endTime.setMinutes(endTime.getMinutes() + 30);
+            var memberNo = ajaxResult.data.memberNo;
+            var count = 0;
+            var mybid
+            var index
+            
+            for (var i = 0; i < bdhs.length; i++) {
+                if ((bdhs[i].state == 1) || (bdhs[i].memberNo != memberNo && bdhs[i].state == 0)) {
+                    count = 5;
+                    break;
+                } else if (bdhs[i].memberNo == memberNo && bdhs[i].state == 0) {
+                    mybid = bdhs[i].bids;
+                    index = i;
+                    endTime.setMinutes(endTime.getMinutes() + (i+1)*5);
+                    break;
+                } else {
+                    count++;
+                }
+            }
+            
+            if (count < bdhs.length && $('.sweet-overlay').css('display') != 'block') {
+                // 새로고침이나 페이지 이동하려고 할 때 Alert 띄우기
+                window.onbeforeunload = function(e) {
+                    var dialogText = 'Dialog text here';
+                    e.returnValue = dialogText;
+                    return dialogText;
+                };
+                notiWinning(bdhs, mybid, endTime, index);
+            }
+        })
+        setTimeout(getBeforeBidHistory, 1000);
+    })();
+
+    function notiWinning(bdhs, mybid, endTime, index) {
+        swal({
+            title: "낙찰을 축하드립니다!",
+            text: "<주의사항>\n" + endTime.getHours() + "시" + endTime.getMinutes() + "분" 
+            + " 전까지 미결제시 자동으로 주문취소가 되고\n패널티가 부여됩니다.",
+            type: "success",
+            cancelButtonText: "주문취소",
+            cancelButtonColor: "#e5e5e5",
+            confirmButtonText: "결제하기",
+            confirmButtonColor: "rgb(244, 46, 109)",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm) {
+            if (isConfirm) {
+                saveSession(bdhs, mybid, endTime);
+            } else {
+                swal({
+                    title: "경고!",
+                    text: "주문 취소하시면 구매거부가 되어 경매 패널티가 1점 부여됩니다.",
+                    type: "warning",
+                    confirmButtonText: "결제하기",
+                    confirmButtonColor: "rgb(244, 46, 109)",
+                    cancelButtonText: "주문취소",
+                    cancelButtonColor: "#e5e5e5",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        saveSession(bdhs, mybid, endTime);
+                    } else {
+                        if (index < bdhs.length-1) {
+                            endTime.setMinutes(endTime.getMinutes() + 5);
+                            notiWinningSMS(bdhs[index+1], endTime)
+                        }
+                        bdhsUpdate(bdhs[0].itemNo, mybid, 2)
+                        swal({
+                            title: "취소 완료!",
+                            text: "주문 취소가 정상적으로 처리됬습니다.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                        window.onbeforeunload = function(){};
+                    }
+                })
+            }
+        })
+    }
+
+    function saveSession(bdhs, mybid, endTime) {
+        window.onbeforeunload = function(){};
+        sessionStorage.setItem('itemNo', bdhs[0].itemNo);
+        sessionStorage.setItem('mybid', mybid);
+        sessionStorage.setItem('endTime', endTime);
+        location.href = clientRoot + "/order/order.html";
+    }
+
+    function notiWinningSMS(bdhs, endTime) {
         console.log(bdhs.nickName)
         console.log("[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
         endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 결제하세요.")
@@ -251,96 +359,4 @@ $(function () {
             }
         })
     }
-
-    // 바로 전 경매의 입찰기록을 요청
-    (function getBeforeBidHistory() {
-        $.getJSON(serverRoot + '/bidhistory/beforebidhistory.json', function(ajaxResult){
-            if (ajaxResult.status != 'success') {
-                console.log(ajaxResult.data)
-                return;
-            }
-            
-            var bdhs = ajaxResult.data.bdhs;
-            var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 35);
-            var memberNo = ajaxResult.data.memberNo;
-            var count = 0;
-            var mybid
-            var index
-            
-            for (var i = 0; i < bdhs.length; i++) {
-                if ((bdhs[i].state == 1) || (bdhs[i].memberNo != memberNo && bdhs[i].state == 0)) {
-                    count = 5;
-                    break;
-                } else if (bdhs[i].memberNo == memberNo && bdhs[i].state == 0) {
-                    mybid = bdhs[i].bids;
-                    index = i;
-                    endTime.setMinutes(endTime.getMinutes() + (i+1)*5);
-                    break;
-                } else {
-                    count++;
-                }
-            }
-            
-            if (count < 5 && $('.sweet-overlay').css('display') != 'block') {
-        		swal({
-        			title: "낙찰을 축하드립니다!",
-        			text: endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 미결제시 자동으로 주문취소가 되고 패널티가 부여됩니다.",
-        			type: "success",
-        			cancelButtonText: "주문취소",
-        			cancelButtonColor: "#e5e5e5",
-        			confirmButtonText: "결제하기",
-        			confirmButtonColor: "rgb(244, 46, 109)",
-        			showCancelButton: true,
-        			closeOnConfirm: false,
-        			closeOnCancel: false
-        		}, function(isConfirm) {
-        			if (isConfirm) {
-        				sessionStorage.setItem('itemNo', bdhs[0].itemNo);
-        				sessionStorage.setItem('mybid', mybid);
-        				location.href = clientRoot + "/order/order.html"
-        			} else {
-        				swal({
-        					title: "경고!",
-        					text: "주문 취소하시면 구매거부가 되어 경매 패널티가 1점 부여됩니다.",
-        					type: "warning",
-        					confirmButtonText: "결제하기",
-        					confirmButtonColor: "rgb(244, 46, 109)",
-        					cancelButtonText: "주문취소",
-        					cancelButtonColor: "#e5e5e5",
-        					showCancelButton: true,
-        					closeOnConfirm: false,
-                			closeOnCancel: false
-        				}, function(isConfirm) {
-        					if (isConfirm) {
-        						sessionStorage.setItem('itemNo', bdhs[0].itemNo);
-        						sessionStorage.setItem('mybid', mybid);
-        						location.href = clientRoot + "/order/order.html"
-        					} else {
-        					    if (i < 4) {
-        					        notiWinning(bdhs[i+1], endTime)
-        					    }
-        						bdhsUpdate(bdhs[0].itemNo, mybid, 2)
-        			            swal({
-        			                title: "취소 완료!",
-        			                text: "주문 취소가 정상적으로 처리됬습니다.",
-        			                timer: 2250,
-        			                showConfirmButton: false,
-        			                type: "success"
-        			            });
-        					}
-        				})
-        			}
-        		})
-        		
-        	    // 브라우저가 새로고침이나 페이지 이동하려고 할 때 발생
-        	    window.onbeforeunload = function(e) {
-        	        var dialogText = 'Dialog text here';
-        	        e.returnValue = dialogText;
-        	        return dialogText;
-        	    };
-        	}
-        })
-        setTimeout(getBeforeBidHistory, 1000);
-    })();
 })

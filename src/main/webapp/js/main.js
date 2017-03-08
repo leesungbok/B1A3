@@ -1,11 +1,3 @@
-//(function(d, s, id) {
-//  var js, fjs = d.getElementsByTagName(s)[0];
-//  if (d.getElementById(id)) return;
-//  js = d.createElement(s); js.id =id;
-//  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=2229730730585360";
-//  fjs.parentNode.insertBefore(js, fjs);
-//}(document, 'script', 'facebook-jssdk'));
-
 $(function () {
     var nav = $('.nav');
 
@@ -18,14 +10,6 @@ $(function () {
             $('#header_sub').css('margin-bottom', '0');
         }
     });
-    
-    
-
-    // 다음경매 무한 스크롤
-    /*$('.next-bidlist').jscroll({
-        // 스크롤시 4개의 줄까지만 자동으로 로딩 (그 다음은 버튼클릭시 1줄씩 로딩)
-        autoTriggerUntil : 6
-    });*/
     
     $(".hover").mouseleave(
     	    function () {
@@ -61,6 +45,44 @@ $(function () {
             $('.seller').text(nowbid.nickName);
             $('.sellrcontents').text(nowbid.content);
             $('.social-btn-dissolve.heart').attr('data-itno',nowbid.itemNo);
+           
+            $('div[data-target="#detail"]').click(function() {
+        		$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+        	    	/*console.log(ajaxResult)*/
+        	        var member = ajaxResult.data;
+        	
+        			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+        				return;
+        			}
+        			var param = {
+        					memberNo : member.memberNo,
+        					itemNo : nowbid.itemNo,
+        					type : 2
+        			}
+        			$.getJSON('../mypage/check.json', param, function(ajaxResult) {
+        	         var count = ajaxResult.data
+        	         
+        	         if(count == null) {
+        	        	 $.post('../mypage/add.json',param ,function(ajaxResult) {
+           	        		 if (ajaxResult.status != "success") {
+           	        			 alert(ajaxResult.data);
+           	        			 return;
+           	        		 } 
+        	        	 });
+        	         } else if(count == 1) {
+	        	        	 param.type=3;
+	        	        	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                   				if (ajaxResult.status != "success") { 
+                   					alert(ajaxResult.data);
+                   					return;
+                   				}
+	        	        	 })
+	        	         }
+        			});
+        		});
+            });
+            
+//            $('meta[property="og:title"]').attr('content', nowbid.title);
             
             // 현재 경매정보에 대한 입찰기록
             (function getBidHistory() {
@@ -116,7 +138,7 @@ $(function () {
                         $('#l').val(atLeastBids);
                     }
                     
-                    if (bdhs[1] != null && bdhs[1].nickName == nickName) {
+                    if (bdhs[1] != null && $('.successful-bidder').text() == nickName) {
                         swal({
                             title: "새로운 입찰!",
                             type: "warning",
@@ -233,10 +255,12 @@ $(function () {
                             var member = ajaxResult.data;
 
                     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+                    		  return;
                     		}
                 			var param = {
                 					memberNo : member.memberNo,
-                					itemNo : itemNo
+                					itemNo : itemNo,
+                					type : 1
                     		}
                     		$.getJSON('../mypage/check.json', param, function(ajaxResult) {
                              var count = ajaxResult.data
@@ -255,30 +279,62 @@ $(function () {
                                         showConfirmButton: false,
                                         type: "success"
                                     });
-                                    setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
                      			}); // getJSON()
-                             } else {
-                	        	 $.post('../mypage/add.json',param ,function(ajaxResult) {
-                	        		 if (ajaxResult.status != "success") {
-                	        			 alert(ajaxResult.data);
-                	        			 return;
-                	        		 } 
-                	        		 var item=ajaxResult.data
-                	        		 console.log(ajaxResult.data)
-                	        		 swal({
-                	        			 title: "좋아요 등록 완료!",
-                	        			 text: "마이페이지에서 목록을 확인하세요.",
-                	        			 timer: 2250,
-                	        			 showConfirmButton: false,
-                	        			 type: "success"
-                	        		 });
-                	        		 setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
-                	        	 }, 'json'); // post();
-                    		}
-                    	});
-                    	});
-                		
-                	}); // click()
+                             } else if(count == 2) {
+                            	 param.type = 3;
+                                 
+                            	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                      				if (ajaxResult.status != "success") { 
+                      					alert(ajaxResult.data);
+                      					return;
+                      				}
+                      				swal({
+                                        title: "좋아요 등록 완료!",
+                                        text: "마이페이지에서 관심상품이 등록되었습니다.",
+                                        timer: 2250,
+                                        showConfirmButton: false,
+                                        type: "success"
+                                    });
+                            	 });
+                             } 
+                             else if(count == 3) {
+                            	 param.type = 2;
+                             
+                            	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                      				if (ajaxResult.status != "success") { 
+                      					alert(ajaxResult.data);
+                      					return;
+                      				}
+                            	 swal({
+                                     title: "좋아요 삭제 완료!",
+                                     text: "마이페이지에서 관심상품이 삭제되었습니다.",
+                                     timer: 2250,
+                                     showConfirmButton: false,
+                                     type: "success"
+                                 });
+                            	 
+                            	 });
+                	        		 
+                    		}else {
+                    			$.post('../mypage/add.json',param ,function(ajaxResult) {
+               	        		 if (ajaxResult.status != "success") {
+               	        			 alert(ajaxResult.data);
+               	        			 return;
+               	        		 } 
+               	        		 var item=ajaxResult.data
+               	        		 console.log(ajaxResult.data)
+               	        		 swal({
+               	        			 title: "좋아요 등록 완료!",
+               	        			 text: "마이페이지에서 목록을 확인하세요.",
+               	        			 timer: 2250,
+               	        			 showConfirmButton: false,
+               	        			 type: "success"
+               	        		 });
+                    		})
+                    	}
+                      });
+                    });
+                  }); // click()
                 });
             }
             

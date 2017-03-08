@@ -17,7 +17,6 @@ public class LikeServiceImpl implements LikeService {
   @Override
   public int add(Like like) throws Exception {
     int count = likeDao.insert(like);
-
     return count;
   }
 
@@ -27,8 +26,24 @@ public class LikeServiceImpl implements LikeService {
   }
 
   @Override
+  public int update(Like like) throws Exception {
+    return likeDao.update(like);
+  }
+  
+  
+  @Override
+  public int recentDelete(int likeNo) throws Exception {
+    return likeDao.recentDelete(likeNo);
+  }
+
+  @Override
   public List<Like> getLikeList(int memberNo) throws Exception {
     return likeDao.getLikeList(memberNo);
+  }
+  
+  @Override
+  public List<Like> getrecentList(int memberNo) throws Exception {
+    return likeDao.getrecentList(memberNo);
   }
 
   @Override

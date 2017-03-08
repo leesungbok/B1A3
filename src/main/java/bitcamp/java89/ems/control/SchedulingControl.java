@@ -25,17 +25,21 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SchedulingControl {
   @Autowired BidHistoryService bidHistoryService;
   @Autowired MemberService memberService;
-
+  List<BidHistory> bdhs;
+  SimpleDateFormat transFormat;
+  Date to, now;
+  Calendar cal;
+  
   @Scheduled(fixedRate=1000) // 1초마다 반복
   public void doSchedule() throws Exception {
-    List<BidHistory> bdhs = bidHistoryService.getBeforeBidHistory();
+    bdhs = bidHistoryService.getBeforeBidHistory();
 
     if (!bdhs.isEmpty()) {
-      SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      Date to = transFormat.parse(bdhs.get(0).getStartTime());
-      Date now = new Date();
+      transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      to = transFormat.parse(bdhs.get(0).getStartTime());
+      now = new Date();
 
-      Calendar cal = Calendar.getInstance();
+      cal = Calendar.getInstance();
       cal.setTime(to);
       cal.add(Calendar.MINUTE, 30);
       cal.add(Calendar.SECOND, 2);
@@ -44,6 +48,7 @@ public class SchedulingControl {
         cal.add(Calendar.MINUTE, 5);
         String text = "[" + bdhs.get(0).getTitle() + "] " + "낙찰을 축하드립니다. " + 
             cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
+        System.out.println(bdhs.get(0).getNickName());
         System.out.println(text);
         /*sms(bdhs.get(0).getNickName(), text);*/
         cal.add(Calendar.MINUTE, -5);
@@ -59,19 +64,20 @@ public class SchedulingControl {
 
   private void updatebidHistory(Calendar cal, Date now, List<BidHistory> bdhs) throws Exception {
     for (int i = 0; i < bdhs.size(); i++) {
-      if (cal.getTime().compareTo(now) != -1) {
+      if (cal.getTime().compareTo(now) != -1 || bdhs.get(i).getState() == 1) {
         break;
       } else if (bdhs.get(i).getState() == 0) {
         bidHistoryService.updateState(bdhs.get(i).getItemNo(), bdhs.get(i).getBids(), 2);
-        cal.add(Calendar.SECOND, 5);
-        if (i < 4) {
+        cal.add(Calendar.MINUTE, 5);
+        if (i < bdhs.size()-1) {
           String text = "[" + bdhs.get(0).getTitle() + "] " + "낙찰을 축하드립니다. " + 
               cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
+          System.out.println(bdhs.get(i+1).getNickName());
           System.out.println(text);
           /*sms(bdhs.get(i).getNickName(), text);*/
         }
       } else {
-        cal.add(Calendar.SECOND, 5);
+        cal.add(Calendar.MINUTE, 5);
       }
     }
   }
