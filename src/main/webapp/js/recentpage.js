@@ -1,21 +1,21 @@
 
 $(function() {
-		$.getJSON(serverRoot + '/mypage/recetList.json', function(ajaxResult) {
+		$.getJSON(serverRoot + '/mypage/recentList.json', function(ajaxResult) {
 			var status = ajaxResult.status;
 			if (status != "success")
 				return;
 			
-			var recnetList = ajaxResult.data;
-			console.log(recnetList);
+			var recentList = ajaxResult.data;
+			console.log(recentList);
 			var parent = $('#recentList');
 			var template = Handlebars.compile($('#trTemplate').html());
 			var div
-			for(var i = 0; i < list.length; i++){
+			for(var i = 0; i < recentList.length; i++){
 				if(i % 3 == 0) {
 					div = $("<div>").addClass('row')
 					parent.append(div);
 				}
-				div.append(template(list[i]));
+				div.append(template(recentList[i]));
 			}
 			
 		$('.tasha').click(function() {
