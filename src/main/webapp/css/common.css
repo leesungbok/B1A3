@@ -2,7 +2,13 @@
 
 @import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
- 
+
+@font-face {
+  font-family: 'BaeMinJua';
+  src: url('../font/BMJUA_ttf.ttf'),
+       url('../font/BMJUA_otf.otf');
+}
+
 body {
   font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
   font-size: small;
@@ -38,7 +44,7 @@ body>.container {
 
 .navbar-fixed-left {
   display: inline-block;
-  top: 40px;
+  top: 46px;
   left: 0px;
   border-radius: 0px;
 }
@@ -197,16 +203,15 @@ body>.container {
 .header-wrap>.search-bar {
   display: inline;
   position: absolute;
+  padding-top: 42px;
   height: 47px;
-  padding: 15px;
   top: 52px;
-  right: 35.6%;
-  border: 1px solid #291119;
-  border-radius: 30px;
+  right: 36.5%;
+  border-bottom: 5px solid #f54e83;
 }
 
 #header {
-  border-bottom: 1px solid #c4c5c8;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .header-menu-a {
@@ -366,6 +371,33 @@ input:focus::-webkit-input-placeholder
 
 #logon-img, #logon-nick-name {
   cursor: pointer
+}
+
+#searchTitle {
+  width: 297px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #291119;
+  border: 0;
+  outline: none;
+}
+
+.glyphicon-search {
+  font-size: 2em;
+  color: #f32e6d;
+  top: 5px;
+  right: 4px;
+  position: relative;
+}
+
+#main-title {
+  display: inline-block;
+  position: relative;
+  top: 8px;
+  left: 5px;
+  font-family: BaeMinJua;
+  font-size: 3.2em;
+  cursor: pointer;
 }
 /* 헤더 끝 */
 
