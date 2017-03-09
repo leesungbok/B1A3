@@ -79,9 +79,11 @@ public class ItemJsonControl {
       @RequestParam (value = "categoryList", required=false) List<String> categoryList, 
       @RequestParam (value= "categoryByAuction") String categoryByAuction ,
       @RequestParam (value= "priceBefore", required=false) String priceBefore ,
-      @RequestParam (value= "priceAfter", required=false) String priceAfter
+      @RequestParam (value= "priceAfter", required=false) String priceAfter ,
+      @RequestParam (value= "search", required=false) String search
       ) throws Exception {
-    List<Item> item = itemService.getCategory(categoryList, categoryByAuction, priceBefore, priceAfter);
+    List<Item> item = itemService.getCategory(categoryList, categoryByAuction, 
+        priceBefore, priceAfter, search);
     
     if (item.isEmpty()) {
       return new AjaxResult(AjaxResult.FAIL, "선택한 상품을 찾을수가 없습니다.");

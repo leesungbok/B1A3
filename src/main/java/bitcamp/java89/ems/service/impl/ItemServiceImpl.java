@@ -72,12 +72,13 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public List<Item> getCategory(List<String> categoryList, String categoryByAuction, 
-      String priceBefore, String priceAfter) throws Exception {
+      String priceBefore, String priceAfter, String search)  throws Exception {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("categoryList", categoryList);
     paramMap.put("categoryByAuction", categoryByAuction);
     paramMap.put("priceBefore", priceBefore);
     paramMap.put("priceAfter", priceAfter);
+    paramMap.put("search", search);
     List<Item> item = itemDao.getCategory(paramMap);
     
     return item;
