@@ -100,6 +100,17 @@
     from memb
     where nknm=#{nickName}
   </select>
+  
+  <select id="getSearchMember" parameterType="String" resultMap="member-map">
+    <![CDATA[
+    select
+     mno,
+     nknm,
+     path
+    from memb
+    where nknm like concat('%',#{nickName}, '%')
+    ]]>
+  </select>
 
   <update id="updatePhoto" parameterType="map">
     update memb set

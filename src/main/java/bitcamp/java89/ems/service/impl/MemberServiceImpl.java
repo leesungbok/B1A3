@@ -1,6 +1,7 @@
 package bitcamp.java89.ems.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,17 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public String getPhone(String nickName) throws Exception {
     return memberDao.getPhoneByNickName(nickName);
+  }
+  
+  @Override
+  public List<Member> getSearchMember(String nickName) throws Exception {
+    HashMap<String,String> paramMap = new HashMap<>();
+    paramMap.put("nickName", nickName); 
+    List<Member> member = memberDao.getSearchMember(paramMap);
+    if (member == null) {
+      return null;
+      
+    }
+    return member;
   }
 }

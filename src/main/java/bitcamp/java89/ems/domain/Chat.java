@@ -10,6 +10,7 @@ public class Chat implements Serializable{
   protected int chatObject;
   protected String contecnt;
   protected String transferTime;
+  
   public int getChatNo() {
     return chatNo;
   }
