@@ -19,7 +19,7 @@ $(function() {
 			}
 			
 		$('.tasha').click(function() {
-    		var itemNo = $(this).attr('data-itemNo');
+    		var itemNo = $(this).attr('data-itemno');
 			  $.getJSON(serverRoot + '/mypage/recentDelete.json?likeNo=' + itemNo, function(ajaxResult) {
 			    if (ajaxResult.status != "success") { 
   				  alert(ajaxResult.data);
