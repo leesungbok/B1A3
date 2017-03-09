@@ -23,7 +23,7 @@
     margin-top:50px;
   }
   
-  div.inside {
+  div.inside, div.inside1 {
     display:table; 
     width:800px;
   }

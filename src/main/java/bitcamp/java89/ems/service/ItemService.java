@@ -13,5 +13,6 @@ public interface ItemService {
   int delete(int itemNo) throws Exception;
   List<Item> getSearchTitle(String title) throws Exception;
   int getSize() throws Exception;
-  List<Item> getCategory(List<String> categoryList) throws Exception;
+  List<Item> getCategory(List<String> categoryList, String categoryByAuction, 
+      String priceBefore, String priceAfter, String search) throws Exception;
 }
