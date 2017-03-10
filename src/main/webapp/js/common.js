@@ -251,7 +251,7 @@ $(function () {
                     "startPrice": $('#stpc').val(),
                     "buyDate": $('#buy').val(),
                     "useDay": $('#day').val(),
-                    "content": $('#cont').val(),
+                    "content": $('#cont').val().replace(/\n/g, "<br>"),
                     "deal": $('#deal').val(),
                     "photoList": filePath
                     }

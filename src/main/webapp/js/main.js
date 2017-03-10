@@ -45,6 +45,7 @@ $(function () {
             $('.seller').text(nowbid.nickName);
             $('.sellrcontents').text(nowbid.content);
             $('.social-btn-dissolve.heart').attr('data-itno',nowbid.itemNo);
+            $('.start-time').text(nowbid.startTime);
            
             $('div[data-target="#detail"]').click(function() {
         		$.getJSON('../auth/loginUser.json', function(ajaxResult) {

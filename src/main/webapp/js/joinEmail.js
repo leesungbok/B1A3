@@ -28,97 +28,74 @@ $(function() {
             
     /* 이메일 유효성검사 */
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    
+    var email
     $("#email").keyup(function() {
-        var email = $("#email").val();
+        email = $(this).val();
         if (email == '') {
-            $('#necessary').css('display', 'block');
-            $('#erroremail').css('display', 'none');
-            $('#erroremail2').css('display', 'none');
+            $('#erroremail').text('필수 입력란입니다.');
             $('#email-ok').css('display', 'none');
         } else if (!re.test(email)) {
-            $('#necessary').css('display', 'none');
-            $('#erroremail').css('display', 'block');
-            $('#erroremail2').css('display', 'none');
+            $('#erroremail').text('올바른 이메일 형식이 아닙니다.');
             $('#email-ok').css('display', 'none');
         } else {
-            $.getJSON(serverRoot + '/auth/count.json', {type: "email", data: email}, function (ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    return;
-                } else if (ajaxResult.data == 0){
-                    $('#necessary').css('display', 'none');
-                    $('#erroremail').css('display', 'none');
-                    $('#erroremail2').css('display', 'none');
+            $.getJSON(nodeRoot + '/emailcheck?email=' + email, function (ajaxResult) {
+                if (ajaxResult.count == 0) {
+                    $('#erroremail').text('');
                     $('#email-ok').css('display', 'block');
                 } else {
-                    $('#necessary').css('display', 'none');
-                    $('#erroremail').css('display', 'none');
-                    $('#erroremail2').css('display', 'block');
+                    $('#erroremail').text('이미 가입된 이메일입니다.');
                     $('#email-ok').css('display', 'none');
                 }
             })
         }
     })
     
+    var password
     $("#password").keyup(function() {
-        var password = $("#password").val();
+        password = $(this).val();
         if (password.length == 0) {
-            $('#necessary2').css('display', 'block');
-            $('#errorpassword').css('display', 'none');
+            $('#errorpassword').text('필수 입력란입니다.');
             $('#password-ok').css('display', 'none');
         } else if (password.length < 6 || password.length > 20) {
-            $('#necessary2').css('display', 'none');
-            $('#errorpassword').css('display', 'block');
+            $('#errorpassword').text('영문,숫자 포함 최소6자, 최대 20자까지 가능합니다.');
             $('#password-ok').css('display', 'none');
         } else {
-            $('#necessary2').css('display', 'none');
-            $('#errorpassword').css('display', 'none');
+            $('#errorpassword').text('');
             $('#password-ok').css('display', 'block');
         }
     })
     
+    var passwordConf
     $("#password-conf").keyup(function() {
-        var passwordConf = $("#password-conf").val();
+        passwordConf = $(this).val();
         if (passwordConf.length == 0) {
-            $('#necessary3').css('display', 'block');
-            $('#errorpassword-conf').css('display', 'none');
+            $('#errorpassword-conf').text('필수 입력란입니다.');
             $('#password-conf-ok').css('display', 'none');
         } else if ($("#password").val() != passwordConf){
-            $('#necessary3').css('display', 'none');
-            $('#errorpassword-conf').css('display', 'block');
+            $('#errorpassword-conf').text('입력하신 비밀번호와 일치하지 않습니다.');
             $('#password-conf-ok').css('display', 'none');
         } else {
-            $('#necessary3').css('display', 'none');
             $('#errorpassword-conf').css('display', 'none')
             $('#password-conf-ok').css('display', 'block');
         }
     })
     
+    var nickName
     $("#nickName").keyup(function() {
-        var nickName = $("#nickName").val();
+        nickName = $(this).val();
         if (nickName.length == 0) {
-            $('#necessary4').css('display', 'block');
-            $('#errornickName').css('display', 'none');
-            $('#errornickName2').css('display', 'none');
+            $('#errornickName').text('필수 입력란입니다.');
             $('#nickName-ok').css('display', 'none');
         } else if (nickName.length < 2 || nickName.length > 6) {
-            $('#necessary4').css('display', 'none');
-            $('#errornickName').css('display', 'block');
-            $('#errornickName2').css('display', 'none');
+            $('#errornickName').text('한글,영문,숫자 포함 최소2자, 최대6자까지 가능합니다.');
             $('#nickName-ok').css('display', 'none');
         } else {
-            $.getJSON(serverRoot + '/auth/count.json', {type: "nickName", data: nickName}, function (ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    return;
-                } else if (ajaxResult.data == 0){
-                    $('#necessary4').css('display', 'none');
-                    $('#errornickName').css('display', 'none');
-                    $('#errornickName2').css('display', 'none');
+            $.getJSON(nodeRoot + '/nknmcheck?nknm=' + nickName, function (ajaxResult) {
+                if (ajaxResult.count == 0){
+                    $('#errornickName').text('');
                     $('#nickName-ok').css('display', 'block');
                 } else {
-                    $('#necessary4').css('display', 'none');
-                    $('#errornickName').css('display', 'none');
-                    $('#errornickName2').css('display', 'block');
+                    $('#errornickName').text('이미 사용중인 닉네임입니다.');
                     $('#nickName-ok').css('display', 'none');
                 }
             })
@@ -127,72 +104,30 @@ $(function() {
     
     /* 휴대폰 유효성 검사 */
     var re2 = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-    
+    var phoneNo
     $("#phoneNo").keyup(function() {
-        var phoneNo = $("#phoneNo").val();
+        phoneNo = $(this).val();
         if (phoneNo == '') {
-            $('#necessary5').css('display', 'block');
-            $('#errorphoneNo').css('display', 'none');
-            $('#errorphoneNo2').css('display', 'none');
+            $('#errorphoneNo').text('필수 입력란입니다.');
             $('#phoneNo-ok').css('display', 'none');
         } else if (!re2.test(phoneNo)) {
-            $('#necessary5').css('display', 'none');
-            $('#errorphoneNo').css('display', 'block');
-            $('#errorphoneNo2').css('display', 'none');
+            $('#errorphoneNo').text('올바른 휴대전화 형식이 아닙니다.');
             $('#phoneNo-ok').css('display', 'none');
         } else {
-            $.getJSON(serverRoot + '/auth/count.json', {type: "phoneNo", data: phoneNo}, function (ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    return;
-                } else if (ajaxResult.data == 0){
-                    $('#necessary5').css('display', 'none');
-                    $('#errorphoneNo').css('display', 'none');
-                    $('#errorphoneNo2').css('display', 'none');
+            $.getJSON(nodeRoot + '/phonecheck?phon=' + phoneNo, function (ajaxResult) {
+                if (ajaxResult.count == 0){
+                    $('#errorphoneNo').text('');
                     $('#phoneNo-ok').css('display', 'block');
                 } else {
-                    $('#necessary5').css('display', 'none');
-                    $('#errorphoneNo').css('display', 'none');
-                    $('#errorphoneNo2').css('display', 'block');
+                    $('#errorphoneNo').text('이미 사용중인 휴대전화입니다.');
                     $('#phoneNo-ok').css('display', 'none');
                 }
             })
         }
     })
     
-    $("#email").focusout(function() {
-        if ($('#email-ok').css('display') == 'block') {
-          $(this).css('border', '1px solid #e62a4a');
-        } else {
-          $(this).css('border', '1px solid #ccc');
-        }
-    })
-
-    $("#password").focusout(function() {
-        if ($('#password-ok').css('display') == 'block') {
-          $(this).css('border', '1px solid #e62a4a');
-        } else {
-          $(this).css('border', '1px solid #ccc');
-        }
-    })
-
-    $("#password-conf").focusout(function() {
-        if ($('#password-conf-ok').css('display') == 'block') {
-          $(this).css('border', '1px solid #e62a4a');
-        } else {
-          $(this).css('border', '1px solid #ccc');
-        }
-    })
-
-    $("#nickName").focusout(function() {
-        if ($('#nickName-ok').css('display') == 'block') {
-          $(this).css('border', '1px solid #e62a4a');
-        } else {
-          $(this).css('border', '1px solid #ccc');
-        }
-    })
-    
-    $("#phoneNo").focusout(function() {
-        if ($('#phoneNo-ok').css('display') == 'block') {
+    $('.has-feedback input').focusout(function() {
+        if ($(this).next().css('display') == 'block') {
           $(this).css('border', '1px solid #e62a4a');
         } else {
           $(this).css('border', '1px solid #ccc');
@@ -202,11 +137,11 @@ $(function() {
     /* 가입완료 버튼클릭 */
     $('#add-btn').click(function (event) {
         var param = {
-                "email" : $('#email').val(),
-                "password" : $('#password').val(),
-                "nickName" : $('#nickName').val(),
-                "phoneNo" : $('#phoneNo').val(),
-                "photoPath" : 'user.png'
+            "email" : $('#email').val(),
+            "password" : $('#password').val(),
+            "nickName" : $('#nickName').val(),
+            "phoneNo" : $('#phoneNo').val(),
+            "photoPath" : 'user.png'
         };
         
         if ($('#kakao-id').val() != null) {
@@ -253,7 +188,7 @@ $(function() {
             $('#add-btn').css('pointer-events', 'auto');
             $('#add-btn').css('opacity', '1');
         }
-     }, 100);
+    }, 100);
     
     setInterval(function() {
         if (window.innerHeight <= 707) {

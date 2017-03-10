@@ -21,17 +21,6 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public int count(String type, String data) throws Exception {
-    if (type.equals("email")) {
-      return memberDao.countEmail(data);
-    } else if (type.equals("nickName")) {
-      return memberDao.countNickName(data);
-    } else /* (type.equals("phoneNo")) */ {
-      return memberDao.countPhone(data);
-    }
-  }
-
-  @Override
   public int update(Member member) throws Exception {
     return memberDao.update(member);
   }

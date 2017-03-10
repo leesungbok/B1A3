@@ -187,7 +187,6 @@ input[type=password], input[type=text] {
 .errormsg {
   font-size: 1.1em;
   color: #e62a4a;
-  display: none;
   margin-top: 7px;
 }
 
@@ -213,8 +212,13 @@ input[type=password], input[type=text] {
   right: 62px;
 }
 
-#email-check, #nickName-check, #password-check, #phoneNo-check, #tel-check {
+#email-check, #nickName-check, #password-check, #phoneNo-check, #tel-check,
+#errorpassword-conf, #errorpassword-conf2, #errorpassword-conf3, #errortelNo {
   display: none;
+}
+
+#erroremail, #errornickName, #errorphoneNo {
+  display: inline-block;
 }
 
 /* sweet-alert */

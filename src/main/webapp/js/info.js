@@ -23,13 +23,18 @@ $(function() {
         $('[data-countdown]').each(function() {
             var $this = $(this), finalDate = $(this).data('countdown');
             $this.countdown(finalDate, function(event) {
-                if (event.offset.days == 0) {
+                console.log(event);
+                if (event.type == "stoped" || event.type == "finish") {
+                    $this.text('이미 경매가 종료된 상품입니다.');
+                    $this.css('font-size', '3em');
+                    $('#remains').remove('span');
+                } else if (event.offset.days == 0) {
                     $this.html(event.strftime('%H:%M:%S'));
                 } else {
                     $this.html(event.strftime('%d일 %H:%M:%S'));
                 }
             }).on('finish.countdown', function() {
-                setTimeout(function(){location.reload();} , 500);
+                setTimeout(function(){location.href = clientRoot + '/main/main.html'});
             });
         });
         

@@ -43,52 +43,49 @@ $(function() {
         var email
         
         $("#email").keyup(function() {
-        	email = $("#email").val();
-            if (email == '') {
-                $('#necessary, #email-check').css('display', 'inline-block');
-                $('#erroremail, #erroremail2').css('display', 'none');
+            email = $(this).val();
+        	if (email == '') {
+                $('#erroremail').text('필수 입력란입니다.');
+                $('#email-check').css('display', 'inline-block');
             } else if (!re.test(email)) {
-            	$('#erroremail, #email-check').css('display', 'inline-block');
-                $('#necessary, #erroremail2').css('display', 'none');
+                $('#erroremail').text('올바른 이메일 형식이 아닙니다.');
+                $('#email-check').css('display', 'inline-block');
             } else if (email == member.email) {
-                $('#necessary, #erroremail, #erroremail2, #email-check').css('display', 'none');
+                $('#erroremail').text('');
+                $('#email-check').css('display', 'none');
             } else {
-                $.getJSON(serverRoot + '/auth/count.json', {type: "email", data: email}, function (ajaxResult) {
-                    if (ajaxResult.status != "success") {
-                        alert(ajaxResult.data);
-                        return;
-                    } else if (ajaxResult.data == 0){
-                    	$('#necessary, #erroremail, #erroremail2, #email-check').css('display', 'none');
+                $.getJSON(nodeRoot + '/emailcheck?email=' + email, function (ajaxResult) {
+                    if (ajaxResult.count == 0) {
+                        $('#erroremail').text('');
+                        $('#email-check').css('display', 'none');
                     } else {
-                    	$('#erroremail2, #email-check').css('display', 'inline-block');
-                        $('#necessary, #erroremail').css('display', 'none');
+                        $('#erroremail').text('이미 가입된 이메일입니다.');
+                        $$('#email-check').css('display', 'inline-block');
                     }
                 })
             }
         })
         
         var nickName
-        
         $("#nickName").keyup(function() {
-            nickName = $("#nickName").val();
+            nickName = $(this).val();
             if (nickName.length == 0) {
-                $('#necessary2, #nickName-check').css('display', 'inline-block');
-                $('#errornickName, #errornickName2').css('display', 'none');
+                $('#errornickName').text('필수 입력란입니다.');
+                $('#nickName-check').css('display', 'inline-block');
             } else if (nickName.length < 2 || nickName.length > 6) {
-                $('#errornickName, #nickName-check').css('display', 'inline-block');
-                $('#necessary2, #errornickName2').css('display', 'none');
+                $('#errornickName').text('한글,영문,숫자 포함 최소2자, 최대6자까지 가능합니다.');
+                $('#nickName-check').css('display', 'inline-block');
             } else if (nickName == member.nickName) {
-                $('#necessary2, #errornickName, #errornickName2, #nickName-check').css('display', 'none');
+                $('#errornickName').text('');
+                $('#nickName-check').css('display', 'none');
             } else {
-                $.getJSON(serverRoot + '/auth/count.json', {type: "nickName", data: nickName}, function (ajaxResult) {
-                    if (ajaxResult.status != "success") {
-                        alert(ajaxResult.data);
-                        return;
-                    } else if (ajaxResult.data == 0){
-                        $('#necessary2, #errornickName, #errornickName2, #nickName-check').css('display', 'none');
+                $.getJSON(nodeRoot + '/nknmcheck?nknm=' + nickName, function (ajaxResult) {
+                    if (ajaxResult.count == 0){
+                        $('#errornickName').text('');
+                        $('#nickName-check').css('display', 'none');
                     } else {
-                        $('#errornickName2, #nickName-check').css('display', 'inline-block');
-                        $('#necessary2, #errornickName').css('display', 'none');
+                        $('#errornickName').text('이미 사용중인 닉네임입니다.');
+                        $('#nickName-check').css('display', 'inline-block');
                     }
                 })
             }
@@ -117,25 +114,24 @@ $(function() {
         var phoneNo
         
         $("#phoneNo").keyup(function() {
-            phoneNo = $("#phoneNo").val();
+            phoneNo = $(this).val();
             if (phoneNo == '') {
-                $('#necessary3, #phoneNo-check').css('display', 'inline-block');
-                $('#errorphoneNo, #errorphoneNo2').css('display', 'none');
+                $('#errorphoneNo').text('필수 입력란입니다.');
+                $('#phoneNo-check').css('display', 'inline-block');
             } else if (!re2.test(phoneNo)) {
-                $('#errorphoneNo, #phoneNo-check').css('display', 'inline-block');
-                $('#necessary3, #errorphoneNo2').css('display', 'none');
+                $('#errorphoneNo').text('올바른 휴대전화 형식이 아닙니다.');
+                $('#phoneNo-check').css('display', 'inline-block');
             } else if (phoneNo == member.phoneNo) {
-                $('#necessary3, #errorphoneNo, #errorphoneNo2, #phoneNo-check').css('display', 'none');
+                $('#errorphoneNo').text('');
+                $('#phoneNo-check').css('display', 'none');
             } else {
-                $.getJSON(serverRoot + '/auth/count.json', {type: "phoneNo", data: phoneNo}, function (ajaxResult) {
-                    if (ajaxResult.status != "success") {
-                        alert(ajaxResult.data);
-                        return;
-                    } else if (ajaxResult.data == 0){
-                        $('#necessary3, #errorphoneNo, #errorphoneNo2, #phoneNo-check').css('display', 'none');
+                $.getJSON(nodeRoot + '/phonecheck?phon=' + phoneNo, function (ajaxResult) {
+                    if (ajaxResult.count == 0){
+                        $('#errorphoneNo').text('');
+                        $('#phoneNo-check').css('display', 'none');
                     } else {
-                        $('#errorphoneNo2, #phoneNo-check').css('display', 'inline-block');
-                        $('#necessary3, #errorphoneNo').css('display', 'none');
+                        $('#errorphoneNo').text('이미 사용중인 휴대전화입니다.');
+                        $('#phoneNo-check').css('display', 'inline-block');
                     }
                 })
             }
