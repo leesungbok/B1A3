@@ -1,20 +1,3 @@
-$('#search').click(function() {
-	location.href = clientRoot + '/search/search.html';
-});
-
-$('#search1').click(function() {
-	location.href = clientRoot + '/search/search1.html';
-});
-
-$('#search2').click(function() {
-	location.href = clientRoot + '/search/search2.html';
-});
-
-$('#search3').click(function() {
-	location.href = clientRoot + '/search/search3.html';
-});
-
-
 $(function () {
 	// 타이틀로 아이템 찾기
   var param = location.href.split('?')[1].split('=')[1];
@@ -36,13 +19,30 @@ $(function () {
     	  }
     	  div.append(template(list[i]));
     	}
-		
+    	
+    	var search	
+		$("#search").click(function () {
+			 search = "time";
+		});
+    	
+    	$("#search1").click(function () {
+			 search = "first";
+		});
+    	
+    	$("#search2").click(function () {
+			 search = "high";
+		});
+    	
+    	$("#search3").click(function () {
+			 search = "low";
+		});
+    	
     	$('.inside').click(function() {
     	
     	var sum
     	var categoryByAuction
     	
-    	// 카테고리 영역 클릭 했을 경우
+    	// 현재 경매 or 과거경매
     	if ($("#current").is(":checked")) {
 			$("#current").prop("checked", true);
 			categoryByAuction = $("#current").val();
@@ -61,26 +61,26 @@ $(function () {
         	var priceAfter = $("#priceAfter").val();
         }
     	
-			sum='';
-			for (var i = 1; i < 10; i++) {
-				if ($("#test" + i).is(":checked")) {
-					sum +=  $("#test" + i).val() + ",";
-				} 
-			}
-    		
+		sum='';
+		for (var i = 1; i < 10; i++) {
+			if ($("#test" + i).is(":checked")) {
+				sum +=  $("#test" + i).val() + ",";
+			} 
+		}
+		
 			// 카테고리, 경매, 가격 데이터 넘기기
     		var  categoryList = {
  					categoryList : sum ,
  					categoryByAuction : categoryByAuction ,
  					priceBefore : priceBefore ,
- 					priceAfter : priceAfter
+ 					priceAfter : priceAfter ,
+ 					search : search
  			}
 				$.get(serverRoot + '/item/category.json' , categoryList, function(ajaxResult) {
 					if (ajaxResult.status == "fail") {
 			            alert(ajaxResult.data);
 			            return;
 					}
-					console.log(ajaxResult);
 					
 					$('.row').remove("div");
 					
@@ -98,7 +98,7 @@ $(function () {
 			    	}
 			    	
 				});
-		});
+		}); // 카테고리 ~ 가격 설정
 			
     	// 패션 카테고리 선택 시 
 		$(".category1").click(function () {
@@ -199,5 +199,5 @@ $(function () {
 			}
 		});
 
-	});
+	}); // title() 검색
 });

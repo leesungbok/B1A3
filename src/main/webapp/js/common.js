@@ -10,6 +10,48 @@ $(function () {
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
+    	
+    	$('#contbox').draggable();
+    	
+    	// 닉네임 찾기
+	    $('.search-btn').click(function() {
+	    	var searchMember = $('#searchMember').val();
+	    	console.log(searchMember);
+	    	var param = {
+	    			nickName : searchMember
+	    	}
+	    	console.log(param);
+	    	$.get(serverRoot + '/member/searchMember.json', param , function(ajaxResult) {
+	    		if (ajaxResult.status == "fail") {
+	    			alert(ajaxResult.data);
+	    			return;
+	    		}
+	    		$('#clean').remove("div");
+	    		
+	    		var list = ajaxResult.data;
+	    		var parent = $('#nicklist');
+	    		console.log(list);
+	    		parent.children().remove();
+	    		var template = Handlebars.compile($('#templatelist').html());
+		    	for(var i = 0; i <list.length; i++){
+		    		parent.append(template(list[i]));
+		    		parent.children().last().attr('data-mno',list[i].memberNo)
+		    	}
+			    $('.member').click(function() {
+			    	parent.children().remove();
+			    	var template = Handlebars.compile($('#text-box').html());
+			    	parent.append(template());
+			    });
+			    	
+        });
+	    
+//	    $('#searchMember').keypress(function(event){
+//            if(event.keyCode == 13){
+//                location.href= clientRoot + '/member/searchMember.html?nickName=' + $('#searchMember').val();
+//            }
+//        });
+	});
+	    
     	$('#main-title').click(function(){
     	    location.href = clientRoot + '/main/main.html';
     	})
@@ -367,3 +409,4 @@ $(function () {
         })
     }
 })
+

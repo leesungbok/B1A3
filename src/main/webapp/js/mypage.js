@@ -25,7 +25,7 @@ $(function() {
 					alert(ajaxResult.data);
 					return;
 				}
-				location.href = 'mypage.html';
+				location.href = '/mypage/mypage.html?submenu=mypage';
 			}); // getJSON()
 		}); // click()
 	});

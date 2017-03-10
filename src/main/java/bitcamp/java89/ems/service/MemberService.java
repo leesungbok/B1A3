@@ -1,5 +1,7 @@
 package bitcamp.java89.ems.service;
 
+import java.util.List;
+
 import bitcamp.java89.ems.domain.Member;
 
 public interface MemberService {
@@ -10,4 +12,5 @@ public interface MemberService {
   int delete(int memberNo) throws Exception;
   Member getOne(int memberNo) throws Exception;
   String getPhone(String nickName) throws Exception;
+  List<Member> getSearchMember(String nickName) throws Exception;
 }
