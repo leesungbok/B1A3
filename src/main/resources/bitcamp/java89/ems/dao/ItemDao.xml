@@ -26,11 +26,11 @@
     </collection>
   </resultMap>
 
-  <select id="getList" resultMap="item-map" parameterType="map">
+  <select id="getList" resultMap="item-map">
     select
       i.itno,
       i.titl,
-      i.time,
+      DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
       i.stpc,
       p.path
     from item i
@@ -40,8 +40,7 @@
     limit #{startRowIndex}, #{rowSize}
   </select>
 
-  <select id="getNowBid" resultMap="item-map">
-    <![CDATA[
+  <select id="getOne" parameterType="int" resultMap="item-map">
       select
         i.itno,
         m.nknm,
@@ -51,35 +50,23 @@
         i.day,
         i.deal,
         i.cont,
-        i.time + interval 30 minute as time,
+        DATE_FORMAT(i.time + interval 30 minute, '%Y-%m-%d %H:%i') as time,
         i.stpc,
+        m.nknm,
         p.path
       from item i
       left outer join phot p on i.itno=p.itno
       left outer join memb m on i.mno=m.mno
-      where i.time <= now() and now() <= i.time + interval 30 minute;
-    ]]>
-  </select>
-
-  <select id="getOne" parameterType="int" resultMap="item-map">
-    select
-      i.itno,
-      i.mno,
-      i.titl,
-      i.categ,
-      i.buy,
-      i.day,
-      i.deal,
-      i.cont,
-      i.time,
-      i.stpc,
-      m.nknm,
-      m.phon,
-      p.path
-    from item i
-    left outer join phot p on i.itno=p.itno
-    left outer join memb m on i.mno=m.mno
-    where i.itno=#{value}
+      <choose>
+        <when test="value == 0">
+          <![CDATA[
+            where i.time <= now() and now() <= i.time + interval 30 minute
+          ]]>
+        </when>
+        <otherwise>
+          where i.itno=#{value}
+        </otherwise>
+      </choose>
   </select>
 
   <insert id="insert" parameterType="item"

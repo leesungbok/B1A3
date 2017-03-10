@@ -18,7 +18,8 @@ $(function () {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                    console.log(3120)
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -217,8 +218,6 @@ $(function () {
                         alert(ajaxResult.data);
                         return;
                     }
-                    
-                    console.log(ajaxResult.data)
                     swal({
                         title: "등록 완료!",
                         text: "등록하신 경매품을 확인하세요.",
@@ -230,6 +229,10 @@ $(function () {
                 }, 'json'); // post();
             }); // click()
         }
+        
+        $('.add-input > input, .glyphicon > input').popover({
+            container: 'body'
+        });
     });
 
     // 전 경매의 입찰기록 가져오기

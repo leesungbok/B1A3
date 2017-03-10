@@ -223,7 +223,9 @@ $(function () {
                         }
                         div.append(template(list[i]));
                     }
+                    nextBidGrantEvent();
                     
+                    $('.next-bid-photos .item:first-child').addClass('active');
                     
                     var totalCount = ajaxResult.data.totalCount
                     var maxPageNo = parseInt(totalCount / (pageSize/4));
@@ -251,11 +253,11 @@ $(function () {
                     $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
                     	var itemNo = $(this).attr('data-itno');
                     	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-                        	/*console.log(ajaxResult)*/
                             var member = ajaxResult.data;
 
                     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                    		  return;
+                    		    location.href = clientRoot + '/auth/login.html';
+                    		    return;
                     		}
                 			var param = {
                 					memberNo : member.memberNo,
@@ -334,6 +336,12 @@ $(function () {
                     	}
                       });
                     });
+                        // 이벤트 전파를 중단시킨다.
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else {
+                            event.cancelBubble = true;
+                        }
                   }); // click()
                 });
             }
@@ -361,6 +369,13 @@ $(function () {
         })
     })
     
+    function nextBidGrantEvent() {
+        $('.carbox').click(function(event) {
+            location.href = clientRoot + "/info/info.html?itemNo=" + $(this).attr('data-itno');
+        })
+    }
+    
+    // 입찰하기 유효성 검사
     var bidPrice
     var minimumbid
     setInterval(function() {
