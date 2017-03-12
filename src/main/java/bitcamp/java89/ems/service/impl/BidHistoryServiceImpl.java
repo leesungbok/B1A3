@@ -45,4 +45,9 @@ public class BidHistoryServiceImpl implements BidHistoryService {
     paramMap.put("bids", bids);
     return bidHistoryDao.getState(paramMap);
   }
+
+  @Override
+  public List<BidHistory> getMyBidList(int memberNo) throws Exception {
+    return bidHistoryDao.getMyBidList(memberNo);
+  }
 }
