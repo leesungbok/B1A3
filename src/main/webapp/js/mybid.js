@@ -1,5 +1,5 @@
 $(function() {
-	$.getJSON(serverRoot + '/mybid/list.json', function(ajaxResult) {
+	$.getJSON(serverRoot + '/mypage/mybidlist.json', function(ajaxResult) {
 		var status = ajaxResult.status;
 		if (status != "success")
 			return;
@@ -10,7 +10,7 @@ $(function() {
 		var template = Handlebars.compile($('#trTemplate').html());
 		var div
 		for(var i = 0; i < list.length; i++){
-			if(i % 3 == 0) {
+			if(i % 4 == 0) {
 				div = $("<div>").addClass('row')
 				parent.append(div);
 			}

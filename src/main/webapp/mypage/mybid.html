@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <title>나의 설정</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-<link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" type="text/css">
-<link rel="stylesheet" href="../css/common.css">
+<link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../css/common.css" rel="stylesheet">
 <link rel="stylesheet" href="../font/fontello.css">
 <link rel="stylesheet" href="../css/toggle.css">
-<link rel="stylesheet" href="../css/main.css">
+<link href="../css/main.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/mybid.css">
 
 </head>
@@ -22,25 +24,27 @@
 		<div id='submenu'></div>
   </div>
   <div class="sidemenubar">
-    <div id="side-item">
-    <nav class="nav-sidebar">
-		<ul class="nav tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">관심상품</a></li>
-          <li class=""><a href="#tab2" data-toggle="tab">최근본상품</a></li>
-		</ul>
-	</nav>
-	</div>
+    <div id="side-item" style="margin-left:-34px;">
+	    <nav class="nav-sidebar">
+				<ul class="nav tabs">
+		          <li class="active"><a id="mypage" href="#tab_default_1" data-toggle="tab">등록한<br>경매</a></li>
+		          <li class=""><a id="recentpage" href="#" data-toggle="tab">낙찰받은<br>경매</a></li>
+				</ul>
+		  </nav>
+	 </div>
 	<!-- 관심상품 컨텐츠 본문 시작-->
   <section class="wrapper">
     <div class="container-big">
         <div class="content" >
-            <div id="nextlist" class="container" style="margin:-140px 0px 0 128px;">
-                </div>
-              </div>
+            <div id="nextlist" class="container" style="margin:-124px 0px 0 63px;">
             </div>
-        </section>  
-	  </div>
+        </div>
+    </div>
+  </section> 
+ <!-- 관심상품 컨텐츠 본문 끝 -->
+
  </div>
+</div>
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -49,7 +53,9 @@
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../js/common.js"></script>
   <script id="trTemplate" type="text/x-handlebars-template">
-    <div class="col-xs-12 col-sm-4">
+  <figure class="snip1205" style="width:33.333%">
+    <div class="profile-pic">    
+     <div class="col-xs-12">
       <div class="carbox">
         <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
         <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
@@ -81,30 +87,36 @@
         <div class="carbox-content">
           <h4 class="carbox-title">{{title}}</h4>
           <dl class="next-horizontal">
-            <dt class="pinktext stp-text">시작가</dt>
+            <dt class="pinktext stp-text">낙찰가</dt>
             <dd class="black">
               <span>{{bids}}원</span>
             </dd>
           </dl>
           <dl class="next-horizontal">
-            <dt class="pinktext st-text">시작시간</dt>
+            <dt class="pinktext st-text">닉찰시간</dt>
             <dd class='black'>
-              <span>{{time}}</span>
+              <span>{{bidTime}}</span>
+            </dd>
+					</dl>
+					<dl class="next-horizontal">
+            <dt class="pinktext stp-text">입찰횟수</dt>
+            <dd class="black">
+              <span>{{cnt}}회</span>
+            </dd>
+          </dl>
+          </dl>
+					<dl class="next-horizontal">
+            <dt class="pinktext stp-text">낙찰자</dt>
+            <dd class="black">
+              <span>{{nickName}}</span>
             </dd>
           </dl>
         </div>
       </div>
     </div>
   </div>
-  </script>
-  <script>
-  $(function (){
-    $('#tab_default_1 a').click(function (e) {
-    	  e.preventDefault();
-    	 alert('1');
-    });
-	  
-  });
+</figure>
+									
   </script>
   <script src="../js/mybid.js"></script>
 </body>

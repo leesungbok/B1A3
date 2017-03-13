@@ -37,10 +37,7 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public List<Item> getList(int pageNo, int pageSize) throws Exception {
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startRowIndex", (pageNo - 1) * pageSize);
-    paramMap.put("rowSize", pageSize);
-    return itemDao.getList(paramMap);
+    return itemDao.getList((pageNo - 1) * pageSize, pageSize);
   }
 
   @Override
@@ -49,9 +46,17 @@ public class ItemServiceImpl implements ItemService {
   }  
   
   @Override
-  public List<Item> getSearchTitle(String title) throws Exception {
-    HashMap<String,String> paramMap = new HashMap<>();
+  public List<Item> getSearchTitle(String title, List<String> categoryList, String categoryByAuction, String priceBefore,
+    String priceAfter, String search, int pageNo, int pageSize) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("title", title); 
+    paramMap.put("categoryList", categoryList);
+    paramMap.put("categoryByAuction", categoryByAuction);
+    paramMap.put("priceBefore", priceBefore);
+    paramMap.put("priceAfter", priceAfter);
+    paramMap.put("search", search);
+    paramMap.put("startRowIndex", (pageNo - 1) * pageSize);
+    paramMap.put("rowSize", pageSize);
     List<Item> item = itemDao.getSearchTitle(paramMap);
     if (item == null) {
       return null;
@@ -61,8 +66,8 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public Item getNowBid() throws Exception {
-    return itemDao.getNowBid();
+  public Item getNowBid(int zero) throws Exception {
+    return itemDao.getOne(zero);
   } 
 
   @Override
@@ -71,17 +76,17 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public List<Item> getCategory(List<String> categoryList, String categoryByAuction, 
-      String priceBefore, String priceAfter, String search)  throws Exception {
+  public int getSearchCount(String title, List<String> categoryList, String categoryByAuction,
+      String priceBefore, String priceAfter, String search) throws Exception {
     HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("title", title);
     paramMap.put("categoryList", categoryList);
     paramMap.put("categoryByAuction", categoryByAuction);
     paramMap.put("priceBefore", priceBefore);
     paramMap.put("priceAfter", priceAfter);
     paramMap.put("search", search);
-    List<Item> item = itemDao.getCategory(paramMap);
-    
-    return item;
+    return itemDao.getSearchCount(paramMap);
   }
 
-}
+
+  }

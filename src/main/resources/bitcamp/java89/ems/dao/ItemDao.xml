@@ -26,11 +26,11 @@
     </collection>
   </resultMap>
 
-  <select id="getList" resultMap="item-map" parameterType="map">
+  <select id="getList" resultMap="item-map">
     select
       i.itno,
       i.titl,
-      i.time,
+      DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
       i.stpc,
       p.path
     from item i
@@ -40,8 +40,7 @@
     limit #{startRowIndex}, #{rowSize}
   </select>
 
-  <select id="getNowBid" resultMap="item-map">
-    <![CDATA[
+  <select id="getOne" parameterType="int" resultMap="item-map">
       select
         i.itno,
         m.nknm,
@@ -51,35 +50,23 @@
         i.day,
         i.deal,
         i.cont,
-        i.time + interval 30 minute as time,
+        DATE_FORMAT(i.time + interval 30 minute, '%Y-%m-%d %H:%i') as time,
         i.stpc,
+        m.nknm,
         p.path
       from item i
       left outer join phot p on i.itno=p.itno
       left outer join memb m on i.mno=m.mno
-      where i.time <= now() and now() <= i.time + interval 30 minute;
-    ]]>
-  </select>
-
-  <select id="getOne" parameterType="int" resultMap="item-map">
-    select
-      i.itno,
-      i.mno,
-      i.titl,
-      i.categ,
-      i.buy,
-      i.day,
-      i.deal,
-      i.cont,
-      i.time,
-      i.stpc,
-      m.nknm,
-      m.phon,
-      p.path
-    from item i
-    left outer join phot p on i.itno=p.itno
-    left outer join memb m on i.mno=m.mno
-    where i.itno=#{value}
+      <choose>
+        <when test="value == 0">
+          <![CDATA[
+            where i.time <= now() and now() <= i.time + interval 30 minute
+          ]]>
+        </when>
+        <otherwise>
+          where i.itno=#{value}
+        </otherwise>
+      </choose>
   </select>
 
   <insert id="insert" parameterType="item"
@@ -132,7 +119,6 @@
   </delete>
 
   <select id="getSearchTitle" parameterType="map" resultMap="item-map">
-    <![CDATA[
     select
      i.itno,
      i.mno,
@@ -147,39 +133,25 @@
      p.itno,
      p.path
     from item i
-    left outer join phot p on i.itno=p.itno
-    where titl like concat('%', #{title}, '%')
-    and time + interval 30 minute > now()
-    ]]>
-  </select>
-  
-  <select id="getCategory" parameterType="map" resultMap="item-map">
-   select  
-     i.itno,
-     i.mno,
-     i.titl,
-     i.time,
-     i.stpc,
-     p.path
-    from item i
-    left outer join phot p on i.itno=p.itno
+	    left outer join phot p on i.itno=p.itno
     <where> 
+    titl like concat('%', #{title}, '%')
      <if test="categoryByAuction == 'true'">
        <![CDATA[
-        time + interval 30 minute > now()
+       and time + interval 30 minute > now()
          ]]>
      </if>
      <if test="categoryByAuction == 'false'">
-		   <![CDATA[
-		   time + interval 30 minute < now()
-		   ]]>
-		 </if>
-	 	 <if test="priceBefore !=null ">
-		   <![CDATA[
+       <![CDATA[
+      and time + interval 30 minute < now()
+       ]]>
+     </if>
+     <if test="priceBefore !=null ">
+       <![CDATA[
        and stpc >= #{priceBefore} 
        ]]>
-		 </if> 
-		 <if test="priceAfter !=null">
+     </if> 
+     <if test="priceAfter !=null">
        <![CDATA[
        and stpc <= #{priceAfter}
        ]]>
@@ -203,8 +175,56 @@
     <if test="search == 'low'">
       order by stpc asc
     </if>
+    limit #{startRowIndex}, #{rowSize}
   </select>
-
+  
+  <select id="getSearchCount" parameterType="map" resultType="int">
+    select
+      count(*)
+    from item i
+      left outer join phot p on i.itno=p.itno
+    <where> 
+      titl like concat('%', #{title}, '%')
+	    <if test="categoryByAuction == 'true'">
+	       <![CDATA[
+	       and time + interval 30 minute > now()
+	         ]]>
+	    </if>
+	    <if test="categoryByAuction == 'false'">
+	       <![CDATA[
+	      and time + interval 30 minute < now()
+	       ]]>
+	    </if>
+	    <if test="priceBefore !=null ">
+	      <![CDATA[
+	      and stpc >= #{priceBefore} 
+	      ]]>
+	    </if> 
+	    <if test="priceAfter !=null">
+	      <![CDATA[
+	      and stpc <= #{priceAfter}
+	      ]]>
+	    </if> 
+	    <if test= 'categoryList.size != 0 '>
+	      and categ in
+	      <foreach collection="categoryList" item="category" index="index" separator="," open="(" close=")">
+	        #{category}
+	      </foreach>
+	     </if>
+    </where>
+    <if test="search == 'time'">
+      order by time asc
+    </if>
+    <if test="search == 'first'">
+      order by time desc
+    </if>
+    <if test="search == 'high'">
+      order by stpc desc
+    </if>
+    <if test="search == 'low'">
+      order by stpc asc
+    </if>
+  </select>
   
   <select id="countAll" resultType="int">
     select count(*)

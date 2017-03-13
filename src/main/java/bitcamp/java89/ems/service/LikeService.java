@@ -12,7 +12,4 @@ public interface LikeService {
   int update(Like like) throws Exception;
   int recentDelete(int likeNo) throws Exception;
   String check(int memberNo, int itemNo) throws Exception;
-  
-  
-  
 }
