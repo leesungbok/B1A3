@@ -44,13 +44,14 @@ $(function () {
 			    });
 			    	
         });
-	    
-//	    $('#searchMember').keypress(function(event){
-//            if(event.keyCode == 13){
-//                location.href= clientRoot + '/member/searchMember.html?nickName=' + $('#searchMember').val();
-//            }
-//        });
+	    	
 	});
+	    $('#searchMember').keypress(function(event){
+	    	if(event.keyCode == 13){
+	    		console.log('gkgjk');
+	    		$('.search-btn').click();
+	    	}
+	    });
 	    
     	$('#main-title').click(function(){
     	    location.href = clientRoot + '/main/main.html';
@@ -176,28 +177,6 @@ $(function () {
         });
     })
     
-    $.get('../submenu.html', function (result) {
-    	$('#submenu').html(result);
- 
-    	var submenu = location.search.split("?")[1].split("=")[1];
-	    $('#mypage').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
-	    }); 
-
-	    $('#mybidding').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
-	    }); 
-
-	    $('#myoption').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
-	    }); 
-	    
-	    $("#"+submenu).parent().addClass('active');
-	     
-    })
     
     // add.html을 가져와서 붙인다.
     $.get(clientRoot + '/add.html', function (result) {
