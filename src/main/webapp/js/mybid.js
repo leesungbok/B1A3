@@ -10,7 +10,7 @@ $(function() {
 		var template = Handlebars.compile($('#trTemplate').html());
 		var div
 		for(var i = 0; i < list.length; i++){
-			if(i % 4 == 0) {
+			if(i % 2 == 0) {
 				div = $("<div>").addClass('row')
 				parent.append(div);
 			}

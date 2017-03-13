@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java89.ems.dao.ItemDao;
+import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.service.ItemService;
 
@@ -79,6 +80,11 @@ public class ItemServiceImpl implements ItemService {
     List<Item> item = itemDao.getCategory(paramMap);
     
     return item;
+  }
+  
+  @Override
+  public List<Item> getMyBidList(int memberNo) throws Exception {
+    return itemDao.getMyBidList(memberNo);
   }
 
 }

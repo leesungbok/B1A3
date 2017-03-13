@@ -19,4 +19,5 @@ public interface ItemDao {
   int delete(int itemNo) throws Exception;
   List<Item> getSearchTitle(HashMap<String, String> paramMap)throws Exception;
   List<Item> getCategory(HashMap<String, Object> paramMap) throws Exception;
+  List<Item> getMyBidList(int memberNo) throws Exception;
 }

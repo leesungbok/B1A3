@@ -363,7 +363,7 @@ figure.snip1205 {
   margin: 10px 0 0 0;
   min-width: 310px -60px;
   max-width: 310px;
-  width: 100%;
+  width: 144% !important;
   color: #000000;
   text-align: left;
   background-color: #ffffff;

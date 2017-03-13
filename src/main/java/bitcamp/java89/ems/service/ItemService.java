@@ -15,4 +15,5 @@ public interface ItemService {
   int getSize() throws Exception;
   List<Item> getCategory(List<String> categoryList, String categoryByAuction, 
       String priceBefore, String priceAfter, String search) throws Exception;
+  List<Item> getMyBidList(int memberNo) throws Exception;
 }
