@@ -29,6 +29,7 @@
       m.nknm,
       m.path,
       b.bids,
+      b.stat,
       DATE_FORMAT(b.time, '%H:%i:%s') as time
     from bdhs b
     left outer join memb m on b.mno=m.mno
@@ -51,7 +52,7 @@
       from bdhs b
       left outer join item i on i.itno=b.itno
       left outer join memb m on m.mno=b.mno
-      where now() - interval 60 minute < i.time and i.time < now() - interval 30 minute
+      where now() - interval 6 minute < i.time and i.time < now() - interval 3 minute
       order by b.bids desc
       limit 5;
     ]]>

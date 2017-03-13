@@ -21,6 +21,32 @@
       <span>관련 상품</span>
     </div>
   </div>
+  
+  <div class="modal fade" id="bidHistory" tabindex="-1" role="dialog" aria-labelledby="bdhsModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="bdhsModalLabel">입찰기록</h2>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr id="bdhsTr">
+                <th>#</th>
+                <th>입찰자</th>
+                <th>입찰일자</th>
+                <th>입찰가격</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 경매등록 -->
   <div class="bid-regist"></div>
@@ -61,26 +87,26 @@
         </div>
 
         <dl class="dl-horizontal">
-          <dt class="term">시작가</dt>
+          <dt class="term" id="startTime-dt">시작가</dt>
           <dd class="desc">
             <span class="present_num">{{startPrice}}</span>
             <span class="present_num_won">원</span>
-            <!-- <div class="startprice">
+            <div class="startprice auction-ends">
               <span>시작가</span>
-              <span class="start_num start_num_detail">100000</span>
+              <span class="start_num start_num_detail">{{startPrice}}</span>
               <span>원</span>
-            </div> -->
+            </div>
           </dd>
           <dt class="term">시작시간</dt>
           <dd class="desc ddvalue">
             <span class="start-time">{{startTime}}</span>
           </dd>
-          <!-- <dt class="term">입찰수</dt>
-          <dd class="desc ddvalue">
-            <span class="bid_num">0</span>
+          <dt class="term auction-ends">입찰수</dt>
+          <dd class="desc ddvalue auction-ends">
+            <span class="bid_num"></span>
             <span>회</span>
-            <u id="record">입찰기록</u>
-          </dd> -->
+            <u id="record" data-toggle="modal" data-target="#bidHistory">입찰기록</u>
+          </dd>
         </dl>
 
         <dl class="dl-horizontal">
@@ -144,7 +170,7 @@
 
   <script id="relation-Template" type="text/x-handlebars-template">
    <div class="col-xs-12 col-sm-4">
-      <div class="carbox">
+      <div class="carbox" data-itno="{{itemNo}}">
         <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
         <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -198,9 +224,30 @@
       </div>
     </div>
   </script>
+  
+  <script id="bdhs-Template" type="text/x-handlebars-template">
+  {{#each this}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{nickName}}</td>
+      <td>{{bidTime}}</td>
+      <td>{{bids}}</td>
+      {{#ifCond state 0}}
+        <td>-</td>
+      {{/ifCond}}
+      {{#ifCond state 1}}
+        <td id="pinktext">낙찰!</td>
+      {{/ifCond}}
+      {{#ifCond state 2}}
+        <td>취소</td>
+      {{/ifCond}}
+    </tr>
+  {{/each}}
+  </script>
 
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="../node_modules/bootstrap-fileinput/js/fileinput.min.js"></script>
   <script src="../js/kr.js"></script>

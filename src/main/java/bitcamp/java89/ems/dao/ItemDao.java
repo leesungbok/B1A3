@@ -17,7 +17,7 @@ public interface ItemDao {
   int insertPhoto(Item item) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
-  List<Item> getSearchTitle(HashMap<String, String> paramMap)throws Exception;
-  List<Item> getListByCateg(String categ) throws Exception;
-  List<Item> getCategory(HashMap<String, Object> paramMap) throws Exception;
+  List<Item> getSearchTitle(HashMap<String, Object> paramMap)throws Exception;
+  List<Item> getListByCateg(@Param("categ") String categ, @Param("itemNo") int itemNo) throws Exception;
+  int getSearchCount(HashMap<String, Object> paramMap) throws Exception;
 }

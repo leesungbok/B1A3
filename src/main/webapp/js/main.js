@@ -49,7 +49,6 @@ $(function () {
            
             $('div[data-target="#detail"]').click(function() {
         		$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	    	/*console.log(ajaxResult)*/
         	        var member = ajaxResult.data;
         	
         			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -88,6 +87,7 @@ $(function () {
             // 현재 경매정보에 대한 입찰기록
             (function getBidHistory() {
                 $.getJSON(serverRoot + '/bidhistory/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
+                    var nickName = ajaxResult.data.nickName
                     if (ajaxResult.status != "success") {
                         if ($('.desc-non-record').css('display') == 'block') {
                             return;
@@ -99,6 +99,12 @@ $(function () {
                         $('#l').val(startPrice);
                         $('#l').attr('data-atLeastBids', startPrice)
                         $('.atLeastBids').text(startPrice);
+                        console.log(nowbid.nickName);
+                        console.log(nickName);
+                        if (nowbid.nickName == nickName) {
+                            $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
+                            $('.bidding-btn, #detail-bid').css('opacity', '.65');
+                        }
                         return;
                     }
                     
@@ -107,7 +113,6 @@ $(function () {
                         return;
                     }
                     
-                    var nickName = ajaxResult.data.nickName
                     
                     // 현재가
                     var bids = bdhs[0].bids;
@@ -150,7 +155,7 @@ $(function () {
                     }
                     
                     $('.desc-non-record').css('display', 'none');
-                    if (bdhs[0].nickName == nickName || atLeastBids == 10000000) {
+                    if (bdhs[0].nickName == nickName || atLeastBids == 10000000 || nowbid.nickName == nickName) {
                         $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
                         $('.bidding-btn, #detail-bid').css('opacity', '.65');
                     } else {
@@ -407,7 +412,7 @@ $(function () {
                 event.preventDefault();
             })
         })
-    })
+    }) // 현재경매 정보 끝
     
     function nextBidGrantEvent() {
         $('.carbox').click(function(event) {

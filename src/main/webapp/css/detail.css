@@ -143,6 +143,11 @@ div.startprice {
 .start_num_detail {  font-size: 1em !important;  position: relative;  left: 3px;
 }
 
+#detail-photo img {
+  height: 382px !important;
+  margin: auto auto;
+}
+
 /* The Modal (background) */
 #image-popup {
   display: none; /* Hidden by default */
