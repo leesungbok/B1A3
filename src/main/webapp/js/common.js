@@ -260,6 +260,7 @@ $(function () {
                         alert(ajaxResult.data);
                         return;
                     }
+                    var detailNo = ajaxResult.data;
                     swal({
                         title: "등록 완료!",
                         text: "등록하신 경매품을 확인하세요.",
@@ -267,7 +268,7 @@ $(function () {
                         showConfirmButton: false,
                         type: "success"
                     });
-                    setTimeout(function(){location.href= clientRoot +  '/mypage/mybid.html?submenu=mybid'} , 2250);
+                    setTimeout(function(){location.href= clientRoot +  '/info/info.html?itemNo=' + detailNo} , 2250);
                 }, 'json'); // post();
             }); // click()
         }

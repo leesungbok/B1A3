@@ -20,6 +20,8 @@
 .detail-info span, .relation>span {
   font-size: 2.5em;
   font-weight: 300;
+  display: inherit;
+  margin-bottom: 20px;
 }
 
 .sellrcontents {

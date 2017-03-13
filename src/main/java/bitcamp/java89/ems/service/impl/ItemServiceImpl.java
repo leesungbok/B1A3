@@ -16,13 +16,13 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public int add(Item item) throws Exception {
-    int count = itemDao.insert(item);
+    itemDao.insert(item);
 
     if (item.getPhotoList().size() > 0) {
       itemDao.insertPhoto(item);
     }
 
-    return count;
+    return item.getItemNo();
   }
 
   @Override
@@ -80,5 +80,4 @@ public class ItemServiceImpl implements ItemService {
     
     return item;
   }
-
 }

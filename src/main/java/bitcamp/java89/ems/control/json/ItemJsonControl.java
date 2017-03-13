@@ -55,11 +55,11 @@ public class ItemJsonControl {
   public AjaxResult add(Item item, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
     item.setMemberNo(member.getMemberNo());
-
-    if (itemService.add(item) == 0) {
+    int itemNo = itemService.add(item);
+    if (itemNo == 0) {
       return new AjaxResult(AjaxResult.FAIL, "경매등록에 실패했습니다.");
     }
-    return new AjaxResult(AjaxResult.SUCCESS, "경매등록에 성공했습니다.");
+    return new AjaxResult(AjaxResult.SUCCESS, itemNo);
   }
   
   @RequestMapping("/item/searchTitle")

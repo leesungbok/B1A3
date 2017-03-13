@@ -71,8 +71,6 @@
 
   <insert id="insert" parameterType="item"
   useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-  <!-- insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
-  values(#{memberNo},#{title}, #{category}, #{buyDate}, #{useDay}, #{deal}, #{content}, now(), #{startPrice}) -->
     insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
     select
       #{memberNo},
@@ -139,7 +137,23 @@
     and time + interval 30 minute > now()
     ]]>
   </select>
-  
+
+  <select id="getListByCateg" parameterType="String" resultMap="item-map">
+    select
+      i.itno,
+      i.titl,
+      i.categ,
+      DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
+      i.stpc,
+      i.cont,
+      p.path
+    from item i
+    left outer join phot p on i.itno=p.itno
+    where i.categ=#{value}
+      and time > now()
+    limit 12;
+  </select>
+
   <select id="getCategory" parameterType="map" resultMap="item-map">
    select  
      i.itno,
@@ -192,7 +206,6 @@
     </if>
   </select>
 
-  
   <select id="countAll" resultType="int">
     select count(*)
     from item i

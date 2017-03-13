@@ -325,7 +325,7 @@ div.heart:before {
   margin-bottom: -1px;
 }
 
-.nb-img1, .nb-img2, .nb-img3, .nb-img4 {
+div[data-target="#detail"] img {
   height: 382px !important;
   margin: auto auto;
 }
