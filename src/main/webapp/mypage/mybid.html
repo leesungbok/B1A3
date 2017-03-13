@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <title>나의 설정</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-<link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="../css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../font/fontello.css">
 <link rel="stylesheet" href="../css/toggle.css">
-<link href="../css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/mybid.css">
-
 </head>
+
 <body>
   <div id='header'></div>
   <div class="container">
    <!-- 전페이지 헤더 시작-->
-  <!-- 전페이지 헤더 끝-->
+  <!-- 전페이지 헤더 끝 -->
   <div class='body-contents'>
 	<div id="bodycon-title">마이페이지</div> 
 		<div id='submenu'></div>
@@ -41,10 +41,10 @@
         </div>
     </div>
   </section> 
- <!-- 관심상품 컨텐츠 본문 끝 -->
-
- </div>
+<!-- 관심상품 컨텐츠 본문 끝 -->
 </div>
+</div>
+
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -87,37 +87,26 @@
         <div class="carbox-content">
           <h4 class="carbox-title">{{title}}</h4>
           <dl class="next-horizontal">
-            <dt class="pinktext stp-text">낙찰가</dt>
+            <dt class="pinktext stp-text">시작가</dt>
             <dd class="black">
-              <span>{{bids}}원</span>
+              <span>{{startPrice}}원</span>
             </dd>
           </dl>
           <dl class="next-horizontal">
-            <dt class="pinktext st-text">닉찰시간</dt>
+            <dt class="pinktext st-text">시작시간</dt>
             <dd class='black'>
-              <span>{{bidTime}}</span>
-            </dd>
-					</dl>
-					<dl class="next-horizontal">
-            <dt class="pinktext stp-text">입찰횟수</dt>
-            <dd class="black">
-              <span>{{cnt}}회</span>
-            </dd>
-          </dl>
-          </dl>
-					<dl class="next-horizontal">
-            <dt class="pinktext stp-text">낙찰자</dt>
-            <dd class="black">
-              <span>{{nickName}}</span>
+              <span>{{startTime}}</span>
             </dd>
           </dl>
         </div>
       </div>
     </div>
   </div>
+</div>
 </figure>
-									
   </script>
-  <script src="../js/mybid.js"></script>
+
+<script src="../js/mybid.js"></script>
+
 </body>
 </html>

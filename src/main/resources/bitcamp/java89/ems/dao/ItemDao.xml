@@ -39,6 +39,19 @@
     order by time asc
     limit #{startRowIndex}, #{rowSize}
   </select>
+  
+  <select id="getMyBidList" parameterType="int" resultMap="item-map">
+      select
+        i.itno
+       ,i.mno
+       ,i.titl
+       ,i.time
+       ,i.stpc
+       ,p.path
+      from item i
+      left outer join phot p on i.itno=p.itno
+      where i.mno=#{memberNo}
+  </select>
 
   <select id="getOne" parameterType="int" resultMap="item-map">
     select

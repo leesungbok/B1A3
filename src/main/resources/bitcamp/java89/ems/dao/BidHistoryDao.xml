@@ -18,10 +18,10 @@
     <result column="path" property="photoPath"/>
     <result column="time"  property="startTime"/>
     
-    <collection property="photoList" ofType="photo">
+    <!-- <collection property="photoList" ofType="photo">
       <id     column="pno"  property="photoNo"/>
       <result column="path" property="filePath"/>
-    </collection>
+    </collection> -->
   </resultMap>
 
   <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
@@ -58,8 +58,20 @@
     ]]>
   </select>
   
-  <select id="getMyBidList" parameterType="int" resultMap="bidHistory-map">
+  <!-- <select id="getMyBidList" parameterType="int" resultMap="bidHistory-map">
       select
+        i.itno
+       ,i.mno
+       ,i.titl
+       ,i.time
+       ,i.stpc
+        p.path
+      from item i
+      left outer join phot p on i.itno=p.itno
+      where i.mno=#{memberNo}
+  </select> -->
+  
+  <!-- select
         i.itno,
         i.mno,
         i.titl,
@@ -73,8 +85,7 @@
       left outer join bdhs b on i.itno=b.itno
       left outer join memb m on b.mno=m.mno
       left outer join phot p on i.itno=p.itno
-      where i.mno=#{memberNo} 
-  </select>
+      where i.mno=#{memberNo} -->
 
   <select id="getState" parameterType="map" resultType="integer">
     select

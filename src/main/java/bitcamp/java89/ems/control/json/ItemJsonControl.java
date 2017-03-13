@@ -94,4 +94,15 @@ public class ItemJsonControl {
     }
     return new AjaxResult(AjaxResult.FAIL, "관련 상품이 없습니다.");
   }
+  
+  @RequestMapping("/mypage/mybidlist")
+  public AjaxResult myBidList(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    List<Item> myBidList = itemService.getMyBidList(member.getMemberNo());
+    System.out.println(myBidList.size());
+    if (!myBidList.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, myBidList);
+    }
+    return new AjaxResult(AjaxResult.FAIL, "나의경매를 가져오는데 실패했습니다.");
+  }
 }

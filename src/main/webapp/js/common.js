@@ -170,7 +170,8 @@ $(function () {
         
         $('#communicate-btn').click(function(event) {
             $('.communicate').css('display', 'block');
-            event.preventDefault();
+            $('.navbar-toggler').click()
+            	event.preventDefault();
         });
         
         $('.communicate-close-btn').click(function(event) {
@@ -228,7 +229,7 @@ $(function () {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
-                    "buyDate": $('#buy').val(),
+//                    "buyDate": $('#buy').val(),
                     "useDay": $('#day').val(),
                     "content": $('#cont').val().replace(/\n/g, "<br>"),
                     "deal": $('#deal').val(),
