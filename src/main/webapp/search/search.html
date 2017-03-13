@@ -110,19 +110,20 @@
 	<a id='search3' class='a' href='#'>낮은가격순</a>
 	<hr class='commit'>
 	</div>
-	
-	<div id="search-bid">
+	<div class='content1'>
+	<div id="search-bid"></div>
+	<div id="nextPgBtn">다음경매 더보기</div>
 	</div>
-	
 </div>
 
 <script src="../js/context.js"></script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script id="trTemplate1" type="text/x-handlebars-template">
    <div class="col-xs-12 col-sm-4">
-      <div class="carbox">
+      <div class="carbox"  data-itno="{{itemNo}}">
         <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

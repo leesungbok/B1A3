@@ -62,34 +62,28 @@ public class ItemJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "경매등록에 성공했습니다.");
   }
   
-  @RequestMapping("/item/searchTitle")
-  public AjaxResult searchTitle(String title, HttpSession session) throws Exception {
-    List<Item> item = itemService.getSearchTitle(title);
-    
-    if (item == null) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 상품을 찾지 못하였습니다");
-    }
-    
-    session.setAttribute("title", title);
-    return new AjaxResult(AjaxResult.SUCCESS, item);
-  }
-  
-  @RequestMapping("/item/category")
-  public AjaxResult category(
-      @RequestParam (value = "categoryList", required=false) List<String> categoryList, 
+  @RequestMapping("/search/searchTitle")
+  public AjaxResult searchTitle(String title,
+      @RequestParam (value = "categoryList", required=false) List<String> categoryList,
       @RequestParam (value= "categoryByAuction") String categoryByAuction ,
       @RequestParam (value= "priceBefore", required=false) String priceBefore ,
       @RequestParam (value= "priceAfter", required=false) String priceAfter ,
-      @RequestParam (value= "search", required=false) String search
-      ) throws Exception {
-    List<Item> item = itemService.getCategory(categoryList, categoryByAuction, 
+      @RequestParam (value= "search", required=false) String search,
+      int pageNo, int pageSize) throws Exception {
+    int totalCount = itemService.getSearchCount(title, categoryList, categoryByAuction, 
         priceBefore, priceAfter, search);
+    List<Item> item = itemService.getSearchTitle(title, categoryList, categoryByAuction, 
+        priceBefore, priceAfter, search, pageNo, pageSize);
+    System.out.println(totalCount);
+    System.out.println(item);
     
-    if (item.isEmpty()) {
-      return new AjaxResult(AjaxResult.FAIL, "선택한 상품을 찾을수가 없습니다.");
-    }
     
-    return new AjaxResult(AjaxResult.SUCCESS, item);
+    HashMap<String, Object> resultMap = new HashMap<>();
+    resultMap.put("item", item);
+    resultMap.put("totalCount", totalCount);
+    System.out.println(resultMap);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, resultMap);
   }
   
   @RequestMapping("/mypage/mybidlist")

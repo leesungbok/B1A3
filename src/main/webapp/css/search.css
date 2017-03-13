@@ -16,6 +16,17 @@
     border-radius: 10px;
     border: 1px solid #9c9595;
   }
+  
+  #nextPgBtn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f32e6d;
+  color: #fff;
+  font-size: 1.5em;
+  border-radius: 24px;
+  margin-bottom: 13px;
+  cursor: pointer;
+  }
  
   h1 {
     font-size:2em;
@@ -26,6 +37,9 @@
   div.inside, div.inside1 {
     display:table; 
     width:800px;
+  }
+  div.content1 {
+  text-align: center;
   }
   
   div.category1, div.category2, div.category3,
