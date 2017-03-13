@@ -66,7 +66,7 @@
       i.cont,
       <choose>
         <when test="value == 0">
-          DATE_FORMAT(i.time + interval 3 minute, '%Y-%m-%d %H:%i') as time,
+          DATE_FORMAT(i.time + interval 30 minute, '%Y-%m-%d %H:%i') as time,
         </when>
         <otherwise>
           DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
@@ -81,7 +81,7 @@
     <choose>
       <when test="value == 0">
         <![CDATA[
-          where i.time <= now() and now() <= i.time + interval 3 minute
+          where i.time <= now() and now() <= i.time + interval 30 minute
         ]]>
       </when>
       <otherwise>

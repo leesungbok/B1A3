@@ -267,7 +267,7 @@ $(function () {
             
             var bdhs = ajaxResult.data.bdhs;
             var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 3);
+            endTime.setMinutes(endTime.getMinutes() + 30);
             var memberNo = ajaxResult.data.memberNo;
             var count = 0;
             var mybid
