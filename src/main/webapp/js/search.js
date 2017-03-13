@@ -183,7 +183,6 @@ $(function () {
              }
 			
 			var list = ajaxResult.data.item;
-			console.log(ajaxResult.data);
 	    	var parent = $('#search-bid');
 	    	var template = Handlebars.compile($('#trTemplate1').html());
 	    	var div;
@@ -194,6 +193,13 @@ $(function () {
 	    		  parent.append(div);
 	    	  }
 	    	  div.append(template(list[i]));
+	    	}
+	    	detailInfo();
+	    	
+	    	function detailInfo() {
+	    		$('.carbox').click(function(event) {
+    			location.href = clientRoot + "/info/info.html?itemNo=" + $(this).attr("data-itno");
+	    		})
 	    	}
 
 		}); // title() 검색
@@ -279,8 +285,10 @@ $(function () {
 		    	  }
 		    	  div.append(template(list[i]));
 		    	}
+		    	detailInfo();
 
 			}); // title() 검색
 	    } // 페이지 체크
 	}); // 내부 상세정보 클릭시
+	
 });
