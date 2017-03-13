@@ -1,17 +1,22 @@
 package bitcamp.java89.ems.control.json;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Member;
+import bitcamp.java89.ems.service.BidHistoryService;
 import bitcamp.java89.ems.service.MemberService;
 
 @RestController
 public class MypageJsonControl {
   @Autowired MemberService memberService;
+  @Autowired BidHistoryService bidHistoryService;
   
   @RequestMapping("/mypage/updatePhoto")
   public AjaxResult updatePhoto(String photoPath, HttpSession session) throws Exception {
@@ -45,5 +50,16 @@ public class MypageJsonControl {
       return new AjaxResult(AjaxResult.FAIL, "회원 수정 실패했습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "회원 수정 성공했습니다.");
+  }
+  
+  @RequestMapping("/mypage/mybidlist")
+  public AjaxResult myBidList(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    List<BidHistory> myBidList = bidHistoryService.getMyBidList(member.getMemberNo());
+    System.out.println(myBidList.size());
+    if (!myBidList.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, myBidList);
+    }
+    return new AjaxResult(AjaxResult.FAIL, "나의경매를 가져오는데 실패했습니다.");
   }
 }

@@ -58,19 +58,6 @@
     values(#{email}, password(#{password}), #{nickName}, #{phoneNo}, #{kakaoTalk}, #{facebook}, #{photoPath});
   </insert>
   
-  <select id="countEmail" parameterType="string" resultType="int">
-    select count(*) from memb where email=#{value}
-  </select>
-  
-  <select id="countNickName" parameterType="string" resultType="int">
-    select count(*) from memb where nknm=#{value}
-  </select>
-  
-  <select id="countPhone" parameterType="string" resultType="int">
-    select count(*) from memb where phon=#{value}
-  </select>
-  
-  
   <delete id="delete" parameterType="int">
     delete from memb where mno=#{value}
   </delete>
@@ -99,6 +86,17 @@
       phon
     from memb
     where nknm=#{nickName}
+  </select>
+  
+  <select id="getSearchMember" parameterType="String" resultMap="member-map">
+    <![CDATA[
+    select
+     mno,
+     nknm,
+     path
+    from memb
+    where nknm like concat('%',#{nickName}, '%')
+    ]]>
   </select>
 
   <update id="updatePhoto" parameterType="map">

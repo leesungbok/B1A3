@@ -37,10 +37,7 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public List<Item> getList(int pageNo, int pageSize) throws Exception {
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startRowIndex", (pageNo - 1) * pageSize);
-    paramMap.put("rowSize", pageSize);
-    return itemDao.getList(paramMap);
+    return itemDao.getList((pageNo - 1) * pageSize, pageSize);
   }
 
   @Override
@@ -69,8 +66,8 @@ public class ItemServiceImpl implements ItemService {
   }
 
   @Override
-  public Item getNowBid() throws Exception {
-    return itemDao.getNowBid();
+  public Item getNowBid(int zero) throws Exception {
+    return itemDao.getOne(zero);
   } 
 
   @Override

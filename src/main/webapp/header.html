@@ -52,19 +52,40 @@
   </div>
   
   <!-- 대화하기 시작 -->
-  <div class="communicate">
+  <div id="contbox" class="communicate">
     <div class="nickname-search">
-      <div class="search-btn"></div>
+      <a href="#" class="search-btn"></a>
       <div class="search-input">
-        <input type="text" class="form-control" placeholder="닉네임을 입력하세요.">
+        <input id="searchMember" type="text" class="form-control" placeholder="닉네임을 입력하세요.">
       </div>
       <button type="button" class="close communicate-close-btn">
         <span>&times;</span>
       </button>
     </div>
     <div class="find-friends">
-      <div class="icon-comment-empty"></div>
-      <span>닉네임 검색을 통해<br>채팅할 상대방을 찾으세요.</span>
+      <div id="nicklist" style="margin-top:-121px; margin-left:-55px;"></div>
+      <div id="clean">
+	      <div class="icon-comment-empty"></div>
+	      <div id='clean-desc'><span>닉네임 검색을 통해<br>채팅할 상대방을 찾으세요.</span>
+	      </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script id="templatelist" type="text/x-handlebars-template">
+<div class='member'>
+  <img src='../upload/{{photoPath}}' height='40px'>
+  <span>{{nickName}}</span>
+</div>
+</script>
+<script id="text-box" type="text/x-handlebars-template">
+<div class="textbox">
+  <div class="textline">
+    <textarea id="textarea"></textarea>
+    <button type="button" class="btn btn-warning">전송</button>
+  
+  </div>
+</div>
+</script>
+

@@ -231,6 +231,7 @@ body>.container {
   width: 340px;
   height: 515px;
   position: fixed;
+  margin: inherit;
   right: 6%;
   z-index: 300;
   display: none;
@@ -265,7 +266,59 @@ body>.container {
 .find-friends {
   padding: 34% 16%;
   color: #000;
-  text-align: center;
+}
+
+.member > span {
+	margin-left:5px; 
+	font-size:15px; 
+	position:relative; 
+	top:7px;
+}
+
+.member > img {
+	margin-left:22px;
+	margin-top:10px;
+}
+
+.icon-comment-empty {
+	margin-left:33px;
+	margin-top:93px;
+}
+
+#clean-desc {
+	margin-top:12px;
+	text-align:center;
+}
+#textarea {
+	margin-top:9px;
+	position:absolute;
+	z-index:20;
+	height:80px;
+	width:250px;
+	resize:none;
+	outline:none;
+	border:0; 
+	margin-left:8px;
+}
+
+.textbox > div {
+	display: inline-block;
+	width:340px;
+	height:92px;
+	position:absolute;
+	bottom:0;
+	border-top:1px solid rgba(0,0,0,0.22);
+}
+
+.textline > button {
+	margin-top:29px;
+	margin-left:271px;
+}
+
+.member {
+	height:60px; 
+	width:340px; 
+	border-bottom:1px solid rgba(0,0,0,0.22);
 }
 
 .icon-comment-empty:before {

@@ -10,6 +10,48 @@ $(function () {
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
+    	
+    	$('#contbox').draggable();
+    	
+    	// 닉네임 찾기
+	    $('.search-btn').click(function() {
+	    	var searchMember = $('#searchMember').val();
+	    	console.log(searchMember);
+	    	var param = {
+	    			nickName : searchMember
+	    	}
+	    	console.log(param);
+	    	$.get(serverRoot + '/member/searchMember.json', param , function(ajaxResult) {
+	    		if (ajaxResult.status == "fail") {
+	    			alert(ajaxResult.data);
+	    			return;
+	    		}
+	    		$('#clean').remove("div");
+	    		
+	    		var list = ajaxResult.data;
+	    		var parent = $('#nicklist');
+	    		console.log(list);
+	    		parent.children().remove();
+	    		var template = Handlebars.compile($('#templatelist').html());
+		    	for(var i = 0; i <list.length; i++){
+		    		parent.append(template(list[i]));
+		    		parent.children().last().attr('data-mno',list[i].memberNo)
+		    	}
+			    $('.member').click(function() {
+			    	parent.children().remove();
+			    	var template = Handlebars.compile($('#text-box').html());
+			    	parent.append(template());
+			    });
+			    	
+        });
+	    
+//	    $('#searchMember').keypress(function(event){
+//            if(event.keyCode == 13){
+//                location.href= clientRoot + '/member/searchMember.html?nickName=' + $('#searchMember').val();
+//            }
+//        });
+	});
+	    
     	$('#main-title').click(function(){
     	    location.href = clientRoot + '/main/main.html';
     	})
@@ -18,7 +60,8 @@ $(function () {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                    console.log(3120)
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -208,7 +251,7 @@ $(function () {
                     "startPrice": $('#stpc').val(),
                     "buyDate": $('#buy').val(),
                     "useDay": $('#day').val(),
-                    "content": $('#cont').val(),
+                    "content": $('#cont').val().replace(/\n/g, "<br>"),
                     "deal": $('#deal').val(),
                     "photoList": filePath
                     }
@@ -217,8 +260,6 @@ $(function () {
                         alert(ajaxResult.data);
                         return;
                     }
-                    
-                    console.log(ajaxResult.data)
                     swal({
                         title: "등록 완료!",
                         text: "등록하신 경매품을 확인하세요.",
@@ -230,6 +271,10 @@ $(function () {
                 }, 'json'); // post();
             }); // click()
         }
+        
+        $('.add-input > input, .glyphicon > input').popover({
+            container: 'body'
+        });
     });
 
     // 전 경매의 입찰기록 가져오기
@@ -364,3 +409,4 @@ $(function () {
         })
     }
 })
+

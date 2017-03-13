@@ -42,7 +42,6 @@
 .errormsg {
   font-size: 1.1em;
   color: #e62a4a;
-  display: none;
 }
 
 .glyphicon-ok:before {
@@ -55,6 +54,11 @@
 
 .form-group {
   height: 13%;
+}
+
+#add-btn {
+  pointer-events: none;
+  opacity: .65;
 }
 
 /* sweet-alert */

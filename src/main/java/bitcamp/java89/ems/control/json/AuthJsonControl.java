@@ -72,9 +72,4 @@ public class AuthJsonControl {
     memberService.add(member);
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
-  
-  @RequestMapping("/auth/count")
-  public AjaxResult count(String type, String data) throws Exception {
-    return new AjaxResult(AjaxResult.SUCCESS, memberService.count(type, data));
-  }
 }

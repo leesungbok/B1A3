@@ -17,6 +17,11 @@
     <result column="nknm" property="nickName"/>
     <result column="path" property="photoPath"/>
     <result column="time"  property="startTime"/>
+    
+    <collection property="photoList" ofType="photo">
+      <id     column="pno"  property="photoNo"/>
+      <result column="path" property="filePath"/>
+    </collection>
   </resultMap>
 
   <select id="getNowBidHistory" parameterType="int" resultMap="bidHistory-map">
@@ -50,6 +55,24 @@
       order by b.bids desc
       limit 5;
     ]]>
+  </select>
+  
+  <select id="getMyBidList" parameterType="int" resultMap="bidHistory-map">
+      select
+        i.itno,
+        i.mno,
+        i.titl,
+        i.time,
+        i.stpc,
+        p.path,
+        m.nknm,
+        b.bids,
+        b.time
+      from item i
+      left outer join bdhs b on i.itno=b.itno
+      left outer join memb m on b.mno=m.mno
+      left outer join phot p on i.itno=p.itno
+      where i.mno=#{memberNo} 
   </select>
 
   <select id="getState" parameterType="map" resultType="integer">

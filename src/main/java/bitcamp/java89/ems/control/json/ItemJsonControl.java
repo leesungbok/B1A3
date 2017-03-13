@@ -20,7 +20,7 @@ public class ItemJsonControl {
 
   @RequestMapping("/main/nowbid")
   public AjaxResult nowbid() throws Exception {
-    Item nowBid = itemService.getNowBid();
+    Item nowBid = itemService.getNowBid(0);
 
     if (nowBid != null) {
       return new AjaxResult(AjaxResult.SUCCESS, nowBid);
