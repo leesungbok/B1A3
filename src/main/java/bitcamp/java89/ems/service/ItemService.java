@@ -12,8 +12,6 @@ public interface ItemService {
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
   int getSize() throws Exception;
-  List<Item> getCategory(List<String> categoryList, String categoryByAuction, 
-      String priceBefore, String priceAfter, String search) throws Exception;
   List<Item> getMyBidList(int memberNo) throws Exception;
   int getSearchCount(String title, List<String> categoryList, String categoryByAuction, String priceBefore,
       String priceAfter, String search) throws Exception;
