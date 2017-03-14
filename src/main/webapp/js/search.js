@@ -2,6 +2,12 @@ $(function () {
 	
 	var param = location.href.split('?')[1].split('=')[1];
 	
+	function detailInfo() {
+        $('.carbox').click(function(event) {
+        location.href = clientRoot + "/info/info.html?itemNo=" + $(this).attr("data-itno");
+        })
+    }
+	
 	$(".category1").click(function () {
 		if ($("#test1").is(":checked")) {
 			$("#test1").prop("checked", false); 
@@ -195,13 +201,6 @@ $(function () {
 	    	  div.append(template(list[i]));
 	    	}
 	    	detailInfo();
-	    	
-	    	function detailInfo() {
-	    		$('.carbox').click(function(event) {
-    			location.href = clientRoot + "/info/info.html?itemNo=" + $(this).attr("data-itno");
-	    		})
-	    	}
-
 		}); // title() 검색
     }
 	

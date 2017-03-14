@@ -96,3 +96,29 @@
     </div>
   </div>
 </div>
+
+<div id="image-popup" class="modal">
+  <span class="close">&times;</span>
+  <div id="detail2-photo" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#mycarousel" data-slide-to="1"></li>
+      <li data-target="#mycarousel" data-slide-to="2"></li>
+      <li data-target="#mycarousel" data-slide-to="3"></li>
+      <li data-target="#mycarousel" data-slide-to="4"></li>
+    </ol>
+
+    <div id="detail2-imgs" class="carousel-inner" role="listbox">
+      <div class="item nb-img1"><img></div>
+      <div class="item nb-img2"><img></div>
+      <div class="item nb-img3"><img></div>
+      <div class="item nb-img4"><img></div>
+    </div>
+
+    <a class="left carousel-control" href="" role="button" data-slide="prev" onclick="$('#detail2-photo').carousel('prev')">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="right carousel-control" href="" role="button" data-slide="next" onclick="$('#detail2-photo').carousel('next')">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>

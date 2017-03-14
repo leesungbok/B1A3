@@ -20,6 +20,8 @@
 .detail-info span, .relation>span {
   font-size: 2.5em;
   font-weight: 300;
+  display: inherit;
+  margin-bottom: 20px;
 }
 
 .sellrcontents {
@@ -110,6 +112,12 @@
     margin-left: 11px;
     font-size: 1.4em;
     display: inline;
+}
+
+.auction-ends {display: none;}
+
+#record {
+  cursor: pointer;
 }
 
 /* Buttons */
@@ -284,7 +292,9 @@
     background: #FF0000;
 }
 
-#start-time-text {}
+.carbox {
+  cursor: pointer;
+}
 
 /* Sections */
 .section {
@@ -329,24 +339,6 @@
   to {transform:scale(1)}
 }
 
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: rgba(255, 255, 255, .15);
-  font-size: 10em;
-  z-index: 9999;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
   #modal-imgs {
@@ -367,4 +359,38 @@
   margin-top: 30px;
   margin-bottom: 30px;
   color: #f32e6d;
+}
+
+#bidHistory {
+  text-align: center;
+  padding: 0!important;
+}
+
+#bidHistory:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+#bidHistory .modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#bdhsModalLabel {
+  text-align: center;  font-weight: bold;  margin: 15px 0;  color: #000;
+}
+
+#bdhsTr th {
+  font-size: 1.2em;
+}
+
+#pinktext {  color: #f54e83;  font-weight: 600;
+}
+
+#bidHistory .modal-body {
+  font-size: 1.1em;
 }

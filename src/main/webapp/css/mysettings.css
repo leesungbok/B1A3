@@ -82,6 +82,11 @@ body>.container {
 }
 
 .desc {
+  margin-left: 20px !important;
+  padding-top: 9px;
+}
+
+.desc2 {
   margin-left: 122px !important;
   padding-top: 9px;
 }

@@ -50,7 +50,7 @@ public class SchedulingControl {
             cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
         System.out.println(bdhs.get(0).getNickName());
         System.out.println(text);
-        /*sms(bdhs.get(0).getNickName(), text);*/
+        sms(bdhs.get(0).getNickName(), text);
         cal.add(Calendar.MINUTE, -5);
       }
       
@@ -58,7 +58,7 @@ public class SchedulingControl {
       cal.add(Calendar.SECOND, -2);
       updatebidHistory(cal, now, bdhs);
     } else {
-      /*System.out.println("전 경매의 입찰기록이 없습니다.");*/
+      System.out.println("전 경매의 입찰기록이 없습니다.");
     }
   }
 
@@ -74,7 +74,7 @@ public class SchedulingControl {
               cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
           System.out.println(bdhs.get(i+1).getNickName());
           System.out.println(text);
-          /*sms(bdhs.get(i).getNickName(), text);*/
+          sms(bdhs.get(i).getNickName(), text);
         }
       } else {
         cal.add(Calendar.MINUTE, 5);

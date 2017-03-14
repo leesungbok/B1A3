@@ -52,15 +52,63 @@ function orderPayment() {
         js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
+    
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
         $('#header').html(result);
+        
+        $('#contbox').draggable();
+        
+        // 닉네임 찾기
+        $('.search-btn').click(function() {
+            var searchMember = $('#searchMember').val();
+            console.log(searchMember);
+            var param = {
+                    nickName : searchMember
+            }
+            console.log(param);
+            $.get(serverRoot + '/member/searchMember.json', param , function(ajaxResult) {
+                if (ajaxResult.status == "fail") {
+                    alert(ajaxResult.data);
+                    return;
+                }
+                $('#clean').remove("div");
+                
+                var list = ajaxResult.data;
+                var parent = $('#nicklist');
+                console.log(list);
+                parent.children().remove();
+                var template = Handlebars.compile($('#templatelist').html());
+                for(var i = 0; i <list.length; i++){
+                    parent.append(template(list[i]));
+                    parent.children().last().attr('data-mno',list[i].memberNo)
+                }
+                $('.member').click(function() {
+                    parent.children().remove();
+                    var template = Handlebars.compile($('#text-box').html());
+                    parent.append(template());
+                });
+                    
+        });
+            
+    });
+        $('#searchMember').keypress(function(event){
+            if(event.keyCode == 13){
+                console.log('gkgjk');
+                $('.search-btn').click();
+            }
+        });
+        
+        $('#main-title').click(function(){
+            location.href = clientRoot + '/main/main.html';
+        })
+        
         $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
             if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid, .social-btn-dissolve.heart').click(function() {
+                $('.navbar-menu, #addbid-btn, .bidding-btn, #detail-bid').click(function() {
+                    console.log(3120)
                     location.href = clientRoot + '/auth/login.html';
                     event.preventDefault();
                     
@@ -157,12 +205,13 @@ function orderPayment() {
         })
         
         $('#search-btn').on('click', function(event) {
-            
-            var param =  {
-                    "title" : $('#searchTitle').val()
+            location.href= clientRoot + '/search/search.html?title=' + $('#searchTitle').val();
+        });
+        
+        $('#searchTitle').keypress(function(event){
+            if(event.keyCode == 13){
+                location.href= clientRoot + '/search/search.html?title=' + $('#searchTitle').val();
             }
-            location.href= clientRoot + '/search/search.html?title=' + param.title; 
-            
         });
         
         $('#communicate-btn').click(function(event) {
@@ -174,29 +223,7 @@ function orderPayment() {
             $('.communicate').css('display', 'none');
         });
     })
-        
-    $.get('../submenu.html', function (result) {
-        $('#submenu').html(result);
- 
-        /*var submenu = location.search.split("?")[1].split("=")[1];*/
-        $('#mypage').click(function (e) {
-              e.preventDefault();
-             location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
-        }); 
-
-        $('#mybidding').click(function (e) {
-              e.preventDefault();
-             location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
-        }); 
-
-        $('#myoption').click(function (e) {
-              e.preventDefault();
-             location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
-        }); 
-        
-        /*$("#"+submenu).parent().addClass('active');*/
-         
-    })
+    
     
     // add.html을 가져와서 붙인다.
     $.get(clientRoot + '/add.html', function (result) {
@@ -243,21 +270,22 @@ function orderPayment() {
                 jQuery.ajaxSettings.traditional = true;
                 
                 $.post(serverRoot + '/main/add.json',
-                {
+                    {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
                     "buyDate": $('#buy').val(),
                     "useDay": $('#day').val(),
-                    "content": $('#cont').val(),
+                    "content": $('#cont').val().replace(/\n/g, "<br>"),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                } , function(ajaxResult) {
+                    }
+                , function(ajaxResult) {
                     if (ajaxResult.status != "success") {
                         alert(ajaxResult.data);
                         return;
                     }
-                    console.log(ajaxResult.data)
+                    var detailNo = ajaxResult.data;
                     swal({
                         title: "등록 완료!",
                         text: "등록하신 경매품을 확인하세요.",
@@ -265,10 +293,14 @@ function orderPayment() {
                         showConfirmButton: false,
                         type: "success"
                     });
-                    setTimeout(function(){location.href= clientRoot +  '/main/main.html'} , 2250);
+                    setTimeout(function(){location.href= clientRoot +  '/info/info.html?itemNo=' + detailNo} , 2250);
                 }, 'json'); // post();
             }); // click()
         }
+        
+        $('.add-input > input, .glyphicon > input').popover({
+            container: 'body'
+        });
     }); // common.js 끝
 
     $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
@@ -294,6 +326,7 @@ function orderPayment() {
             return;
         }
         var item = ajaxResult.data;
+        console.log(item)
         $('#seller').text(item.nickName);
         $('#product-img').attr('src', clientRoot + "/upload/" + item.photoList[0].filePath);
         $('#title').text(item.title);
