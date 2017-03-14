@@ -9,7 +9,7 @@ public interface ItemService {
   List<Item> getList(String categ, int itemNo) throws Exception;
   Item getNowBid(int zero) throws Exception;
   Item getDetail(int itemNo) throws Exception;
-  int add(Item item) throws Exception;
+  int add(Item item, int type) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;
   int getSize() throws Exception;

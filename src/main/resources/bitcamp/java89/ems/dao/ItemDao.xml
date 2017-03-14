@@ -90,26 +90,34 @@
     </choose>
   </select>
 
-  <insert id="insert" parameterType="item"
-  useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-    insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-    select
-      #{memberNo},
-      #{title},
-      #{category},
-      #{buyDate},
-      #{useDay},
-      #{deal},
-      #{content},
-      #{startPrice},
-      time + interval 30 minute
-    from item
-    order by time desc
-    limit 1;
+  <insert id="insert" useGeneratedKeys="true" keyColumn="itno" keyProperty="item.itemNo">
+    <choose>
+      <when test="type == 0">
+        insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
+        values(#{item.memberNo},#{item.title}, #{item.category}, #{item.buyDate},
+        #{item.useDay}, #{item.deal}, #{item.content}, now(), #{item.startPrice})
+      </when>
+      <otherwise>
+        insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
+        select
+          #{item.memberNo},
+          #{item.title},
+          #{item.category},
+          #{item.buyDate},
+          #{item.useDay},
+          #{item.deal},
+          #{item.content},
+          #{item.startPrice},
+          time + interval 30 minute
+        from item
+        order by time desc
+        limit 1;
+      </otherwise>
+    </choose>
   </insert>
 
   <insert id="insertPhoto" parameterType="item">
-    insert into phot(itno,path) 
+    insert into phot(itno,path)
     values
     <foreach collection="photoList" item="photo" separator=",">
       (#{itemNo}, #{photo.filePath})

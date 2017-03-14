@@ -13,7 +13,7 @@ public interface ItemDao {
   Item getOne(int itemNo) throws Exception;
   int countByNo(int memberNo) throws Exception;
   int countAll() throws Exception;
-  int insert(Item item) throws Exception;
+  int insert(@Param("item") Item item, @Param("type") int type) throws Exception;
   int insertPhoto(Item item) throws Exception;
   int update(Item item) throws Exception;
   int delete(int itemNo) throws Exception;

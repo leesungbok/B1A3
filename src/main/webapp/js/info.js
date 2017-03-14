@@ -30,8 +30,6 @@ $(function() {
         }
         
         var item = ajaxResult.data;
-        
-        
         var template = Handlebars.compile($('#info-Template').html());
         $('.container').prepend(template(item));
         $('#detail-photo .item:first-child').addClass('active');
@@ -133,8 +131,8 @@ $(function() {
             "categ" : item.category,
             "itemNo" : item.itemNo
         }, function(ajaxResult) {
+            // 관련 상품 정보가 없을경우
             if (ajaxResult.status != 'success') {
-                console.log(ajaxResult.data)
                 $('.relation').remove();
                 return;
             }

@@ -178,7 +178,6 @@ $(function () {
         });
     })
     
-    
     // add.html을 가져와서 붙인다.
     $.get(clientRoot + '/add.html', function (result) {
         $('.bid-regist').html(result);
@@ -214,43 +213,53 @@ $(function () {
             
             // 경매등록 버튼클릭시
             $('#add-btn').click(function() {
-                var getFilePath = $(".file-path");
-                var filePath = [];
-                
-                for(var i = 0; i < getFilePath.length; i++){
-                    filePath.push($(getFilePath[i]).val());
-                }
-                
-                // jQuery 로 ajax 처리시 data 형식 중 배열(array)값을 넘기려면
-                // 다음과 같이 세팅값을 바꿔 주어야 한다.
-                jQuery.ajaxSettings.traditional = true;
-                
-                $.post(serverRoot + '/main/add.json',
-                {
-                    "title": $('#titl').val(),
-                    "category": $('#categ').val(),
-                    "startPrice": $('#stpc').val(),
-                    "buyDate": $('#buy').val(),
-                    "useDay": $('#day').val(),
-                    "content": $('#cont').val().replace(/\n/g, "<br>"),
-                    "deal": $('#deal').val(),
-                    "photoList": filePath
-                }
-                , function(ajaxResult) {
-                    if (ajaxResult.status != "success") {
-                        alert(ajaxResult.data);
-                        return;
+                var type
+                $.getJSON(serverRoot + "/main/nowbid.json", function(ajaxResult) {
+                    // 현재경매가 없을시
+                    if (ajaxResult.status != 'success') {
+                        type = 0;
+                    } else {
+                        type = 1;
                     }
-                    var detailNo = ajaxResult.data;
-                    swal({
-                        title: "등록 완료!",
-                        text: "등록하신 경매품을 확인하세요.",
-                        timer: 2250,
-                        showConfirmButton: false,
-                        type: "success"
-                    });
-                    setTimeout(function(){location.href= clientRoot +  '/info/info.html?itemNo=' + detailNo} , 2250);
-                }, 'json'); // post();
+                    
+                    var getFilePath = $(".file-path");
+                    var filePath = [];
+                    
+                    for(var i = 0; i < getFilePath.length; i++){
+                        filePath.push($(getFilePath[i]).val());
+                    }
+                    
+                    // jQuery 로 ajax 처리시 data 형식 중 배열(array)값을 넘기려면
+                    // 다음과 같이 세팅값을 바꿔 주어야 한다.
+                    jQuery.ajaxSettings.traditional = true;
+                    
+                    $.post(serverRoot + '/main/add.json',
+                    {
+                        "title": $('#titl').val(),
+                        "category": $('#categ').val(),
+                        "startPrice": $('#stpc').val(),
+                        "buyDate": $('#buy').val(),
+                        "useDay": $('#day').val(),
+                        "content": $('#cont').val().replace(/\n/g, "<br>"),
+                        "deal": $('#deal').val(),
+                        "photoList": filePath,
+                        "type": type
+                    }, function(ajaxResult) {
+                        if (ajaxResult.status != "success") {
+                            alert(ajaxResult.data);
+                            return;
+                        }
+                        var detailNo = ajaxResult.data;
+                        swal({
+                            title: "등록 완료!",
+                            text: "등록하신 경매품을 확인하세요.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                        setTimeout(function(){location.href= clientRoot +  '/info/info.html?itemNo=' + detailNo} , 2250);
+                    }, 'json'); // post();
+                });
             }); // click()
         }
         
@@ -297,7 +306,8 @@ $(function () {
             autoclose: true,
             format: "yyyy-mm-dd",
             endDate: '+0d',
-            todayHighlight: true
+            todayHighlight: true,
+            orientation: "bottom auto"
         }).on('hide', function() {
             if ($(this).val() == '') {
                 $('#'+this.id+'+span').css('color', '#f32e6d');
