@@ -42,13 +42,12 @@ $(function () {
 			    	var template = Handlebars.compile($('#text-box').html());
 			    	parent.append(template());
 			    });
-			    	
+			   	
         });
 	    	
 	});
 	    $('#searchMember').keypress(function(event){
 	    	if(event.keyCode == 13){
-	    		console.log('gkgjk');
 	    		$('.search-btn').click();
 	    	}
 	    });
