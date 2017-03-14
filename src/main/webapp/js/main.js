@@ -99,8 +99,6 @@ $(function () {
                         $('#l').val(startPrice);
                         $('#l').attr('data-atLeastBids', startPrice)
                         $('.atLeastBids').text(startPrice);
-                        console.log(nowbid.nickName);
-                        console.log(nickName);
                         if (nowbid.nickName == nickName) {
                             $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
                             $('.bidding-btn, #detail-bid').css('opacity', '.65');

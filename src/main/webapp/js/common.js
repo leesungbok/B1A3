@@ -208,6 +208,8 @@ $(function () {
                         value: data.response.data[i]
                     }).appendTo("#file-selector");
                 }
+                $('.file-input>.btn-file').remove();
+                errorCheck();
             })/*.on('filesuccessremove', function(event, id, data, previewId, index) {
         });*/
             
@@ -225,16 +227,16 @@ $(function () {
                 jQuery.ajaxSettings.traditional = true;
                 
                 $.post(serverRoot + '/main/add.json',
-                    {
+                {
                     "title": $('#titl').val(),
                     "category": $('#categ').val(),
                     "startPrice": $('#stpc').val(),
-//                    "buyDate": $('#buy').val(),
+                    "buyDate": $('#buy').val(),
                     "useDay": $('#day').val(),
                     "content": $('#cont').val().replace(/\n/g, "<br>"),
                     "deal": $('#deal').val(),
                     "photoList": filePath
-                    }
+                }
                 , function(ajaxResult) {
                     if (ajaxResult.status != "success") {
                         alert(ajaxResult.data);
@@ -253,9 +255,81 @@ $(function () {
             }); // click()
         }
         
-        $('.add-input > input, .glyphicon > input').popover({
-            container: 'body'
+        // 경매등록 널체크 및 유효성 검사
+        var addValue, $this, span
+        $('.add-input>input').keyup(function() {
+            addValue = $(this).val();
+            $span = $('#'+this.id+'+span');
+            $span.css('color', '#f32e6d');
+            if (addValue == '') {
+                $span.text('필수 입력 항목입니다.');
+                errorCheck();
+                return;
+            }
+            switch(this.id) {
+            case 'titl':
+                if (6 > addValue.length || addValue.length > 15) {
+                    $span.text('최소 6자, 최대 15자 까지 가능합니다.');
+                } else {
+                    $span.text('');
+                }
+                break;
+            case 'stpc':
+                if (1000 > addValue || addValue > 1000000) {
+                    $span.text('1000원 이상 100만원 이하 가능합니다.');
+                } else {
+                    $span.text('');
+                }
+                break;
+            case 'day':
+                if (addValue > 1000) {
+                    $span.text('최대 1000일까지 가능합니다.');
+                } else {
+                    $span.text('');
+                }
+                break;
+            }
+            errorCheck();
+        })
+        
+        // 구입시기
+        $('#buy').datepicker({
+            language: "kr",
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            endDate: '+0d',
+            todayHighlight: true
+        }).on('hide', function() {
+            if ($(this).val() == '') {
+                $('#'+this.id+'+span').css('color', '#f32e6d');
+                $('#'+this.id+'+span').text('필수 입력 항목입니다.');
+            } else {
+                $('#'+this.id+'+span').text('');
+                errorCheck();
+            }
         });
+        
+        // 상세설명
+        $('#cont').keyup(function() {
+            var content = $(this).val();
+            /*$(this).height(((content.split('\n').length + 1) * 1.5) + 'em');*/
+            $('#counter').html(content.length + '/500');
+        })
+        $('#cont').keyup();
+        
+        // 등록버튼 클릭가능 여부설정
+        function errorCheck() {
+            $('.add-error-text').each(function () {
+                if ($(this).text() != '' || $('.file-path').val() == undefined) {
+                    $('#add-btn').css('pointer-events', 'none');
+                    $('#add-btn').css('opacity', '.65');
+                    return false;
+                } else {
+                    $('#add-btn').css('pointer-events', 'auto');
+                    $('#add-btn').css('opacity', '1');
+                }
+            })
+        }
     });
 
     // 전 경매의 입찰기록 가져오기
@@ -267,7 +341,7 @@ $(function () {
             
             var bdhs = ajaxResult.data.bdhs;
             var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 30);
+            endTime.setMinutes(endTime.getMinutes() + 3);
             var memberNo = ajaxResult.data.memberNo;
             var count = 0;
             var mybid
