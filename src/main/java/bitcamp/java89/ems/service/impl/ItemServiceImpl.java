@@ -17,7 +17,7 @@ public class ItemServiceImpl implements ItemService {
   @Override
   public int add(Item item) throws Exception {
     int count = itemDao.insert(item);
-
+    
     if (item.getPhotoList().size() > 0) {
       itemDao.insertPhoto(item);
     }
