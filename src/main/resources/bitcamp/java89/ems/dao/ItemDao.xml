@@ -223,32 +223,32 @@
       left outer join phot p on i.itno=p.itno
     <where> 
       titl like concat('%', #{title}, '%')
-	    <if test="categoryByAuction == 'true'">
-	       <![CDATA[
-	       and time + interval 30 minute > now()
-	         ]]>
-	    </if>
-	    <if test="categoryByAuction == 'false'">
-	       <![CDATA[
-	      and time + interval 30 minute < now()
-	       ]]>
-	    </if>
-	    <if test="priceBefore !=null ">
-	      <![CDATA[
-	      and stpc >= #{priceBefore} 
-	      ]]>
-	    </if> 
-	    <if test="priceAfter !=null">
-	      <![CDATA[
-	      and stpc <= #{priceAfter}
-	      ]]>
-	    </if> 
-	    <if test= 'categoryList.size != 0 '>
-	      and categ in
-	      <foreach collection="categoryList" item="category" index="index" separator="," open="(" close=")">
-	        #{category}
-	      </foreach>
-	     </if>
+      <if test="categoryByAuction == 'true'">
+         <![CDATA[
+         and time + interval 30 minute > now()
+           ]]>
+      </if>
+      <if test="categoryByAuction == 'false'">
+         <![CDATA[
+        and time + interval 30 minute < now()
+         ]]>
+      </if>
+      <if test="priceBefore !=null ">
+        <![CDATA[
+        and stpc >= #{priceBefore} 
+        ]]>
+      </if> 
+      <if test="priceAfter !=null">
+        <![CDATA[
+        and stpc <= #{priceAfter}
+        ]]>
+      </if> 
+      <if test= 'categoryList.size != 0 '>
+        and categ in
+        <foreach collection="categoryList" item="category" index="index" separator="," open="(" close=")">
+          #{category}
+        </foreach>
+       </if>
     </where>
     <if test="search == 'time'">
       order by time asc
