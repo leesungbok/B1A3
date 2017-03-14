@@ -55,11 +55,11 @@ public class ItemJsonControl {
   public AjaxResult add(Item item, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
     item.setMemberNo(member.getMemberNo());
-
-    if (itemService.add(item) == 0) {
+    int itemNo = itemService.add(item);
+    if (itemNo == 0) {
       return new AjaxResult(AjaxResult.FAIL, "경매등록에 실패했습니다.");
     }
-    return new AjaxResult(AjaxResult.SUCCESS, "경매등록에 성공했습니다.");
+    return new AjaxResult(AjaxResult.SUCCESS, itemNo);
   }
   
   @RequestMapping("/search/searchTitle")
@@ -84,5 +84,25 @@ public class ItemJsonControl {
     System.out.println(resultMap);
     
     return new AjaxResult(AjaxResult.SUCCESS, resultMap);
+  }
+  
+  @RequestMapping("/item/relation")
+  public AjaxResult lisyByCateg(String categ, int itemNo) throws Exception {
+    List<Item> list = itemService.getList(categ, itemNo);
+    if (!list.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, list);
+    }
+    return new AjaxResult(AjaxResult.FAIL, "관련 상품이 없습니다.");
+  }
+  
+  @RequestMapping("/mypage/mybidlist")
+  public AjaxResult myBidList(HttpSession session) throws Exception {
+    Member member = (Member)session.getAttribute("member");
+    List<Item> myBidList = itemService.getMyBidList(member.getMemberNo());
+    System.out.println(myBidList.size());
+    if (!myBidList.isEmpty()) {
+      return new AjaxResult(AjaxResult.SUCCESS, myBidList);
+    }
+    return new AjaxResult(AjaxResult.FAIL, "나의경매를 가져오는데 실패했습니다.");
   }
 }

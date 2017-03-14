@@ -16,13 +16,14 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public int add(Item item) throws Exception {
-    int count = itemDao.insert(item);
     
+    itemDao.insert(item);
+
     if (item.getPhotoList().size() > 0) {
       itemDao.insertPhoto(item);
     }
 
-    return count;
+    return item.getItemNo();
   }
 
   @Override
@@ -87,6 +88,14 @@ public class ItemServiceImpl implements ItemService {
     paramMap.put("search", search);
     return itemDao.getSearchCount(paramMap);
   }
-
-
+  
+  @Override
+  public List<Item> getMyBidList(int memberNo) throws Exception {
+    return itemDao.getMyBidList(memberNo);
   }
+
+  @Override
+  public List<Item> getList(String categ, int itemNo) throws Exception {
+    return itemDao.getListByCateg(categ, itemNo);
+  }
+}

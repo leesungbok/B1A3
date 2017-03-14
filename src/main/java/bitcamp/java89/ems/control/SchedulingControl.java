@@ -57,8 +57,6 @@ public class SchedulingControl {
       cal.add(Calendar.MINUTE, 5);
       cal.add(Calendar.SECOND, -2);
       updatebidHistory(cal, now, bdhs);
-    } else {
-      /*System.out.println("전 경매의 입찰기록이 없습니다.");*/
     }
   }
 
@@ -82,7 +80,7 @@ public class SchedulingControl {
     }
   }
 
-  private void sms(String nickName, String text) throws Exception {
+  /*private void sms(String nickName, String text) throws Exception {
     Message coolsms = new Message("NCS58B4FDA4F1C07", "51005CD999726FE18642C3B34BA2FA90");
 
     HashMap<String, String> params = new HashMap<String, String>();
@@ -99,5 +97,5 @@ public class SchedulingControl {
       System.out.println(e.getMessage());
       System.out.println(e.getCode());
     }
-  }
+  }*/
 }

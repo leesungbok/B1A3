@@ -49,7 +49,6 @@ $(function () {
            
             $('div[data-target="#detail"]').click(function() {
         		$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	    	/*console.log(ajaxResult)*/
         	        var member = ajaxResult.data;
         	
         			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -88,6 +87,7 @@ $(function () {
             // 현재 경매정보에 대한 입찰기록
             (function getBidHistory() {
                 $.getJSON(serverRoot + '/bidhistory/nowbidhistory.json', {"itemNo" : nowbid.itemNo}, function(ajaxResult) {
+                    var nickName = ajaxResult.data.nickName
                     if (ajaxResult.status != "success") {
                         if ($('.desc-non-record').css('display') == 'block') {
                             return;
@@ -99,6 +99,10 @@ $(function () {
                         $('#l').val(startPrice);
                         $('#l').attr('data-atLeastBids', startPrice)
                         $('.atLeastBids').text(startPrice);
+                        if (nowbid.nickName == nickName) {
+                            $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
+                            $('.bidding-btn, #detail-bid').css('opacity', '.65');
+                        }
                         return;
                     }
                     
@@ -107,7 +111,6 @@ $(function () {
                         return;
                     }
                     
-                    var nickName = ajaxResult.data.nickName
                     
                     // 현재가
                     var bids = bdhs[0].bids;
@@ -150,7 +153,7 @@ $(function () {
                     }
                     
                     $('.desc-non-record').css('display', 'none');
-                    if (bdhs[0].nickName == nickName || atLeastBids == 10000000) {
+                    if (bdhs[0].nickName == nickName || atLeastBids == 10000000 || nowbid.nickName == nickName) {
                         $('.bidding-btn, #detail-bid').css('pointer-events', 'none');
                         $('.bidding-btn, #detail-bid').css('opacity', '.65');
                     } else {
@@ -223,10 +226,9 @@ $(function () {
                             parent.append(div);
                         }
                         div.append(template(list[i]));
+                        $('div[data-itno="' + list[i].itemNo + '"] .item:first-child').addClass('active');
                     }
                     nextBidGrantEvent();
-                    
-                    $('.next-bid-photos .item:first-child').addClass('active');
                     
                     var totalCount = ajaxResult.data.totalCount
                     var maxPageNo = parseInt(totalCount / (pageSize/4));
@@ -367,12 +369,88 @@ $(function () {
                     });
                 }, 'json'); // post();
             })
+            
+            // 현재경매 이미지 크게보기
+            for (var i = 1; i < 5; i++) {
+                $('.nb-img' + i + '>img').attr('src', clientRoot + '/upload/' + nowbid.photoList[i-1].filePath);
+            }
+            
+            var modal = $('#image-popup');
+            var modalImg = $('#img01');
+            var className
+            $('#detail-photo img').click(function() {
+                className = $(this).attr("class");
+                $('#detail2-imgs .' + className +
+                ', #detail2-photo li[data-slide-to="' + className.charAt(className.length-1) + '"]').addClass('active');
+                modal.css('display', 'block');
+            })
+            
+            $('.close').click(function() {
+                modal.css('display', 'none');
+                $('#detail2-imgs div, li[data-target="#mycarousel"]').removeClass('active');
+            })
+            
+            var $item = $('#detail2-photo .item');
+            $item.height($(window).height());
+            $item.addClass('full-screen');
+            
+            $('#detail2-imgs img').each(function() {
+                var $src = $(this).attr('src');
+                $(this).parent().css({
+                    'background-image' : 'url(' + $src + ')',
+                });
+                $(this).remove();
+            });
+            
+            $(window).on('resize', function (){
+                $item.height($(window).height());
+            });
+            
+            $('.carousel-control').click(function() {
+                event.preventDefault();
+            })
         })
-    })
+    }) // 현재경매 정보 끝
     
     function nextBidGrantEvent() {
         $('.carbox').click(function(event) {
-            location.href = clientRoot + "/info/info.html?itemNo=" + $(this).attr('data-itno');
+            var detailNo = $(this).attr('data-itno');
+            $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+                if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+                    location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;
+                    return;
+                }
+                
+                var member = ajaxResult.data;
+                
+                var param = {
+                    memberNo : member.memberNo,
+                    itemNo : detailNo,
+                    type : 2
+                }
+                
+                $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                     var count = ajaxResult.data
+                     
+                     if (count == null) {
+                         $.post('../mypage/add.json',param ,function(ajaxResult) {
+                             if (ajaxResult.status != "success") {
+                                 alert(ajaxResult.data);
+                                 return;
+                             } 
+                         });
+                     } else if(count == 1) {
+                         param.type = 3;
+                         $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                             if (ajaxResult.status != "success") { 
+                                 alert(ajaxResult.data);
+                                 return;
+                             }
+                         })
+                     }
+                     location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;
+                 });
+            });
         })
     }
     
