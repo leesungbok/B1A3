@@ -289,6 +289,7 @@ $(function () {
                      			}); // getJSON()
                              } else if(count == 2) {
                             	 param.type = 3;
+                            	 console.log(parma.type);
                                  
                             	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                       				if (ajaxResult.status != "success") { 

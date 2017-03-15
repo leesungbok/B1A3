@@ -275,6 +275,9 @@ body>.container {
 	top:7px;
 }
 
+.member:hover {
+	cursor: pointer;
+}
 .member > img {
 	margin-left:22px;
 	margin-top:10px;

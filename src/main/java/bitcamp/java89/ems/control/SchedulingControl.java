@@ -58,7 +58,7 @@ public class SchedulingControl {
       cal.add(Calendar.SECOND, -2);
       updatebidHistory(cal, now, bdhs);
     } else {
-      System.out.println("전 경매의 입찰기록이 없습니다.");
+//      System.out.println("전 경매의 입찰기록이 없습니다.");
     }
   }
 

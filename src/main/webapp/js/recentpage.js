@@ -28,6 +28,10 @@ $(function() {
 				location.href = 'recentpage.html';
 			}); // getJSON()
 		}); // click()
+		$('.searcha').click(function() {
+			var itemNo = $(this).attr('data-itemNo');
+			location.href = clientRoot + '/info/info.html?itemNo=' + itemNo;
+		}); // click()
 	});
 });
 //});

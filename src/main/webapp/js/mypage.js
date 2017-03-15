@@ -28,6 +28,10 @@ $(function() {
 				location.href = clientRoot + '/mypage/mypage.html?submenu=mypage';
 			}); // getJSON()
 		}); // click()
+		$('.searcha').click(function() {
+			var itemNo = $(this).attr('data-itemNo');
+			location.href = clientRoot + '/info/info.html?itemNo=' + itemNo;
+		}); // click()
 	});
 		
 		$.get('../submenu.html', function (result) {

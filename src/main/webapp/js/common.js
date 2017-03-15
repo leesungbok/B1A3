@@ -15,12 +15,12 @@ $(function () {
     	
     	// 닉네임 찾기
 	    $('.search-btn').click(function() {
+			$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+			var me = ajaxResult.data;
 	    	var searchMember = $('#searchMember').val();
-	    	console.log(searchMember);
 	    	var param = {
 	    			nickName : searchMember
 	    	}
-	    	console.log(param);
 	    	$.get(serverRoot + '/member/searchMember.json', param , function(ajaxResult) {
 	    		if (ajaxResult.status == "fail") {
 	    			alert(ajaxResult.data);
@@ -30,26 +30,28 @@ $(function () {
 	    		
 	    		var list = ajaxResult.data;
 	    		var parent = $('#nicklist');
-	    		console.log(list);
 	    		parent.children().remove();
 	    		var template = Handlebars.compile($('#templatelist').html());
 		    	for(var i = 0; i <list.length; i++){
-		    		parent.append(template(list[i]));
-		    		parent.children().last().attr('data-mno',list[i].memberNo)
+		    		if (list[i].memberNo != me.memberNo) {
+		    			parent.append(template(list[i]));
+		    			parent.children().last().attr('data-mno',list[i].memberNo)
+		    		}
 		    	}
 			    $('.member').click(function() {
 			    	parent.children().remove();
 			    	var template = Handlebars.compile($('#text-box').html());
 			    	parent.append(template());
 			    });
-			   	
+	    	}); 	
         });
 	    	
 	});
 	    $('#searchMember').keypress(function(event){
 	    	if(event.keyCode == 13){
 	    		$('.search-btn').click();
-	    	}
+	    		}
+	    	
 	    });
 	    
     	$('#main-title').click(function(){
