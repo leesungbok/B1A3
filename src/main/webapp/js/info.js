@@ -9,7 +9,7 @@ $(function() {
         
         var nowItemNo = ajaxResult.data.itemNo;
         if (nowItemNo == itemNo) {
-            location.href = clientRoot + '/main/main.html'
+            location.href = clientRoot + '/main/main.html';
         }
     });
     
@@ -23,7 +23,7 @@ $(function() {
                 text: ajaxResult.data,
                 confirmButtonText: "확인",
                 confirmButtonColor: "#f32e6d"
-            }, function(){
+            }, function() {
                 history.back();
             })
             return;
@@ -121,7 +121,9 @@ $(function() {
         })
         
         // 관련 상품 정보를 가져온다.
-        getRelatedItems(item) 
+        getRelatedItems(item)
+        
+        $('.container').css('display', 'block');
     });
     
     // 관련 상품 정보를 가져온다.

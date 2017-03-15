@@ -32,7 +32,16 @@ public class ItemServiceImpl implements ItemService {
 
   @Override
   public int delete(int itemNo) throws Exception {
-    return itemDao.delete(itemNo);
+    itemDao.deletePhoto(itemNo);
+    itemDao.deleteInter(itemNo);
+    
+    int count = itemDao.delete(itemNo);
+    int highestItemNo = itemDao.getHighestItemNo();
+    
+    for (int i = itemNo+1; i <= highestItemNo; i++) {
+      itemDao.updateStartTime(i);
+    }
+    return count;
   }
 
   @Override

@@ -1,4 +1,6 @@
 $(function() {
+    setTimeout(function() { $('#email').focus() }, 200);
+    
     var kakaoName = sessionStorage.getItem('kakao-name')
     var kakaoId = sessionStorage.getItem('kakao-id')
     var fcbkName = sessionStorage.getItem('fcbk-name');

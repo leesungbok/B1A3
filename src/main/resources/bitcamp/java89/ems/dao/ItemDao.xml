@@ -39,7 +39,7 @@
     order by time asc
     limit #{startRowIndex}, #{rowSize}
   </select>
-  
+
   <select id="getMyBidList" parameterType="int" resultMap="item-map">
       select
         i.itno
@@ -58,6 +58,7 @@
       i.itno,
       m.nknm,
       m.phon,
+      m.mno,
       i.titl,
       i.categ,
       DATE_FORMAT(i.buy, '%Y-%m-%e') as buy,
@@ -88,6 +89,13 @@
         where i.itno=#{value}
       </otherwise>
     </choose>
+  </select>
+
+  <select id="getHighestItemNo" resultType="integer">
+    select itno
+    from item
+    order by itno desc
+    limit 1;
   </select>
 
   <insert id="insert" useGeneratedKeys="true" keyColumn="itno" keyProperty="item.itemNo">
@@ -137,12 +145,22 @@
     where itno=#{itemNo}
   </update>
 
+  <update id="updateStartTime" parameterType="int">
+    update item set
+      time=DATE_SUB(time, interval 30 minute)
+    where itno=#{itemNo}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from item where itno=#{value}
+  </delete>
+
   <delete id="deletePhoto" parameterType="int">
     delete from phot where itno=#{value}
   </delete>
 
-  <delete id="delete" parameterType="int">
-    delete from item where no=#{value}
+  <delete id="deleteInter" parameterType="int">
+    delete from inter where itno=#{value}
   </delete>
 
   <select id="getListByCateg" resultMap="item-map">

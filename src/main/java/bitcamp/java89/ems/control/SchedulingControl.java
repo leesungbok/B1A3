@@ -3,10 +3,8 @@ package bitcamp.java89.ems.control;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -16,8 +14,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.service.BidHistoryService;
 import bitcamp.java89.ems.service.MemberService;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Configuration
 @EnableAsync

@@ -60,7 +60,7 @@ $(function() {
                         $('#email-check').css('display', 'none');
                     } else {
                         $('#erroremail').text('이미 가입된 이메일입니다.');
-                        $$('#email-check').css('display', 'inline-block');
+                        $('#email-check').css('display', 'inline-block');
                     }
                 })
             }

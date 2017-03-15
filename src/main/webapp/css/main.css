@@ -682,75 +682,50 @@ div[data-target="#detail"] img {
    text-align:-webdit-auto;
 }
 
-/* 현재 경매가 없을때 시작*/
-/* video { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
- background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
-}
-.stopfade { 
-   opacity: .5;
+/* 현재 경매 없을때 */
+video {
+  display: none;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  filter: brightness(40%);
 }
 
-#polina { 
-  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-  font-weight:100; 
-  background: rgba(0,0,0,0.3);
-  color: white;
-  padding: 2rem;
-  width: 33%;
-  margin:2rem;
-  float: right;
-  font-size: 1.2rem;
-}
-h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  margin-top: 0;
-  letter-spacing: .3rem;
-}
-#polina button { 
-  display: block;
-  width: 80%;
-  padding: .4rem;
-  border: none; 
-  margin: 1rem auto; 
-  font-size: 1.3rem;
-  background: rgba(255,255,255,0.23);
+.intro {
+  display:none;
   color: #fff;
-  border-radius: 3px; 
+  text-align: center;
+  position: relative;
+}
+
+.intro > h1 {
+  font-size: 3.2em;
+  margin-top: 0px;
+}
+
+.intro > span {
+  font-size: 1.4em;
+}
+
+.intro-addbtn {
   cursor: pointer;
-  transition: .3s background;
-}
-#polina button:hover { 
-   background: rgba(0,0,0,0.5);
+  display: table;
+  margin: 50px auto 0 auto;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  color: #f54e83;
 }
 
-a {
-  display: inline-block;
-  color: #fff;
+.intro-addbtn a, .intro-addbtn a:hover, .intro-addbtn a:focus {
   text-decoration: none;
-  background:rgba(0,0,0,0.5);
-  padding: .5rem;
-  transition: .6s background; 
+  font-size: 1.4em;
+  color: #f54e83;
 }
-a:hover{
-  background:rgba(0,0,0,0.9);
+
+.intro-addbtn > .icon-hammer {
+  margin: 0;
+  position: relative;
+  top: -1px;
 }
-@media screen and (max-width: 500px) { 
-  div{width:70%;} 
-}
-@media screen and (max-device-width: 800px) {
-  html { background: url(https://thenewcode.com/assets/images/polina.jpg) #000 no-repeat center center fixed; }
-  #bgvid { display: none; }
-} */
-/* 현재 경매가 없을때 끝 */
