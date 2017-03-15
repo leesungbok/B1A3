@@ -21,8 +21,22 @@ public class LikeServiceImpl implements LikeService {
   }
 
   @Override
-  public int delete(int likeNo) throws Exception {
-    return likeDao.delete(likeNo);
+  public int delete(int likeNo, int memberNo) throws Exception {
+    int count;
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Like like = new Like();
+    paramMap.put("memberNo", memberNo);
+    paramMap.put("itemNo", likeNo);
+    String type = likeDao.getOneLike(paramMap);
+    if (type.equals("3")) {
+      like.setItemNo(likeNo);
+      like.setMemberNo(memberNo);
+      like.setType(2);
+      count = likeDao.update(like);
+    } else {
+      count = likeDao.delete(likeNo);
+    }
+    return count;
   }
 
   @Override
@@ -32,8 +46,22 @@ public class LikeServiceImpl implements LikeService {
   
   
   @Override
-  public int recentDelete(int likeNo) throws Exception {
-    return likeDao.recentDelete(likeNo);
+  public int recentDelete(int likeNo, int memberNo) throws Exception {
+    int count;
+    HashMap<String,Object> paramMap = new HashMap<>();
+    Like like = new Like();
+    paramMap.put("memberNo", memberNo);
+    paramMap.put("itemNo", likeNo);
+    String type = likeDao.getOneLike(paramMap);
+    if (type.equals("3")) {
+      like.setItemNo(likeNo);
+      like.setMemberNo(memberNo);
+      like.setType(1);
+      count = likeDao.update(like);
+    } else {
+      count = likeDao.delete(likeNo);
+    }
+    return count;
   }
 
   @Override

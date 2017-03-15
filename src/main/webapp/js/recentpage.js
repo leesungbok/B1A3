@@ -6,7 +6,6 @@ $(function() {
 				return;
 			
 			var recentList = ajaxResult.data;
-			console.log(recentList);
 			var parent = $('#recentList');
 			var template = Handlebars.compile($('#trTemplate').html());
 			var div

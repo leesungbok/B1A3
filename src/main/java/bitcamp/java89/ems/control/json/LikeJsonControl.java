@@ -53,18 +53,21 @@ public class LikeJsonControl {
   }  
   
   @RequestMapping("/mypage/delete")
-  public AjaxResult delete(int likeNo, HttpServletRequest request) throws Exception {
-    int count = likeService.delete(likeNo);
+  public AjaxResult delete(int likeNo, int memberNo) throws Exception {
+//    System.out.println("likeNo : " + likeNo + "     mNo : " + memberNo);
+    int count = likeService.delete(likeNo, memberNo);
+    System.out.println(count);
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 번호의 관심상품이 없습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
   @RequestMapping("/mypage/recentDelete")
-  public AjaxResult recentDelete(int likeNo, HttpServletRequest request) throws Exception {
-    int count = likeService.recentDelete(likeNo);
+  public AjaxResult recentDelete(int likeNo, int memberNo) throws Exception {
+    int count = likeService.delete(likeNo, memberNo);
+    System.out.println(count);
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "최근 본 상품이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 관심상품이 없습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }

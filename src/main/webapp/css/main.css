@@ -17,9 +17,9 @@
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
-.container, .next-bidlist, .bid-current {
+ .container, .next-bidlist, .bid-current {
   display: none;
-}
+} 
 
 .next-bodysolid {
   height: 282px;
@@ -297,10 +297,6 @@ div.heart:before {
   padding-left: 0px;
 }
 
-.item-img {
-  height: 216px !important;
-  margin: 0 auto;
-}
 
 .next-bid-photos > .carousel-indicators {
   margin-bottom: 0px;
