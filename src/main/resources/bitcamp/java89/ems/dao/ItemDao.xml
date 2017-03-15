@@ -90,26 +90,34 @@
     </choose>
   </select>
 
-  <insert id="insert" parameterType="item"
-  useGeneratedKeys="true" keyColumn="itno" keyProperty="itemNo">
-    insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-    select
-      #{memberNo},
-      #{title},
-      #{category},
-      #{buyDate},
-      #{useDay},
-      #{deal},
-      #{content},
-      #{startPrice},
-      time + interval 30 minute
-    from item
-    order by time desc
-    limit 1;
+  <insert id="insert" useGeneratedKeys="true" keyColumn="itno" keyProperty="item.itemNo">
+    <choose>
+      <when test="type == 0">
+        insert into item(mno,titl,categ,buy,day,deal,cont,time,stpc) 
+        values(#{item.memberNo},#{item.title}, #{item.category}, #{item.buyDate},
+        #{item.useDay}, #{item.deal}, #{item.content}, now(), #{item.startPrice})
+      </when>
+      <otherwise>
+        insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
+        select
+          #{item.memberNo},
+          #{item.title},
+          #{item.category},
+          #{item.buyDate},
+          #{item.useDay},
+          #{item.deal},
+          #{item.content},
+          #{item.startPrice},
+          time + interval 30 minute
+        from item
+        order by time desc
+        limit 1;
+      </otherwise>
+    </choose>
   </insert>
 
   <insert id="insertPhoto" parameterType="item">
-    insert into phot(itno,path) 
+    insert into phot(itno,path)
     values
     <foreach collection="photoList" item="photo" separator=",">
       (#{itemNo}, #{photo.filePath})
@@ -215,32 +223,32 @@
       left outer join phot p on i.itno=p.itno
     <where> 
       titl like concat('%', #{title}, '%')
-	    <if test="categoryByAuction == 'true'">
-	       <![CDATA[
-	       and time + interval 30 minute > now()
-	         ]]>
-	    </if>
-	    <if test="categoryByAuction == 'false'">
-	       <![CDATA[
-	      and time + interval 30 minute < now()
-	       ]]>
-	    </if>
-	    <if test="priceBefore !=null ">
-	      <![CDATA[
-	      and stpc >= #{priceBefore} 
-	      ]]>
-	    </if> 
-	    <if test="priceAfter !=null">
-	      <![CDATA[
-	      and stpc <= #{priceAfter}
-	      ]]>
-	    </if> 
-	    <if test= 'categoryList.size != 0 '>
-	      and categ in
-	      <foreach collection="categoryList" item="category" index="index" separator="," open="(" close=")">
-	        #{category}
-	      </foreach>
-	     </if>
+      <if test="categoryByAuction == 'true'">
+         <![CDATA[
+         and time + interval 30 minute > now()
+           ]]>
+      </if>
+      <if test="categoryByAuction == 'false'">
+         <![CDATA[
+        and time + interval 30 minute < now()
+         ]]>
+      </if>
+      <if test="priceBefore !=null ">
+        <![CDATA[
+        and stpc >= #{priceBefore} 
+        ]]>
+      </if> 
+      <if test="priceAfter !=null">
+        <![CDATA[
+        and stpc <= #{priceAfter}
+        ]]>
+      </if> 
+      <if test= 'categoryList.size != 0 '>
+        and categ in
+        <foreach collection="categoryList" item="category" index="index" separator="," open="(" close=")">
+          #{category}
+        </foreach>
+       </if>
     </where>
     <if test="search == 'time'">
       order by time asc

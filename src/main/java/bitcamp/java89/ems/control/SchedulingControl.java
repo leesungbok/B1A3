@@ -50,7 +50,7 @@ public class SchedulingControl {
             cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
         System.out.println(bdhs.get(0).getNickName());
         System.out.println(text);
-        sms(bdhs.get(0).getNickName(), text);
+        /*sms(bdhs.get(0).getNickName(), text);*/
         cal.add(Calendar.MINUTE, -5);
       }
       
@@ -74,7 +74,7 @@ public class SchedulingControl {
               cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
           System.out.println(bdhs.get(i+1).getNickName());
           System.out.println(text);
-          sms(bdhs.get(i).getNickName(), text);
+          /*sms(bdhs.get(i).getNickName(), text);*/
         }
       } else {
         cal.add(Calendar.MINUTE, 5);
@@ -82,7 +82,7 @@ public class SchedulingControl {
     }
   }
 
-  private void sms(String nickName, String text) throws Exception {
+  /*private void sms(String nickName, String text) throws Exception {
     Message coolsms = new Message("NCS58B4FDA4F1C07", "51005CD999726FE18642C3B34BA2FA90");
 
     HashMap<String, String> params = new HashMap<String, String>();
@@ -99,5 +99,5 @@ public class SchedulingControl {
       System.out.println(e.getMessage());
       System.out.println(e.getCode());
     }
-  }
+  }*/
 }

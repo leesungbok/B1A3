@@ -5,12 +5,13 @@
 <title>검색관리-목록</title>
 <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all">
+<link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
 <link rel="stylesheet" href="../font/fontello.css">
 <link href="../css/common.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
 <link href="../css/search.css" rel="stylesheet">
 <link href="../css/show.css" rel="stylesheet">
-<link href="../css/main.css" rel="stylesheet">
 
 </head>
 <body>
@@ -121,7 +122,10 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../node_modules/bootstrap-datepicker/js/locales/bootstrap-datepicker.kr.js"></script>
 <script id="trTemplate1" type="text/x-handlebars-template">
    <div class="col-xs-12 col-sm-4">
       <div class="carbox"  data-itno="{{itemNo}}">
@@ -152,6 +156,25 @@
           </div>
         </div>
         <div class="carbox-content">
+          <div class="section2">
+            <ul class="social-btns2" style="padding-left:0px;">
+              <li>
+                <a href="javascript:void(0);" class="social-btn-dissolve2 facebook">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="social-btn-dissolve2 twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="social-btn-dissolve2 heart" data-itno="{{itemNo}}">
+                  <i class="fa fa-heart-o"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
           <h4 class="carbox-title">{{title}}</h4>
           <dl class="next-horizontal">
             <dt class="pinktext stp-text">시작가</dt>
@@ -177,9 +200,6 @@
 
 </body>
 </html>
-
-
-
 
 
 

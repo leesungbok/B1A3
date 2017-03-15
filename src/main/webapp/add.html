@@ -14,13 +14,13 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">*상품명</label>
             <div class="col-sm-10 add-input">
-              <input id="titl" type="text" class="form-control" data-toggle="popover" data-placement="right"
-              data-trigger="focus" data-content="공백포함 최소6자, 최대 20자까지 작성가능합니다.">
+              <input id="titl" type="text" class="form-control">
+              <span class="add-error-text">작성하지 않았습니다.</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*카테고리</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 add-input">
               <select class="form-control" id="categ">
                 <option value='패션'>패션</option>
                 <option value='가방'>가방</option>
@@ -36,48 +36,47 @@
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*사진</label>
-            <div class="col-sm-10  add-input" id="file-selector">
+            <div class="col-sm-10 add-input" id="file-selector">
               <input id="fileupload" type="file" name="files" multiple="multiple"><br>
               <div id='images-div'></div>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*시작가</label>
-            <div class="col-sm-10  add-input">
-              <input id="stpc"type="number" class="form-control" data-toggle="popover" data-placement="right"
-              data-trigger="focus" data-content="최소 1000원 이상, 최대 1000만원 미만까지 가능합니다.">
+            <div class="col-sm-10 add-input">
+              <input id="stpc"type="number" class="form-control">
+              <span class="add-error-text">작성하지 않았습니다.</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*구입시기</label>
-            <div class="col-sm-10  add-input">
-              <input id="buy" type="date" class="form-control">
+            <div class="col-sm-10 add-input">
+              <input id="buy" type="text" class="form-control" readonly>
+              <span class="add-error-text">작성하지 않았습니다.</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*사용일수</label>
-            <div class="col-sm-10  add-input">
-              <input id="day" type="number" class="form-control"  data-toggle="popover" data-placement="right"
-              data-trigger="focus" data-content="몇 일 동안 사용했는지 적어주세요.">
+            <div class="col-sm-10 add-input">
+              <input id="day" type="number" class="form-control">
+              <span class="add-error-text">작성하지 않았습니다.</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">상세설명</label>
-            <div class="col-sm-10">
-              <textarea id="cont" class="form-control" rows="10" placeholder="흠집이 없고 사용 할땐 파손될 수 있으니 조심해서 사용하세요."></textarea>
+            <div class="col-sm-10 add-input">
+              <textarea id="cont" class="form-control" rows="10" maxlength="500"></textarea>
+              <span id="counter">###</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*거래방식</label>
-            <div class="col-sm-10" style="margin-left:-115px">
-              <select class="form-control" id="deal"> 
+            <div class="col-sm-10 add-input" style="margin-left:-115px">
+              <select class="form-control" id="deal">
                 <option value='택배'>택배</option>
                 <option value='직거래'>직거래</option>
                 <option value='택배 또는 직거래'>택배 또는 직거래</option>
               </select>
-              <!-- <label class="radio-inline"><input id="deal1" type="radio" name="optradio" checked>택배</label>
-              <label class="radio-inline"><input id="deal2" type="radio" name="optradio">직거래</label>
-              <label class="radio-inline"><input id="deal3" type="radio" name="optradio">택배 또는 직거래</label> -->
             </div>
           </div>
         </form>

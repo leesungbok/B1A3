@@ -32,6 +32,11 @@ public class ItemJsonControl {
   @RequestMapping("/main/list")
   public AjaxResult list(int pageNo, int pageSize) throws Exception {
     List<Item> list = itemService.getList(pageNo, pageSize);
+    
+    if (list.isEmpty()) {
+      return new AjaxResult(AjaxResult.FAIL, "다음 경매가 없습니다.");
+    }
+    
     int totalCount = itemService.getSize();
 
     HashMap<String, Object> resultMap = new HashMap<>();
@@ -52,10 +57,10 @@ public class ItemJsonControl {
   }
 
   @RequestMapping("/main/add")
-  public AjaxResult add(Item item, HttpSession session) throws Exception {
+  public AjaxResult add(Item item, int type, HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
     item.setMemberNo(member.getMemberNo());
-    int itemNo = itemService.add(item);
+    int itemNo = itemService.add(item, type);
     if (itemNo == 0) {
       return new AjaxResult(AjaxResult.FAIL, "경매등록에 실패했습니다.");
     }

@@ -525,6 +525,41 @@ textarea.form-control + div.popover {
 #cancel-btn {
   float: none;
 }
+
+.add-error-text {
+  color: #ffffff;
+  display: block;
+  height: 15px;
+  padding-left: 5px;
+  font-size: 1.1em;
+}
+
+#titl {
+  margin-bottom: 0px;
+}
+
+#counter {
+  position: absolute;
+  bottom: 18px;
+  right: 35px;
+  font-size: 1.2em;
+  color: #8f8f8f;
+  font-weight: 300;
+}
+
+#buy {
+  margin-bottom: 0px;
+  background-color: #fff;
+}
+
+#add #add-btn {
+  pointer-events: none;
+  opacity: .65;
+}
+
+.fileinput-remove {
+  display: none;
+}
 /* 경매등록 */
 
 /* sweet-alert */

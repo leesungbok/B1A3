@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java89.ems.dao.ItemDao;
-import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Item;
 import bitcamp.java89.ems.service.ItemService;
 
@@ -16,8 +15,8 @@ public class ItemServiceImpl implements ItemService {
   @Autowired ItemDao itemDao;
 
   @Override
-  public int add(Item item) throws Exception {
-    itemDao.insert(item);
+  public int add(Item item, int type) throws Exception {
+    itemDao.insert(item, type);
 
     if (item.getPhotoList().size() > 0) {
       itemDao.insertPhoto(item);
