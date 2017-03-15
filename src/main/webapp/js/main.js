@@ -296,7 +296,6 @@ $(function () {
                                  
                             	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                       				if (ajaxResult.status != "success") { 
-                      					alert(ajaxResult.data);
                       					return;
                       				}
                       				swal({
