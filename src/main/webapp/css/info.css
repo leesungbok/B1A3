@@ -74,8 +74,9 @@
 }
 
 .item-img {
-    height: 216px !important;
-    margin: 0 auto;
+    height: 200px !important;
+    margin: auto auto;
+    object-fit: contain;
 }
 
 .carbox-content {

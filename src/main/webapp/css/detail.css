@@ -146,6 +146,7 @@ div.startprice {
 #detail-photo img {
   height: 382px !important;
   margin: auto auto;
+  object-fit: contain;
 }
 
 /* The Modal (background) */

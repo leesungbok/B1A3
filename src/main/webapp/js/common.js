@@ -188,17 +188,20 @@ $(function () {
         $.get(clientRoot + '/add.html', function (result) {
             $('.bid-regist').html(result);
 
-            $('#add')/*.on('hide.bs.modal', function (e) {
-                // 테스트중
-                console.log(confirmInput());
-                return false;
-            })*/.on('hidden.bs.modal', function () {  // modal 창이 꺼지면 입력된 내용들을 삭제한다.
+            $('#add').on('hide.bs.modal', function (e) {
+                /* 테스트중
+                 * if (e.date == undefined && confirmInput()) {
+                    swalConfirm(function(isConfirm) {
+                        return isConfirm;
+                    })
+                }*/
+            }).on('hidden.bs.modal', function () {  // modal 창이 꺼지면 입력된 내용들을 삭제한다.
                 $('#add').remove();
                 getAddHtml();
             })
             
             // 경매등록 창 닫기전에 입력된 내용여부 확인
-            /*function confirmInput() {
+            /*테스트중 function confirmInput() {
                 addValCount = 0;
                 $('.add-input > input').each(function () {
                     if ($(this).val() != '') {
@@ -208,26 +211,27 @@ $(function () {
                 });
                 
                 if (addValCount == 0) {
-                    return true;
+                    return false;
                 } else {
-                    swal({
-                        title: "경고!",
-                        text: "아직 경매등록이 되지 않았습니다. 등록을 취소하시겠습니까?",
-                        type: "warning",
-                        confirmButtonText: "예",
-                        confirmButtonColor: "rgb(244, 46, 109)",
-                        cancelButtonText: "아니요",
-                        cancelButtonColor: "#e5e5e5",
-                        showCancelButton: true,
-                    }, function(isConfirm) {
-                        if (isConfirm) {
-                            return true
-                        } else {
-                            return false;
-                        }
-                    })
+                    return true;
                 }
-            }*/
+            }
+            
+            function swalConfirm(cb) {
+                swal({
+                    title: "경고!",
+                    text: "아직 경매등록이 되지 않았습니다. 등록을 취소하시겠습니까?",
+                    type: "warning",
+                    confirmButtonText: "예",
+                    confirmButtonColor: "rgb(244, 46, 109)",
+                    cancelButtonText: "아니요",
+                    cancelButtonColor: "#e5e5e5",
+                    showCancelButton: true
+                },
+                function(isConfirm) {
+                    cb(isConfirm)
+                });
+            };*/
             
             // 경매등록 사진첨부
             var $input = $("#fileupload");
