@@ -1,7 +1,7 @@
 $(function() {
     var itemNo = location.href.split('?')[1].split('=')[1]
     
-    // 상세보기 하려는 경매가 현재 진행중인 경매일 경우 메인으로 이동시킨다.
+    // 상세보기 경매가 현재 진행중인 경매일 경우 메인으로 이동시킨다.
     $.getJSON(serverRoot + "/main/nowbid.json", function(ajaxResult) {
         if (ajaxResult.status != 'success') {
             return;
@@ -10,13 +10,13 @@ $(function() {
         var nowItemNo = ajaxResult.data.itemNo;
         if (nowItemNo == itemNo) {
             location.href = clientRoot + '/main/main.html';
-            return;
         }
         
         // 현재 경매하는 상품이 아닐시 실행
         getItemInfo();
     });
     
+    // 현재 경매하는 상품이 아닐시 실행
     function getItemInfo() {
         // 경매에 대한 상세한 정보를 가져온다.
         $.getJSON(serverRoot + "/main/detail.json", {"itemNo":itemNo}, function(ajaxResult) {
@@ -44,11 +44,7 @@ $(function() {
             
             // 현재 시간을 구한다.
             var timeInMs = new Date();
-            
-            // getMonth()가 1월이면 0, 2월이면 1을 리턴하기 때문에 원래달에 1을 더한다.
             timeInMs.setMonth(timeInMs.getMonth()+1);
-            
-            // 예를 들어 '2017-02-21 13:47' 형식처럼 시간을 저장한다.
             var now = timeInMs.getFullYear() + '-' + timeInMs.getMonth() + '-' + timeInMs.getDate() + ' '
             + timeInMs.getHours() + ':' + timeInMs.getMinutes();
             
@@ -60,35 +56,32 @@ $(function() {
                     }
                     
                     var bdhs = ajaxResult.data.bdhs;
-                    
-                    // 입찰기록 리스트를 반복해서
+                    var index
                     for (var i = 0; i < bdhs.length; i++) {
-                        // 낙찰된 사람이 있으면 시작가를 낙찰가로 바꾼다.
                         if (bdhs[i].state == 1) {
-                            $('#startTime-dt').text('낙찰가');
-                            $('.present_num').text(bdhs[i].bids);
+                            index = i;
                             break;
                         }
                     }
                     
-                    $('.bid_num').text(bdhs.length);            // 입찰수를 표시한다.
-                    $('.auction-ends').css('display', 'block'); // 입찰기록을 표시한다.
+                    $('#startTime-dt').text('낙찰가');
+                    $('.present_num').text(bdhs[index].bids);
+                    $('.bid_num').text(bdhs.length);
+                    $('.auction-ends').css('display', 'block');
                     
                     var templateBdhs = Handlebars.compile($('#bdhs-Template').html());
                     
-                    // value에 1을 더해 리턴한다.
-                    Handlebars.registerHelper("inc", function(value) {
+                    Handlebars.registerHelper("inc", function(value, options)
+                            {
                         return parseInt(value) + 1;
-                    });
+                            });
                     
-                    // v1과 v2가 같으면 true를 리턴한다.
                     Handlebars.registerHelper('ifCond', function(v1, v2, options) {
                         if (v1 === v2) {
                             return options.fn(this);
                         }
                     });
                     
-                    // 입찰기록 정보를 tbody밑에 붙인다.
                     $('#bidHistory tbody').append(templateBdhs(bdhs));
                 })
             }
