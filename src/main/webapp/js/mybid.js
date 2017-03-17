@@ -10,35 +10,27 @@ $(function() {
 		var template = Handlebars.compile($('#trTemplate').html());
 		var div
 		for(var i = 0; i < list.length; i++){
-			if(i % 2 == 0) {
+			if(i % 3 == 0) {
 				div = $("<div>").addClass('row')
 				parent.append(div);
 			}
 			div.append(template(list[i]));
 		}
-	});
 	
-	$.get('../submenu.html', function (result) {
-    	$('#submenu').html(result);
- 
-    	var submenu = location.search.split("?")[1].split("=")[1];
-	    $('#mypage').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
-	    }); 
-
-	    $('#mybidding').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
-	    }); 
-
-	    $('#myoption').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
-	    }); 
-	    
-	    $("#"+submenu).parent().addClass('active');
-	     
-    })
-	
+	$('.tasha').click(function() {
+		var itemNo = $(this).attr('data-itemno');
+		$.post(serverRoot + '/item/delete.json',
+		{
+			"itemNo":itemNo
+		}, function(ajaxResult) {
+			if (ajaxResult.status != "success") { 
+				alert(ajaxResult.data);
+				return;
+			}
+			location.href = clientRoot + '/mypage/mybid.html?submenu=mybid';
+		}, 'json');
+	}); // click()
 });
+});
+
+

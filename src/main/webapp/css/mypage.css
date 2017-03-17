@@ -17,6 +17,10 @@ body>.container {
   margin: auto;
 }
 
+li {
+	text-align: center !important;
+}
+
 .searcha:hover {
 	cursor: pointer;
 }

@@ -71,9 +71,12 @@ public class ItemJsonControl {
   @RequestMapping(value="/item/delete", method=RequestMethod.POST)
   public AjaxResult delete(int itemNo, HttpSession session) throws Exception {
     Item item = itemService.getDetail(itemNo);
+    Item nowItem = itemService.getDetail(0); // 현재 경매
+
     Member member = (Member)session.getAttribute("member");
 
-    if (member == null || item.getMemberNo() != member.getMemberNo()) {
+    // 로그인 안했거나, 등록한 사용자가 아닌 사람이거나, 지난경매품인 경우 삭제금지
+    if (member == null || item.getMemberNo() != member.getMemberNo() || item.getItemNo() <= nowItem.getItemNo()) {
       return new AjaxResult(AjaxResult.FAIL, "삭제 권한이 없습니다.");
     }
 

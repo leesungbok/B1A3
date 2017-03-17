@@ -328,6 +328,7 @@ div.heart:before {
 div[data-target="#detail"] img {
   height: 382px !important;
   margin: auto auto;
+  object-fit: contain;
 }
 
 .nb-imgs > .item {
@@ -498,6 +499,12 @@ div[data-target="#detail"] img {
   border-radius: 24px;
   margin-bottom: 13px;
   cursor: pointer;
+}
+
+.item-img {
+  height: 200px !important;
+  object-fit: contain;
+  margin: auto auto;
 }
 
 /* Buttons */
@@ -687,7 +694,7 @@ div[data-target="#detail"] img {
    text-align:-webdit-auto;
 }
 
-/* 현재 경매 없을때 */
+/* 현재 경매가 없을때 */
 video {
   display: none;
   position: fixed;

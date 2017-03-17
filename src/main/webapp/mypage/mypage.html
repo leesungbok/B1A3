@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 설정</title>
+<title>나의 관심</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
@@ -54,6 +54,7 @@
   <script src="../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="../node_modules/bootstrap-datepicker/js/locales/bootstrap-datepicker.kr.js"></script>
   <script src="../js/common.js"></script>
+  <script src="../js/mypage-sub.js"></script>
   <script id="trTemplate" type="text/x-handlebars-template">
   <figure class="snip1205" style="width:33.333%">
     <div class="profile-pic">    
@@ -115,11 +116,11 @@
   <script>
   $(function (){
     $("#recentpage").click(function() {
-		  location.href = clientRoot+"/mypage/recentpage.html";
+		  location.href = clientRoot+"/mypage/recentpage.html?submenu=recentpage";
 	  });
     
     $("#mypage").click(function() {
-		  location.href = clientRoot+"/mypage/mypage.html";
+		  location.href = clientRoot+"/mypage/mypage.html?submenu=mypage";
 	  });
     
     $(".hover").mouseleave(

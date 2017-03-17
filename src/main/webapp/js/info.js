@@ -11,120 +11,127 @@ $(function() {
         if (nowItemNo == itemNo) {
             location.href = clientRoot + '/main/main.html';
         }
+        
+        // 현재 경매하는 상품이 아닐시 실행
+        getItemInfo();
     });
     
-    // 경매에 대한 상세한 정보를 가져온다.
-    $.getJSON(serverRoot + "/main/detail.json", {"itemNo":itemNo}, function(ajaxResult) {
-        if (ajaxResult.status != 'success') {
-            // 해당 itemNo로 경매 정보를 못찾았을 경우 에러창을 띄운다.
-            swal({
-                title: "오류!",
-                type: "warning",
-                text: ajaxResult.data,
-                confirmButtonText: "확인",
-                confirmButtonColor: "#f32e6d"
-            }, function() {
-                history.back();
-            })
-            return;
-        }
-        
-        var item = ajaxResult.data;
-        var template = Handlebars.compile($('#info-Template').html());
-        $('.container').prepend(template(item));
-        $('#detail-photo .item:first-child').addClass('active');
-        
-        // 남은 시간을 초단위로 보여준다.
-        timeRemaining('nb-countdown', item);
-        
-        // 현재 시간을 구한다.
-        var timeInMs = new Date();
-        timeInMs.setMonth(timeInMs.getMonth()+1);
-        var now = timeInMs.getFullYear() + '-' + timeInMs.getMonth() + '-' + timeInMs.getDate() + ' '
-        + timeInMs.getHours() + ':' + timeInMs.getMinutes();
-        
-        // 해당 경매가 종료 된 경우 입찰기록을 요청한다.
-        if (item.startTime < now) {
-            $.getJSON(serverRoot + '/bidhistory/nowbidhistory.json', {"itemNo" : item.itemNo}, function(ajaxResult) {
-                if (ajaxResult.status != "success") {
-                    return;
-                }
-                
-                var bdhs = ajaxResult.data.bdhs;
-                var index
-                for (var i = 0; i < bdhs.length; i++) {
-                    if (bdhs[i].state == 1) {
-                        index = i;
-                        break;
+    // 현재 경매하는 상품이 아닐시 실행
+    function getItemInfo() {
+        // 경매에 대한 상세한 정보를 가져온다.
+        $.getJSON(serverRoot + "/main/detail.json", {"itemNo":itemNo}, function(ajaxResult) {
+            if (ajaxResult.status != 'success') {
+                // 해당 itemNo로 경매 정보를 못찾았을 경우 에러창을 띄운다.
+                swal({
+                    title: "오류!",
+                    type: "warning",
+                    text: ajaxResult.data,
+                    confirmButtonText: "확인",
+                    confirmButtonColor: "#f32e6d"
+                }, function() {
+                    history.back();
+                })
+                return;
+            }
+            
+            var item = ajaxResult.data;
+            var template = Handlebars.compile($('#info-Template').html());
+            $('.container').prepend(template(item));
+            $('#detail-photo .item:first-child').addClass('active');
+            
+            // 남은 시간을 초단위로 보여준다.
+            timeRemaining('nb-countdown', item);
+            
+            // 현재 시간을 구한다.
+            var timeInMs = new Date();
+            timeInMs.setMonth(timeInMs.getMonth()+1);
+            var now = timeInMs.getFullYear() + '-' + timeInMs.getMonth() + '-' + timeInMs.getDate() + ' '
+            + timeInMs.getHours() + ':' + timeInMs.getMinutes();
+            
+            // 해당 경매가 종료 된 경우 입찰기록을 요청한다.
+            if (item.startTime < now) {
+                $.getJSON(serverRoot + '/bidhistory/nowbidhistory.json', {"itemNo" : item.itemNo}, function(ajaxResult) {
+                    if (ajaxResult.status != "success") {
+                        return;
                     }
-                }
-                
-                $('#startTime-dt').text('낙찰가');
-                $('.present_num').text(bdhs[index].bids);
-                $('.bid_num').text(bdhs.length);
-                $('.auction-ends').css('display', 'block');
-                
-                var templateBdhs = Handlebars.compile($('#bdhs-Template').html());
-                
-                Handlebars.registerHelper("inc", function(value, options)
-                {
-                    return parseInt(value) + 1;
-                });
-                
-                Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-                    if (v1 === v2) {
-                        return options.fn(this);
+                    
+                    var bdhs = ajaxResult.data.bdhs;
+                    var index
+                    for (var i = 0; i < bdhs.length; i++) {
+                        if (bdhs[i].state == 1) {
+                            index = i;
+                            break;
+                        }
                     }
-                });
-                
-                $('#bidHistory tbody').append(templateBdhs(bdhs));
+                    
+                    $('#startTime-dt').text('낙찰가');
+                    $('.present_num').text(bdhs[index].bids);
+                    $('.bid_num').text(bdhs.length);
+                    $('.auction-ends').css('display', 'block');
+                    
+                    var templateBdhs = Handlebars.compile($('#bdhs-Template').html());
+                    
+                    Handlebars.registerHelper("inc", function(value, options)
+                            {
+                        return parseInt(value) + 1;
+                            });
+                    
+                    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+                        if (v1 === v2) {
+                            return options.fn(this);
+                        }
+                    });
+                    
+                    $('#bidHistory tbody').append(templateBdhs(bdhs));
+                })
+            }
+            
+            // 사진 확대보기 기능 시작
+            var modal = $('#image-popup');
+            var modalImg = $('#img01');
+            var className
+            $('#detail-imgs img').click(function() {
+                className = $(this).attr("class");
+                $('#detail2-imgs .' + className +
+                        ', #detail2-photo li[data-slide-to="' + className.charAt(className.length-1) + '"]').addClass('active');
+                $('body').css('overflow', 'hidden');
+                modal.css('display', 'block');
             })
-        }
-        
-        // 사진 확대보기 기능 시작
-        var modal = $('#image-popup');
-        var modalImg = $('#img01');
-        var className
-        $('#detail-imgs img').click(function() {
-            className = $(this).attr("class");
-            $('#detail2-imgs .' + className +
-            ', #detail2-photo li[data-slide-to="' + className.charAt(className.length-1) + '"]').addClass('active');
-            $('body').css('overflow', 'hidden');
-            modal.css('display', 'block');
-        })
-        
-        $('.close').click(function() {
-            modal.css('display', 'none');
-            $('body').css('overflow', 'auto');
-            $('#detail2-imgs div, li[data-target="#mycarousel"]').removeClass('active');
-        })
-        
-        var $item = $('#detail2-photo .item'); 
-        $item.height($(window).height());
-        $item.addClass('full-screen');
-
-        $('#detail2-imgs img').each(function() {
-            var $src = $(this).attr('src');
-            $(this).parent().css({
-                'background-image' : 'url(' + $src + ')',
-            });
-            $(this).remove();
-        });
-          
-        $(window).on('resize', function (){
+            
+            $('.close').click(function() {
+                modal.css('display', 'none');
+                $('body').css('overflow', 'auto');
+                $('#detail2-imgs div, li[data-target="#mycarousel"]').removeClass('active');
+            })
+            
+            var $item = $('#detail2-photo .item'); 
             $item.height($(window).height());
+            $item.addClass('full-screen');
+            
+            $('#detail2-imgs img').each(function() {
+                var $src = $(this).attr('src');
+                $(this).parent().css({
+                    'background-image' : 'url(' + $src + ')',
+                });
+                $(this).remove();
+            });
+            
+            $(window).on('resize', function (){
+                $item.height($(window).height());
+            });
+            // 사진 확대보기 기능 끝
+            
+            $('.carousel-control').click(function() {
+                event.preventDefault();
+            })
+            
+            // 관련 상품 정보를 가져온다.
+            getRelatedItems(item)
+            
+            $('.container').css('display', 'block');
         });
-        // 사진 확대보기 기능 끝
         
-        $('.carousel-control').click(function() {
-            event.preventDefault();
-        })
-        
-        // 관련 상품 정보를 가져온다.
-        getRelatedItems(item)
-        
-        $('.container').css('display', 'block');
-    });
+    }
     
     // 관련 상품 정보를 가져온다.
     function getRelatedItems(item) {
