@@ -390,6 +390,7 @@
 
 #bdhsTr th {
   font-size: 1.2em;
+  text-align: center;
 }
 
 #pinktext {  color: #f54e83;  font-weight: 600;
@@ -397,6 +398,7 @@
 
 #bidHistory .modal-body {
   font-size: 1.1em;
+  text-align: center;
 }
 
 .relation {

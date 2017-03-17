@@ -336,6 +336,8 @@ $(function () {
                 case 'stpc':
                     if (1000 > addValue || addValue > 1000000) {
                         $span.text('1000원 이상 100만원 이하 가능합니다.');
+                    } else if (addValue % 100 != 0) {
+                        $span.text('100원 단위로 입력해주세요.');
                     } else {
                         $span.text('');
                     }
@@ -525,4 +527,3 @@ $(function () {
         })
     }
 })
-

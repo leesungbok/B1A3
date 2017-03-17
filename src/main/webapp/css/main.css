@@ -689,7 +689,7 @@ div[data-target="#detail"] img {
    text-align:-webdit-auto;
 }
 
-/* í˜„ìž¬ ê²½ë§¤ ì—†ì„ë•Œ */
+/* 현재 경매가 없을때 */
 video {
   display: none;
   position: fixed;
