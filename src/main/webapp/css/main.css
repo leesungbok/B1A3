@@ -641,10 +641,10 @@ div[data-target="#detail"] img {
     background: #FF0000;
 }
 
-.social-btn-dissolve.clicked {
- background:initial;
-	
+.glyphicon.glyphicon-heart {
+	color:white !important;
 }
+
 
 .social-btn-dissolve2:hover {
     color: #fff;

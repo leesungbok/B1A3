@@ -337,6 +337,7 @@ $(function () {
             
             $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
                 var heartBtn = $(this).addClass('clicked');
+                heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
             	var itemNo = $(this).attr('data-itno');
                 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
                     var member = ajaxResult.data;
@@ -361,6 +362,8 @@ $(function () {
                                 alert(ajaxResult.data);
                                 return;
                             }
+                            heartBtn.removeClass('clicked');
+                            heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
                             swal({
                                 title: "좋아요 삭제 완료!",
                                 text: "마이페이지에서 관심상품이 삭제되었습니다.",
@@ -390,6 +393,7 @@ $(function () {
                      else if(count == 3) {
                          param.type = 2;
                          heartBtn.removeClass('clicked');
+                         heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
                      
                          $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 
