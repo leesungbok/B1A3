@@ -336,7 +336,8 @@ $(function () {
             }
             
             $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
-                var itemNo = $(this).attr('data-itno');
+                var heartBtn = $(this).addClass('clicked');
+            	var itemNo = $(this).attr('data-itno');
                 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
                     var member = ajaxResult.data;
 
@@ -350,11 +351,12 @@ $(function () {
                             type : 1
                     }
                     $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                    	console.log(param);
                      var count = ajaxResult.data
                      
                      console.log(count);
                      if (count == 1) {
-                         $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo, function(ajaxResult) {
+                         $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo + '&' + 'memberNo='+ member.memberNo, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 
                                 alert(ajaxResult.data);
                                 return;
@@ -375,6 +377,7 @@ $(function () {
                                 alert(ajaxResult.data);
                                 return;
                             }
+                            heartBtn.addClass('clicked');
                             swal({
                                 title: "좋아요 등록 완료!",
                                 text: "마이페이지에서 관심상품이 등록되었습니다.",
@@ -386,6 +389,7 @@ $(function () {
                      } 
                      else if(count == 3) {
                          param.type = 2;
+                         heartBtn.removeClass('clicked');
                      
                          $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 

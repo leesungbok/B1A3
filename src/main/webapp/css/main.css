@@ -634,6 +634,11 @@ div[data-target="#detail"] img {
     background: #FF0000;
 }
 
+.social-btn-dissolve.clicked {
+ background:initial;
+	
+}
+
 .social-btn-dissolve2:hover {
     color: #fff;
 }
