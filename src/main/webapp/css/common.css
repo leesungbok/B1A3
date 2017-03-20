@@ -529,7 +529,7 @@ textarea.form-control + div.popover {
 }
 
 .add-error-text {
-  color: #ffffff;
+  color: #f32e6d;
   display: block;
   height: 15px;
   padding-left: 5px;
@@ -561,6 +561,26 @@ textarea.form-control + div.popover {
 
 .fileinput-remove {
   display: none;
+}
+
+#day-year, #day-date {
+  text-align: right;
+  padding-right: 24px;
+}
+
+#day-year+span {
+  width: 244px;
+}
+
+#day-month {
+  padding-right: 33px;
+  text-align: right;
+}
+
+.add-input > .date {
+  position: absolute;
+  top: 8px;
+  right: 24px;
 }
 /* 경매등록 */
 

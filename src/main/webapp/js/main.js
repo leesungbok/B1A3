@@ -1,7 +1,6 @@
 $(function () {
-	
     var nav = $('.nav');
-
+    
     $(window).scroll(function () {
         if ($(this).scrollTop() > 158) {
             nav.addClass("f-nav");
@@ -12,11 +11,25 @@ $(function () {
         }
     });
     
+    
     $(".hover").mouseleave(
-    	    function () {
-    	      $(this).removeClass("hover");
-    	    }
-    	  );
+        function () {
+    	    $(this).removeClass("hover");
+    	}
+    );
+    
+    var member
+    
+    $.ajax({
+        type: "GET",
+        url: serverRoot + '/auth/loginUser.json',
+        success: function (data) {
+            member = data.data;
+        },
+        contentType : "application/json", // 요청 컨텐트 타입
+        dataType  : "json", // 응답 데이터 형식 명시하지 않을 경우 자동으로 추측
+        async: false
+    });
     
     $.get(clientRoot + '/main/detail.html', function (result) {
         $('.bid-current').html(result);
@@ -67,60 +80,43 @@ $(function () {
             
             // 남은 시간을 표시한다.
             timeRemaining();
-           
-            $('div[data-target="#detail"]').click(function() {
-        		$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-        	        var member = ajaxResult.data;
-        	
-        			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-        				return;
-        			}
-        			var param = {
-        					memberNo : member.memberNo,
-        					itemNo : nowbid.itemNo,
-        					type : 2
-        			}
-        			$.getJSON('../mypage/check.json', param, function(ajaxResult) {
-        	         var count = ajaxResult.data
-        	         
-        	         if(count == null) {
-        	        	 $.post('../mypage/add.json',param ,function(ajaxResult) {
-           	        		 if (ajaxResult.status != "success") {
-           	        			 alert(ajaxResult.data);
-           	        			 return;
-           	        		 } 
-        	        	 });
-        	         } else if(count == 1) {
-	        	        	 param.type=3;
-	        	        	 $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
-                   				if (ajaxResult.status != "success") { 
-                   					alert(ajaxResult.data);
-                   					return;
-                   				}
-	        	        	 })
-	        	         }
-        	         
-        			});
-        		});
-            });
-            $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-    	        var member = ajaxResult.data;
-    			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-    				return;
-    			}
-    			var param = {
-    					memberNo : member.memberNo,
-    					itemNo : nowbid.itemNo,
-    			}
-            $.getJSON('../mypage/check.json', param, function(ajaxResult) {
-   	         var count = ajaxResult.data
-   	         if(count == 1 ||count == 3) {
-  	        	var heartBtn = $('.social-btn-dissolve.heart');
-                heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
-   	         }
-            });
-            });
-//            $('meta[property="og:title"]').attr('content', nowbid.title);
+            
+            if (member.meberNo != undefined) {
+                $('div[data-target="#detail"]').click(function() {
+                    var param = {
+                        memberNo : member.memberNo,
+                        itemNo : nowbid.itemNo,
+                        type : 2
+                    }
+                    $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                        var count = ajaxResult.data
+                        if(count == null) {
+                            $.post('../mypage/add.json',param ,function(ajaxResult) {
+                                if (ajaxResult.status != "success") {
+                                    alert(ajaxResult.data);
+                                    return;
+                                }
+                            });
+                        } else if(count == 1) {
+                            param.type=3;
+                            $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                                if (ajaxResult.status != "success") { 
+                                    alert(ajaxResult.data);
+                                    return;
+                                }
+                            })
+                        }
+                    });
+                });
+                
+                $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                    var count = ajaxResult.data
+                    if(count == 1 || count == 3) {
+                        var heartBtn = $('.social-btn-dissolve.heart');
+                        heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
+                    }
+                });
+            }
             
             // 현재 경매정보에 대한 입찰기록
             (function getBidHistory() {
@@ -310,11 +306,7 @@ $(function () {
     
     // 다음경매
     function loadList(pageNo, pageSize) {
-    	
-    	//관심상품 클릭시 하트 유지
-        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-	        var member = ajaxResult.data;
-	
+        // 다음경매 정보를 가져온다.
         $.getJSON(serverRoot + '/main/list.json',
         {
             "pageNo": pageNo,
@@ -327,73 +319,82 @@ $(function () {
             
             $('.next-bidlist').css('display', 'block');
             var list = ajaxResult.data.list;
-            var parent = $('#nextlist');
-            var template = Handlebars.compile($('#trTemplate').html());
-            var div
-            
-            for(var i = 0; i < list.length; i++) {
-            	var index = i;
-            	$.getJSON('../mypage/check.json', {
-            		'memberNo' :member.memberNo,
-            		'itemNo' : list[index].itemNo
-            	}, function(ajaxResult) {
-            		console.log(list[index]);
-        		var count = ajaxResult.data;
-        		if (count == 1 || count == 3) {
-        			list[index]['heart'] = true;
-        		} else {
-        			list[index]['heart'] = false;
-        		}
-                if (index % 3 == 0) {
-                    div = $("<div>").addClass('row');
-                    parent.append(div);
-                }
-                div.append(template(list[index]));
-                $('div[data-itno="' + list[index].itemNo + '"] .item:first-child').addClass('active');
-            	})
-            	}
-            console.log('gkgkgk');
-            // 다음 경매 클릭시 관심상품에 추가한다.
-            nextBidGrantEvent();
-            
-            // 남은 시간을 표시한다.
-            timeRemaining();
-            
             var totalCount = ajaxResult.data.totalCount
-            var maxPageNo = parseInt(totalCount / (pageSize/4));
+            var promises = [];
             
-            if ((totalCount % (pageSize/4)) > 0) {
-                maxPageNo++;
+            // 경매리스트를 반복문을 통해 좋아요 여부를 확인하여 heart 변수에 추가한다.
+            if (member.memberNo != undefined) {
+                $.each(list, function( index, value ) {
+                    var request = $.getJSON(serverRoot + '/mypage/check.json',
+                    {
+                        'memberNo': member.memberNo,
+                        'itemNo': value.itemNo
+                    }, function(ajaxResult) {
+                        var count = ajaxResult.data;
+                        if (count == 1 || count == 3) {
+                            value['heart'] = true;
+                        } else {
+                            value['heart'] = false;
+                        }
+                    });
+                    promises.push(request);
+                });
             }
             
-            if (currPageNo >= maxPageNo) {
-                $('#nextPgBtn').css('display', 'none');
+            // 반복문이 끝나면 실행한다.
+            $.when.apply(null, promises).done(function() {
+                loadWithHeart(list, totalCount);
+            })
+        });
+    } // 다음경매 끝
+    
+    // 다음경매 리스트를 만든다.
+    function loadWithHeart(list, totalCount) {
+        var parent = $('#nextlist');
+        var template = Handlebars.compile($('#trTemplate').html());
+        var div
+        
+        $.each(list, function( index, value ) {
+            if (index % 3 == 0) {
+                div = $("<div>").addClass('row');
+                parent.append(div);
             }
+            div.append(template(value));
+            $('div[data-itno="' + value.itemNo + '"] .item:first-child').addClass('active');
+        });
+        
+        // 다음 경매 클릭시 관심상품에 추가한다.
+        nextBidGrantEvent();
+        
+        // 남은 시간을 표시한다.
+        timeRemaining();
+        
+        var maxPageNo = parseInt(totalCount / (pageSize/4));
+        
+        if ((totalCount % (pageSize/4)) > 0) {
+            maxPageNo++;
+        }
+        
+        if (currPageNo >= maxPageNo) {
+            $('#nextPgBtn').css('display', 'none');
+        }
+        
+        $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
+            var heartBtn = $(this).addClass('clicked');
+            heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
+            var itemNo = $(this).attr('data-itno');
             
-            $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
-            	console.log('dddddclick');
-                var heartBtn = $(this).addClass('clicked');
-                heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
-            	var itemNo = $(this).attr('data-itno');
-                $.getJSON('../auth/loginUser.json', function(ajaxResult) {
-                    var member = ajaxResult.data;
-
-                    if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-                        location.href = clientRoot + '/auth/login.html';
-                        return;
-                    }
-                    var param = {
-                            memberNo : member.memberNo,
-                            itemNo : itemNo,
-                            type : 1
-                    }
-                    $.getJSON('../mypage/check.json', param, function(ajaxResult) {
-                    	console.log(param);
-                     var count = ajaxResult.data
-                     
-                     console.log(count);
-                     if (count == 1) {
-                         $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo + '&' + 'memberNo='+ member.memberNo, function(ajaxResult) {
+            if (member.memberNo != undefined) {
+                var param = {
+                    'memberNo': member.memberNo,
+                    'itemNo': itemNo,
+                    'type': 1
+                };
+                
+                $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+                    var count = ajaxResult.data
+                    if (count == 1) {
+                        $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo + '&' + 'memberNo='+ member.memberNo, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 
                                 alert(ajaxResult.data);
                                 return;
@@ -408,10 +409,9 @@ $(function () {
                                 type: "success"
                             });
                         }); // getJSON()
-                     } else if(count == 2) {
-                         param.type = 3;
-                         
-                         $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                    } else if(count == 2) {
+                        param.type = 3;
+                        $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 
                                 alert(ajaxResult.data);
                                 return;
@@ -424,57 +424,51 @@ $(function () {
                                 showConfirmButton: false,
                                 type: "success"
                             });
-                         });
-                     } 
-                     else if(count == 3) {
-                         param.type = 2;
-                         heartBtn.removeClass('clicked');
-                         heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
-                     
-                         $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                        });
+                    } else if(count == 3) {
+                        param.type = 2;
+                        heartBtn.removeClass('clicked');
+                        heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
+                        $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
                             if (ajaxResult.status != "success") { 
                                 alert(ajaxResult.data);
                                 return;
                             }
-                         swal({
-                             title: "좋아요 삭제 완료!",
-                             text: "마이페이지에서 관심상품이 삭제되었습니다.",
-                             timer: 2250,
-                             showConfirmButton: false,
-                             type: "success"
-                         });
-                         
-                         });
-                             
-                    }else {
+                            swal({
+                                title: "좋아요 삭제 완료!",
+                                text: "마이페이지에서 관심상품이 삭제되었습니다.",
+                                timer: 2250,
+                                showConfirmButton: false,
+                                type: "success"
+                            });
+                        });
+                    } else {
                         $.post('../mypage/add.json',param ,function(ajaxResult) {
-                         if (ajaxResult.status != "success") {
-                             alert(ajaxResult.data);
-                             return;
-                         } 
-                         var item=ajaxResult.data
-                         console.log(ajaxResult.data)
-                         swal({
-                             title: "좋아요 등록 완료!",
-                             text: "마이페이지에서 목록을 확인하세요.",
-                             timer: 2250,
-                             showConfirmButton: false,
-                             type: "success"
-                         });
-                    })
-                }
-              });
-            });
-                // 이벤트 전파를 중단시킨다.
-                if (event.stopPropagation) {
-                    event.stopPropagation();
-                } else {
-                    event.cancelBubble = true;
-                }
-          }); // click()
-        });
-        });
-    } // 다음경매 끝
+                            if (ajaxResult.status != "success") {
+                                alert(ajaxResult.data);
+                                return;
+                            } 
+                            var item=ajaxResult.data
+                            console.log(ajaxResult.data)
+                            swal({
+                                title: "좋아요 등록 완료!",
+                                text: "마이페이지에서 목록을 확인하세요.",
+                                timer: 2250,
+                                showConfirmButton: false,
+                                type: "success"
+                            });
+                        })
+                    }
+                });
+            }
+            // 이벤트 전파를 중단시킨다.
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }); // click()
+    }
     
     // 남은 시간을 표시한다.
     function timeRemaining() {

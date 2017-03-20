@@ -59,6 +59,7 @@ public class ItemJsonControl {
 
   @RequestMapping("/main/add")
   public AjaxResult add(Item item, int type, HttpSession session) throws Exception {
+    System.out.println(item);
     Member member = (Member)session.getAttribute("member");
     item.setMemberNo(member.getMemberNo());
     int itemNo = itemService.add(item, type);

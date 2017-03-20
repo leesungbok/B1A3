@@ -146,7 +146,7 @@ CREATE TABLE `ITEM` (
   `TITL`  VARCHAR(30) NOT NULL COMMENT '제목', -- 제목
   `CATEG` VARCHAR(10) NOT NULL COMMENT '카테고리', -- 카테고리
   `BUY`   DATETIME    NOT NULL COMMENT '구입시기', -- 구입시기
-  `DAY`   INTEGER     NOT NULL COMMENT '사용일수', -- 사용일수
+  `DAY`   VARCHAR(30) NOT NULL COMMENT '사용일수', -- 사용일수
   `DEAL`  VARCHAR(10) NOT NULL COMMENT '거래방식', -- 거래방식
   `CONT`  TEXT        NULL     COMMENT '상세설명', -- 상세설명
   `TIME`  DATETIME    NOT NULL COMMENT '시작시간', -- 시작시간
