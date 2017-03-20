@@ -285,7 +285,7 @@ body>.container {
 
 .icon-comment-empty {
 	margin-left:33px;
-	margin-top:93px;
+	margin-top: -224px;
 }
 
 #clean-desc {
@@ -579,3 +579,18 @@ textarea.form-control + div.popover {
 .sweet-alert .sa-icon.sa-success .sa-placeholder {
     border: 4px solid rgba(243, 46, 109, 0.38);
 }
+/* 채팅 */
+.chatByme {
+	text-align: right;
+	margin-right: -40px;
+}
+
+ .chat {
+	  width: 323px;
+	  height: 358px;
+	  overflow-y: auto;
+	  margin-left: -42px;
+	  margin-top: 5px;
+	  padding-right: 44px;
+} 
+/* 채팅 끝 */
