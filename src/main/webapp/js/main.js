@@ -1,4 +1,5 @@
 $(function () {
+	
     var nav = $('.nav');
 
     $(window).scroll(function () {
@@ -102,7 +103,23 @@ $(function () {
         			});
         		});
             });
-            
+            $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+    	        var member = ajaxResult.data;
+    			if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+    				return;
+    			}
+    			var param = {
+    					memberNo : member.memberNo,
+    					itemNo : nowbid.itemNo,
+    			}
+            $.getJSON('../mypage/check.json', param, function(ajaxResult) {
+   	         var count = ajaxResult.data
+   	         if(count == 1 ||count == 3) {
+  	        	var heartBtn = $('.social-btn-dissolve.heart');
+                heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
+   	         }
+            });
+            });
 //            $('meta[property="og:title"]').attr('content', nowbid.title);
             
             // 현재 경매정보에 대한 입찰기록
@@ -293,6 +310,11 @@ $(function () {
     
     // 다음경매
     function loadList(pageNo, pageSize) {
+    	
+    	//관심상품 클릭시 하트 유지
+        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	        var member = ajaxResult.data;
+	
         $.getJSON(serverRoot + '/main/list.json',
         {
             "pageNo": pageNo,
@@ -310,14 +332,27 @@ $(function () {
             var div
             
             for(var i = 0; i < list.length; i++) {
-                if (i % 3 == 0) {
+            	var index = i;
+            	$.getJSON('../mypage/check.json', {
+            		'memberNo' :member.memberNo,
+            		'itemNo' : list[index].itemNo
+            	}, function(ajaxResult) {
+            		console.log(list[index]);
+        		var count = ajaxResult.data;
+        		if (count == 1 || count == 3) {
+        			list[index]['heart'] = true;
+        		} else {
+        			list[index]['heart'] = false;
+        		}
+                if (index % 3 == 0) {
                     div = $("<div>").addClass('row');
                     parent.append(div);
                 }
-                div.append(template(list[i]));
-                $('div[data-itno="' + list[i].itemNo + '"] .item:first-child').addClass('active');
-            }
-            
+                div.append(template(list[index]));
+                $('div[data-itno="' + list[index].itemNo + '"] .item:first-child').addClass('active');
+            	})
+            	}
+            console.log('gkgkgk');
             // 다음 경매 클릭시 관심상품에 추가한다.
             nextBidGrantEvent();
             
@@ -336,6 +371,7 @@ $(function () {
             }
             
             $('.social-btn-dissolve.heart, .social-btn-dissolve2.heart').click(function() {
+            	console.log('dddddclick');
                 var heartBtn = $(this).addClass('clicked');
                 heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
             	var itemNo = $(this).attr('data-itno');
@@ -436,6 +472,7 @@ $(function () {
                     event.cancelBubble = true;
                 }
           }); // click()
+        });
         });
     } // 다음경매 끝
     
