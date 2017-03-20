@@ -93,6 +93,8 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
 };
 
 $(function() {
+    setTimeout(function() { $('#email').focus() }, 200);
+    
     $('#login-btn').click(function(event) {
         login();
     });
@@ -104,7 +106,7 @@ $(function() {
     });
 
     $('#email').val(getCookie('email').replace(/"/g, ''));
-
+    
     setInterval(function() {
         if (window.innerHeight <= 759) {
             $('.container').css('margin-top', '0');

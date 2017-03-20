@@ -1,4 +1,6 @@
 $(function() {
+    setTimeout(function() { $('#email').focus() }, 200);
+    
     var kakaoName = sessionStorage.getItem('kakao-name')
     var kakaoId = sessionStorage.getItem('kakao-id')
     var fcbkName = sessionStorage.getItem('fcbk-name');
@@ -6,8 +8,28 @@ $(function() {
     
     if (kakaoName != null) {
         $("#nickName").val(kakaoName);
+        nicknameCheck(kakaoName);
     }  else if (fcbkName != null) {
         $("#nickName").val(fcbkName);
+        nicknameCheck(fcbkName);
+    }
+    
+    // 닉네임 검사
+    function nicknameCheck(nickName) {
+        if (nickName.length == 0) {
+            $('#errornickName').text('필수 입력란입니다.');
+        } else if (nickName.length < 2 || nickName.length > 6) {
+            $('#errornickName').text('한글,영문,숫자 포함 최소2자, 최대6자까지 가능합니다.');
+        } else {
+            $.getJSON(nodeRoot + '/nknmcheck?nknm=' + nickName, function (ajaxResult) {
+                if (ajaxResult.count == 0){
+                    $('#nickName-ok').css('display', 'block');
+                    $('#nickName').css('border', '1px solid #e62a4a');
+                } else {
+                    $('#errornickName').text('이미 사용중인 닉네임입니다.');
+                }
+            })
+        }
     }
     
     if (kakaoId != null) {
@@ -158,7 +180,7 @@ $(function() {
                 return;
             }
             swal({
-                title: "가입 완료!",
+                title: "환영합니다!",
                 text: "가입하신 이메일로 로그인 하세요.",
                 timer: 2250,
                 showConfirmButton: false,

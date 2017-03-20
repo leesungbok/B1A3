@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,7 +67,25 @@ public class ItemJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, itemNo);
   }
-  
+
+  @RequestMapping(value="/item/delete", method=RequestMethod.POST)
+  public AjaxResult delete(int itemNo, HttpSession session) throws Exception {
+    Item item = itemService.getDetail(itemNo);
+    Item nowItem = itemService.getDetail(0); // 현재 경매
+
+    Member member = (Member)session.getAttribute("member");
+
+    // 로그인 안했거나, 등록한 사용자가 아닌 사람이거나, 지난경매품인 경우 삭제금지
+    if (member == null || item.getMemberNo() != member.getMemberNo() || item.getItemNo() <= nowItem.getItemNo()) {
+      return new AjaxResult(AjaxResult.FAIL, "삭제 권한이 없습니다.");
+    }
+
+    if (itemService.delete(itemNo) != 0) {
+      return new AjaxResult(AjaxResult.SUCCESS, "경매삭제에 성공했습니다.");
+    }
+    return new AjaxResult(AjaxResult.FAIL, "경매삭제에 실패했습니다.");
+  }
+
   @RequestMapping("/search/searchTitle")
   public AjaxResult searchTitle(String title,
       @RequestParam (value = "categoryList", required=false) List<String> categoryList,

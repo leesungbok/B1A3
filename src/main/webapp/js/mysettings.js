@@ -60,7 +60,7 @@ $(function() {
                         $('#email-check').css('display', 'none');
                     } else {
                         $('#erroremail').text('이미 가입된 이메일입니다.');
-                        $$('#email-check').css('display', 'inline-block');
+                        $('#email-check').css('display', 'inline-block');
                     }
                 })
             }
@@ -325,27 +325,4 @@ $(function() {
             $('.edit-btn').css('opacity', '1');
         }
     }, 100);
-    
-    $.get('../submenu.html', function (result) {
-    	$('#submenu').html(result);
- 
-    	var submenu = location.search.split("?")[1].split("=")[1];
-	    $('#mypage').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mypage.html?submenu=mypage";
-	    }); 
-
-	    $('#mybidding').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mybid.html?submenu=mybid";
-	    }); 
-
-	    $('#myoption').click(function (e) {
-	    	  e.preventDefault();
-	    	 location.href= clientRoot +  "/mypage/mysettings.html?submenu=myoption";
-	    }); 
-	    
-	    $("#"+submenu).parent().addClass('active');
-	     
-    })
 })

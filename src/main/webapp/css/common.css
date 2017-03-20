@@ -336,7 +336,7 @@ body>.container {
   color: rgba(0, 0, 0, 0.81);
 }
 
-#icon-hammer:before {
+.icon-hammer:before {
   content: '\e807';
   font-family: fontello;
   font-size: 1.4em;
@@ -354,7 +354,7 @@ body>.container {
   font-size: 1.4em;
 }
 
-#icon-hammer, #icon-user-circle-o, #icon-edit, #logon-img, #icon-logout{
+.icon-hammer, #icon-user-circle-o, #icon-edit, #logon-img, #icon-logout{
   display: inline-block;
   margin-left: 11px;
 }
@@ -389,11 +389,6 @@ body>.container {
   color: #f32e6d;
 }
 */
-
-input:focus::-webkit-input-placeholder 
-{
-  color: transparent;
-}
 
 .header-wrap {
   color: #f32e6d;
@@ -454,6 +449,13 @@ input:focus::-webkit-input-placeholder
   font-family: BaeMinJua;
   font-size: 3.2em;
   cursor: pointer;
+}
+
+/* input type number 화살표 버튼 없애기 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 /* 헤더 끝 */
 

@@ -71,7 +71,7 @@
     left outer join item i on t.itno=i.itno
     left outer join memb m on t.mno=m.mno
     left outer join phot p on i.itno=p.itno
-    where i.time + interval 30 minute > now() and t.type=2 or t.type=3 and m.mno=#{memberNo}
+    where i.time + interval 30 minute > now() and (t.type=2 or t.type=3) and m.mno=#{memberNo}
     order by rdt desc;
     ]]>
   </select>
@@ -86,7 +86,7 @@
     
   <delete id="delete" parameterType="int">
   <![CDATA[
-    delete from inter where itno=#{value} and type=1
+    delete from inter where itno=#{value} and type=1 
   ]]>
   </delete>
   
@@ -95,6 +95,8 @@
     delete from inter where itno=#{value} and type=2
   ]]>
   </delete>
+  
+  
   
 
 </mapper>

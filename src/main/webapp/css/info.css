@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+.container {
+  display: none;
+}
+
 .nav {
   text-align: center;
 }
@@ -14,7 +18,7 @@
 }
 
 .detail-info, .relation {
-  margin: 30px 0px 20px 0px;
+  padding: 30px 0px 20px 0px;
 }
 
 .detail-info span, .relation>span {
@@ -29,7 +33,6 @@
   padding-bottom: 18px;
   font-size: 1.2em;
   font-weight: 300;
-  border-bottom: 1px solid #d9d9d9;
 }
 
 .nb-img0, .nb-img1, .nb-img2, .nb-img3 {
@@ -71,8 +74,9 @@
 }
 
 .item-img {
-    height: 216px !important;
-    margin: 0 auto;
+    height: 200px !important;
+    margin: auto auto;
+    object-fit: contain;
 }
 
 .carbox-content {
@@ -386,6 +390,7 @@
 
 #bdhsTr th {
   font-size: 1.2em;
+  text-align: center;
 }
 
 #pinktext {  color: #f54e83;  font-weight: 600;
@@ -393,8 +398,10 @@
 
 #bidHistory .modal-body {
   font-size: 1.1em;
+  text-align: center;
 }
 
 .relation {
   height: 574px;
+  border-top: 1px solid #d9d9d9;
 }
