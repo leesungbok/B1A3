@@ -28,6 +28,9 @@ $(function () {
 	    		}
 	    		$('#clean').remove("div");
 	    		
+	    		// 대화내용 지우기
+	    		$('.chat').children().remove(); 
+	    		
 	    		var list = ajaxResult.data;
 	    		var parent = $('#nicklist');
 	    		parent.children().remove();
@@ -42,7 +45,100 @@ $(function () {
 			    	parent.children().remove();
 			    	var template = Handlebars.compile($('#text-box').html());
 			    	parent.append(template());
-			    });
+			    	
+		    	    "use strict";
+		    	    //채팅방
+		    	    var find_friends = $('.chat');
+		    	    //데이터 입력
+		    	    var input = $('#textarea');
+		    	    
+		    	    // 유저 이름
+		    	    myName = me.nickName;
+		    	    
+		    	    var myName;
+		    	    window.WebSocket = window.WebSocket || window.MozWebSocket;
+		    	    if (!window.WebSocket) {
+		    	        find_friends.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
+		    	                                    + 'support WebSockets.'} ));
+		    	        input.hide();
+		    	        $('span').hide();
+		    	        return;
+		    	    }
+		    	    
+		    	    // 연결할 주소와 포트
+		    	    var connection = new WebSocket('ws://127.0.0.1:1337');
+		    	    connection.onopen = function () {
+		    	    	
+		    	    };
+		    	    connection.onerror = function (error) {
+		    	        find_friends.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
+		    	                                    + 'connection or the server is down.' } ));
+		    	    };
+		    	    // 메세지 입력
+		    	    connection.onmessage = function (message) {
+		    	        try {
+		    	            var json = JSON.parse(message.data);
+		    	        } catch (e) {
+		    	            console.log('This doesn\'t look like a valid JSON: ', message.data);
+		    	            return;
+		    	        }  
+		    	        if (json.type === 'history') { 
+		    	            for (var i=0; i < json.data.length; i++) {
+		    	                addMessage(json.data[i].author, json.data[i].text,
+		    	                          new Date(json.data[i].time));
+		    	            }
+		    	        } else if (json.type === 'message') { 
+		    	            addMessage(json.data.author, json.data.text,
+		    	                       new Date(json.data.time));
+		    	        } else {
+		    	            console.log('Hmm..., I\'ve never seen JSON like this: ', json);
+		    	        }
+		    	    };
+		    	    
+		    	    // 입력 된 값 보내기
+		    	    input.keydown(function(e) {
+		    	        if (e.keyCode === 13) {
+		    	            var msg = $(this).val();
+		    	            if (!msg) {
+		    	                return;
+		    	            }
+		    	            var obj = {
+		    	            		myName : myName,
+		    	            		msg : msg
+		    	            }
+		    	            connection.send(JSON.stringify(obj));
+		    	            //메세지 초기화
+		    	            $(this).val('');
+		    	        }
+		    	    });
+		    	    
+		    	    setInterval(function() {
+		    	        if (connection.readyState !== 1) {
+		    	            status.text('Error');
+		    	            input.attr('disabled', 'disabled').val('Unable to comminucate '
+		    	                                                 + 'with the WebSocket server.');
+		    	        }
+		    	    }, 3000);
+		    	    
+		    	    //메세지 가 있을시 채팅방에 추가
+		    	    function addMessage(author, message, dt) {
+		    	    	if (author == myName) {
+		    	    		find_friends.append('<p class="chatByme"><span>' + author + '</span> @ ' +
+				    	             + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
+				    	             + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
+				    	             + ': ' + message + '</p>');
+		    	    	} else {
+		    	    		find_friends.append('<p><span>' + author + '</span> @ ' +
+				    	             + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
+				    	             + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
+				    	             + ': ' + message + '</p>');
+		    	    	}
+		    	    	$('.chat').scrollTop($('.chat').prop('scrollHeight'));
+		    	    }
+		    	    // 소켓 연결 및 메세지 보내기
+			    
+			    }); 
+			    
 	    	}); 	
         });
 	    	

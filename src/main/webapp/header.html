@@ -63,7 +63,9 @@
       </button>
     </div>
     <div class="find-friends">
-      <div id="nicklist" style="margin-top:-121px; margin-left:-55px;"></div>
+      <div id="nicklist" style="margin-top:-121px; margin-left:-55px;">
+      </div>
+        <div class="chat"></div>
       <div id="clean">
 	      <div class="icon-comment-empty"></div>
 	      <div id='clean-desc'><span>닉네임 검색을 통해<br>채팅할 상대방을 찾으세요.</span>
@@ -72,6 +74,7 @@
     </div>
   </div>
 </div>
+
 
 <script id="templatelist" type="text/x-handlebars-template">
 <div class='member'>
@@ -83,7 +86,7 @@
 <div class="textbox">
   <div class="textline">
     <textarea id="textarea"></textarea>
-    <button class="btn btn-warning">전송</button>
+    <button id="b1" class="btn btn-warning">전송</button>
   
   </div>
 </div>
