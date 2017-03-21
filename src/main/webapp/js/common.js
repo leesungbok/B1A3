@@ -28,7 +28,7 @@ $(function () {
 	    		}
 	    		$('#clean').remove("div");
 	    		
-	    		// 대화내용 지우기
+	    		// 대화내용 목록에서 지우기
 	    		$('.chat').children().remove(); 
 	    		
 	    		var list = ajaxResult.data;
