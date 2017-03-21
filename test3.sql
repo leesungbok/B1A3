@@ -1,191 +1,170 @@
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
+drop table if exists `memb` restrict;
 
 -- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
+drop table if exists `phot` restrict;
 
 -- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
+drop table if exists `inter` restrict;
 
 -- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
+drop table if exists `bdhs` restrict;
 
 -- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
+drop table if exists `item` restrict;
 
 -- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
+drop table if exists `chat` restrict;
 
 -- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
-
--- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
-
--- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
-
--- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
-
--- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
-
--- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
-
--- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
-
--- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+drop table if exists `paymt` restrict;
 
 -- 회원
 CREATE TABLE `MEMB` (
@@ -468,12 +447,12 @@ insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,ka
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(6,'user06@test.com',password('1111'),'학생6','010-1116-1116','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
-values(1,1,'시티즌 시계','패션','2016-01-01',30,'택배','시티즌 시계 입니다. 정품, 새제품이고 택, 내부구성품, 박스 그대로 입니다',now(),70000);
+values(1,1,'시티즌 시계','패션','2016-01-01',30,'택배','시티즌 시계 입니다. 정품, 새제품이고 택, 내부구성품, 박스 그대로 입니다','2017-03-20 21:00',70000);
 
-insert into phot(pno,itno,path) values(1,1,'1487897161498_24');
-insert into phot(pno,itno,path) values(2,1,'1487897161498_25');
-insert into phot(pno,itno,path) values(3,1,'1487897161498_26');
-insert into phot(pno,itno,path) values(4,1,'1487897161498_27');
+insert into phot(pno,itno,path) values(1,1,'1488953845219_0');
+insert into phot(pno,itno,path) values(2,1,'1488953845219_1');
+insert into phot(pno,itno,path) values(3,1,'1488953845219_2');
+insert into phot(pno,itno,path) values(4,1,'1488953845219_3');
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(2,2,'HP파빌리온G7','디지털','2016-02-21',100,'택배','HP 파빌리온G7
@@ -488,7 +467,7 @@ VGA : 라데온HD7520G
 HDMI 블루투스 웹캠
 
 본제품 HP 파빌리온G7 노트북입니다. 대화면노트북으로 제품상태 깨끗하며 사무작업 인터넷쇼핑 영화감상등 기본적인사용과 고사양 게임들도 원활합니다. 배터리 완충시 평균3시간 내외 사용가능합니다. 사용하실프로그램 권장사양비교후 신중한 입찰 부탁드립니다. 낙찰가에 보내드리며 착불3000원입니다. 좋은거래 부탁드립니다. 감사합니다.
-구성품 노트북 + 아답터' ,now() + interval 3 minute,100000);
+구성품 노트북 + 아답터' ,'2017-03-20 21:00' + interval 30 minute,100000);
 
 insert into phot(pno,itno,path) values(5,2,'1487897579286_28');
 insert into phot(pno,itno,path) values(6,2,'1487897579287_29');
@@ -511,7 +490,7 @@ SIZE :(측정하는 사람이나 방향에 따라 차이가 날 수 있음.)
 
 설명이 더이상 필요없는 명품 가방의 대명사 샤넬 카프스킨 블랙 COCO 은장로고 서프 토드백 겸 숄더스트랩 2WAY백 입니다~
 엄선한 프랑스산 송아지 가죽을 샤넬만의 특유의 기술로 정밀가공하여 숙련된 프랑스 장인들의 꼼꼼한 솜씨로 한땀 한땀 정성을 다해 제작한 명품 샤넬 카프스킨 블랙 COCO 은장로고 서프 토드백 겸 숄더스트랩 2WAY백 입니다~
-카프스킨가방의 최고봉으로 편리함과 럭셔리함을 더한 샤넬 명품중의 명품 샤넬 카프스킨 블랙 COCO 은장로고 서프 토드백 겸 숄더스트랩 2WAY백 입니다.', now() + interval 6 minute, 300000);
+카프스킨가방의 최고봉으로 편리함과 럭셔리함을 더한 샤넬 명품중의 명품 샤넬 카프스킨 블랙 COCO 은장로고 서프 토드백 겸 숄더스트랩 2WAY백 입니다.', '2017-03-20 21:00' + interval 60 minute, 300000);
 
 insert into phot(pno,itno,path) values(9,3,'1487898025542_32');
 insert into phot(pno,itno,path) values(10,3,'1487898025543_33');
@@ -539,7 +518,7 @@ DSLR을 시작하시면서 렌즈2개~3개구성은 버거운구성입니다.특
 쉽게설명드리자면 탐론18-200mm = 접사용렌즈(100mm)+기본렌즈(18-55mm)+망원렌즈(55-200mm)입니다.
 렌즈하나로 렌즈3개의성능을발휘하며 화질또한 최고의결과물을 선사해주며 가격면에서도 경제적인렌즈입니다.
 기본구성품(일반낙찰시제공)
-1.캐논 700D 바디 2.탐론 18-200mm 렌즈(후드제외) 3.배터리 4.충전기 5.스트랩(어깨끈) 6.바디캡 7.렌즈보호캡 8.USB연결잭 9.외부영상연결잭 10.캐논카달로그 11.정품보증서 12.사용설명서 13.소프트웨어CD 14.4GB메모리',now() + interval 9 minute,300000);
+1.캐논 700D 바디 2.탐론 18-200mm 렌즈(후드제외) 3.배터리 4.충전기 5.스트랩(어깨끈) 6.바디캡 7.렌즈보호캡 8.USB연결잭 9.외부영상연결잭 10.캐논카달로그 11.정품보증서 12.사용설명서 13.소프트웨어CD 14.4GB메모리','2017-03-20 21:00' + interval 90 minute,300000);
 
 insert into phot(pno,itno,path) values(13,4,'1487898434996_36');
 insert into phot(pno,itno,path) values(14,4,'1487898434996_37');
@@ -552,7 +531,7 @@ values(5,5,'닥터데스크 높낮이 조절 책상','가구','2016-02-01',30,'�
 "일.반.형" 입니다.
 
 7개월 동안 사용했고 밑에 지지하는 고무가 잘 떨어져 글루건으로 보강해놓았습니다.
-사용법은 닥터데스크 홈페이지의 http://doctordesk.co.kr/board/free/read.html?no=23&board_no=1에 나와 있습니다.',now() + interval 12 minute, 30000);
+사용법은 닥터데스크 홈페이지의 http://doctordesk.co.kr/board/free/read.html?no=23&board_no=1에 나와 있습니다.','2017-03-20 21:00' + interval 120 minute, 30000);
 
 insert into phot(pno,itno,path) values(17,5,'1487898661109_40');
 insert into phot(pno,itno,path) values(18,5,'1487898661110_41');
@@ -563,7 +542,7 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(6,2,'헥스 통기타 HONEY G240C','취미','2016-01-01',30,'택배 또는 직거래','두달전에 구입한 헥스 통기타 입니다.
 튜너기,줄감개,기타 스트랩,피크2개,피크케이스,가방,통기타책3권을
 같이 드립니다.전체적으로 깨끗한 상태이고 줄교체과정에서 브릿지핀에 약간의 기스가있습니다.
-직거래는 경기도 지역에서 가능합니다.',now() + interval 15 minute,20000);
+직거래는 경기도 지역에서 가능합니다.','2017-03-20 21:00' + interval 150 minute,20000);
 
 insert into phot(pno,itno,path) values(21,6,'1487898952886_44');
 insert into phot(pno,itno,path) values(22,6,'1487898952886_45');
@@ -574,7 +553,7 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(7,5,'엘파마 MTB','레져','2016-01-01',30,'직거래','구매 7개월 된 MTB자전거 팝니다,
 실사용은 3회이며 총 60km 정도 주행 했으며 사진처럼 새거대비 95%이상되는 제품입니다.
 꼭 구매할분만 입찰해주시고 태클및 장난입찰은 정중히 사양합니다
-되도록이면 부산 인근에서 사시는분들과 직 거래를 우선합니다.',now() + interval 18 minute,450000);
+되도록이면 부산 인근에서 사시는분들과 직 거래를 우선합니다.','2017-03-20 21:00' + interval 180 minute,450000);
 
 insert into phot(pno,itno,path) values(25,7,'1487912711572_0');
 insert into phot(pno,itno,path) values(26,7,'1487912711573_1');
@@ -589,7 +568,7 @@ JBL 노스리지 북쉘프 스피커 팝니다
 사이즈는 
 가로16.5 세로24 폭15 입니다
 전체 적으로 상태 좋습니다.
-중고 특성상 반품 불가입니다',now() + interval 21 minute,30000);
+중고 특성상 반품 불가입니다','2017-03-20 21:00' + interval 210 minute,30000);
 
 insert into phot(pno,itno,path) values(29,8,'1487912907326_4');
 insert into phot(pno,itno,path) values(30,8,'1487912907326_5');
@@ -600,7 +579,7 @@ insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(9,5,'삼성 SSD 840 250GB','디지털','2016-01-01',30,'택배','
 삼성 840 SSD 입니다.
 250GB구요 본체 OS 백업용으로 들고 있어 사용시간 짧아요
-필요하신분 입찰부탁드려요~',now() + interval 24 minute,30000);
+필요하신분 입찰부탁드려요~','2017-03-20 21:00' + interval 240 minute,30000);
 
 insert into phot(pno,itno,path) values(33,9,'1487913225052_8');
 insert into phot(pno,itno,path) values(34,9,'1487913225052_9');
@@ -608,7 +587,7 @@ insert into phot(pno,itno,path) values(35,9,'1487913225053_10');
 insert into phot(pno,itno,path) values(36,9,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -619,7 +598,7 @@ insert into phot(itno,path) values(10,'1487913225053_10');
 insert into phot(itno,path) values(10,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -630,7 +609,7 @@ insert into phot(itno,path) values(11,'1487913225053_10');
 insert into phot(itno,path) values(11,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -641,7 +620,7 @@ insert into phot(itno,path) values(12,'1487913225053_10');
 insert into phot(itno,path) values(12,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -652,7 +631,7 @@ insert into phot(itno,path) values(13,'1487913225053_10');
 insert into phot(itno,path) values(13,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -663,7 +642,7 @@ insert into phot(itno,path) values(14,'1487913225053_10');
 insert into phot(itno,path) values(14,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -674,7 +653,7 @@ insert into phot(itno,path) values(15,'1487913225053_10');
 insert into phot(itno,path) values(15,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -685,7 +664,7 @@ insert into phot(itno,path) values(16,'1487913225053_10');
 insert into phot(itno,path) values(16,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -696,7 +675,7 @@ insert into phot(itno,path) values(17,'1487913225053_10');
 insert into phot(itno,path) values(17,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -707,7 +686,7 @@ insert into phot(itno,path) values(18,'1487913225053_10');
 insert into phot(itno,path) values(18,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -718,7 +697,7 @@ insert into phot(itno,path) values(19,'1487913225053_10');
 insert into phot(itno,path) values(19,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -729,7 +708,7 @@ insert into phot(itno,path) values(20,'1487913225053_10');
 insert into phot(itno,path) values(20,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -740,7 +719,7 @@ insert into phot(itno,path) values(21,'1487913225053_10');
 insert into phot(itno,path) values(21,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -751,7 +730,7 @@ insert into phot(itno,path) values(22,'1487913225053_10');
 insert into phot(itno,path) values(22,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -762,7 +741,7 @@ insert into phot(itno,path) values(23,'1487913225053_10');
 insert into phot(itno,path) values(23,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -773,7 +752,7 @@ insert into phot(itno,path) values(24,'1487913225053_10');
 insert into phot(itno,path) values(24,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -784,7 +763,7 @@ insert into phot(itno,path) values(25,'1487913225053_10');
 insert into phot(itno,path) values(25,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -795,7 +774,7 @@ insert into phot(itno,path) values(26,'1487913225053_10');
 insert into phot(itno,path) values(26,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -806,7 +785,7 @@ insert into phot(itno,path) values(27,'1487913225053_10');
 insert into phot(itno,path) values(27,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -817,7 +796,7 @@ insert into phot(itno,path) values(28,'1487913225053_10');
 insert into phot(itno,path) values(28,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -828,7 +807,7 @@ insert into phot(itno,path) values(29,'1487913225053_10');
 insert into phot(itno,path) values(29,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -839,7 +818,7 @@ insert into phot(itno,path) values(30,'1487913225053_10');
 insert into phot(itno,path) values(30,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -850,7 +829,7 @@ insert into phot(itno,path) values(31,'1487913225053_10');
 insert into phot(itno,path) values(31,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -861,7 +840,7 @@ insert into phot(itno,path) values(32,'1487913225053_10');
 insert into phot(itno,path) values(32,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -872,7 +851,7 @@ insert into phot(itno,path) values(33,'1487913225053_10');
 insert into phot(itno,path) values(33,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -883,7 +862,7 @@ insert into phot(itno,path) values(34,'1487913225053_10');
 insert into phot(itno,path) values(34,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -894,7 +873,7 @@ insert into phot(itno,path) values(35,'1487913225053_10');
 insert into phot(itno,path) values(35,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -905,7 +884,7 @@ insert into phot(itno,path) values(36,'1487913225053_10');
 insert into phot(itno,path) values(36,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -916,7 +895,7 @@ insert into phot(itno,path) values(37,'1487913225053_10');
 insert into phot(itno,path) values(37,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -927,7 +906,7 @@ insert into phot(itno,path) values(38,'1487913225053_10');
 insert into phot(itno,path) values(38,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -938,7 +917,7 @@ insert into phot(itno,path) values(39,'1487913225053_10');
 insert into phot(itno,path) values(39,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -949,7 +928,7 @@ insert into phot(itno,path) values(40,'1487913225053_10');
 insert into phot(itno,path) values(40,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -960,7 +939,7 @@ insert into phot(itno,path) values(41,'1487913225053_10');
 insert into phot(itno,path) values(41,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -971,7 +950,7 @@ insert into phot(itno,path) values(42,'1487913225053_10');
 insert into phot(itno,path) values(42,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -982,7 +961,7 @@ insert into phot(itno,path) values(43,'1487913225053_10');
 insert into phot(itno,path) values(43,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -993,7 +972,7 @@ insert into phot(itno,path) values(44,'1487913225053_10');
 insert into phot(itno,path) values(44,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1004,7 +983,7 @@ insert into phot(itno,path) values(45,'1487913225053_10');
 insert into phot(itno,path) values(45,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1015,7 +994,7 @@ insert into phot(itno,path) values(46,'1487913225053_10');
 insert into phot(itno,path) values(46,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1026,7 +1005,7 @@ insert into phot(itno,path) values(47,'1487913225053_10');
 insert into phot(itno,path) values(47,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1037,7 +1016,7 @@ insert into phot(itno,path) values(48,'1487913225053_10');
 insert into phot(itno,path) values(48,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1048,7 +1027,7 @@ insert into phot(itno,path) values(49,'1487913225053_10');
 insert into phot(itno,path) values(49,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1059,7 +1038,7 @@ insert into phot(itno,path) values(50,'1487913225053_10');
 insert into phot(itno,path) values(50,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1070,7 +1049,7 @@ insert into phot(itno,path) values(51,'1487913225053_10');
 insert into phot(itno,path) values(51,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1081,7 +1060,7 @@ insert into phot(itno,path) values(52,'1487913225053_10');
 insert into phot(itno,path) values(52,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1092,7 +1071,7 @@ insert into phot(itno,path) values(53,'1487913225053_10');
 insert into phot(itno,path) values(53,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1103,7 +1082,7 @@ insert into phot(itno,path) values(54,'1487913225053_10');
 insert into phot(itno,path) values(54,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1114,7 +1093,7 @@ insert into phot(itno,path) values(55,'1487913225053_10');
 insert into phot(itno,path) values(55,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1125,7 +1104,7 @@ insert into phot(itno,path) values(56,'1487913225053_10');
 insert into phot(itno,path) values(56,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1136,7 +1115,7 @@ insert into phot(itno,path) values(57,'1487913225053_10');
 insert into phot(itno,path) values(57,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1147,7 +1126,7 @@ insert into phot(itno,path) values(58,'1487913225053_10');
 insert into phot(itno,path) values(58,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1158,7 +1137,7 @@ insert into phot(itno,path) values(59,'1487913225053_10');
 insert into phot(itno,path) values(59,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1169,7 +1148,7 @@ insert into phot(itno,path) values(60,'1487913225053_10');
 insert into phot(itno,path) values(60,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1180,7 +1159,7 @@ insert into phot(itno,path) values(61,'1487913225053_10');
 insert into phot(itno,path) values(61,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1191,7 +1170,7 @@ insert into phot(itno,path) values(62,'1487913225053_10');
 insert into phot(itno,path) values(62,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1202,7 +1181,7 @@ insert into phot(itno,path) values(63,'1487913225053_10');
 insert into phot(itno,path) values(63,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1213,7 +1192,7 @@ insert into phot(itno,path) values(64,'1487913225053_10');
 insert into phot(itno,path) values(64,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1224,7 +1203,7 @@ insert into phot(itno,path) values(65,'1487913225053_10');
 insert into phot(itno,path) values(65,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1235,7 +1214,7 @@ insert into phot(itno,path) values(66,'1487913225053_10');
 insert into phot(itno,path) values(66,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1246,7 +1225,7 @@ insert into phot(itno,path) values(67,'1487913225053_10');
 insert into phot(itno,path) values(67,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1257,7 +1236,7 @@ insert into phot(itno,path) values(68,'1487913225053_10');
 insert into phot(itno,path) values(68,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1268,7 +1247,7 @@ insert into phot(itno,path) values(69,'1487913225053_10');
 insert into phot(itno,path) values(69,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1279,7 +1258,7 @@ insert into phot(itno,path) values(70,'1487913225053_10');
 insert into phot(itno,path) values(70,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1290,7 +1269,7 @@ insert into phot(itno,path) values(71,'1487913225053_10');
 insert into phot(itno,path) values(71,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1301,7 +1280,7 @@ insert into phot(itno,path) values(72,'1487913225053_10');
 insert into phot(itno,path) values(72,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;
@@ -1312,7 +1291,7 @@ insert into phot(itno,path) values(73,'1487913225053_10');
 insert into phot(itno,path) values(73,'1487913225053_11');
 
 insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 3 minute
+select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
 from item
 order by time desc
 limit 1;

@@ -154,7 +154,7 @@ $(function () {
     	    location.href = clientRoot + '/main/main.html';
     	})
     	
-        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+        $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
