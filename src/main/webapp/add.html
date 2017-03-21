@@ -15,7 +15,7 @@
             <label class="col-sm-2 control-label">*상품명</label>
             <div class="col-sm-10 add-input">
               <input id="titl" type="text" class="form-control">
-              <span class="add-error-text">작성하지 않았습니다.</span>
+              <span class="add-error-text" data-count="0"></span>
             </div>
           </div>
           <div class="form-group">
@@ -45,21 +45,30 @@
             <label class="col-sm-2 control-label">*시작가</label>
             <div class="col-sm-10 add-input">
               <input id="stpc"type="number" class="form-control">
-              <span class="add-error-text">작성하지 않았습니다.</span>
+              <span class="add-error-text" data-count="0"></span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">*구입시기</label>
             <div class="col-sm-10 add-input">
               <input id="buy" type="text" class="form-control" readonly>
-              <span class="add-error-text">작성하지 않았습니다.</span>
+              <span class="add-error-text" data-count="0"></span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">*사용일수</label>
-            <div class="col-sm-10 add-input">
-              <input id="day" type="number" class="form-control">
-              <span class="add-error-text">작성하지 않았습니다.</span>
+            <label class="col-sm-2 control-label">*실사용일</label>
+            <div class="col-sm-3 add-input">
+              <input id="day-year" type="number" class="form-control">
+              <span class="add-error-text" data-count="0"></span>
+              <span class="date">년</span>
+            </div>
+            <div class="col-sm-3 add-input">
+              <input id="day-month" type="number" class="form-control">
+              <span class="date">개월</span>
+            </div>
+            <div class="col-sm-3 add-input">
+              <input id="day-date" type="number" class="form-control">
+              <span class="date">일</span>
             </div>
           </div>
           <div class="form-group">

@@ -10,7 +10,7 @@ public class Item extends Member implements Serializable{
   protected String title;
   protected String category;
   protected String buyDate;
-  protected int useDay;
+  protected String useDay;
   protected String deal;
   protected String content;
   protected String startTime; 
@@ -53,10 +53,10 @@ public class Item extends Member implements Serializable{
   public void setBuyDate(String buyDate) {
     this.buyDate = buyDate;
   }
-  public int getUseDay() {
+  public String getUseDay() {
     return useDay;
   }
-  public void setUseDay(int useDay) {
+  public void setUseDay(String useDay) {
     this.useDay = useDay;
   }
   public String getDeal() {

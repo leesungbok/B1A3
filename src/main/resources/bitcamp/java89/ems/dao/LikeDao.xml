@@ -26,7 +26,7 @@
       m.mno,
       i.itno,
       i.titl,
-      i.time,
+      DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
       i.stpc,
       p.path,
       t.type,

@@ -371,6 +371,18 @@ $(function () {
                         
                         var getFilePath = $(".file-path");
                         var filePath = [];
+                        var buyDate = ''
+                        if ($('#day-year').val() != '') {
+                            buyDate = $('#day-year').val() + '년 ';
+                        }
+                        
+                        if ($('#day-month').val() != '') {
+                            buyDate += $('#day-month').val() + '개월 ';
+                        }
+                        
+                        if ($('#day-date').val() != '') {
+                            buyDate += $('#day-date').val() + '일';
+                        }
                         
                         for(var i = 0; i < getFilePath.length; i++){
                             filePath.push($(getFilePath[i]).val());
@@ -386,7 +398,7 @@ $(function () {
                             "category": $('#categ').val(),
                             "startPrice": $('#stpc').val(),
                             "buyDate": $('#buy').val(),
-                            "useDay": $('#day').val(),
+                            "useDay": buyDate,
                             "content": $('#cont').val().replace(/\n/g, "<br>"),
                             "deal": $('#deal').val(),
                             "photoList": filePath,
@@ -411,41 +423,92 @@ $(function () {
             }
             
             // 경매등록 널체크 및 유효성 검사
-            var addValue, $this, span
+            var addValue, $this, span, days, betweenDays
             $('.add-input>input').keyup(function() {
                 addValue = $(this).val();
                 $span = $('#'+this.id+'+span');
-                $span.css('color', '#f32e6d');
-                if (addValue == '') {
-                    $span.text('필수 입력 항목입니다.');
-                    errorCheck();
-                    return;
-                }
                 switch(this.id) {
                 case 'titl':
-                    if (6 > addValue.length || addValue.length > 15) {
+                    if (addValue == '') {
+                        $span.text('필수 입력 항목입니다.');
+                        $span.attr('data-count', '0');
+                    } else if (6 > addValue.length || addValue.length > 15) {
                         $span.text('최소 6자, 최대 15자 까지 가능합니다.');
+                        $span.attr('data-count', '0');
                     } else {
                         $span.text('');
+                        $span.attr('data-count', '1');
                     }
                     break;
                 case 'stpc':
-                    if (1000 > addValue || addValue > 1000000) {
+                    if (addValue == '') {
+                        $span.text('필수 입력 항목입니다.');
+                        $span.attr('data-count', '0');
+                    } else if (1000 > addValue || addValue > 1000000) {
                         $span.text('1000원 이상 100만원 이하 가능합니다.');
+                        $span.attr('data-count', '0');
+                    } else if (addValue % 100 != 0) {
+                        $span.text('100원 단위로 입력해주세요.');
+                        $span.attr('data-count', '0');
                     } else {
                         $span.text('');
+                        $span.attr('data-count', '1');
                     }
                     break;
-                case 'day':
-                    if (addValue > 1000) {
-                        $span.text('최대 1000일까지 가능합니다.');
+                case 'day-year':
+                case 'day-month':
+                case 'day-date':
+                    days = convertToDays($('#day-year').val(), $('#day-month').val(), $('#day-date').val());
+                    betweenDays = getBetweenDay($('#buy').val());
+                    if ($('#day-year').val() == '' && $('#day-month').val() == '' && $('#day-date').val() == '') {
+                        $('#day-year+span').text('필수 입력 항목입니다.');
+                        $('#day-year+span').attr('data-count', '0');
+                    } else if (days > betweenDays) {
+                        $('#day-year+span').text('구입시기에 비해 사용일수가 넘습니다.');
+                        $('#day-year+span').attr('data-count', '0');
                     } else {
-                        $span.text('');
+                        $('#day-year+span').text('');
+                        $('#day-year+span').attr('data-count', '1');
                     }
                     break;
                 }
                 errorCheck();
             })
+            
+            // 현재 시간을 구한다.
+            var today = new Date();
+            var convertDays
+            function convertToDays(year, month, day) {
+                convertDays = 0;
+                if (year != '') {
+                    convertDays += year*365;
+                }
+                if (month != '') {
+                    convertDays += month*30;
+                }
+                if (day != '') {
+                    convertDays += parseInt(day);
+                }
+                return convertDays;
+            }
+            
+            function getBetweenDay(buyDateString) {
+                var buyDateArray = buyDateString.split("-");
+                
+                // 여기서 중간에 월이 들어가는 부분을 보면 숫자형태로하여 1을 뺀 것을 볼 수 있다.
+                // 이유는 자바스크립트에서 Date 객체의 월은 우리가 사용하는 월보다 1이 작기 때문이다.
+                // 예를들면 0 -> 1월, 1 -> 2월 이런식이다.
+                var buyDateObj = new Date(buyDateArray[0], Number(buyDateArray[1])-1, buyDateArray[2]);
+                
+                // 두 객체 사이의 일수 구한다.
+                // getTime() 은 밀리세컨드 단위로 변환하는 함수이기 때문에 이 차이에다가
+                // 1000을 나누면 초, 60을 또 나누면 분, 60을 또 나누면 시간, 24를 또 나누면 일 단위의 차이가 되는것이다.
+                // parseInt() 라는 메서드(함수)를 사용하면, 실수의 소수점 이하를 제거할 수 있습니다.
+                // 반올림하지 않고 무조건 소수점 이하를 버립니다
+                var betweenDay = parseInt((today.getTime() - buyDateObj.getTime())/1000/60/60/24);
+                
+                return betweenDay;
+            }
             
             // 구입시기
             $('#buy').datepicker({
@@ -456,13 +519,23 @@ $(function () {
                 todayHighlight: true,
                 orientation: "bottom auto"
             }).on('hide', function() {
+                days = convertToDays($('#day-year').val(), $('#day-month').val(), $('#day-date').val());
+                betweenDays = getBetweenDay($('#buy').val());
                 if ($(this).val() == '') {
-                    $('#'+this.id+'+span').css('color', '#f32e6d');
                     $('#'+this.id+'+span').text('필수 입력 항목입니다.');
+                } else if (days > betweenDays) {
+                    $('#day-year+span').text('구입시기에 비해 사용일수가 많습니다.');
+                    $('#day-year+span').attr('data-count', '0');
                 } else {
                     $('#'+this.id+'+span').text('');
-                    errorCheck();
+                    $('#'+this.id+'+span').attr('data-count', '1');
+                    if ($('#day-year').val() != '' || $('#day-month').val() != ''
+                        || $('#day-date').val() != '') {
+                        $('#day-year+span').text('');
+                        $('#day-year+span').attr('data-count', '1');
+                    }
                 }
+                errorCheck();
             });
             
             // 상세설명
@@ -476,7 +549,7 @@ $(function () {
             // 등록버튼 클릭가능 여부설정
             function errorCheck() {
                 $('.add-error-text').each(function () {
-                    if ($(this).text() != '' || $('.file-path').val() == undefined) {
+                    if ($(this).attr('data-count') != 1 || $('.file-path').val() == undefined) {
                         $('#add-btn').css('pointer-events', 'none');
                         $('#add-btn').css('opacity', '.65');
                         return false;

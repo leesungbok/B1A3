@@ -427,7 +427,7 @@ h1.heading {
 
 .carbox-title {
   font-weight: 700;
-  font-size: 1.65em;
+  font-size: 1.3em;
   text-align: center;
 }
 
@@ -478,6 +478,27 @@ h1.heading {
 .carousel-indicators > li {
   border: 1px solid #c4c5c8;
 }
+
+.item > img {
+  height: 280px !important;
+  width: 100%;
+  object-fit: contain;
+}
+
+.pinktext {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 12px;
+    margin-top: 12px;
+    display: inline-block;
+}
+
+.black {
+    margin-left: 0px;
+    font-size: 1.15em;
+    display: inline;
+}
+
 
 /* .carousel-indicators > .active{
   width: 15px;
