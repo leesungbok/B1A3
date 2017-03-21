@@ -460,6 +460,9 @@ $(function () {
                         })
                     }
                 });
+            } else {
+                // 로그인 되어있지 않으면 로그인 페이지로 이동한다.
+                location.href = clientRoot + '/auth/login.html';
             }
             // 이벤트 전파를 중단시킨다.
             if (event.stopPropagation) {
