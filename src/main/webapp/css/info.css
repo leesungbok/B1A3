@@ -17,11 +17,11 @@
   color: #f32e6d;
 }
 
-.detail-info, .relation {
+.detail-info, .relation, .question {
   padding: 30px 0px 20px 0px;
 }
 
-.detail-info span, .relation>span {
+.detail-info span, .relation>span, .question>span {
   font-size: 2.5em;
   font-weight: 300;
   display: inherit;
@@ -403,5 +403,9 @@
 
 .relation {
   height: 574px;
+  border-top: 1px solid #d9d9d9;
+}
+
+.question {
   border-top: 1px solid #d9d9d9;
 }

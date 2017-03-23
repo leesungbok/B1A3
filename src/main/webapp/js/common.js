@@ -2,11 +2,22 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
 $(function () {
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1794128977577774',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+    };
+    
+    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
+    
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
@@ -15,7 +26,7 @@ $(function () {
     	
     	// 닉네임 찾기
 	    $('.search-btn').click(function() {
-			$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+			$.getjson('../auth/loginuser.json', function(ajaxresult) {
 			var me = ajaxResult.data;
 	    	var searchMember = $('#searchMember').val();
 	    	var param = {
@@ -28,7 +39,7 @@ $(function () {
 	    		}
 	    		$('#clean').remove("div");
 	    		
-	    		// 대화내용 지우기
+	    		// 대화내용 목록에서 지우기
 	    		$('.chat').children().remove(); 
 	    		
 	    		var list = ajaxResult.data;
@@ -53,9 +64,8 @@ $(function () {
 		    	    var input = $('#textarea');
 		    	    
 		    	    // 유저 이름
-		    	    myName = me.nickName;
+		    	    var myName = me.nickName;
 		    	    
-		    	    var myName;
 		    	    window.WebSocket = window.WebSocket || window.MozWebSocket;
 		    	    if (!window.WebSocket) {
 		    	        find_friends.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
@@ -154,7 +164,7 @@ $(function () {
     	    location.href = clientRoot + '/main/main.html';
     	})
     	
-        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+        $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -193,20 +203,12 @@ $(function () {
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
-    		    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
-    		    
-    			FB.init({
-    				appId      : '1794128977577774',
-    				cookie     : false,  
-    				xfbml      : false,
-    				version    : 'v2.8' 
-    			});
     			$.getJSON(serverRoot + '/auth/logout.json', function(ajaxResult) {
 				    FB.getLoginStatus(function(response) {
 				        if (response && response.status === 'connected') {
 				            FB.logout(function(response) {
-				            location.href = clientRoot +  "/auth/login.html";
-				            });
+	                            location.href = clientRoot +  "/auth/login.html";
+	                        });
 				        } else {
 				        	Kakao.Auth.logout(function() {
 					            location.href = clientRoot +  "/auth/login.html";

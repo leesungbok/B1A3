@@ -95,6 +95,68 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
 $(function() {
     setTimeout(function() { $('#email').focus() }, 200);
     
+    // 카카오톡 로그인
+    $('.btn_kakao').click(function() {
+        Kakao.Auth.login({
+            success: function(authObj) {
+                Kakao.API.request({
+                    url: '/v1/user/me',
+                    success: function(res) {
+                        $.getJSON(serverRoot + '/auth/loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
+                            if (ajaxResult.status == "success") {
+                                location.href = clientRoot + "/main/main.html";
+                            } else {
+                                window.sessionStorage.setItem('kakao-id', res.id);
+                                window.sessionStorage.setItem('kakao-name', res.properties.nickname);
+                                window.sessionStorage.setItem('email', res.kaccount_email);
+                                location.href = clientRoot + "/auth/joinEmail.html";
+                            }
+                        })
+                    },
+                    fail: function(error) {
+                        alert(JSON.stringify(error));
+                    }
+                });
+            },
+            fail: function(err) {
+              alert(JSON.stringify(err));
+            }
+        });
+    })
+    
+    // 페이스북 로그인
+    $('.btn_facebook').click(function() {
+        FB.login(function(response) {
+        	console.log(response);
+            if (response.authResponse) {
+                //console.log(response); // dump complete info
+                access_token = response.authResponse.accessToken; //get access token
+                user_id = response.authResponse.userID; //get FB UID
+                
+                FB.api('/me',
+                		 {
+                		fields: "id,email,name"
+                		 },
+                		 function(res) {
+                	console.log(res);
+                    $.getJSON(serverRoot + '/auth/loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
+                        if (ajaxResult.status == "success") {
+                            location.href = clientRoot +  "/main/main.html";
+                        } else {
+                            window.sessionStorage.setItem('fcbk-id', res.id);
+                            window.sessionStorage.setItem('fcbk-name', res.name);
+                            window.sessionStorage.setItem('email', res.email);
+                            location.href= clientRoot + '/auth/joinEmail.html';
+                        }
+                    })
+                });
+            }
+        }, {
+        	scope: 'public_profile,email',
+            return_scopes: true
+        });
+    })
+    
     $('#login-btn').click(function(event) {
         login();
     });

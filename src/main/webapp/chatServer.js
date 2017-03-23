@@ -1,6 +1,7 @@
 "use strict";
 process.title = 'node-chat';
 var webSocketsServerPort = 1337;
+var mysql = require('mysql');
 var webSocketServer = require('websocket').server;
 var http = require('http');
 
@@ -27,7 +28,6 @@ var wsServer = new webSocketServer({
 wsServer.on('request', function(request) {
     console.log((new Date()) + ' Connection from origin ' + request.origin + '.');
     var connection = request.accept(null, request.origin); 
-    /*console.log(connection);*/
     var index = clients.push(connection) - 1;
     var userName = false;
     console.log((new Date()) + ' Connection accepted.');
@@ -42,9 +42,6 @@ wsServer.on('request', function(request) {
     	console.log(b1.msg);
         if (message.type === 'utf8') { 
         	userName = b1.myName;
-        	console.log(userName);
-        	/*userName = nickName;
-        	console.log(userName);*/
 	        console.log((new Date()) + ' Received Message from '
 	                    + userName + ': ' + b1.msg);
 	        
@@ -53,6 +50,7 @@ wsServer.on('request', function(request) {
 	            text: htmlEntities(b1.msg),
 	            author: userName
 	        };
+	    	
 	        console.log(obj);
 	        history.push(obj);
 	        history = history.slice(-100);

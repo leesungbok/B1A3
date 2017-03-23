@@ -167,6 +167,27 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
 
 -- 회원
+DROP TABLE IF EXISTS `MEMB` RESTRICT;
+
+-- 상품사진
+DROP TABLE IF EXISTS `PHOT` RESTRICT;
+
+-- 나의관심
+DROP TABLE IF EXISTS `INTER` RESTRICT;
+
+-- 입찰기록
+DROP TABLE IF EXISTS `BDHS` RESTRICT;
+
+-- 상품
+DROP TABLE IF EXISTS `ITEM` RESTRICT;
+
+-- 채팅
+DROP TABLE IF EXISTS `CHAT` RESTRICT;
+
+-- 낙찰품결제
+DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+
+-- 회원
 CREATE TABLE `MEMB` (
   `MNO`     INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
   `EMAIL`   VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
@@ -293,7 +314,7 @@ CREATE TABLE `ITEM` (
   `TITL`  VARCHAR(30) NOT NULL COMMENT '제목', -- 제목
   `CATEG` VARCHAR(10) NOT NULL COMMENT '카테고리', -- 카테고리
   `BUY`   DATETIME    NOT NULL COMMENT '구입시기', -- 구입시기
-  `DAY`   INTEGER     NOT NULL COMMENT '사용일수', -- 사용일수
+  `DAY`   VARCHAR(30) NOT NULL COMMENT '사용일수', -- 사용일수
   `DEAL`  VARCHAR(10) NOT NULL COMMENT '거래방식', -- 거래방식
   `CONT`  TEXT        NULL     COMMENT '상세설명', -- 상세설명
   `TIME`  DATETIME    NOT NULL COMMENT '시작시간', -- 시작시간
@@ -449,10 +470,10 @@ insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,ka
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(1,1,'시티즌 시계','패션','2016-01-01',30,'택배','시티즌 시계 입니다. 정품, 새제품이고 택, 내부구성품, 박스 그대로 입니다',now(),70000);
 
-insert into phot(pno,itno,path) values(1,1,'1487897161498_24');
-insert into phot(pno,itno,path) values(2,1,'1487897161498_25');
-insert into phot(pno,itno,path) values(3,1,'1487897161498_26');
-insert into phot(pno,itno,path) values(4,1,'1487897161498_27');
+insert into phot(pno,itno,path) values(1,1,'1488953845219_0');
+insert into phot(pno,itno,path) values(2,1,'1488953845219_1');
+insert into phot(pno,itno,path) values(3,1,'1488953845219_2');
+insert into phot(pno,itno,path) values(4,1,'1488953845219_3');
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(2,2,'HP파빌리온G7','디지털','2016-02-21',100,'택배','HP 파빌리온G7
