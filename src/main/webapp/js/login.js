@@ -33,12 +33,18 @@ $(function() {
     // 페이스북 로그인
     $('.btn_facebook').click(function() {
         FB.login(function(response) {
+        	console.log(response);
             if (response.authResponse) {
                 //console.log(response); // dump complete info
                 access_token = response.authResponse.accessToken; //get access token
                 user_id = response.authResponse.userID; //get FB UID
                 
-                FB.api('/me', function(res) {
+                FB.api('/me',
+                		 {
+                		fields: "id,email,name"
+                		 },
+                		 function(res) {
+                	console.log(res);
                     $.getJSON(serverRoot + '/auth/loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
                         if (ajaxResult.status == "success") {
                             location.href = clientRoot +  "/main/main.html";
