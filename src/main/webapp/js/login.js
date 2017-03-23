@@ -33,14 +33,19 @@ function checkLoginState() {
 // 로그인 성공시 호출
 function testAPI() {
   /*console.log('Welcome!  Fetching your information.... ');*/
-  FB.api('/me', function(res) {
+  FB.api('/me',
+		  {
+			  fields : 'id,email,name,picture'
+		  }, function(res) {
+			  console.log(res);
       $.getJSON(serverRoot + '/auth/loginsns.json', {type: "fcbk", snsId: res.id}, function (ajaxResult) {
           if (ajaxResult.status == "success") {
               location.href = clientRoot +  "/main/main.html";
           } else {
         	  window.sessionStorage.setItem('fcbk-id', res.id);
               window.sessionStorage.setItem('fcbk-name', res.name);
-          	location.href= clientRoot + '/auth/joinEmail.html';
+              window.sessionStorage.setItem('email', res.email);
+          	  location.href= clientRoot + '/auth/joinEmail.html';
           }
       })
       
@@ -53,13 +58,15 @@ function fb_login(){
             //console.log(response); // dump complete info
             access_token = response.authResponse.accessToken; //get access token
             user_id = response.authResponse.userID; //get FB UID
+            console.log('로그인 = ',response.authResponse);
             testAPI();
         } else {
             //user hit cancel button
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'publish_stream,email'
+        scope: 'public_profile,email',
+        return_scopes: true
     });
 }
 
@@ -71,14 +78,15 @@ Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
           Kakao.API.request({
               url: '/v1/user/me',
               success: function(res) {
+            	  console.log(res);
                   $.getJSON(serverRoot + '/auth/loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
                       if (ajaxResult.status == "success") {
                           location.href = clientRoot + "/main/main.html";
                       } else {
                           window.sessionStorage.setItem('kakao-id', res.id);
                           window.sessionStorage.setItem('kakao-name', res.properties.nickname);
-                          location.href = clientRoot + "/auth/joinEmail.html";
-                      }
+                          window.sessionStorage.setItem('email', res.kaccount_email);
+                          location.href = clientRoot + "/auth/joinEmail.html";                      }
                   })
               },
               fail: function(error) {

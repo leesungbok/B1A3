@@ -15,7 +15,7 @@ $(function () {
     	
     	// 닉네임 찾기
 	    $('.search-btn').click(function() {
-			$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+			$.getjson('../auth/loginuser.json', function(ajaxresult) {
 			var me = ajaxResult.data;
 	    	var searchMember = $('#searchMember').val();
 	    	var param = {
@@ -53,9 +53,8 @@ $(function () {
 		    	    var input = $('#textarea');
 		    	    
 		    	    // 유저 이름
-		    	    myName = me.nickName;
+		    	    var myName = me.nickName;
 		    	    
-		    	    var myName;
 		    	    window.WebSocket = window.WebSocket || window.MozWebSocket;
 		    	    if (!window.WebSocket) {
 		    	        find_friends.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
