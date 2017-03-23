@@ -126,7 +126,7 @@ $(function() {
             })
             
             // 관련 상품 정보를 가져온다.
-            getRelatedItems(item)
+            getRelatedItems(item);
             
             $('.container').css('display', 'block');
         });

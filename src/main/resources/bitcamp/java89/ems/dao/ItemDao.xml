@@ -185,7 +185,7 @@
      i.itno,
      i.mno,
      i.titl,
-     i.time,
+     DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
      i.stpc,
      p.path
     from item i
