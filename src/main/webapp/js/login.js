@@ -101,6 +101,11 @@ $(function() {
         
         $.post(serverRoot + '/auth/login.json', param, function(ajaxResult) {
             if (ajaxResult.status == "success") {
+                // 전페이지가 회원가입이나 로그인인 경우 메인페이지로 이동한다.
+                if (document.referrer == serverRoot+'/auth/joinEmail.html' || document.referrer == serverRoot+'/auth/login.html') {
+                    location.href = clientRoot + '/main/main.html';
+                    return;
+                }
                 // 전페이지로 돌아간다.
                 location.href = document.referrer;
                 return;

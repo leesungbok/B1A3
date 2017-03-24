@@ -781,11 +781,10 @@ p.response {
   content: '\e808';
   font-family: fontello;
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding-top: 11px;
-  padding-right: 18px;
+  /* bottom: 12px; */
+  /* right: 129px; */
+  /* padding-top: 11px; */
+  /* padding-right: 18px; */
 }
 
 #qna-search-text {
@@ -847,5 +846,5 @@ input[id="answer-check"]:checked + span, input[id="question-check"]:checked + sp
 
 #answer-word {
   width: 85%;
-  display: block;
+  display: inline-block;
 }

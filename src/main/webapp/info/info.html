@@ -207,10 +207,12 @@
         <p class="questioner">{{nickName}}</p>
         <label class="black-text animate" for="q{{inc @index}}">{{question}}</label>
         <p class="response animate">
-          <span id="answer-word">{{{answer}}}</span>
-          {{#ifCond loginUser seller}}
-            <span class="answer-edit-btn" data-qno="{{questionNo}}"></span>
-          {{/ifCond}}
+          <span id="answer-word">
+            {{{answer}}}
+            {{#ifCond loginUser seller}}
+              <span class="answer-edit-btn" data-qno="{{questionNo}}"></span>
+            {{/ifCond}}
+          </span>
         </p>
         <p class="answer-time animate">{{answerTime}}</p>
       </div>

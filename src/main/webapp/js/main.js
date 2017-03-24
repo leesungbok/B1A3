@@ -206,22 +206,6 @@ $(function () {
                         $('#dl'+i+'-bid').text(bdhs[i].bids);
                         $('#dl'+i+'').css('display', 'block');
                     }
-                    
-/*                    // 입찰하락자 SMS 전송
-                    var nickName = $('#dl1-bidder').text();
-                    if (nickName != '' && nowbid.title != '') {
-                        $.post(serverRoot + '/bidhistory/sms.json',
-                        {
-                            "nickName": nickName,
-                            "text": "[" + nowbid.title + "] " + "입찰순위가 하락했습니다."
-                        },
-                        function(ajaxResult){
-                            if (ajaxResult.status != "success") {
-                                alert(ajaxResult.data);
-                                return;
-                            }
-                        })
-                    }*/
                 })
                 setTimeout(getBidHistory, 100);
             })();
@@ -233,6 +217,7 @@ $(function () {
             
             // 입찰하기
             $('.btn-primary1').click(function() {
+                var smsNickName = $('.successful-bidder').text();
                 $.post(serverRoot + '/bidhistory/add.json',
                 {
                 "bids": $('#l').val(),
@@ -242,6 +227,21 @@ $(function () {
                         alert(ajaxResult.data);
                         return;
                     }
+                    // 입찰하락자 SMS 전송
+                    if (smsNickName != '') {
+                        $.post(serverRoot + '/bidhistory/sms.json',
+                        {
+                            "nickName": smsNickName,
+                            "text": "[" + nowbid.title + "] " + "입찰순위가 하락했습니다."
+                        },
+                        function(ajaxResult) {
+                            if (ajaxResult.status != "success") {
+                                alert(ajaxResult.data);
+                                return;
+                            }
+                        })
+                    }
+                    
                     $('#tender').modal('hide')
                     swal({
                         title: "입찰 완료!",

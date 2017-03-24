@@ -581,7 +581,6 @@ $(function() {
         $(this).parent().parent().remove();
         
     }).on('click', '#answer-add', function() { // 문의하기 답변 등록
-        console.log($.trim($('#answer-area').val().replace(/\n/g, "<br>")));
         $.post(serverRoot + '/qna/addAnswer.json', 
         {
             'answer': $.trim($('#answer-area').val()).replace(/\n/g, "<br>"),
@@ -603,9 +602,9 @@ $(function() {
             loadList(currPageNo, 5); // 상품문의 리스트를 새로 불러들인다.
         });
     }).on('click', '.answer-edit-btn', function() { // 문의하기 답변 수정
-        
-        answerValue = $(this).prev().html().replace(regex, "\n");
-        $(this).parent().hide(); // 해당 답변항목을 숨긴다.
+        answerValue = $(this).parent().html().replace(regex, "\n");
+        answerValue = $.trim(answerValue.substring(0, answerValue.lastIndexOf('<span')));
+        $(this).parent().parent().hide(); // 해당 답변항목을 숨긴다.
         
         $(this).parent().parent().after(
         '<div class="edit-answer">' +
@@ -655,14 +654,14 @@ $(function() {
                 showCancelButton: true
             }, function(isConfirm) {
                 if (isConfirm) {
-                    editDiv.prev().find('.response').show();
+                    editDiv.prev().show();
                     editDiv.remove();
                 }
             });
             return;
         }
         
-        editDiv.prev().find('.response').show();
+        editDiv.prev().show();
         editDiv.remove();
     })
 });
