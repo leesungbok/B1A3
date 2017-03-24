@@ -233,7 +233,7 @@ $(function() {
             closeOnConfirm: false
           },
           function(){
-              $.post(serverRoot + '/mypage/delete.json', function(ajaxResult) {
+              $.post(serverRoot + '/mypage/delete1.json', function(ajaxResult) {
                   if (ajaxResult.status != 'success') {
                       alert(ajaxResult.data);
                       return;

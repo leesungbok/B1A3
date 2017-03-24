@@ -26,7 +26,7 @@ $(function () {
     	
     	// 닉네임 찾기
 	    $('.search-btn').click(function() {
-			$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+			$.getjson('../auth/loginuser.json', function(ajaxresult) {
 			var me = ajaxResult.data;
 	    	var searchMember = $('#searchMember').val();
 	    	var param = {
@@ -39,7 +39,7 @@ $(function () {
 	    		}
 	    		$('#clean').remove("div");
 	    		
-	    		// 대화내용 지우기
+	    		// 대화내용 목록에서 지우기
 	    		$('.chat').children().remove(); 
 	    		
 	    		var list = ajaxResult.data;
@@ -64,9 +64,8 @@ $(function () {
 		    	    var input = $('#textarea');
 		    	    
 		    	    // 유저 이름
-		    	    myName = me.nickName;
+		    	    var myName = me.nickName;
 		    	    
-		    	    var myName;
 		    	    window.WebSocket = window.WebSocket || window.MozWebSocket;
 		    	    if (!window.WebSocket) {
 		    	        find_friends.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
