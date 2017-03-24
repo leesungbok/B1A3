@@ -116,14 +116,12 @@
   
   <script>
   $(document.body).on('mouseenter', '.profile-pic', function() {
-  	/* console.log('enter...') */
-  	$(this).parent().find('.shadow-div').css('display', 'block')
-  	$(this).parent().find('.edit').css('display', 'block')
+  	$(this).parent().find('.shadow-div').show();
+  	$(this).parent().find('.edit').show();
   });
   $(document.body).on('mouseleave', '.shadow-div', function() {
-  	/* console.log('leave...') */
-  	$(this).css('display', '')
-  	$(this).parent().find('.edit').css('display', '')
+  	$(this).hide()
+  	$(this).next().hide()
   });
   </script>
 

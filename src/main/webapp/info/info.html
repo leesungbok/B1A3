@@ -20,12 +20,35 @@
   <div class="container">
     <div class="question">
       <span>상품 문의</span>
+      <div class="qna-search">
+        <input type="text" id="qna-search-text">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </div>
+      <div class="answer-exist">
+        <input type="checkbox" id="answer-check">
+        <span class="icon-ok-circled2"></span>
+        <p>답변있는 항목만 보기</p>
+      </div>
+      <div class="question-exist">
+        <input type="checkbox" id="question-check">
+        <span class="icon-ok-circled2"></span>
+        <p>답변없는 항목만 보기</p>
+      </div>
+      <button id='addQuestionBtn' type="button" class="btn btn-secondary">문의하기</button>
+      <section>
+      </section>
+      <div class="page">
+        <button id='prevPgBtn' type='button' class='btn btn-primary btn-xs'>‹</button>
+        <span id='pageNo'></span>
+        <button id='nextPgBtn' type='button' class='btn btn-primary btn-xs'>›</button>
+      </div>
     </div>
     <div class="relation">
       <span>관련 상품</span>
     </div>
   </div>
   
+  <!-- 입찰기록 팝업 -->
   <div class="modal fade" id="bidHistory" tabindex="-1" role="dialog" aria-labelledby="bdhsModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -171,6 +194,47 @@
       </div>
     </div>
   </script>
+  
+  <!-- 상품 문의 -->
+  <script id="question-Template" type="text/x-handlebars-template">
+  {{#each this}}
+    {{#if answer}}
+      <input class="animate" type="radio" name="question" id="q{{inc @index}}"/>
+      <div>
+        <span class="icon-ok"></span>
+        <p>답변완료</p>
+        <p class="question-time">{{questionTime}}</p>
+        <p class="questioner">{{nickName}}</p>
+        <label class="black-text animate" for="q{{inc @index}}">{{question}}</label>
+        <p class="response animate">
+          <span id="answer-word">{{{answer}}}</span>
+          {{#ifCond loginUser seller}}
+            <span class="answer-edit-btn" data-qno="{{questionNo}}"></span>
+          {{/ifCond}}
+        </p>
+        <p class="answer-time animate">{{answerTime}}</p>
+      </div>
+    {{else}}
+      <input class="animate" type="radio" name="question" id="q{{inc @index}}"/> 
+      <div>
+        <span class="icon-ellipsis"></span>
+        <p>답변대기</p>
+        <p class="question-time">{{questionTime}}</p>
+        <p class="questioner">{{nickName}}</p>
+        <label class="not-click animate" for="q{{inc @index}}">
+          {{question}}
+          {{#ifCond loginUser nickName}}
+            <span class="icon-edit" data-qno="{{questionNo}}"></span>
+            <span class="icon-trash-empty" data-qno="{{questionNo}}"></span>
+          {{/ifCond}}
+          {{#ifCond loginUser seller}}
+            <span class="icon-reply" data-qno="{{questionNo}}"></span>
+          {{/ifCond}}
+        </label>
+      </div>
+    {{/if}}
+  {{/each}}
+  </script>
 
   <!-- 관련 상품 -->
   <script id="relation-Template" type="text/x-handlebars-template">
@@ -230,6 +294,7 @@
     </div>
   </script>
   
+  <!-- 입찰기록 -->
   <script id="bdhs-Template" type="text/x-handlebars-template">
   {{#each this}}
     <tr>

@@ -90,9 +90,10 @@ $(function() {
             password: $('#password').val()
         };
         
-        $.post('login.json', param, function(ajaxResult) {
+        $.post(serverRoot + '/auth/login.json', param, function(ajaxResult) {
             if (ajaxResult.status == "success") {
-                location.href = clientRoot + "/main/main.html";
+                // 전페이지로 돌아간다.
+                location.href = document.referrer;
                 return;
             }
             alert(ajaxResult.data);

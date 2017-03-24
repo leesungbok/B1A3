@@ -19,26 +19,8 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 -- 낙찰품결제
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
 
--- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
-
--- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
-
--- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
-
--- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
-
--- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
-
--- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
-
--- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
 
 -- 회원
 DROP TABLE IF EXISTS `MEMB` RESTRICT;
@@ -61,26 +43,8 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 -- 낙찰품결제
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
 
--- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
-
--- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
-
--- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
-
--- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
-
--- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
-
--- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
-
--- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
 
 -- 회원
 DROP TABLE IF EXISTS `MEMB` RESTRICT;
@@ -103,26 +67,8 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 -- 낙찰품결제
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
 
--- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
-
--- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
-
--- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
-
--- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
-
--- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
-
--- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
-
--- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
 
 -- 회원
 DROP TABLE IF EXISTS `MEMB` RESTRICT;
@@ -145,26 +91,8 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 -- 낙찰품결제
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
 
--- 회원
-DROP TABLE IF EXISTS `MEMB` RESTRICT;
-
--- 상품사진
-DROP TABLE IF EXISTS `PHOT` RESTRICT;
-
--- 나의관심
-DROP TABLE IF EXISTS `INTER` RESTRICT;
-
--- 입찰기록
-DROP TABLE IF EXISTS `BDHS` RESTRICT;
-
--- 상품
-DROP TABLE IF EXISTS `ITEM` RESTRICT;
-
--- 채팅
-DROP TABLE IF EXISTS `CHAT` RESTRICT;
-
--- 낙찰품결제
-DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
 
 -- 회원
 DROP TABLE IF EXISTS `MEMB` RESTRICT;
@@ -186,6 +114,33 @@ DROP TABLE IF EXISTS `CHAT` RESTRICT;
 
 -- 낙찰품결제
 DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
+
+-- 회원
+DROP TABLE IF EXISTS `MEMB` RESTRICT;
+
+-- 상품사진
+DROP TABLE IF EXISTS `PHOT` RESTRICT;
+
+-- 나의관심
+DROP TABLE IF EXISTS `INTER` RESTRICT;
+
+-- 입찰기록
+DROP TABLE IF EXISTS `BDHS` RESTRICT;
+
+-- 상품
+DROP TABLE IF EXISTS `ITEM` RESTRICT;
+
+-- 채팅
+DROP TABLE IF EXISTS `CHAT` RESTRICT;
+
+-- 낙찰품결제
+DROP TABLE IF EXISTS `PAYMT` RESTRICT;
+
+-- 상품문의
+DROP TABLE IF EXISTS `QNA` RESTRICT;
 
 -- 회원
 CREATE TABLE `MEMB` (
@@ -369,6 +324,28 @@ ALTER TABLE `PAYMT`
       `HSNO` -- 입찰기록일련번호
     );
 
+-- 상품문의
+CREATE TABLE `QNA` (
+  `QNO`  INTEGER     NOT NULL COMMENT '상품문의일련번호', -- 상품문의일련번호
+  `MNO`  INTEGER     NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+  `ITNO` INTEGER     NOT NULL COMMENT '상품일련번호', -- 상품일련번호
+  `QUS`  VARCHAR(30) NOT NULL COMMENT '문의', -- 문의
+  `QTM`  DATETIME    NOT NULL COMMENT '문의시간', -- 문의시간
+  `ANS`  TEXT        NULL     COMMENT '답변', -- 답변
+  `ATM`  DATETIME    NULL     COMMENT '답변시간' -- 답변시간
+)
+COMMENT '상품문의';
+
+-- 상품문의
+ALTER TABLE `QNA`
+  ADD CONSTRAINT `PK_QNA` -- 상품문의 기본키
+    PRIMARY KEY (
+      `QNO` -- 상품문의일련번호
+    );
+
+ALTER TABLE `QNA`
+  MODIFY COLUMN `QNO` INTEGER NOT NULL AUTO_INCREMENT COMMENT '상품문의일련번호';
+
 -- 상품사진
 ALTER TABLE `PHOT`
   ADD CONSTRAINT `FK_ITEM_TO_PHOT` -- 상품 -> 상품사진
@@ -457,6 +434,26 @@ ALTER TABLE `PAYMT`
     )
     REFERENCES `BDHS` ( -- 입찰기록
       `HSNO` -- 입찰기록일련번호
+    );
+
+-- 상품문의
+ALTER TABLE `QNA`
+  ADD CONSTRAINT `FK_MEMB_TO_QNA` -- 회원 -> 상품문의
+    FOREIGN KEY (
+      `MNO` -- 회원일련번호
+    )
+    REFERENCES `MEMB` ( -- 회원
+      `MNO` -- 회원일련번호
+    );
+
+-- 상품문의
+ALTER TABLE `QNA`
+  ADD CONSTRAINT `FK_ITEM_TO_QNA` -- 상품 -> 상품문의
+    FOREIGN KEY (
+      `ITNO` -- 상품일련번호
+    )
+    REFERENCES `ITEM` ( -- 상품
+      `ITNO` -- 상품일련번호
     );
     
 -- 회원 데이터
@@ -1322,4 +1319,19 @@ insert into phot(itno,path) values(74,'1487913225052_9');
 insert into phot(itno,path) values(74,'1487913225053_10');
 insert into phot(itno,path) values(74,'1487913225053_11');
 
-
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(1,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(2,50,'모니터 듀얼로 가능한가요?',now(),'RGB HDMI DISPLAY포트가 있으며 듀얼모니터로 사용 가능합니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(3,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(4,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(5,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(6,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+insert into qna(mno,itno,qus,qtm)
+values(1,50,'윈도우 설치되어있는 상품인가요?',now());
+insert into qna(mno,itno,qus,qtm)
+values(2,50,'윈도우 설치되어있는 상품인가요?',now());
