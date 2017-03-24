@@ -20,6 +20,7 @@
   <title>이거어때</title>
   <link rel="shortcut icon" type="image/x-icon" href="../image/favicon.ico">
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link href="social-buttons.css" rel="stylesheet">
   <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
   <link rel="stylesheet" href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all">
   <link rel="stylesheet" href="../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
@@ -82,7 +83,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/share" target="_blank"class="social-btn-dissolve twitter">
+                  <a href="https://twitter.com/share" target="_block"class="social-btn-dissolve twitter">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
@@ -374,6 +375,8 @@
   </script>
 	<script>
 		$('.social-btn-dissolve.facebook, .social-btn-dissolve2.facebook').click(function() {
+			var facebookBtn = $(this).addClass('clicked');
+			facebookBtn.children('.fa.fa-facebook').attr('class','sb min facebook');
 	   //	$("meta[property='og:title']").attr("content", "hahahaha"); 
 	   	//$("meta[property='og:description']").attr("content", "hahaha2");
 	   	//$("meta[property='og:image']").attr("content", "hahaha3");
@@ -389,20 +392,6 @@
   if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
   fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   </script>
-	<!-- <script> 트위터 공유하기
-   var shareURL = encodeURIComponent( $('meta[name="twitter:url"]').attr("content") );
-   var url;
-   var title = $('meta[property="og:title"]').attr("content");
-
-   var popOption = "width="+ pWidth +",height="+ pHeight +",left="+ pLeft +",top="+ pTop +
-      ",location=no,menubar=no,status=no,scrollbars=no,resizable=no,titlebar=no,toolbar=no";
-
-
-   url = "http://twitter.com/share?url=" + shareURL +
-         "&text=" + twitterContent;
-
-    window.open(url, 'Share to twitter', popOption);
-    </script> -->
 </body>
 
 </html>

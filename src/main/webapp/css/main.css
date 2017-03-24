@@ -674,6 +674,10 @@ div[data-target="#detail"] img {
     transition: none;
 }
 
+.icon-facebook {
+	color: white !important;
+}
+
 .social-btn-dissolve.facebook {
     background: #3b5998;
 }
@@ -690,6 +694,9 @@ div[data-target="#detail"] img {
 	color:white !important;
 }
 
+.sb.min.facebook {
+	color:white !important;
+}
 
 .social-btn-dissolve2:hover {
     color: #fff;
