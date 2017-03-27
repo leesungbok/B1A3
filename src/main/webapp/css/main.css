@@ -133,7 +133,7 @@
   right: -19px;}
 
 .bidding-btn {
-  margin: 20px 0px 0px 120px;
+  margin: 20px 0px 0px 136px;
   height: 55px;
   width: 178px;
   padding: 10px 16px;
@@ -508,7 +508,7 @@ div[data-target="#detail"] img {
   margin: auto auto;
 }
 
-/* 다음경매 더보기 로딩 */
+/* ë‹¤ìŒê²½ë§¤ ë”ë³´ê¸° ë¡œë”© */
 .spinner {
   margin: 0 auto;
   width: 70px;
@@ -551,7 +551,7 @@ div[data-target="#detail"] img {
     transform: scale(1.0);
   }
 }
-/* 다음경매 더보기 로딩 끝 */
+/* ë‹¤ìŒê²½ë§¤ ë”ë³´ê¸° ë¡œë”© ë */
 
 /* Buttons */
 .social-btns {
@@ -747,7 +747,7 @@ div[data-target="#detail"] img {
    text-align:-webdit-auto;
 }
 
-/* 현재 경매가 없을때 */
+/* í˜„ìž¬ ê²½ë§¤ê°€ ì—†ì„ë•Œ */
 video {
   display: none;
   position: fixed;

@@ -449,7 +449,8 @@ $(function() {
             confirmButtonColor: "rgb(244, 46, 109)",
             cancelButtonText: "아니요",
             cancelButtonColor: "#e5e5e5",
-            showCancelButton: true
+            showCancelButton: true,
+            closeOnConfirm: false
         },
         function(isConfirm) {
             if (isConfirm) {
