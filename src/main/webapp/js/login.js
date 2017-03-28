@@ -110,7 +110,14 @@ $(function() {
                 location.href = document.referrer;
                 return;
             }
-            alert(ajaxResult.data);
+            
+            swal({
+                title: "오류!",
+                type: "warning",
+                text: "잘못된 회원정보입니다. 다시 시도하세요",
+                confirmButtonText: "확인",
+                confirmButtonColor: "#f32e6d"
+            });
         }, 'json');
     }
 })
