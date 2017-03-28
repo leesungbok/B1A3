@@ -457,12 +457,20 @@ ALTER TABLE `QNA`
     );
     
 -- 회원 데이터
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(1,'user01@test.com',password('1111'),'학생1','010-1111-1111','user.png','123-234','서울시 강남구 역삼동','123-1','111-111',null,null,null);
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(2,'user02@test.com',password('1111'),'학생2','010-1112-1112','user.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(3,'user03@test.com',password('1111'),'학생3','010-1113-1113','user.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(4,'user04@test.com',password('1111'),'학생4','010-1114-1114','user.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(5,'user05@test.com',password('1111'),'학생5','010-1115-1115','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
-insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(6,'user06@test.com',password('1111'),'학생6','010-1116-1116','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(1,'sungbok@naver.com',password('1111'),'이성복','010-5960-0335','sung.png','06621','서울 서초구 강남대로53길 8 (서초동, 비트아카데미빌딩)','3층','111-111',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(2,'bora@gmail.com',password('1111'),'김보라','010-4111-9109','bo.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(3,'yongseok@gmail.com',password('1111'),'오용석','010-3177-3840','dong.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(4,'kimgun@naver.com',password('1111'),'김건우','010-4534-1457','user.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(5,'sungkyo@naver.com',password('1111'),'정선교','010-2265-7899','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(6,'jaenyong@gmail.com',password('1111'),'김재녕','010-8466-3558','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
+values(7,'jinyoung@naver.com',password('1111'),'엄진영','010-1116-1116','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(51,1,'시티즌 시계','패션','2016-01-01','30일','택배','시티즌 시계 입니다. 정품, 새제품이고 택, 내부구성품, 박스 그대로 입니다',now(),70000);
@@ -605,7 +613,7 @@ insert into phot(itno,path) values(59,'1487913225053_10');
 insert into phot(itno,path) values(59,'1487913225053_11');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(60,1,'커세어 기계식 키보드 k65 RGB','컴퓨터','2017-03-27','0일','직거래','미개봉 상품이며 한국 정품입니다. <br>1년 무상 수리 가능합니다.<br>', now() + interval 270 minute,170000);
 
 
@@ -637,10 +645,10 @@ values(62,2,'[미개봉]레고 심슨하우스','취미','2016-02-22','0일','�
 미니피겨 6개(호머, 마지, 바트, 리사, 매기, 네드 플랜더스)가 들어 있습니다.<br>   
 ',now() + interval 330 minute,260000);
 
-insert into phot(itno,path) values(62,'55.png');
-insert into phot(itno,path) values(62,'555.png');
-insert into phot(itno,path) values(62,'5555.png');
-insert into phot(itno,path) values(62,'555555.png');
+insert into phot(itno,path) values(62,'55.jpg');
+insert into phot(itno,path) values(62,'555.jpg');
+insert into phot(itno,path) values(62,'5555.jpg');
+insert into phot(itno,path) values(62,'555555.jpg');
 
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
@@ -658,7 +666,7 @@ insert into phot(itno,path) values(63,'333333.png');
 insert into phot(itno,path) values(63,'333333333.png');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(64,2,'커세어 텐키리스 키보드 k65','컴퓨터','2016-08-27','0일','직거래','미개봉 상품이며 한국 정품입니다.<br>
  1년 무상 수리 가능합니다.<br> 기계식 키보드의 장점을 가득 담고 있어 키감 완전 좋습니다.<br>', now() + interval 390 minute,170000);
 
@@ -668,7 +676,7 @@ insert into phot(itno,path) values(64,'1223456.jpeg');
 insert into phot(itno,path) values(64,'1222.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(65,3,'신일 SEH-G800','생활품','2016-12-27','2개월','직거래','냄새걱정, 연기걱정, 소음걱정이 없습니다.<br>
 전도 안전 스위치 : 제품이 기울거나 넘어질 경우 자동으로 전원이 차단됩니다.<br>
 2단 온열 조절버튼 : 2단 온열 조절 버튼이 있어 원하는 온도로 설정하여 사용 할 수 있습니다.<br>
@@ -681,7 +689,7 @@ insert into phot(itno,path) values(65,'15.jpeg');
 
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(66,6,'윌리콧 백팩','가방','2016-08-27','6개월','직거래','willcot(윌리콧)은 2009년 오스트레일리아의 젊은 디자이너 두명과 국내교포 몇명에 의해<br>
 직접 여행용 가방을 제작해 지니고 다닌 것으로 시작됩니다.<br>
 그 후 해가 거듭하여 윌리콧을 재발견한 교역회사가 더욱 많은 사람들에게 합리적이<br>
@@ -696,7 +704,7 @@ insert into phot(itno,path) values(66,'18.jpeg');
 insert into phot(itno,path) values(66,'19.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(67,1,'이스트팩 백팩','가방','2016-11-29','3개월',
 '택배 또는 직거래','1979년 처음 만들어진 이후로 백투베이직이란 심플하고 베이직하면서 실용성을 강조한<br>
 라인과 빌트투 레지스트 아티스오의 콜라보레이션 작업을 통한 유니크한 스타일을 만드는 이스트백<br>
@@ -708,7 +716,7 @@ insert into phot(itno,path) values(67,'22.jpeg');
 insert into phot(itno,path) values(67,'23.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(68,2,'하이엔드 게이밍 마우스','생활품','2015-12-29','6개월',
 '택배 또는 직거래','A700 하이엔드 게이밍 마우스는 옴론 스위치 탑재로 반응 속도는 물론 20,000,000회의<br>
 버튼 수명으로 튼튼한 내구성을 자랑하며 탁월한 성능의 아바고 ADNS A9800 레이저 센서 탑재로 게임은 물론,<br>
@@ -725,7 +733,7 @@ insert into phot(itno,path) values(68,'26.jpeg');
 insert into phot(itno,path) values(68,'27.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(69,3,'코맥 엔틱원톡 그라인더','생활품','2016-04-12','9개월',
 '택배','이중날 구조로 분쇄효과가 뛰어남<br>
 그라인더 상단이 돔형으로 되어있어 내부에 먼지가 들어가지 않는 구조<br>
@@ -739,7 +747,7 @@ insert into phot(itno,path) values(69,'30.jpeg');
 insert into phot(itno,path) values(69,'31.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(70,5,'잠만보인형','취미','2017-01-13','1개월',
 '직거래','졸음 포켓몬인 잠만보 현태의 귀요미 사이즈 인형<br>
 침대위 쿠셥이나 쇼파 등 다양한 공간에서 활용가능<br>
@@ -751,7 +759,7 @@ insert into phot(itno,path) values(70,'34.jpeg');
 insert into phot(itno,path) values(70,'35.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(71,6,'삼성노트북 NT550P7C-S59','컴퓨터','2016-05-23','8개월',
 '직거래','삼성 노트북 5 Boost는 심플하고 클래식한 메탈 실버 색상을 채택하여 특유의 이지적이고 깔끔한을 돋보이게 합니다.<br>
 외관으로나 성능으로나 만족을 드리는 삼성노트북5 Boost로 당신의 컴퓨팅 환경을 한 단계 업그레이드 해 보세요.<br>
@@ -770,7 +778,7 @@ insert into phot(itno,path) values(71,'39.jpeg');
 insert into phot(itno,path) values(71,'40.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(72,1,'기계식 키보드','디지털','2016-12-24','3개월',
 '직거래','기계식키보드 이며 실사용 3개월 밖에 안되어 비교적 깨끗합니다.<br>', now() + interval 660 minute,13000);
  
@@ -780,7 +788,7 @@ insert into phot(itno,path) values(72,'43.jpeg');
 insert into phot(itno,path) values(72,'44.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(73,2,'맥프로 레티나 13인치','컴퓨터','2017-01-13','2개월',
 '직거래','맥프로 스페이스 그레이 13인치<br>
 내장된 디스플레이에서 수백만 색상으로 기본 최대 해상도와 다음을 동시지원:<br>
@@ -794,7 +802,7 @@ insert into phot(itno,path) values(73,'49.jpeg');
 
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(74,3,'한일 전기 온풍기','생활품','2015-02-13','1년 6개월',
 '택배','개인용으로 사용하는 미니온풍기 입니다.<br>
 본체가 쓰러졌을 때 자동안전장치가 작동하여 자동으로 전원이 차단됩니다.<br>
@@ -806,7 +814,7 @@ insert into phot(itno,path) values(74,'52.jpeg');
 insert into phot(itno,path) values(74,'53.jpeg');
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(75,4,'스텔스 본체','컴퓨터','2016-08-13','7개월',
 '직거래','전례없는 놀라운 수용및 확장성<br>
 돋보이는 쾌적한 냉각 솔루션<br>
@@ -823,7 +831,7 @@ insert into phot(itno,path) values(75,'58.jpeg');
 
 
 
-insert into item(mno,titl,categ,buy,day,deal,stpc,time,cont)
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(76,5,'로지텍 G700s','컴퓨터','2016-01-05','1년 2개월',
 '직거래','로지텍은 게이밍 제품을 가벽게 생각하지 않습니다.<br>
 게이밍 제품은 게이머들의 역량을 100% 발휘할 수 있게 도와주는 정밀 기기입니다.<br>
@@ -839,32 +847,34 @@ insert into phot(itno,path) values(76,'64.jpeg');
 insert into phot(itno,path) values(76,'65.jpeg');
 insert into phot(itno,path) values(76,'66.jpeg');
 
-
-
-insert into item(mno,titl,categ,buy,day,deal,cont,stpc,time)
-select 1,1,'패션','2017-02-21','312','택배','상세설명',100000,time + interval 30 minute
-from item
-order by time desc
-limit 1;
-
-insert into phot(itno,path) values(74,'1487913225052_8');
-insert into phot(itno,path) values(74,'1487913225052_9');
-insert into phot(itno,path) values(74,'1487913225053_10');
-insert into phot(itno,path) values(74,'1487913225053_11');
-
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(1,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+values(1,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(2,50,'모니터 듀얼로 가능한가요?',now(),'RGB HDMI DISPLAY포트가 있으며 듀얼모니터로 사용 가능합니다.',now());
+values(2,51,'모니터 듀얼로 가능한가요?',now(),'RGB HDMI DISPLAY포트가 있으며 듀얼모니터로 사용 가능합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(3,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+values(3,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(4,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+values(4,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(5,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+values(5,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
-values(6,50,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
+values(6,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm)
-values(1,50,'윈도우 설치되어있는 상품인가요?',now());
+values(1,51,'윈도우 설치되어있는 상품인가요?',now());
 insert into qna(mno,itno,qus,qtm)
-values(2,50,'윈도우 설치되어있는 상품인가요?',now());
+values(2,51,'윈도우 설치되어있는 상품인가요?',now());
+
+
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(1,54,'카메라 렌즈는 더 없나요?',now(),null,null);
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(2,54,'렌즈 상태 확인 가능한가요??',now(),'약간의 스크레치가 있습니다.',now());
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(3,54,'사진을 좀 더 볼수 있을까요?',now(),null,null);
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(5,54,'SD카드는 없나요??',now(),null,null);
+insert into qna(mno,itno,qus,qtm,ans,atm)
+values(7,54,'카메라 컷수는 얼마나 되죠??',now(),'컷수는 3225회 입니다',now());
+
+
+
