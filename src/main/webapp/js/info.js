@@ -30,6 +30,7 @@ $(function() {
     // 상세보기 경매가 현재 진행중인 경매일 경우 메인으로 이동시킨다.
     $.getJSON(serverRoot + "/main/nowbid.json", function(ajaxResult) {
         if (ajaxResult.status != 'success') {
+            getItemInfo();
             return;
         }
         
