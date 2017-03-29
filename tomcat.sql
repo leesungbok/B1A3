@@ -1826,3 +1826,24 @@ insert into qna(mno,itno,qus,qtm,ans,atm)
 values(5,54,'SD카드는 없나요??',now(),null,null);
 insert into qna(mno,itno,qus,qtm,ans,atm)
 values(7,54,'카메라 컷수는 얼마나 되죠??',now(),'컷수는 3225회 입니다',now());
+
+insert into bdhs(mno,itno,bids,time)
+values(4,51,70000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,71000,now());
+insert into bdhs(mno,itno,bids,time)
+values(2,51,72000,now());
+insert into bdhs(mno,itno,bids,time)
+values(1,51,73000,now());
+insert into bdhs(mno,itno,bids,time)
+values(5,51,74000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,75000,now());
+insert into bdhs(mno,itno,bids,time)
+values(7,51,76000,now());
+insert into bdhs(mno,itno,bids,time)
+values(1,51,77000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,78000,now());
+insert into bdhs(mno,itno,bids,time)
+values(5,51,79000,now());

@@ -460,17 +460,17 @@ ALTER TABLE `qna`
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
 values(1,'sungbok@naver.com',password('1111'),'이성복','010-5960-0335','sung.png','06621','서울 서초구 강남대로53길 8 (서초동, 비트아카데미빌딩)','3층','111-111',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(2,'bora@gmail.com',password('1111'),'김보라','010-4111-9109','bo.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
+values(2,'bora@gmail.com',password('1111'),'김보라','0','bo.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(3,'yongseok@gmail.com',password('1111'),'오용석','010-3177-3840','dong.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
+values(3,'yongseok@gmail.com',password('1111'),'오용석','1','yong.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(4,'kimgun@naver.com',password('1111'),'김건우','010-4534-1457','user.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
+values(4,'dong@naver.com',password('1111'),'서동훈','2','dong.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(5,'sungkyo@naver.com',password('1111'),'정선교','010-2265-7899','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
+values(5,'sungkyo@naver.com',password('1111'),'정선교','3','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(6,'jaenyong@gmail.com',password('1111'),'김재녕','010-8466-3558','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+values(6,'jaenyong@gmail.com',password('1111'),'김재녕','4','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(7,'jinyoung@naver.com',password('1111'),'엄진영','010-1116-1116','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+values(7,'jinyoung@naver.com',password('1111'),'엄진영','5','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 
 -- 과거경매
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
@@ -1826,3 +1826,27 @@ insert into qna(mno,itno,qus,qtm,ans,atm)
 values(5,54,'SD카드는 없나요??',now(),null,null);
 insert into qna(mno,itno,qus,qtm,ans,atm)
 values(7,54,'카메라 컷수는 얼마나 되죠??',now(),'컷수는 3225회 입니다',now());
+
+insert into bdhs(mno,itno,bids,time)
+values(4,51,70000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,71000,now());
+insert into bdhs(mno,itno,bids,time)
+values(2,51,72000,now());
+insert into bdhs(mno,itno,bids,time)
+values(6,51,73000,now());
+insert into bdhs(mno,itno,bids,time)
+values(5,51,74000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,75000,now());
+insert into bdhs(mno,itno,bids,time)
+values(7,51,76000,now());
+insert into bdhs(mno,itno,bids,time)
+values(6,51,77000,now());
+insert into bdhs(mno,itno,bids,time)
+values(3,51,78000,now());
+
+quit
+
+cd /var/lib/tomcat8/webapps/B1A3/js
+nohup node server.js &
