@@ -445,7 +445,8 @@ insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,ka
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(4,'user04@test.com',password('1111'),'학생4','010-1114-1114','user.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(5,'user05@test.com',password('1111'),'학생5','010-1115-1115','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(6,'user06@test.com',password('1111'),'학생6','010-1116-1116','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
-
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(7,'user07@test.com',password('1111'),'김태희','010-1116-1117','user.png','123-234','서울시 강남구 역삼동','123-1','111-117',null,null,null);
+insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) values(8,'user08@test.com',password('1111'),'배수지','010-1116-1118','user.png','123-234','서울시 강남구 역삼동','123-1','111-118',null,null,null);
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
 values(1,1,'시티즌 시계','패션','2016-01-01',30,'택배','시티즌 시계 입니다. 정품, 새제품이고 택, 내부구성품, 박스 그대로 입니다',now(),70000);
 

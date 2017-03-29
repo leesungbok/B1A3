@@ -1,0 +1,223 @@
+@CHARSET "UTF-8";
+
+#detail > div.modal-dialog {
+  width: 900px !important;
+  margin: 139px auto;
+}
+
+.modal-head {
+  width: 100%;
+  height: 28px;
+}
+
+#detail-head button {
+  margin: 9px 20px 0px -35px;
+}
+
+#detail-body {
+  height: 450px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+#detail-photo {
+  width: 400px;
+  height: auto;
+  float: right;
+  margin-right: 15px;
+}
+
+#detail-body > div.bid-content {
+  margin-left: 15px;
+}
+
+#detail-body > div.bid-content > div.title {
+  width: 405px;
+  height: 27px;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#detail-body > div.bid-content > div.title span {
+  font-size: 2em;
+  width: 411px;
+  float: left;
+  margin-top: -9px;
+}
+
+#detail-body > div.bid-content > div.title img {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+#detail-body > div.bid-content > dl.dl-horizontal {
+  font-size: 1.1em;
+  display: table;
+  width: 405px;
+  height: auto;
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D0D0D0;
+}
+
+dt.term {
+  margin-top: 15px;
+  float: left;
+  text-align: left;
+  width: 80px;
+}
+
+dd.desc {
+  margin-left: 0px;
+}
+
+.desc > span.present_num {
+  float: left;
+  font-size: 2em;
+  font-weight: bold;
+  color: #f32e6d;
+}
+
+div.startprice {
+  margin-left: 10px;
+  margin-top: 16px;
+  padding-left: 10px;
+  float: left;
+  background: url("../image/ulline.gif") no-repeat 0 40%;
+}
+
+.ddvalue {
+  margin-top: 15px;
+}
+
+#record {
+  margin-left: 10px;
+}
+
+#bid-btn {
+  display: table;
+  margin: 45px auto;
+}
+
+#bid-btn > .btn-primary {
+  color: #fff;
+  background-color: #f32e6d;
+  border-color: #f32e6d;
+}
+
+#bid-btn > .btn-primary:hover {
+  color: #fff;
+  background-color: #c10b45;
+  border-color: #c10b45;
+}
+
+#bid-btn > .btn-primary:active, #bid-btn > .btn-primary:focus {
+  color: #fff !important;
+  background-color: #a90a3c !important;
+  border-color: #a90a3c !important;
+}
+
+#detail-footer {
+  text-align: left;
+}
+
+#detail-footer > .detail-info {
+  margin: 0px 0px 20px 15px;
+}
+
+#detail-footer > .detail-info span {
+  font-size: 2em;
+}
+
+#detail-footer > .sellrcontents {
+  margin-top: 5px;
+  margin-left: 15px;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+.present_num_won {  float: left;  position: relative;  top: 16px;  left: 1px;
+}
+
+.start_num_detail {  font-size: 1em !important;  position: relative;  left: 3px;
+}
+
+#detail-photo img {
+  height: 382px !important;
+  margin: auto auto;
+  object-fit: contain;
+}
+
+/* The Modal (background) */
+#image-popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+   /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Add Animation - Zoom in the Modal */
+#detail2-imgs { 
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+#image-popup .close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: rgba(255, 255, 255, .15);
+  font-size: 10em;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#image-popup .close:hover,
+#image-popup .close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  #modal-imgs {
+    width: 100%;
+  }
+}
+
+.full-screen {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#offer {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 3em;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #f32e6d;
+}
