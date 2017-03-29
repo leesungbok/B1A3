@@ -3,10 +3,8 @@ package bitcamp.java89.ems.control;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -16,8 +14,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.service.BidHistoryService;
 import bitcamp.java89.ems.service.MemberService;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Configuration
 @EnableAsync
@@ -50,7 +46,7 @@ public class SchedulingControl {
             cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
         System.out.println(bdhs.get(0).getNickName());
         System.out.println(text);
-        sms(bdhs.get(0).getNickName(), text);
+        /*sms(bdhs.get(0).getNickName(), text);*/
         cal.add(Calendar.MINUTE, -5);
       }
       
@@ -72,7 +68,7 @@ public class SchedulingControl {
               cal.get(Calendar.HOUR) + "시" + cal.get(Calendar.MINUTE) + "분 전까지 결제하세요.";
           System.out.println(bdhs.get(i+1).getNickName());
           System.out.println(text);
-          sms(bdhs.get(i).getNickName(), text);
+          /*sms(bdhs.get(i).getNickName(), text);*/
         }
       } else {
         cal.add(Calendar.MINUTE, 5);
@@ -80,7 +76,7 @@ public class SchedulingControl {
     }
   }
 
-  private void sms(String nickName, String text) throws Exception {
+  /*private void sms(String nickName, String text) throws Exception {
     Message coolsms = new Message("NCS58B4FDA4F1C07", "51005CD999726FE18642C3B34BA2FA90");
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("to", memberService.getPhone(nickName));
@@ -95,5 +91,5 @@ public class SchedulingControl {
       System.out.println(e.getMessage());
       System.out.println(e.getCode());
     }
-  }
+  }*/
 }

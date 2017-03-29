@@ -460,17 +460,17 @@ ALTER TABLE `qna`
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
 values(1,'sungbok@naver.com',password('1111'),'이성복','010-5960-0335','sung.png','06621','서울 서초구 강남대로53길 8 (서초동, 비트아카데미빌딩)','3층','111-111',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(2,'bora@gmail.com',password('1111'),'김보라','0','bo.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
+values(2,'bora@gmail.com',password('1111'),'김보라','빡두3120','bo.png','123-234','서울시 강남구 역삼동','123-1','111-112',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(3,'yongseok@gmail.com',password('1111'),'오용석','1','yong.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
+values(3,'yongseok@gmail.com',password('1111'),'오용석','빡두3121','yong.png','123-234','서울시 강남구 역삼동','123-1','111-113',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(4,'dong@naver.com',password('1111'),'서동훈','2','dong.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
+values(4,'dong@naver.com',password('1111'),'서동훈','빡두3122','dong.png','123-234','서울시 강남구 역삼동','123-1','111-114',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(5,'sungkyo@naver.com',password('1111'),'정선교','3','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
+values(5,'sungkyo@naver.com',password('1111'),'정선교','빡두3123','user.png','123-234','서울시 강남구 역삼동','123-1','111-115',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(6,'jaenyong@gmail.com',password('1111'),'김재녕','4','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+values(6,'jaenyong@gmail.com',password('1111'),'김재녕','빡두3124','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 insert into memb(mno,email,pwd,nknm,phon,path,pst_no,bas_adr,det_adr,tel,fcbk,katok,naver) 
-values(7,'jinyoung@naver.com',password('1111'),'엄진영','5','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
+values(7,'jinyoung@naver.com',password('1111'),'엄진영','빡두3125','user.png','123-234','서울시 강남구 역삼동','123-1','111-116',null,null,null);
 
 -- 과거경매
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
