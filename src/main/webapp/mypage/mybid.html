@@ -119,15 +119,15 @@
 									
   </script>
   <script>
-  $(function (){
-	  $(document.body).on('mouseenter', '.profile-pic', function() {
-		     $(this).parent().find('.shadow-div').show();
-		     $(this).parent().find('.edit').show();
-		  });
-		  $(document.body).on('mouseleave', '.shadow-div', function() {
-		     $(this).hide()
-		     $(this).next().hide()
-		  });
+
+  $(document.body).on('mouseenter', '.profile-pic', function() {
+  	$(this).parent().find('.shadow-div').show();
+  	$(this).parent().find('.edit').show();
+  });
+  $(document.body).on('mouseleave', '.shadow-div', function() {
+  	$(this).hide()
+  	$(this).next().hide()
+
   });
   </script>
   <script src="../js/mybid.js"></script>

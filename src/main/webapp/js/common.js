@@ -2,11 +2,22 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1794128977577774";
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
 $(function () {
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1794128977577774',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+    };
+    
+    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
+    
     // header.html을 가져와서 붙인다.
     $.get('../header.html', function (result) {
     	$('#header').html(result);
@@ -15,7 +26,7 @@ $(function () {
     	
     	// 닉네임 찾기
 	    $('.search-btn').click(function() {
-			$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+			$.getjson('../auth/loginuser.json', function(ajaxresult) {
 			var me = ajaxResult.data;
 	    	var searchMember = $('#searchMember').val();
 	    	var param = {
@@ -27,6 +38,9 @@ $(function () {
 	    			return;
 	    		}
 	    		$('#clean').remove("div");
+	    		
+	    		// 대화내용 목록에서 지우기
+	    		$('.chat').children().remove(); 
 	    		
 	    		var list = ajaxResult.data;
 	    		var parent = $('#nicklist');
@@ -42,7 +56,99 @@ $(function () {
 			    	parent.children().remove();
 			    	var template = Handlebars.compile($('#text-box').html());
 			    	parent.append(template());
-			    });
+			    	
+		    	    "use strict";
+		    	    //채팅방
+		    	    var find_friends = $('.chat');
+		    	    //데이터 입력
+		    	    var input = $('#textarea');
+		    	    
+		    	    // 유저 이름
+		    	    var myName = me.nickName;
+		    	    
+		    	    window.WebSocket = window.WebSocket || window.MozWebSocket;
+		    	    if (!window.WebSocket) {
+		    	        find_friends.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
+		    	                                    + 'support WebSockets.'} ));
+		    	        input.hide();
+		    	        $('span').hide();
+		    	        return;
+		    	    }
+		    	    
+		    	    // 연결할 주소와 포트
+		    	    var connection = new WebSocket('ws://127.0.0.1:1337');
+		    	    connection.onopen = function () {
+		    	    	
+		    	    };
+		    	    connection.onerror = function (error) {
+		    	        find_friends.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
+		    	                                    + 'connection or the server is down.' } ));
+		    	    };
+		    	    // 메세지 입력
+		    	    connection.onmessage = function (message) {
+		    	        try {
+		    	            var json = JSON.parse(message.data);
+		    	        } catch (e) {
+		    	            console.log('This doesn\'t look like a valid JSON: ', message.data);
+		    	            return;
+		    	        }  
+		    	        if (json.type === 'history') { 
+		    	            for (var i=0; i < json.data.length; i++) {
+		    	                addMessage(json.data[i].author, json.data[i].text,
+		    	                          new Date(json.data[i].time));
+		    	            }
+		    	        } else if (json.type === 'message') { 
+		    	            addMessage(json.data.author, json.data.text,
+		    	                       new Date(json.data.time));
+		    	        } else {
+		    	            console.log('Hmm..., I\'ve never seen JSON like this: ', json);
+		    	        }
+		    	    };
+		    	    
+		    	    // 입력 된 값 보내기
+		    	    input.keydown(function(e) {
+		    	        if (e.keyCode === 13) {
+		    	            var msg = $(this).val();
+		    	            if (!msg) {
+		    	                return;
+		    	            }
+		    	            var obj = {
+		    	            		myName : myName,
+		    	            		msg : msg
+		    	            }
+		    	            connection.send(JSON.stringify(obj));
+		    	            //메세지 초기화
+		    	            $(this).val('');
+		    	        }
+		    	    });
+		    	    
+		    	    setInterval(function() {
+		    	        if (connection.readyState !== 1) {
+		    	            status.text('Error');
+		    	            input.attr('disabled', 'disabled').val('Unable to comminucate '
+		    	                                                 + 'with the WebSocket server.');
+		    	        }
+		    	    }, 3000);
+		    	    
+		    	    //메세지 가 있을시 채팅방에 추가
+		    	    function addMessage(author, message, dt) {
+		    	    	if (author == myName) {
+		    	    		find_friends.append('<p class="chatByme"><span>' + author + '</span> @ ' +
+				    	             + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
+				    	             + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
+				    	             + ': ' + message + '</p>');
+		    	    	} else {
+		    	    		find_friends.append('<p><span>' + author + '</span> @ ' +
+				    	             + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
+				    	             + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
+				    	             + ': ' + message + '</p>');
+		    	    	}
+		    	    	$('.chat').scrollTop($('.chat').prop('scrollHeight'));
+		    	    }
+		    	    // 소켓 연결 및 메세지 보내기
+			    
+			    }); 
+			    
 	    	}); 	
         });
 	    	
@@ -58,7 +164,7 @@ $(function () {
     	    location.href = clientRoot + '/main/main.html';
     	})
     	
-        $.getJSON('../auth/loginUser.json', function(ajaxResult) {
+        $.getJSON(serverRoot + '/auth/loginUser.json', function(ajaxResult) {
             var member = ajaxResult.data;
 
     		if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -97,20 +203,12 @@ $(function () {
     		
     		// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
     		$('#logout-btn').click(function(event) {
-    		    Kakao.init('0a61605788e65e255f0aa83ab716c2a2');
-    		    
-    			FB.init({
-    				appId      : '1794128977577774',
-    				cookie     : false,  
-    				xfbml      : false,
-    				version    : 'v2.8' 
-    			});
     			$.getJSON(serverRoot + '/auth/logout.json', function(ajaxResult) {
 				    FB.getLoginStatus(function(response) {
 				        if (response && response.status === 'connected') {
 				            FB.logout(function(response) {
-				            location.href = clientRoot +  "/auth/login.html";
-				            });
+	                            location.href = clientRoot +  "/auth/login.html";
+	                        });
 				        } else {
 				        	Kakao.Auth.logout(function() {
 					            location.href = clientRoot +  "/auth/login.html";
@@ -275,6 +373,18 @@ $(function () {
                         
                         var getFilePath = $(".file-path");
                         var filePath = [];
+                        var buyDate = ''
+                        if ($('#day-year').val() != '') {
+                            buyDate = $('#day-year').val() + '년 ';
+                        }
+                        
+                        if ($('#day-month').val() != '') {
+                            buyDate += $('#day-month').val() + '개월 ';
+                        }
+                        
+                        if ($('#day-date').val() != '') {
+                            buyDate += $('#day-date').val() + '일';
+                        }
                         
                         for(var i = 0; i < getFilePath.length; i++){
                             filePath.push($(getFilePath[i]).val());
@@ -290,7 +400,7 @@ $(function () {
                             "category": $('#categ').val(),
                             "startPrice": $('#stpc').val(),
                             "buyDate": $('#buy').val(),
-                            "useDay": $('#day').val(),
+                            "useDay": buyDate,
                             "content": $('#cont').val().replace(/\n/g, "<br>"),
                             "deal": $('#deal').val(),
                             "photoList": filePath,
@@ -315,41 +425,92 @@ $(function () {
             }
             
             // 경매등록 널체크 및 유효성 검사
-            var addValue, $this, span
+            var addValue, $this, span, days, betweenDays
             $('.add-input>input').keyup(function() {
                 addValue = $(this).val();
                 $span = $('#'+this.id+'+span');
-                $span.css('color', '#f32e6d');
-                if (addValue == '') {
-                    $span.text('필수 입력 항목입니다.');
-                    errorCheck();
-                    return;
-                }
                 switch(this.id) {
                 case 'titl':
-                    if (6 > addValue.length || addValue.length > 15) {
+                    if (addValue == '') {
+                        $span.text('필수 입력 항목입니다.');
+                        $span.attr('data-count', '0');
+                    } else if (6 > addValue.length || addValue.length > 15) {
                         $span.text('최소 6자, 최대 15자 까지 가능합니다.');
+                        $span.attr('data-count', '0');
                     } else {
                         $span.text('');
+                        $span.attr('data-count', '1');
                     }
                     break;
                 case 'stpc':
-                    if (1000 > addValue || addValue > 1000000) {
+                    if (addValue == '') {
+                        $span.text('필수 입력 항목입니다.');
+                        $span.attr('data-count', '0');
+                    } else if (1000 > addValue || addValue > 1000000) {
                         $span.text('1000원 이상 100만원 이하 가능합니다.');
+                        $span.attr('data-count', '0');
+                    } else if (addValue % 100 != 0) {
+                        $span.text('100원 단위로 입력해주세요.');
+                        $span.attr('data-count', '0');
                     } else {
                         $span.text('');
+                        $span.attr('data-count', '1');
                     }
                     break;
-                case 'day':
-                    if (addValue > 1000) {
-                        $span.text('최대 1000일까지 가능합니다.');
+                case 'day-year':
+                case 'day-month':
+                case 'day-date':
+                    days = convertToDays($('#day-year').val(), $('#day-month').val(), $('#day-date').val());
+                    betweenDays = getBetweenDay($('#buy').val());
+                    if ($('#day-year').val() == '' && $('#day-month').val() == '' && $('#day-date').val() == '') {
+                        $('#day-year+span').text('필수 입력 항목입니다.');
+                        $('#day-year+span').attr('data-count', '0');
+                    } else if (days > betweenDays) {
+                        $('#day-year+span').text('구입시기에 비해 사용일수가 넘습니다.');
+                        $('#day-year+span').attr('data-count', '0');
                     } else {
-                        $span.text('');
+                        $('#day-year+span').text('');
+                        $('#day-year+span').attr('data-count', '1');
                     }
                     break;
                 }
                 errorCheck();
             })
+            
+            // 현재 시간을 구한다.
+            var today = new Date();
+            var convertDays
+            function convertToDays(year, month, day) {
+                convertDays = 0;
+                if (year != '') {
+                    convertDays += year*365;
+                }
+                if (month != '') {
+                    convertDays += month*30;
+                }
+                if (day != '') {
+                    convertDays += parseInt(day);
+                }
+                return convertDays;
+            }
+            
+            function getBetweenDay(buyDateString) {
+                var buyDateArray = buyDateString.split("-");
+                
+                // 여기서 중간에 월이 들어가는 부분을 보면 숫자형태로하여 1을 뺀 것을 볼 수 있다.
+                // 이유는 자바스크립트에서 Date 객체의 월은 우리가 사용하는 월보다 1이 작기 때문이다.
+                // 예를들면 0 -> 1월, 1 -> 2월 이런식이다.
+                var buyDateObj = new Date(buyDateArray[0], Number(buyDateArray[1])-1, buyDateArray[2]);
+                
+                // 두 객체 사이의 일수 구한다.
+                // getTime() 은 밀리세컨드 단위로 변환하는 함수이기 때문에 이 차이에다가
+                // 1000을 나누면 초, 60을 또 나누면 분, 60을 또 나누면 시간, 24를 또 나누면 일 단위의 차이가 되는것이다.
+                // parseInt() 라는 메서드(함수)를 사용하면, 실수의 소수점 이하를 제거할 수 있습니다.
+                // 반올림하지 않고 무조건 소수점 이하를 버립니다
+                var betweenDay = parseInt((today.getTime() - buyDateObj.getTime())/1000/60/60/24);
+                
+                return betweenDay;
+            }
             
             // 구입시기
             $('#buy').datepicker({
@@ -360,13 +521,23 @@ $(function () {
                 todayHighlight: true,
                 orientation: "bottom auto"
             }).on('hide', function() {
+                days = convertToDays($('#day-year').val(), $('#day-month').val(), $('#day-date').val());
+                betweenDays = getBetweenDay($('#buy').val());
                 if ($(this).val() == '') {
-                    $('#'+this.id+'+span').css('color', '#f32e6d');
                     $('#'+this.id+'+span').text('필수 입력 항목입니다.');
+                } else if (days > betweenDays) {
+                    $('#day-year+span').text('구입시기에 비해 사용일수가 많습니다.');
+                    $('#day-year+span').attr('data-count', '0');
                 } else {
                     $('#'+this.id+'+span').text('');
-                    errorCheck();
+                    $('#'+this.id+'+span').attr('data-count', '1');
+                    if ($('#day-year').val() != '' || $('#day-month').val() != ''
+                        || $('#day-date').val() != '') {
+                        $('#day-year+span').text('');
+                        $('#day-year+span').attr('data-count', '1');
+                    }
                 }
+                errorCheck();
             });
             
             // 상세설명
@@ -380,7 +551,7 @@ $(function () {
             // 등록버튼 클릭가능 여부설정
             function errorCheck() {
                 $('.add-error-text').each(function () {
-                    if ($(this).text() != '' || $('.file-path').val() == undefined) {
+                    if ($(this).attr('data-count') != 1 || $('.file-path').val() == undefined) {
                         $('#add-btn').css('pointer-events', 'none');
                         $('#add-btn').css('opacity', '.65');
                         return false;

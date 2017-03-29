@@ -23,6 +23,12 @@ li {
 
 .searcha:hover {
 	cursor: pointer;
+	color: black !important;
+}
+
+.tasha:hover {
+	cursor: pointer;
+	color: black !important;
 }
 
 .container>h1 {
@@ -359,13 +365,13 @@ figure.snip1205 > .col-xs-12 {
   filter: grayscale(100%);
 }
 
-.fa.fa-trash {
- margin-left:20px;
+.glyphicon.glyphicon-trash {
+ margin-left:24px;
 }
 
-.fa.fa-search {
+/* .glyphicon.glyphicon-zoom-in {
 margin-left:13px;
-}
+} */
 
 .tasha:HOVER {
 	cursor: pointer;
@@ -427,7 +433,7 @@ h1.heading {
 
 .carbox-title {
   font-weight: 700;
-  font-size: 1.65em;
+  font-size: 1.3em;
   text-align: center;
 }
 
@@ -478,6 +484,27 @@ h1.heading {
 .carousel-indicators > li {
   border: 1px solid #c4c5c8;
 }
+
+.item > img {
+  height: 280px !important;
+  width: 100%;
+  object-fit: contain;
+}
+
+.pinktext {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 12px;
+    margin-top: 12px;
+    display: inline-block;
+}
+
+.black {
+    margin-left: 0px;
+    font-size: 1.15em;
+    display: inline;
+}
+
 
 /* .carousel-indicators > .active{
   width: 15px;

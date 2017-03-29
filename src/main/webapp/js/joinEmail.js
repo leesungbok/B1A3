@@ -1,10 +1,30 @@
 $(function() {
     setTimeout(function() { $('#email').focus() }, 200);
     
+    /* 이메일 유효성검사 */
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    
     var kakaoName = sessionStorage.getItem('kakao-name')
     var kakaoId = sessionStorage.getItem('kakao-id')
     var fcbkName = sessionStorage.getItem('fcbk-name');
     var fcbkId = sessionStorage.getItem('fcbk-id');
+    var email = sessionStorage.getItem('email');
+    
+    if (email != null) {
+    $("#email").val(email);
+    if (!re.test(email)) {
+        $('#erroremail').text('올바른 이메일 형식이 아닙니다.');
+    } else {
+        $.getJSON(nodeRoot + '/emailcheck?email=' + email, function (ajaxResult) {
+            if (ajaxResult.count == 0) {
+                $('#email-ok').css('display', 'block');
+                setTimeout(function() { $('#password').focus() }, 201);
+            } else {
+                $('#erroremail').text('이미 가입된 이메일입니다.');
+            }
+        })
+    }
+    }
     
     if (kakaoName != null) {
         $("#nickName").val(kakaoName);
@@ -48,8 +68,7 @@ $(function() {
         }).appendTo(".form-horizontal");
     }
             
-    /* 이메일 유효성검사 */
-    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    
     var email
     $("#email").keyup(function() {
         email = $(this).val();

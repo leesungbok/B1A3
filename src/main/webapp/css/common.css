@@ -286,7 +286,7 @@ body>.container {
 
 .icon-comment-empty {
 	margin-left:33px;
-	margin-top:93px;
+	margin-top: -224px;
 }
 
 #clean-desc {
@@ -530,7 +530,7 @@ textarea.form-control + div.popover {
 }
 
 .add-error-text {
-  color: #ffffff;
+  color: #f32e6d;
   display: block;
   height: 15px;
   padding-left: 5px;
@@ -563,6 +563,26 @@ textarea.form-control + div.popover {
 .fileinput-remove {
   display: none;
 }
+
+#day-year, #day-date {
+  text-align: right;
+  padding-right: 24px;
+}
+
+#day-year+span {
+  width: 244px;
+}
+
+#day-month {
+  padding-right: 33px;
+  text-align: right;
+}
+
+.add-input > .date {
+  position: absolute;
+  top: 8px;
+  right: 24px;
+}
 /* 경매등록 */
 
 /* sweet-alert */
@@ -582,3 +602,18 @@ textarea.form-control + div.popover {
 .sweet-alert .sa-icon.sa-success .sa-placeholder {
     border: 4px solid rgba(243, 46, 109, 0.38);
 }
+/* 채팅 */
+.chatByme {
+	text-align: right;
+	margin-right: -40px;
+}
+
+ .chat {
+	  width: 323px;
+	  height: 358px;
+	  overflow-y: auto;
+	  margin-left: -42px;
+	  margin-top: 5px;
+	  padding-right: 44px;
+} 
+/* 채팅 끝 */

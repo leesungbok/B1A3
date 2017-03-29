@@ -134,7 +134,7 @@
   right: -19px;}
 
 .bidding-btn {
-  margin: 20px 0px 0px 120px;
+  margin: 20px 0px 0px 136px;
   height: 55px;
   width: 178px;
   padding: 10px 16px;
@@ -382,6 +382,7 @@ div[data-target="#detail"] img {
 
 #bidding {
   margin-left: 27px;
+  margin-top:2px;
 }
 
 .successful-bidder-img {
@@ -509,6 +510,51 @@ div[data-target="#detail"] img {
   margin: auto auto;
 }
 
+/* ë‹¤ìŒê²½ë§¤ ë”ë³´ê¸° ë¡œë”© */
+.spinner {
+  margin: 0 auto;
+  width: 70px;
+  text-align: center;
+  display: none;
+  padding: 15px 0 35px 0;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #f32e6d;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+/* ë‹¤ìŒê²½ë§¤ ë”ë³´ê¸° ë¡œë”© ë */
+
 /* Buttons */
 .social-btns {
     text-align: center;
@@ -631,6 +677,10 @@ div[data-target="#detail"] img {
     transition: none;
 }
 
+.icon-facebook {
+	color: white !important;
+}
+
 .social-btn-dissolve.facebook {
     background: #3b5998;
 }
@@ -641,6 +691,14 @@ div[data-target="#detail"] img {
 
 .social-btn-dissolve.heart {
     background: #FF0000;
+}
+
+.glyphicon.glyphicon-heart {
+	color:white !important;
+}
+
+.sb.min.facebook {
+	color:white !important;
 }
 
 .social-btn-dissolve2:hover {
@@ -691,7 +749,7 @@ div[data-target="#detail"] img {
    text-align:-webdit-auto;
 }
 
-/* 현재 경매가 없을때 */
+/* í˜„ìž¬ ê²½ë§¤ê°€ ì—†ì„ë•Œ */
 video {
   display: none;
   position: fixed;

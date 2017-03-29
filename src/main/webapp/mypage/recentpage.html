@@ -130,12 +130,10 @@
     );  
     
     $(document.body).on('mouseenter', '.profile-pic', function() {
-    	console.log('enter...')
     	$(this).parent().find('.shadow-div').css('display', 'block')
     	$(this).parent().find('.edit').css('display', 'block')
     });
     $(document.body).on('mouseleave', '.shadow-div', function() {
-    	console.log('leave...')
     	$(this).css('display', '')
     	$(this).parent().find('.edit').css('display', '')
     });

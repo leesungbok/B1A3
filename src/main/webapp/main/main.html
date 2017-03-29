@@ -2,14 +2,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<!--   <meta property="og:url" content="http://a.bitcamp.com:8080/B1A3/main/main.html">
-  <meta property="fb:app_id" content="2229730730585360">
+  <meta property="og:url" content="http://bbakdu.com/B1A3/main/main.html">
+  <meta property="fb:app_id" content="2255688027989630">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="이거어때">
-  <meta property="og:description" content="공유할 글의 내용중 일부..">
-  <meta property="og:image" content="공유할 글 주요 이미지 절대경로">
-  <meta property="og:image:width" content="공유할 글 주요 이미지 가로">
-  <meta property="og:image:height" content="공유할 글 주요 이미지 높이">-->
+  <meta property="og:title" content="커세어 키보드 팝니다">
+  <meta property="og:description" content="맥이랑 호환이 안되서 급하게 팝니다">
+  <meta property="og:image" content="http://bbakdu.com/B1A3/upload/1234567.jpeg">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="318">
 	<!--<meta name="twitter:card" content="summary_large_image" />
 	<meta property="og:title" content="타이틀" />
 	<meta property="og:url" content="공유하는 해당 페이지 url" />
@@ -82,13 +82,13 @@
                   </a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);" class="social-btn-dissolve twitter">
+                  <a href="https://twitter.com/share" target="_block"class="social-btn-dissolve twitter">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
                   <a href="javascript:void(0);" class="social-btn-dissolve heart">
-                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
                   </a>
                 </li>
               </ul>
@@ -249,6 +249,11 @@
             <div id="nextlist" class="container"></div>
             <div id="nextPgBtn">다음경매 더보기</div>
           </div>
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
         </div>
       </section>
     </div>
@@ -306,7 +311,11 @@
                 </li>
                 <li>
                   <a href="javascript:void(0);" class="social-btn-dissolve2 heart" data-itno="{{itemNo}}">
-                    <i class="fa fa-heart-o"></i>
+                  {{#if heart}}
+                    <i class="glyphicon glyphicon-heart"></i>
+                  {{else}}
+                    <i class="fa fa-heart"></i>
+                  {{/if}}
                   </a>
                 </li>
               </ul>
@@ -345,10 +354,10 @@
   <script src="../js/main.js"></script>
   <!-- <script src="../js/member.js"></script> -->
   <div id="fb-root"></div>
-	<script>
+  <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '2229730730585360',
+      appId      : '2255688027989630',
       xfbml      : true,
       version    : 'v2.8'
     });
@@ -364,28 +373,24 @@
    }(document, 'script', 'facebook-jssdk'));
   </script>
 	<script>
-	document.getElementById('shareBtnfacebook').onclick = function(){
-		FB.ui({
+		$('.social-btn-dissolve.facebook, .social-btn-dissolve2.facebook').click(function() {
+			var facebookBtn = $(this).addClass('clicked');
+			facebookBtn.children('.fa.fa-facebook').attr('class','sb min facebook');
+	   //	$("meta[property='og:title']").attr("content", "hahahaha"); 
+	   	//$("meta[property='og:description']").attr("content", "hahaha2");
+	   	//$("meta[property='og:image']").attr("content", "hahaha3");
+	   	FB.ui({
 	        method: 'share',
 	        display:'popup',
-	        href: 'http://a.bitcamp.com:8080/B1A3/main/main.html'
+	        href: 'http://bbakdu.com/B1A3/main/main.html'
 	    }, function(response) {});
-	}
+		});
 	</script>
-	<!-- <script> 트위터 공유하기
-   var shareURL = encodeURIComponent( $('meta[name="twitter:url"]').attr("content") );
-   var url;
-   var title = $('meta[property="og:title"]').attr("content");
-
-   var popOption = "width="+ pWidth +",height="+ pHeight +",left="+ pLeft +",top="+ pTop +
-      ",location=no,menubar=no,status=no,scrollbars=no,resizable=no,titlebar=no,toolbar=no";
-
-
-   url = "http://twitter.com/share?url=" + shareURL +
-         "&text=" + twitterContent;
-
-    window.open(url, 'Share to twitter', popOption);
-    </script> -->
+	<script>!function(d,s,id) {
+  var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+  if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+  fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  </script>
 </body>
 
 </html>

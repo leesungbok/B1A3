@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitcamp.java89.ems.dao.QnaDao">
+
+  <resultMap type="qna" id="qna-map">
+    <id     column="qno"  property="questionNo"/>
+    <result column="mno"  property="memberNo"/>
+    <result column="nknm" property="nickName"/>
+    <result column="itno" property="itemNo"/>
+    <result column="qus"  property="question"/>
+    <result column="qtm"  property="questionTime"/>
+    <result column="ans"  property="answer"/>
+    <result column="atm"  property="answerTime"/>
+  </resultMap>
+
+  <select id="getList" resultMap="qna-map">
+    select
+      q.qno,
+      m.nknm,
+      q.itno,
+      q.qus,
+      DATE_FORMAT(q.qtm, '%Y-%m-%d %H:%i') as qtm,
+      q.ans,
+      DATE_FORMAT(q.atm, '%Y-%m-%d %H:%i') as atm
+    from qna q
+    left outer join memb m on q.mno=m.mno
+    <where>
+      itno=#{itemNo}
+      <if test="answerCheck">
+        and ans is not null
+      </if>
+      <if test="questionCheck">
+        and ans is null
+      </if>
+      <if test="question != null">
+        and qus like concat('%', #{question}, '%')
+      </if>
+    </where>
+    order by q.qno desc
+    limit #{startRowIndex}, #{rowSize}
+  </select>
+  
+  <select id="count" resultType="integer">
+    select count(*)
+    from qna
+    <where>
+      itno=#{itemNo}
+      <if test="answerCheck">
+        and ans is not null
+      </if>
+      <if test="questionCheck">
+        and ans is null
+      </if>
+      <if test="question != null">
+        and qus like concat('%', #{question}, '%')
+      </if>
+    </where>
+  </select>
+
+  <insert id="insertQuestion">
+    insert into qna(mno,itno,qus,qtm)
+    value(#{memberNo},#{itemNo},#{question},now())
+  </insert>
+
+  <update id="insertAnswer">
+    update qna set
+      ans=#{answer},
+      atm=now()
+    where qno=#{questionNo}
+  </update>
+
+  <update id="updateQuestion">
+    update qna set
+      qus=#{question}
+    where qno=#{questionNo}
+  </update>
+
+  <delete id="deleteQuestion" parameterType="int">
+    delete from qna where qno=#{qno}
+  </delete>
+</mapper>

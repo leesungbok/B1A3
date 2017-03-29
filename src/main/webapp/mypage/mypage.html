@@ -5,7 +5,7 @@
 <title>나의 관심</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link href="../node_modules/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
 <link href="../css/common.css" rel="stylesheet">
@@ -107,8 +107,8 @@
   </div>
   <div class="shadow-div"></div>
   <div class="edit">
-    <a class="searcha" data-itemNo={{itemNo}}><i class="fa fa-search" ></i></a>
-    <a class="tasha" data-itemno={{itemNo}}><i class="fa fa-trash"></i></a>
+    <a class="searcha" data-itemNo={{itemNo}}><i class="glyphicon glyphicon-zoom-in" ></i></a>
+    <a class="tasha" data-itemno={{itemNo}}><i class="glyphicon glyphicon-trash"></i></a>
   </div>
 </figure>
 									
@@ -130,12 +130,10 @@
     );  
     
     $(document.body).on('mouseenter', '.profile-pic', function() {
-    	console.log('enter...')
     	$(this).parent().find('.shadow-div').css('display', 'block')
     	$(this).parent().find('.edit').css('display', 'block')
     });
     $(document.body).on('mouseleave', '.shadow-div', function() {
-    	console.log('leave...')
     	$(this).css('display', '')
     	$(this).parent().find('.edit').css('display', '')
     });
