@@ -1,0 +1,124 @@
+<div class="modal fade bs-example-modal-lg" id="mybidupdate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-head" id="detail-head">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body" id="detail-body">
+        <div id="detail-photo" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#detail-photo" data-slide-to="0" class="active"></li>
+            <li data-target="#detail-photo" data-slide-to="1"></li>
+            <li data-target="#detail-photo" data-slide-to="2"></li>
+            <li data-target="#detail-photo" data-slide-to="3"></li>
+          </ol>
+
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img class="nb-img1">
+            </div>
+            <div class="item">
+              <img class="nb-img2">
+            </div>
+            <div class="item">
+              <img class="nb-img3">
+            </div>
+            <div class="item">
+              <img class="nb-img4">
+            </div>
+          </div>
+
+          <a class="left carousel-control" href="#detail-photo" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          </a>
+          <a class="right carousel-control" href="#detail-photo" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="bid-content">
+          <div class="title">
+            <span class="nb-title"></span>
+          </div>
+
+          <dl class="dl-horizontal">
+            <dt class="term">현재가</dt>
+            <dd class="desc">
+              <span class="present_num"></span>
+              <span class="present_num_won">원</span>
+              <div class="startprice">
+                <span>시작가</span>
+                <span class="start_num start_num_detail"></span>
+                <span>원</span>
+              </div>
+            </dd>
+            <dt class="term">시작시간</dt>
+            <dd class="desc ddvalue">
+              <span class="start-time"></span>
+            </dd>
+          </dl>
+
+          <dl class="dl-horizontal">
+            <dt class="term">구입시기</dt>
+            <dd class="desc ddvalue">
+              <span class="when-to-buy"></span>
+            </dd>
+            <dt class="term">사용일수</dt>
+            <dd class="desc ddvalue">
+              <span class="day-of-use"></span>
+              <span>일</span>
+            </dd>
+          </dl>
+
+          <dl class="dl-horizontal">
+            <dt class="term">거래방식</dt>
+            <dd class="desc ddvalue">
+              <span class="deal-method"></span>
+            </dd>
+            <dt class="term">판매자</dt>
+            <dd class="desc ddvalue">
+              <span class="seller"></span>
+            </dd>
+          </dl>
+
+          <div id="bid-btn">
+            <button type="button" class="btn btn-primary btn-lg" id="detail-bid" data-toggle="modal" data-target="#tender">입찰하기</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer" id="detail-footer">
+        <div class="detail-info">
+          <span>상세정보</span>
+        </div>
+        <div class="sellrcontents"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="image-popup" class="modal">
+  <span class="close">&times;</span>
+  <div id="detail2-photo" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#mycarousel" data-slide-to="1"></li>
+      <li data-target="#mycarousel" data-slide-to="2"></li>
+      <li data-target="#mycarousel" data-slide-to="3"></li>
+      <li data-target="#mycarousel" data-slide-to="4"></li>
+    </ol>
+
+    <div id="detail2-imgs" class="carousel-inner" role="listbox">
+      <div class="item nb-img1"><img></div>
+      <div class="item nb-img2"><img></div>
+      <div class="item nb-img3"><img></div>
+      <div class="item nb-img4"><img></div>
+    </div>
+
+    <a class="left carousel-control" href="" role="button" data-slide="prev" onclick="$('#detail2-photo').carousel('prev')">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="right carousel-control" href="" role="button" data-slide="next" onclick="$('#detail2-photo').carousel('next')">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>
