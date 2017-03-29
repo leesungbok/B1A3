@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../font/fontello.css">
 <link rel="stylesheet" href="../css/toggle.css">
+<link rel="stylesheet" href="../css/mybidupdate.css">
 <link rel="stylesheet" href="../css/mybid.css">
 </head>
 
@@ -18,7 +19,7 @@
   <div id='header'></div>
   <div class="container">
    <!-- 전페이지 헤더 시작-->
-  <!-- 전페이지 헤더 끝 -->
+  <!-- 전페이지 헤더 끝-->
   <div class='body-contents'>
 	<div id="bodycon-title">마이페이지</div> 
 		<div id='submenu'></div>
@@ -27,8 +28,8 @@
     <div id="side-item" style="margin-left:-34px;">
 	    <nav class="nav-sidebar">
 				<ul class="nav tabs">
-		          <li class="active"><a id="mybid" href="#tab_default_1" data-toggle="tab">등록한<br>경매</a></li>
-		          <li class=""><a id="completebid" href="#" data-toggle="tab">낙찰받은<br>경매</a></li>
+		          <li class="active"><a id="mypage" href="#tab_default_1" data-toggle="tab">등록한<br>경매</a></li>
+		          <li class=""><a id="recentpage" href="#" data-toggle="tab">참여한<br>경매</a></li>
 				</ul>
 		  </nav>
 	 </div>
@@ -41,10 +42,11 @@
         </div>
     </div>
   </section> 
-<!-- 관심상품 컨텐츠 본문 끝 -->
-</div>
-</div>
+ <!-- 관심상품 컨텐츠 본문 끝 -->
 
+ </div>
+ <div class='mybidupdate'></div>
+ </div>
   <script src="../js/context.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -59,7 +61,7 @@
   <figure class="snip1205" style="width:33.333%">
     <div class="profile-pic">    
      <div class="col-xs-12">
-      <div class="carbox">
+      <div class="carbox" >
         <div class="carbox-read-more" data-countdown="{{startTime}}"></div>
         <div id="next-bid-photos" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -104,30 +106,30 @@
         </div>
       </div>
     </div>
-</div>
-</div>
-<div class="shadow-div"></div>
-  <div class="edit">
-    <a href="../main/detail.html"><i class="fa fa-search" ></i></a>
-    <a class="tasha" data-itemno={{itemNo}}><i class="fa fa-trash"></i></a>
   </div>
-</figure>
-  </script>
+  <div class="shadow-div"></div>
+  <div class="edit">
+		
+		
+		<a class="searcha" data-itno={{itemNo}}><i class="fa fa-search" ></i></a>
+    <a class="tasha" data-itno={{itemNo}}><i class="fa fa-trash"></i></a>
   
+	</div>
+</figure>
+									
+  </script>
   <script>
-  $(document.body).on('mouseenter', '.profile-pic', function() {
-  	/* console.log('enter...') */
-  	$(this).parent().find('.shadow-div').css('display', 'block')
-  	$(this).parent().find('.edit').css('display', 'block')
-  });
-  $(document.body).on('mouseleave', '.shadow-div', function() {
-  	/* console.log('leave...') */
-  	$(this).css('display', '')
-  	$(this).parent().find('.edit').css('display', '')
+  $(function (){
+	  $(document.body).on('mouseenter', '.profile-pic', function() {
+		     $(this).parent().find('.shadow-div').show();
+		     $(this).parent().find('.edit').show();
+		  });
+		  $(document.body).on('mouseleave', '.shadow-div', function() {
+		     $(this).hide()
+		     $(this).next().hide()
+		  });
   });
   </script>
-
-<script src="../js/mybid.js"></script>
-
+  <script src="../js/mybid.js"></script>
 </body>
 </html>

@@ -41,6 +41,7 @@
   </select>
 
   <select id="getMyBidList" parameterType="int" resultMap="item-map">
+      <![CDATA[
       select
         i.itno
        ,i.mno
@@ -50,8 +51,10 @@
        ,p.path
       from item i
       left outer join phot p on i.itno=p.itno
-      where i.mno=#{memberNo}
+      where i.mno=#{memberNo} and time + interval 14 day > now();
+      ]]>
   </select>
+  
 
   <select id="getOne" parameterType="int" resultMap="item-map">
     select
@@ -67,7 +70,7 @@
       i.cont,
       <choose>
         <when test="value == 0">
-          DATE_FORMAT(i.time + interval 30 minute, '%Y-%m-%d %H:%i') as time,
+          DATE_FORMAT(i.time + interval 3 minute, '%Y-%m-%d %H:%i') as time,
         </when>
         <otherwise>
           DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
@@ -82,7 +85,7 @@
     <choose>
       <when test="value == 0">
         <![CDATA[
-          where i.time <= now() and now() <= i.time + interval 30 minute
+          where i.time <= now() and now() <= i.time + interval 3 minute
         ]]>
       </when>
       <otherwise>
@@ -116,7 +119,7 @@
           #{item.deal},
           #{item.content},
           #{item.startPrice},
-          time + interval 30 minute
+          time + interval 3 minute
         from item
         order by time desc
         limit 1;
@@ -135,16 +138,16 @@
   <update id="update" parameterType="item">
     update item set
       titl=#{title},
-      categ=#{category},
+      stpc=#{startPrice}
+      time=#{startTime},
       buy=#{buyDate},
       day=#{useDay},
+      categ=#{category},
       deal=#{deal},
       cont=#{content},
-      time=#{startTime},
-      stpc=#{startPrice}
     where itno=#{itemNo}
   </update>
-
+  
   <update id="updateStartTime" parameterType="int">
     update item set
       time=DATE_SUB(time, interval 30 minute)
@@ -162,6 +165,7 @@
   <delete id="deleteInter" parameterType="int">
     delete from inter where itno=#{value}
   </delete>
+  
 
   <select id="getListByCateg" resultMap="item-map">
     select
@@ -185,7 +189,7 @@
      i.itno,
      i.mno,
      i.titl,
-     i.time,
+     DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time,
      i.stpc,
      p.path
     from item i

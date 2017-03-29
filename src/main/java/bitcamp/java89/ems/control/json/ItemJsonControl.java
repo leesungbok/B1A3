@@ -76,8 +76,8 @@ public class ItemJsonControl {
     Member member = (Member)session.getAttribute("member");
 
     // 로그인 안했거나, 등록한 사용자가 아닌 사람이거나, 지난경매품인 경우 삭제금지
-    if (member == null || item.getMemberNo() != member.getMemberNo() || item.getItemNo() <= nowItem.getItemNo()) {
-      return new AjaxResult(AjaxResult.FAIL, "삭제 권한이 없습니다.");
+    if (member == null || item.getMemberNo() != member.getMemberNo()) {
+      return new AjaxResult(AjaxResult.FAIL, "지난 경매는 자동으로 삭제되며 진행중인 경매는 삭제할 수 없습니다.\n시작되지 않은 경매만 삭제 가능합니다.");
     }
 
     if (itemService.delete(itemNo) != 0) {
@@ -119,14 +119,37 @@ public class ItemJsonControl {
     return new AjaxResult(AjaxResult.FAIL, "관련 상품이 없습니다.");
   }
   
-  @RequestMapping("/mypage/mybidlist")
+  @RequestMapping("/item/mybidlist")
   public AjaxResult myBidList(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
-    List<Item> myBidList = itemService.getMyBidList(member.getMemberNo());
-    System.out.println(myBidList.size());
-    if (!myBidList.isEmpty()) {
-      return new AjaxResult(AjaxResult.SUCCESS, myBidList);
+    
+    if (member != null) {
+      List<Item> myBidList = itemService.getMyBidList(member.getMemberNo());
+      System.out.println(myBidList.size());
+      if (!myBidList.isEmpty()) {
+        return new AjaxResult(AjaxResult.SUCCESS, myBidList);
+      }
+      return new AjaxResult(AjaxResult.FAIL, "나의경매를 가져오는데 실패했습니다.");
     }
+    
     return new AjaxResult(AjaxResult.FAIL, "나의경매를 가져오는데 실패했습니다.");
   }
+  
+  
+  @RequestMapping("/item/mybidupdate")
+  public AjaxResult update(Item editItem, HttpSession session) throws Exception {
+    if (editItem == null) {
+      return new AjaxResult(AjaxResult.FAIL, "수정된 나의 경매 정보가 없습니다.");
+    }
+    
+    Item item = (Item)session.getAttribute("item");
+    editItem.setItemNo(item.getItemNo());
+    
+    if (itemService.update(editItem) == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "나의 경매 수정에 실패했습니다.");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "나의 경매 수정에 성공했습니다.");
+  }
+  
+  
 }
