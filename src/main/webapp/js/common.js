@@ -573,7 +573,7 @@ $(function () {
             
             var bdhs = ajaxResult.data.bdhs;
             var endTime = new Date(bdhs[0].startTime);
-            endTime.setMinutes(endTime.getMinutes() + 3);
+            endTime.setMinutes(endTime.getMinutes() + 30);
             var memberNo = ajaxResult.data.memberNo;
             var count = 0;
             var mybid
@@ -669,7 +669,7 @@ $(function () {
         console.log(bdhs.nickName)
         console.log("[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
         endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 결제하세요.")
-/*    	$.post(serverRoot + '/bidhistory/sms.json',
+    	/*$.post(serverRoot + '/bidhistory/sms.json',
 		{
     		"nickName": bdhs.nickName,
     		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 

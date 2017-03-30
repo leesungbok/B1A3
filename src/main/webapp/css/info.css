@@ -324,6 +324,11 @@
 
 .carbox {
   cursor: pointer;
+  display: inline-block;
+}
+
+.glyphicon.glyphicon-heart {
+    color: white !important;
 }
 
 /* Sections */
