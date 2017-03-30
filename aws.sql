@@ -1601,20 +1601,18 @@ insert into phot(itno,path) values(62,'555.jpg');
 insert into phot(itno,path) values(62,'5555.jpg');
 insert into phot(itno,path) values(62,'555555.jpg');
 
-
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
-values(63,4,'드롱기 전기포트','생활품','2016-07-01','3개월','직거','
-최신 트렌드로 손꼽히는 빈티지와 레트로 컨셉을 반영한 아이코나 빈티지의 스타일리시한 주전자입니다.<br>
- 3단계안전 시스템: 1)물이 끓으면 자동으로 전원 차단<br> 
-2) 온도 센서를 통한 전원 제어<br>
- 3)본체가 받침대에서 분리될 시 자동으로 전원 차단 <br>
-사이즈 : 23 * 23 * 26.5cm<br>
-',now() + interval 360 minute,40000);
+values(63,3,'코맥 엔틱원톡 그라인더','생활품','2016-04-12','9개월',
+'택배','이중날 구조로 분쇄효과가 뛰어남<br>
+그라인더 상단이 돔형으로 되어있어 내부에 먼지가 들어가지 않는 구조<br>
+커피분말의 굵기 조절이 가능<br>
+25년 역사의 믿을 수 있는 코맥제품 입니다.<br>
+외양이 비슷하다해서 모두 같은 품질의 제품이 아닙니다.<br>', now() + interval 360 minute,10000);
 
-insert into phot(itno,path) values(63,'333.png');
-insert into phot(itno,path) values(63,'33333.png');
-insert into phot(itno,path) values(63,'333333.png');
-insert into phot(itno,path) values(63,'333333333.png');
+insert into phot(itno,path) values(63,'28.jpeg');
+insert into phot(itno,path) values(63,'29.jpeg');
+insert into phot(itno,path) values(63,'30.jpeg');
+insert into phot(itno,path) values(63,'31.jpeg');
 
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
@@ -1685,17 +1683,18 @@ insert into phot(itno,path) values(68,'27.jpeg');
 
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
-values(69,3,'코맥 엔틱원톡 그라인더','생활품','2016-04-12','9개월',
-'택배','이중날 구조로 분쇄효과가 뛰어남<br>
-그라인더 상단이 돔형으로 되어있어 내부에 먼지가 들어가지 않는 구조<br>
-커피분말의 굵기 조절이 가능<br>
-25년 역사의 믿을 수 있는 코맥제품 입니다.<br>
-외양이 비슷하다해서 모두 같은 품질의 제품이 아닙니다.<br>', now() + interval 540 minute,10000);
+values(69,4,'드롱기 전기포트','생활품','2016-07-01','3개월','직거','
+최신 트렌드로 손꼽히는 빈티지와 레트로 컨셉을 반영한 아이코나 빈티지의 스타일리시한 주전자입니다.<br>
+ 3단계안전 시스템: 1)물이 끓으면 자동으로 전원 차단<br> 
+2) 온도 센서를 통한 전원 제어<br>
+ 3)본체가 받침대에서 분리될 시 자동으로 전원 차단 <br>
+사이즈 : 23 * 23 * 26.5cm<br>
+',now() + interval 510 minute,40000);
 
-insert into phot(itno,path) values(69,'28.jpeg');
-insert into phot(itno,path) values(69,'29.jpeg');
-insert into phot(itno,path) values(69,'30.jpeg');
-insert into phot(itno,path) values(69,'31.jpeg');
+insert into phot(itno,path) values(69,'333.png');
+insert into phot(itno,path) values(69,'33333.png');
+insert into phot(itno,path) values(69,'333333.png');
+insert into phot(itno,path) values(69,'333333333.png');
 
 
 insert into item(itno,mno,titl,categ,buy,day,deal,cont,time,stpc)
