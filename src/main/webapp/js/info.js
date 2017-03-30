@@ -226,7 +226,7 @@ $(function() {
     
     // 관련 상품을 클릭할 시 최근 본 상품에 등록시킨다.
     function relatedItemClickEvent() {
-        $('.carbox').click(function(event) {
+        $(document.body).on('click', '.carbox', function(event) {
             var detailNo = $(this).attr('data-itno');
             $.getJSON('../auth/loginUser.json', function(ajaxResult) {
                 if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
@@ -665,5 +665,96 @@ $(function() {
         
         editDiv.prev().show();
         editDiv.remove();
-    })
+        
+    }).on('click', '.social-btn-dissolve2', function(event) {
+        var heartBtn = $(this).addClass('clicked');
+        heartBtn.children('.fa.fa-heart').attr('class','glyphicon glyphicon-heart');
+        var itemNo = $(this).attr('data-itno');
+        
+        if (member.memberNo != undefined) {
+            var param = {
+                'memberNo': member.memberNo,
+                'itemNo': itemNo,
+                'type': 1
+            };
+            
+            $.getJSON(serverRoot + '/mypage/check.json', param, function(ajaxResult) {
+                var count = ajaxResult.data
+                if (count == 1) {
+                    $.getJSON(serverRoot + '/mypage/delete.json?likeNo=' + itemNo + '&' + 'memberNo='+ member.memberNo, function(ajaxResult) {
+                        if (ajaxResult.status != "success") { 
+                            alert(ajaxResult.data);
+                            return;
+                        }
+                        heartBtn.removeClass('clicked');
+                        heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
+                        swal({
+                            title: "좋아요 삭제 완료!",
+                            text: "마이페이지에서 관심상품이 삭제되었습니다.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                    });
+                } else if(count == 2) {
+                    param.type = 3;
+                    $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                        if (ajaxResult.status != "success") { 
+                            alert(ajaxResult.data);
+                            return;
+                        }
+                        heartBtn.addClass('clicked');
+                        swal({
+                            title: "좋아요 등록 완료!",
+                            text: "마이페이지에서 관심상품이 등록되었습니다.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                    });
+                } else if(count == 3) {
+                    param.type = 2;
+                    heartBtn.removeClass('clicked');
+                    heartBtn.children('.glyphicon.glyphicon-heart').attr('class','fa fa-heart');
+                    $.getJSON(serverRoot + '/mypage/recentUpdate.json',param, function(ajaxResult) {
+                        if (ajaxResult.status != "success") { 
+                            alert(ajaxResult.data);
+                            return;
+                        }
+                        swal({
+                            title: "좋아요 삭제 완료!",
+                            text: "마이페이지에서 관심상품이 삭제되었습니다.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                    });
+                } else {
+                    $.post(serverRoot + '/mypage/add.json',param ,function(ajaxResult) {
+                        if (ajaxResult.status != "success") {
+                            alert(ajaxResult.data);
+                            return;
+                        } 
+                        var item=ajaxResult.data
+                        swal({
+                            title: "좋아요 등록 완료!",
+                            text: "마이페이지에서 목록을 확인하세요.",
+                            timer: 2250,
+                            showConfirmButton: false,
+                            type: "success"
+                        });
+                    })
+                }
+            });
+        } else { member.memberNo == undefined
+            // 로그인 되어있지 않으면 로그인 페이지로 이동한다.
+            location.href = clientRoot + '/auth/login.html';
+        }
+        // 이벤트 전파를 중단시킨다.
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    });
 });

@@ -106,4 +106,5 @@ public class ItemServiceImpl implements ItemService {
   public List<Item> getList(String categ, int itemNo) throws Exception {
     return itemDao.getListByCateg(categ, itemNo);
   }
+
 }

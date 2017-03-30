@@ -41,17 +41,20 @@
   </select>
 
   <select id="getMyBidList" parameterType="int" resultMap="item-map">
+      <![CDATA[
       select
         i.itno
        ,i.mno
        ,i.titl
-       ,i.time
+       ,DATE_FORMAT(i.time, '%Y-%m-%d %H:%i') as time
        ,i.stpc
        ,p.path
       from item i
       left outer join phot p on i.itno=p.itno
-      where i.mno=#{memberNo}
+      where i.mno=#{memberNo} and time + interval 14 day > now();
+      ]]>
   </select>
+  
 
   <select id="getOne" parameterType="int" resultMap="item-map">
     select
@@ -135,16 +138,16 @@
   <update id="update" parameterType="item">
     update item set
       titl=#{title},
-      categ=#{category},
+      stpc=#{startPrice}
+      time=#{startTime},
       buy=#{buyDate},
       day=#{useDay},
+      categ=#{category},
       deal=#{deal},
       cont=#{content},
-      time=#{startTime},
-      stpc=#{startPrice}
     where itno=#{itemNo}
   </update>
-
+  
   <update id="updateStartTime" parameterType="int">
     update item set
       time=DATE_SUB(time, interval 30 minute)
@@ -162,6 +165,7 @@
   <delete id="deleteInter" parameterType="int">
     delete from inter where itno=#{value}
   </delete>
+  
 
   <select id="getListByCateg" resultMap="item-map">
     select

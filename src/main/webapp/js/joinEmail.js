@@ -4,7 +4,8 @@ $(function() {
     /* 이메일 유효성검사 */
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     
-    var kakaoName = sessionStorage.getItem('kakao-name')
+    /*var kakaoName = sessionStorage.getItem('kakao-name')*/
+    var kakaoName = '신짱구';
     var kakaoId = sessionStorage.getItem('kakao-id')
     var fcbkName = sessionStorage.getItem('fcbk-name');
     var fcbkId = sessionStorage.getItem('fcbk-id');

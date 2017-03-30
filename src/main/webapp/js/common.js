@@ -669,7 +669,7 @@ $(function () {
         console.log(bdhs.nickName)
         console.log("[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 
         endTime.getHours() + "시" + endTime.getMinutes() + "분" + " 전까지 결제하세요.")
-/*    	$.post(serverRoot + '/bidhistory/sms.json',
+    	/*$.post(serverRoot + '/bidhistory/sms.json',
 		{
     		"nickName": bdhs.nickName,
     		"text": "[" + bdhs.title + "] " + "낙찰을 축하드립니다. " + 

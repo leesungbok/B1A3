@@ -228,7 +228,7 @@ $(function () {
                         return;
                     }
                     // 입찰하락자 SMS 전송
-                    /*if (smsNickName != '') {
+                    if (smsNickName != '') {
                         $.post(serverRoot + '/bidhistory/sms.json',
                         {
                             "nickName": smsNickName,
@@ -240,7 +240,7 @@ $(function () {
                                 return;
                             }
                         })
-                    }*/
+                    }
                     
                     $('#tender').modal('hide')
                     swal({

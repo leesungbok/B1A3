@@ -86,6 +86,10 @@ $(function() {
             $('.container').css('display', 'block');
         }
     }, 100);
+    
+    if (document.referrer == serverRoot+'/auth/joinEmail.html') {
+        $('.btn_kakao').click();
+    }
 
     function login() {
         if ($('#save-email').is(':checked')) {

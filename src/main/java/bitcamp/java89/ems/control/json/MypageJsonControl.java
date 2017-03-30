@@ -1,14 +1,11 @@
 package bitcamp.java89.ems.control.json;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bitcamp.java89.ems.domain.BidHistory;
 import bitcamp.java89.ems.domain.Member;
 import bitcamp.java89.ems.service.BidHistoryService;
 import bitcamp.java89.ems.service.MemberService;
