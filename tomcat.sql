@@ -1798,6 +1798,67 @@ insert into phot(itno,path) values(76,'64.jpeg');
 insert into phot(itno,path) values(76,'65.jpeg');
 insert into phot(itno,path) values(76,'66.jpeg');
 
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,stpc,time)
+select 77,1,'닥스 DAKS 정품시계','패션','2016-08-20','2개월','택배',
+'ㅋ'
+,50000,time + interval 30 minute
+from item
+order by time desc
+limit 1;
+insert into phot(itno,path) values(77,'1490854539269_9');
+insert into phot(itno,path) values(77,'1490854539269_10');
+insert into phot(itno,path) values(77,'1490854539270_11');
+insert into phot(itno,path) values(77,'1490854539271_12');
+
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,stpc,time)
+select 78,1,'카시오 아나디지 시계','패션','2016-08-20','2개월','택배',
+'ㅋ'
+,100000,time + interval 30 minute
+from item
+order by time desc
+limit 1;
+insert into phot(itno,path) values(78,'1490854630094_13');
+insert into phot(itno,path) values(78,'1490854630094_14');
+insert into phot(itno,path) values(78,'1490854630095_15');
+insert into phot(itno,path) values(78,'1490854630095_16');
+
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,stpc,time)
+select 79,1,'오디세이 세라믹베젤 시계','패션','2016-08-20','2개월','택배',
+'ㅋ'
+,10000,time + interval 30 minute
+from item
+order by time desc
+limit 1;
+insert into phot(itno,path) values(79,'1490854722730_17');
+insert into phot(itno,path) values(79,'1490854722730_18');
+insert into phot(itno,path) values(79,'1490854722732_19');
+insert into phot(itno,path) values(79,'1490854722732_20');
+
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,stpc,time)
+select 80,1,'명품 시계 엠프리오 알마니','패션','2016-08-20','2개월','택배',
+'ㅋ'
+,10000,time + interval 30 minute
+from item
+order by time desc
+limit 1;
+insert into phot(itno,path) values(80,'1490854803910_21');
+insert into phot(itno,path) values(80,'1490854803911_22');
+insert into phot(itno,path) values(80,'1490854803911_23');
+insert into phot(itno,path) values(80,'1490854803912_24');
+
+insert into item(itno,mno,titl,categ,buy,day,deal,cont,stpc,time)
+select 81,1,'ELEGANGS 시계','패션','2016-08-20','2개월','택배',
+'ㅋ'
+,30000,time + interval 30 minute
+from item
+order by time desc
+limit 1;
+insert into phot(itno,path) values(81,'1490854879567_25');
+insert into phot(itno,path) values(81,'1490854879567_26');
+insert into phot(itno,path) values(81,'1490854879568_27');
+insert into phot(itno,path) values(81,'1490854879569_28');
+
+
 insert into qna(mno,itno,qus,qtm,ans,atm)
 values(1,51,'윈도우 설치되어있는 상품인가요?',now(),'저희 출고되는 제품은 정품 제품 설명에 고지된 대로 정품 소프트웨어만을 제공합니다.',now());
 insert into qna(mno,itno,qus,qtm,ans,atm)
