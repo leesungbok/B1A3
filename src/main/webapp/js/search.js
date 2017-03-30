@@ -2,6 +2,17 @@ $(function () {
 	var param = location.href.split('?')[1].split('=')[1];
     var member
     
+	  window.fbAsyncInit = function() {
+		console.log(12);
+	    FB.init({
+	      appId      : '2229730730585360',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+	    
+	  };
+
+    
     $.ajax({
         type: "GET",
         url: serverRoot + '/auth/loginUser.json',
@@ -322,6 +333,29 @@ $(function () {
 	
 	bidGrantEvent(); // 경매품 클릭시 최근본 상품에 추가한다.
 	
+	b1();
+	
+	function b1() {
+		$(document.body).on('click', '.social-btn-dissolve2.facebook', function(event) {
+			console.log(11123);
+			
+			(function(d, s, id) {
+			    var js, fjs = d.getElementsByTagName(s)[0];
+			    if (d.getElementById(id)) return;
+			    js = d.createElement(s); js.id = id;
+			    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+			    fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			FB.ui({
+		        method: 'share',
+		        display:'popup',
+		        href: 'http://bbakdu.com/B1A3/main/main.html'
+		    }, function(response) {});
+		});
+		return;
+		console.log(123)
+	}
+	
 	// 좋아요 클릭 이벤트
 	function bidLikeEvent() {
         $(document.body).on('click', '.social-btn-dissolve2.heart', function(event) {
@@ -453,7 +487,7 @@ $(function () {
                         }
                     })
                 }
-                location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;
+                /*location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;*/
             });
         });
     }
