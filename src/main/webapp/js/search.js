@@ -351,6 +351,13 @@ $(function () {
 		        display:'popup',
 		        href: 'http://bbakdu.com/B1A3/main/main.html'
 		    }, function(response) {});
+			
+			// 이벤트 전파를 중단시킨다.
+	        if (event.stopPropagation) {
+	            event.stopPropagation();
+	        } else {
+	            event.cancelBubble = true;
+	        }
 		});
 		return;
 		console.log(123)
@@ -487,7 +494,7 @@ $(function () {
                         }
                     })
                 }
-                /*location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;*/
+                location.href = clientRoot + "/info/info.html?itemNo=" + detailNo;
             });
         });
     }
